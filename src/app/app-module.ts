@@ -9,6 +9,7 @@ import {Homepage} from './pages/homepage/homepage';
 import {NavBar} from './shared/navbar/navbar';
 import {routing} from './routes';
 import {ComponentsList} from './pages/components/components';
+import {MaterialIoDocViewerModule} from '../components/doc-viewer/doc-viewer';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {ComponentsList} from './pages/components/components';
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
+    MaterialIoDocViewerModule.forRoot(),
     routing,
   ],
   providers: [
