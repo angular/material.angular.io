@@ -6,6 +6,7 @@ import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import {MaterialDocsApp} from './material-docs-app';
 import {MaterialIoDocViewerModule} from '../components/doc-viewer/doc-viewer';
+import {MaterialIoExampleViewerModule} from '../components/example-viewer/example-viewer';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {MaterialIoDocViewerModule} from '../components/doc-viewer/doc-viewer';
     HttpModule,
     MaterialModule.forRoot(),
     MaterialIoDocViewerModule.forRoot(),
+    MaterialIoExampleViewerModule.forRoot(),
   ],
   providers: [
     Location,
