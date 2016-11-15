@@ -10,6 +10,7 @@ import {NavBar} from './shared/navbar/navbar';
 import {routing} from './routes';
 import {ComponentsList} from './pages/components/components';
 import {MaterialIoDocViewerModule} from '../components/doc-viewer/doc-viewer';
+import {MaterialIoExampleViewerModule} from '../components/example-viewer/example-viewer';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {MaterialIoDocViewerModule} from '../components/doc-viewer/doc-viewer';
     HttpModule,
     MaterialModule.forRoot(),
     MaterialIoDocViewerModule.forRoot(),
+    MaterialIoExampleViewerModule.forRoot(),
     routing,
   ],
   providers: [
