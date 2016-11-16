@@ -1,4 +1,28 @@
-<div *ngFor="let component of componentItems">
-  <img src="../../../assets/img/components/{{component.src}}.svg" [alt]="component.name" />
-  {{component.name}}
+<div class="docs-components-header-bar">Components</div>
+<div class="docs-components-component-list">
+  <div class="docs-components-header-section">
+    <h1>Directory of Design Components</h1>
+    <p>
+      Set of high-quality UI components built with Angular 2 and
+      TypeScript, following the Material Design spec
+    </p>
+  </div>
+  <div [class.docs-components-grid-view]="gridMode" class="docs-components-view">
+    <button md-fab color="primary" (click)="switchViewMode()" class="docs-components-grid-fab">
+      <md-icon>{{viewIcon}}</md-icon>
+    </button>
+    <div class="docs-components-list">
+      <div *ngFor="let group of componentGroups" class="docs-components-group">
+        <div class="docs-components-group-name">{{group.name}}</div>
+        <div class="docs-components-section">
+          <div *ngFor="let component of group.list">
+            <div class="docs-component-chip"  [routerLink]="component.routerLink" >
+              <div class="docs-component-img"><img [src]="component.imageSrc"/></div>
+              <div class="docs-component-name">{{component.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
