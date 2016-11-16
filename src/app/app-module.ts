@@ -5,28 +5,31 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import {MaterialDocsApp} from './material-docs-app';
+import {ExampleViewer} from '../components/example-viewer/example-viewer';
+import {DocViewer} from '../components/doc-viewer/doc-viewer';
 import {Homepage} from './pages/homepage/homepage';
 import {NavBar} from './shared/navbar/navbar';
 import {routing} from './routes';
 import {ComponentsList} from './pages/components/components';
-import {MaterialIoDocViewerModule} from '../components/doc-viewer/doc-viewer';
-import {MaterialIoExampleViewerModule} from '../components/example-viewer/example-viewer';
 
 
 @NgModule({
   declarations: [
+    DocViewer,
+    ExampleViewer,
     MaterialDocsApp,
     ComponentsList,
     Homepage,
     NavBar,
+  ],
+  entryComponents: [
+    ExampleViewer,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    MaterialIoDocViewerModule.forRoot(),
-    MaterialIoExampleViewerModule.forRoot(),
     routing,
   ],
   providers: [

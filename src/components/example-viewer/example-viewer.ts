@@ -1,25 +1,11 @@
-import {Component, NgModule, ModuleWithProviders, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 
 @Component({
-  selector: 'material-io-example-viewer',
+  selector: 'example-viewer',
   template: 'EXAMPLE: {{example}}',
 })
-export class MaterialIoExampleViewer {
+export class ExampleViewer {
   @Input()
   example: string;
-}
-
-
-@NgModule({
-  exports: [MaterialIoExampleViewer],
-  declarations: [MaterialIoExampleViewer]
-})
-export class MaterialIoExampleViewerModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: MaterialIoExampleViewerModule,
-      providers: []
-    };
-  }
 }
