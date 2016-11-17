@@ -6,6 +6,8 @@ import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import {MaterialDocsApp} from './material-docs-app';
 import {Homepage} from './pages/homepage/homepage';
+import {NavBar} from './shared/navbar/navbar';
+import {Plunker} from './shared/plnkr';
 import {routing} from './routes';
 import {ComponentList} from './pages/component-list/component-list';
 import {ComponentViewer} from './pages/component-viewer/component-viewer';
@@ -19,6 +21,8 @@ import {SharedModule} from './shared/shared-module';
     ComponentList,
     ComponentViewer,
     Homepage,
+    NavBar,
+    Plunker,
   ],
   imports: [
     BrowserModule,
