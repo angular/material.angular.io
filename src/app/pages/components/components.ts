@@ -53,7 +53,7 @@ export class ComponentsList {
     ]),
   ];
 
-  gridMode: boolean = true;
+  gridMode: boolean = false;
 
   get viewMode() : string {
     return this.gridMode ? 'Grid view' : 'List view';

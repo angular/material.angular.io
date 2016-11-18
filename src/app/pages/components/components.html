@@ -8,8 +8,8 @@
       <div *ngFor="let group of componentGroups" class="docs-components-group">
         <h2>{{group.name}}</h2>
         <md-grid-list color="primary" cols="5">
-          <md-grid-tile *ngFor="let component of group.list">
-            <div [routerLink]="component.routerLink" class="docs-component-chip">
+          <md-grid-tile *ngFor="let component of group.list" [routerLink]="component.routerLink" >
+            <div class="docs-component-chip">
               <div class="docs-component-img"><img [src]="component.imageSrc"/></div>
               <div class="docs-component-name">{{component.name}}</div>
             </div>
@@ -20,7 +20,7 @@
     <md-card class="docs-components-list" *ngIf="!gridMode">
       <md-list *ngFor="let group of componentGroups">
         <h2 md-subheader>{{group.name}}</h2>
-        <md-list-item *ngFor="let component of group.list" [routerLink]="component.routerLink" >
+        <md-list-item *ngFor="let component of group.list" [routerLink]="component.routerLink">
           <img md-list-avatar [src]="component.imageSrc"/>
           <div md-line>{{component.name}}</div>
         </md-list-item>

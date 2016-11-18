@@ -12,5 +12,18 @@
       background: md-color($primary);
       color: md-color($primary, default-contrast);
     }
+
+    md-card {
+      padding: 0;
+    }
+
+    md-list [md-subheader] {
+      color: md-color($primary, 800);
+      background: md-color($foreground, divider);
+    }
+
+    md-list md-list-item, md-list a[md-list-item] {
+      color: md-color($primary, 800);
+    }
   }
 }
