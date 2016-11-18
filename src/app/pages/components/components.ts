@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 
+/** The Component group to put all the components in different categories*/
 export class ComponentGroup {
   name: string;
   list: ComponentItem[];
@@ -9,19 +10,19 @@ export class ComponentGroup {
     this.list = list;
   }
 }
+
+/** Component Item with different name, link and icon */
 export class ComponentItem {
   name: string;
   src: string;
-  link: string;
 
-  constructor(name: string, src?: string, link?: string) {
+  constructor(name: string, src: string) {
     this.name = name;
-    this.src = src ? src : name;
-    this.link = link ? link : this.src;
+    this.src = src;
   }
 
   get routerLink() {
-    return '../component/' + this.link;
+    return '../component/' + this.src;
   }
 
   get imageSrc() {
@@ -50,15 +51,11 @@ export class ComponentsList {
     new ComponentGroup('Miscellaneous', [
       new ComponentItem('Progress', 'progress'),
     ]),
-  ]
+  ];
 
   gridMode: boolean = true;
 
-  get viewIcon() : string {
-    return this.gridMode ? 'lists' : 'apps';
-  }
-
-  switchViewMode() {
-    this.gridMode = !this.gridMode;
+  get viewMode() : string {
+    return this.gridMode ? 'Grid view' : 'List view';
   }
 }
