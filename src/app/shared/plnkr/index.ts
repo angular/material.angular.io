@@ -1,1 +1,1 @@
-export * from './plnkr';
+export * from './plunker-button';
