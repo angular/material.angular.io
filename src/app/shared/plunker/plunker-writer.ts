@@ -10,7 +10,7 @@ const COPYRIGHT =
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license`;
 
-const TEMPLATE_PATH = '/assets/template/';
+const TEMPLATE_PATH = '/assets/plunker/';
 const TEMPLATE_FILES = ['index.html', 'systemjs.config.js', 'main.ts'];
 
 const TAGS: string[] = ['angular', 'material', 'example'];
