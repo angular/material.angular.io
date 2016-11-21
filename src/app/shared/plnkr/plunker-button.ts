@@ -6,18 +6,15 @@ import { PlunkerData } from './plunker-data';
 @Component({
   selector: 'plunker-button',
   templateUrl: 'plunker-button.html',
+  providers: [PlunkerWriter],
 })
 export class PlunkerButton {
 
   exampleData: PlunkerData = new PlunkerData();
 
-  plunkerUtil: PlunkerWriter;
-
-  constructor(private _http: Http) {
-    this.plunkerUtil = new PlunkerWriter(_http);
-  }
+  constructor(private plunkerWriter: PlunkerWriter) {}
 
   openPlunker(): void {
-    this.plunkerUtil.openPlunker(this.exampleData);
+    this.plunkerWriter.openPlunker(this.exampleData);
   }
 }
