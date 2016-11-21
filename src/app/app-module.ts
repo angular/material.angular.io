@@ -7,7 +7,7 @@ import {MaterialModule} from '@angular/material';
 import {MaterialDocsApp} from './material-docs-app';
 import {Homepage} from './pages/homepage/homepage';
 import {NavBar} from './shared/navbar/navbar';
-import {PlunkerButton} from './shared/plnkr';
+import {PlunkerButton} from './shared/plunker';
 import {routing} from './routes';
 import {ComponentList} from './pages/component-list/component-list';
 import {ComponentViewer} from './pages/component-viewer/component-viewer';

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { PlunkerData } from './plunker-data';
+import { ExampleData } from './example-data';
 import 'rxjs/add/operator/toPromise';
 
-const PLUNKER_URL: string = 'http://plnkr.co/edit/?p=preview';
+const PLUNKER_URL: string = 'https://plnkr.co/edit/?p=preview';
 
 const COPYRIGHT =
   `Copyright 2016 Google Inc. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license`;
 
-const TEMPLATE_PATH = '/app/shared/plnkr/template/';
+const TEMPLATE_PATH = '/assets/template/';
 const TEMPLATE_FILES = ['index.html', 'systemjs.config.js', 'main.ts'];
 
 const TAGS: string[] = ['angular', 'material', 'example'];
@@ -37,12 +37,12 @@ export class PlunkerWriter {
 
 
   form: HTMLFormElement;
-  exampleData: PlunkerData;
+  exampleData: ExampleData;
 
   constructor(private _http: Http) {}
 
   /** Construct the plunker content */
-  openPlunker(data: PlunkerData) {
+  openPlunker(data: ExampleData) {
     this.exampleData = data;
 
     this.form = this._createFormElement();

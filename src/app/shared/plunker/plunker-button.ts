@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { PlunkerWriter } from './plunker-writer';
-import { PlunkerData } from './plunker-data';
+import { ExampleData } from './example-data';
 
 @Component({
   selector: 'plunker-button',
@@ -10,7 +10,7 @@ import { PlunkerData } from './plunker-data';
 })
 export class PlunkerButton {
 
-  exampleData: PlunkerData = new PlunkerData();
+  exampleData: ExampleData = new ExampleData();
 
   constructor(private plunkerWriter: PlunkerWriter) {}
 
