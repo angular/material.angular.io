@@ -42,7 +42,7 @@ export class DocViewer {
         error => {
           console.log(error);
           this._elementRef.nativeElement.innerText =
-          `Failed to load document: ${url}. Error: ${error}`;
+              `Failed to load document: ${url}. Error: ${error}`;
         });
   }
 
