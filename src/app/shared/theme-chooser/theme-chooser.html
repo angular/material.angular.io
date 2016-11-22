@@ -1,0 +1,11 @@
+<button md-icon-button [md-menu-trigger-for]="themeMenu">
+  <md-icon>format_color_fill</md-icon>
+</button>
+
+<md-menu class="theme-chooser-menu" #themeMenu="mdMenu" x-position="before">
+  <md-grid-list cols="2">
+    <md-grid-tile *ngFor="let theme of themes">
+      <div md-menu-item (click)="installTheme(theme.href)" [style.background]="theme.color"></div>
+    </md-grid-tile>
+  </md-grid-list>
+</md-menu>

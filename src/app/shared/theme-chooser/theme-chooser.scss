@@ -1,0 +1,17 @@
+.theme-chooser-menu {
+  .md-menu-content {
+    padding: 8px;
+  }
+
+  md-grid-list {
+    width: 96px;
+  }
+
+  [md-menu-item] {
+    height: 36px;
+    width: 36px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}

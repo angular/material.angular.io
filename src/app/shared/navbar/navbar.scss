@@ -1,6 +1,8 @@
 @import '../../../main';
 
 .docs-navbar {
+  display: flex;
+  align-items: center;
   padding: 8px 16px;
 }
 
@@ -8,4 +10,8 @@
   margin: 0 4px 3px 0;
   height: 26px;
   vertical-align: middle;
+}
+
+.flex-spacer {
+  flex-grow: 1;
 }
