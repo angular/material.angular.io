@@ -1,6 +1,7 @@
 import {async, TestBed, ComponentFixture} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {MaterialModule} from '@angular/material';
+import {InlineSVGModule} from 'ng-inline-svg';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Observable} from 'rxjs/Observable';
@@ -22,7 +23,7 @@ describe('ComponentList', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule, RouterTestingModule],
+      imports: [MaterialModule, RouterTestingModule, InlineSVGModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ComponentList],
       providers: [

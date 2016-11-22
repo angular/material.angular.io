@@ -1,5 +1,6 @@
 import {async, TestBed, ComponentFixture} from '@angular/core/testing';
 import {MaterialModule} from '@angular/material';
+import {InlineSVGModule} from 'ng-inline-svg';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
@@ -12,7 +13,7 @@ describe('ComponentCategoryList', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule],
+      imports: [MaterialModule, InlineSVGModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ComponentCategoryList],
       providers: [

@@ -11,7 +11,7 @@
   padding: 8px;
 }
 
-.docs-footer-angular-logo {
+.docs-footer-angular-logo /deep/ svg {
   height: 50px;
 }
 
