@@ -8,10 +8,23 @@
   }
 
   [md-menu-item] {
-    height: 36px;
-    width: 36px;
     padding: 0;
+  }
+
+  .theme-chooser-swatch {
+    box-sizing: border-box;
+    width: 36px;
+    height: 36px;
+    border: 1px solid transparent;
+    margin: 6px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .theme-chooser-swatch-accent {
+    width: 0;
+    height: 0;
+    margin: 4px 0 0 4px;
+    border: 18px solid transparent;
   }
 }

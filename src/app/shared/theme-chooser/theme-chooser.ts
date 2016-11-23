@@ -10,13 +10,33 @@ import {StyleManager} from '../style-manager/style-manager';
 })
 export class ThemeChooser {
   themes = [
-    {color: '#673AB7', href: '@angular/material/core/themeing/prebuilt/deeppurple-amber.css'},
-    {color: '#3F51B5', href: '@angular/material/core/themeing/prebuilt/indigo-pink.css'},
-    {color: '#E91E63', href: '@angular/material/core/themeing/prebuilt/pink-bluegrey.css'},
-    {color: '#9C27B0', href: '@angular/material/core/themeing/prebuilt/purple-green.css'},
+    {
+      primary: '#673AB7',
+      accent: '#FFC107',
+      href: '@angular/material/core/themeing/prebuilt/deeppurple-amber.css'
+    },
+    {
+      primary: '#3F51B5',
+      accent: '#E91E63',
+      href: '@angular/material/core/themeing/prebuilt/indigo-pink.css'
+    },
+    {
+      primary: '#E91E63',
+      accent: '#607D8B',
+      href: '@angular/material/core/themeing/prebuilt/pink-bluegrey.css'
+    },
+    {
+      primary: '#9C27B0',
+      accent: '#4CAF50',
+      href: '@angular/material/core/themeing/prebuilt/purple-green.css'
+    },
   ];
 
   constructor(private _styleManager : StyleManager) {}
+
+  getSwatchAccentBorderColor(accent: string) {
+    return `transparent ${accent} ${accent} transparent`;
+  }
 
   installTheme(href: string) {
     this._styleManager.setStyle('theme', href);
