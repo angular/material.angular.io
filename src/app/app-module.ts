@@ -10,13 +10,15 @@ import {NavBar} from './shared/navbar/navbar';
 import {routing} from './routes';
 import {ComponentList} from './pages/component-list/component-list';
 import {DocViewerModule} from './shared/doc-viewer/index';
-import {ExampleViewerModule} from './shared/example-viewer/index';
 import {ComponentViewer} from './pages/component-viewer/component-viewer';
 import {DocumentationItems} from './shared/documentation-items/documentation-items';
+import {ExampleViewer} from './shared/example-viewer/example-viewer';
+import {ExampleModule, EXAMPLE_LIST} from './examples/example-module';
 
 
 @NgModule({
   declarations: [
+    ExampleViewer,
     MaterialDocsApp,
     ComponentList,
     ComponentViewer,
@@ -25,8 +27,8 @@ import {DocumentationItems} from './shared/documentation-items/documentation-ite
   ],
   imports: [
     BrowserModule,
+    ExampleModule,
     DocViewerModule,
-    ExampleViewerModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
