@@ -12,9 +12,10 @@ TUNNEL_STDERR="$LOGS_DIR/sauce-connect.stderr"
 
 SAUCE_ACCESS_KEY=`echo $SAUCE_ACCESS_KEY | rev`
 
-# Cleanup and create the directory for the tunnel connector.
+# Cleanup and create the folder structure for the tunnel connector.
 rm -rf $TUNNEL_DIR $BROWSER_PROVIDER_READY_FILE
 mkdir -p $TUNNEL_DIR
+touch $TUNNEL_LOG
 
 cd $TUNNEL_DIR
 
