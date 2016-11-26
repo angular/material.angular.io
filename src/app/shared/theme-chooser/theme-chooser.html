@@ -6,9 +6,9 @@
   <md-grid-list cols="2">
     <md-grid-tile *ngFor="let theme of themes">
       <div md-menu-item (click)="installTheme(theme.href)">
-        <div class="theme-chooser-swatch" [style.background]="theme.primary">
-          <div class="theme-chooser-swatch-accent"
-               [style.border-color]="getSwatchAccentBorderColor(theme.accent)"></div>
+        <div class="theme-chooser-swatch">
+          <div class="theme-chooser-primary" [style.background]="theme.primary"></div>
+          <div class="theme-chooser-accent" [style.background]="theme.accent"></div>
         </div>
       </div>
     </md-grid-tile>
