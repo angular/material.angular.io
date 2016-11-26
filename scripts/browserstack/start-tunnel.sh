@@ -52,17 +52,16 @@ function create_ready_file {
   disown
 
   # When the tail recognizes the `Ctrl-C` log message the BrowserStack Tunnel is up.
-  tail -n0 -f $TUNNEL_LOG --pid $TIMER_PID | {
-    sed '/Ctrl/q' &&
-    kill -9 $TIMER_PID;
-  } &>/dev/null
+  {
+    tail -n0 -f $TUNNEL_LOG --pid $TIMER_PID | { sed '/Ctrl/q' && kill -9 $TIMER_PID; };
+  } &> /dev/null
 
   echo "BrowserStack Tunnel ready"
 
   touch $BROWSER_PROVIDER_READY_FILE
 }
 
-browserstack-tunnel/BrowserStackLocal -k $BROWSER_STACK_ACCESS_KEY $ARGS 2>&1 | tee -a $TUNNEL_LOG &
+browserstack-tunnel/BrowserStackLocal -k $BROWSER_STACK_ACCESS_KEY $ARGS &>> $TUNNEL_LOG &
 
 # Wait for the tunnel to be ready and create the readyfile with the Browserstack PID
 create_ready_file &
