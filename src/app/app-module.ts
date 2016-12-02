@@ -22,6 +22,14 @@ import {ComponentsList} from './pages/components/components';
     Homepage,
     NavBar,
   ],
+  exports: [
+    DocViewer,
+    ExampleViewer,
+    MaterialDocsApp,
+    ComponentsList,
+    Homepage,
+    NavBar,
+  ],
   entryComponents: [
     ExampleViewer,
   ],
