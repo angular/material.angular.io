@@ -28,4 +28,4 @@ describe('ThemeChooser', () => {
   selector: 'test',
   template: '<theme-chooser></theme-chooser>'
 })
-class ThemeChooserTestComponent {};
+class ThemeChooserTestComponent {}
