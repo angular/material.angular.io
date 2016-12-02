@@ -34,10 +34,6 @@ export class ThemeChooser {
 
   constructor(private _styleManager : StyleManager) {}
 
-  getSwatchAccentBorderColor(accent: string) {
-    return `transparent ${accent} ${accent} transparent`;
-  }
-
   installTheme(href: string) {
     this._styleManager.setStyle('theme', href);
   }

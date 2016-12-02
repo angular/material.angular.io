@@ -21,6 +21,13 @@ import {StyleManager} from './shared/style-manager/style-manager';
     NavBar,
     ThemeChooser,
   ],
+  exports: [
+    MaterialDocsApp,
+    ComponentsList,
+    Homepage,
+    NavBar,
+    ThemeChooser,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
