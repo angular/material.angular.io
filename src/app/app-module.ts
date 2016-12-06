@@ -9,6 +9,8 @@ import {Homepage} from './pages/homepage/homepage';
 import {NavBar} from './shared/navbar/navbar';
 import {routing} from './routes';
 import {ComponentsList} from './pages/components/components';
+import {ThemeChooser} from './shared/theme-chooser/theme-chooser';
+import {StyleManager} from './shared/style-manager/style-manager';
 
 
 @NgModule({
@@ -17,6 +19,14 @@ import {ComponentsList} from './pages/components/components';
     ComponentsList,
     Homepage,
     NavBar,
+    ThemeChooser,
+  ],
+  exports: [
+    MaterialDocsApp,
+    ComponentsList,
+    Homepage,
+    NavBar,
+    ThemeChooser,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +37,7 @@ import {ComponentsList} from './pages/components/components';
   ],
   providers: [
     Location,
+    StyleManager,
     {provide: LocationStrategy, useClass: PathLocationStrategy},
   ],
   bootstrap: [MaterialDocsApp],
