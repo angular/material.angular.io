@@ -1,0 +1,25 @@
+.docs-components-header-bar {
+  padding: 16px 32px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.docs-components-component-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.docs-components-grid-fab {
+  float: right;
+  margin: 24px;
+}
+
+.docs-components-list {
+  margin-top: 104px;
+}
+
+.docs-components-view {
+  width: 80%;
+}
