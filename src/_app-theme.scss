@@ -1,4 +1,5 @@
 @import '~@angular/material/core/theming/theming';
+@import './app/pages/components/components-theme';
 @import './app/pages/homepage/homepage-theme';
 @import './app/shared/navbar/navbar-theme';
 
@@ -16,4 +17,5 @@
 
   @include nav-bar-theme($theme);
   @include home-page-theme($theme);
+  @include components-page-theme($theme);
 }

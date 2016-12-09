@@ -1,0 +1,29 @@
+@mixin components-page-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  app-components {
+    color: md-color($primary, 800);
+
+    .docs-components-header-bar {
+      background: md-color($primary);
+      color: md-color($primary, default-contrast);
+    }
+
+    md-card {
+      padding: 0;
+    }
+
+    md-list [md-subheader] {
+      color: md-color($primary, 800);
+      background: md-color($foreground, divider);
+    }
+
+    md-list md-list-item, md-list a[md-list-item] {
+      color: md-color($primary, 800);
+    }
+  }
+}
