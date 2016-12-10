@@ -40,4 +40,26 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false
   });
+  
+  if (process.env['TRAVIS']) {
+
+    let buildId = `TRAVIS #${process.env.TRAVIS_BUILD_NUMBER} (${process.env.TRAVIS_BUILD_ID})`;
+    let platformType = process.env.MODE;
+
+    if (platformType === 'saucelabs') {
+
+      config.sauceLabs.build = buildId;
+      config.sauceLabs.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
+
+    } else if (platformType === 'browserstack') {
+
+      config.browserStack.build = buildId;
+      config.browserStack.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
+
+    } else {
+      throw new Error(`Platform "${platform}" unknown, but Travis specified. Exiting.`);
+    }
+
+    config.browsers = platformMap[platformType];
+  }  
 };
