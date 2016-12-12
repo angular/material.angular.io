@@ -35,12 +35,16 @@ export class DocViewer {
     this._http.get(url).subscribe(
         response => {
           // TODO(mmalerba): Trust HTML.
-          let docHtml = response.text();
-          this._elementRef.nativeElement.innerHTML = docHtml;
-          this._loadLiveExamples();
+          if (response.ok) {
+            let docHtml = response.text();
+            this._elementRef.nativeElement.innerHTML = docHtml;
+            this._loadLiveExamples();
+          } else {
+            this._elementRef.nativeElement.innerText =
+              `Failed to load document: ${url}. Error: ${response.status}`;
+          }
         },
         error => {
-          console.log(error);
           this._elementRef.nativeElement.innerText =
               `Failed to load document: ${url}. Error: ${error}`;
         });
@@ -51,6 +55,7 @@ export class DocViewer {
     let exampleElements =
         this._elementRef.nativeElement.querySelectorAll('[material-docs-example]');
     Array.prototype.slice.call(exampleElements).forEach((element: Element) => {
+      console.log('create portal');
       let example = element.getAttribute('material-docs-example');
       let portalHost =
           new DomPortalHost(element, this._componentFactoryResolver, this._appRef, this._injector);
