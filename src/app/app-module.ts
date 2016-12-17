@@ -12,6 +12,7 @@ import {ComponentList} from './pages/component-list/component-list';
 import {DocViewerModule} from './shared/doc-viewer/index';
 import {ExampleViewerModule} from './shared/example-viewer/index';
 import {ComponentViewer} from './pages/component-viewer/component-viewer';
+import {DocumentationItems} from './shared/documentation-items/documentation-items';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {ComponentViewer} from './pages/component-viewer/component-viewer';
   ],
   providers: [
     Location,
+    DocumentationItems,
     {provide: LocationStrategy, useClass: PathLocationStrategy},
   ],
   bootstrap: [MaterialDocsApp],
