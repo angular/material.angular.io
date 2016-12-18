@@ -1,5 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {Portal, ComponentPortal} from '@angular/material';
+import {Http} from '@angular/http';
+import {ComponentPortal} from '@angular/material';
+import 'rxjs/add/operator/first';
+
 import {EXAMPLE_COMPONENTS} from '../../examples/example-module';
 
 
@@ -9,9 +12,19 @@ import {EXAMPLE_COMPONENTS} from '../../examples/example-module';
   styleUrls: ['./example-viewer.scss']
 })
 export class ExampleViewer {
-  selectedPortal: Portal<any>;
+  /** Component portal for the currently displayed example. */
+  selectedPortal: ComponentPortal<any>;
 
+  /** String key of the currently displayed example. */
   _example: string;
+
+  /** Whether the source for the example is being displayed. */
+  showSource: boolean = false;
+
+  /** Map of file extension (html|ts|css) to source file content. */
+  sourceFileContent: Map<string, string> = new Map<string, string>();
+
+  constructor(private _http: Http) { }
 
   get example() {
     return this._example;
@@ -23,5 +36,31 @@ export class ExampleViewer {
       this._example = example;
       this.selectedPortal = new ComponentPortal(EXAMPLE_COMPONENTS[example]);
     }
+  }
+
+  toggleSourceView(): void {
+    this.showSource = !this.showSource;
+  }
+
+  /** Gets the content of a source file. If it has not yet been load it, do so. */
+  getSourceFileContent(extension: string): string {
+    if (this.sourceFileContent.has(extension)) {
+      return this.sourceFileContent.get(extension);
+    }
+
+    this.loadSourceFileContent(extension);
+  }
+
+  /** Load and cache a source file content for the example. */
+  loadSourceFileContent(extension: string): void {
+    this._http.get(`/app/examples/button-types/${this.example}-example.${extension}`)
+      .first()
+      .subscribe(response => {
+        if (response.ok) {
+          this.sourceFileContent.set(extension, response.text());
+        } else {
+          this.sourceFileContent.set(extension, 'Could not load example source file.');
+        }
+      });
   }
 }

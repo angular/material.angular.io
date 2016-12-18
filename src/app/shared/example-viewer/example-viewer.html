@@ -3,9 +3,25 @@
 
   <div class="docs-example-viewer-title-spacer"></div>
 
-  <button md-icon-button type="button">S</button>
+  <button md-icon-button type="button" (click)="toggleSourceView()">S</button>
   <button md-icon-button type="button">P</button>
 </div>
+
+<div class="docs-example-viewer-source" *ngIf="showSource">
+  <md-tab-group>
+    <!-- TODO(jelbourn): don't hard-code the html + ts + css structure -->
+    <md-tab label="HTML">
+      <pre> {{getSourceFileContent('html')}} </pre>
+    </md-tab>
+    <md-tab label="TS">
+      <pre> {{getSourceFileContent('ts')}} </pre>
+    </md-tab>
+    <md-tab label="CSS">
+      <pre> {{getSourceFileContent('scss')}} </pre>
+    </md-tab>
+  </md-tab-group>
+</div>
+
 <div class="docs-example-viewer-body">
   <template [portalHost]="selectedPortal"></template>
 </div>
