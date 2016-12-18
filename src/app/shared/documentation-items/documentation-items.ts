@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ButtonTypesExample} from '../../examples/button-types/button-types-example';
 
 export interface DocItem {
   id: string;

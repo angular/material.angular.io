@@ -5,7 +5,8 @@ import {EXAMPLE_COMPONENTS} from '../../examples/example-module';
 
 @Component({
   selector: 'example-viewer',
-  template: `{{example}}<template [portalHost]="selectedPortal"></template>`,
+  templateUrl: './example-viewer.html',
+  styleUrls: ['./example-viewer.scss']
 })
 export class ExampleViewer {
   selectedPortal: Portal<any>;
