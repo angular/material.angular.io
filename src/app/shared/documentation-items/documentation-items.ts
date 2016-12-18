@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 export interface DocItem {
   id: string;
   name: string;
+  examples?: string[];
 }
 
 export interface DocCategory {

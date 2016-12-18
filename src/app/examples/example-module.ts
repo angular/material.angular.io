@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {MaterialModule} from '@angular/material';
-import {ButtonDemo} from './button-demo';
-import {CheckboxDemo} from './checkbox-demo';
+import {ButtonOverviewExample} from './button-overview/button-overview-example';
+import {ButtonTypesExample} from './button-types/button-types-example';
 
 
 /**
@@ -10,10 +10,9 @@ import {CheckboxDemo} from './checkbox-demo';
  * Value is the component.
  */
 
-export const EXAMPLE_COMPONENTS =
-{
-  'buttonDemo': ButtonDemo,
-  'checkboxDemo': CheckboxDemo,
+export const EXAMPLE_COMPONENTS = {
+  'button-overview': ButtonOverviewExample,
+  'button-types': ButtonTypesExample
 };
 
 /**
@@ -21,8 +20,8 @@ export const EXAMPLE_COMPONENTS =
  * We need to put them in both `declarations` and `entryComponents` to make them work.
  */
 export const EXAMPLE_LIST = [
-  ButtonDemo,
-  CheckboxDemo,
+  ButtonOverviewExample,
+  ButtonTypesExample,
 ];
 
 @NgModule({

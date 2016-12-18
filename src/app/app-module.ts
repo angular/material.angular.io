@@ -13,7 +13,7 @@ import {DocViewerModule} from './shared/doc-viewer/index';
 import {ComponentViewer} from './pages/component-viewer/component-viewer';
 import {DocumentationItems} from './shared/documentation-items/documentation-items';
 import {ExampleViewer} from './shared/example-viewer/example-viewer';
-import {ExampleModule, EXAMPLE_LIST} from './examples/example-module';
+import {ExampleModule} from './examples/example-module';
 
 
 @NgModule({
