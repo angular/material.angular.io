@@ -25,7 +25,10 @@
     </md-tab>
 
     <md-tab label="EXAMPLES">
-      examples
+
+      <example-viewer *ngFor="let example of componentDocItem.examples" [example]="example">
+      </example-viewer>
+
     </md-tab>
   </md-tab-group>
 </md-sidenav-layout>

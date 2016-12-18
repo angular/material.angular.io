@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {ButtonTypesExample} from '../../examples/button-types/button-types-example';
 
 export interface DocItem {
   id: string;
@@ -17,7 +18,7 @@ const DOCS = [
     id: 'forms',
     name: 'Form controls',
     items: [
-      {id: 'button', name: 'Button'},
+      {id: 'button', name: 'Button', examples: ['button-types']},
       {id: 'checkbox', name: 'Checkbox'},
       {id: 'radio', name: 'Radio button'},
       {id: 'button-toggle', name: 'Button toggle'},
