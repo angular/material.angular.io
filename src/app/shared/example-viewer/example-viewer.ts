@@ -42,25 +42,7 @@ export class ExampleViewer {
     this.showSource = !this.showSource;
   }
 
-  /** Gets the content of a source file. If it has not yet been load it, do so. */
-  getSourceFileContent(extension: string): string {
-    if (this.sourceFileContent.has(extension)) {
-      return this.sourceFileContent.get(extension);
-    }
-
-    this.loadSourceFileContent(extension);
-  }
-
-  /** Load and cache a source file content for the example. */
-  loadSourceFileContent(extension: string): void {
-    this._http.get(`/app/examples/button-types/${this.example}-example.${extension}`)
-      .first()
-      .subscribe(response => {
-        if (response.ok) {
-          this.sourceFileContent.set(extension, response.text());
-        } else {
-          this.sourceFileContent.set(extension, 'Could not load example source file.');
-        }
-      });
+  exampleFileUrl(extension: string) {
+    return `/assets/examples/${this.example}-example.${extension.toLowerCase()}.html`;
   }
 }
