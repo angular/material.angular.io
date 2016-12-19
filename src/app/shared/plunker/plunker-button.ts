@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Component } from '@angular/core';
 import { PlunkerWriter } from './plunker-writer';
 import { ExampleData } from './example-data';
 
 @Component({
   selector: 'plunker-button',
-  templateUrl: 'plunker-button.html',
+  templateUrl: './plunker-button.html',
   providers: [PlunkerWriter],
 })
 export class PlunkerButton {

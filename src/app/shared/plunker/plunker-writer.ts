@@ -34,8 +34,6 @@ const TAGS: string[] = ['angular', 'material', 'example'];
  */
 @Injectable()
 export class PlunkerWriter {
-
-
   form: HTMLFormElement;
   exampleData: ExampleData;
 
