@@ -6,29 +6,24 @@ import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import {MaterialDocsApp} from './material-docs-app';
 import {Homepage} from './pages/homepage/homepage';
-import {NavBar} from './shared/navbar/navbar';
 import {routing} from './routes';
 import {ComponentList} from './pages/component-list/component-list';
-import {DocViewerModule} from './shared/doc-viewer/index';
 import {ComponentViewer} from './pages/component-viewer/component-viewer';
-import {DocumentationItems} from './shared/documentation-items/documentation-items';
-import {ExampleViewer} from './shared/example-viewer/example-viewer';
 import {ExampleModule} from './examples/example-module';
+import {SharedModule} from './shared/shared-module';
 
 
 @NgModule({
   declarations: [
-    ExampleViewer,
     MaterialDocsApp,
     ComponentList,
     ComponentViewer,
     Homepage,
-    NavBar,
   ],
   imports: [
     BrowserModule,
     ExampleModule,
-    DocViewerModule,
+    SharedModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
@@ -36,7 +31,6 @@ import {ExampleModule} from './examples/example-module';
   ],
   providers: [
     Location,
-    DocumentationItems,
     {provide: LocationStrategy, useClass: PathLocationStrategy},
   ],
   bootstrap: [MaterialDocsApp],
