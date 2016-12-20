@@ -6,16 +6,18 @@ import {DocumentationItems} from './documentation-items/documentation-items';
 import {NavBar} from './navbar/navbar';
 import {MaterialModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
   imports: [
     HttpModule,
+    RouterModule,
     BrowserModule,
     MaterialModule,
   ],
   declarations: [DocViewer, ExampleViewer, NavBar],
-  exports: [DocViewer],
+  exports: [DocViewer, ExampleViewer, NavBar],
   providers: [DocumentationItems],
   entryComponents: [
     ExampleViewer,
