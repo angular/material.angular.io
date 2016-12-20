@@ -6,8 +6,8 @@ import {ExampleData} from './example-data';
 
 
 describe('PlunkerWriter', () => {
-  plunkerWriter: PlunkerWriter;
-  data: ExampleData;
+  var plunkerWriter: PlunkerWriter;
+  var data: ExampleData;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [],
@@ -36,20 +36,20 @@ describe('PlunkerWriter', () => {
       connection.mockRespond(getFakeDocResponse(url));
     });
 
-    this.plunkerWriter = TestBed.get(PlunkerWriter);
-    this.data = new ExampleData();
-    this.data.examplePath = 'http://material.angular.io/';
-    this.data.exampleFiles = ['test.ts', 'test.html', 'src/detail.ts'];
+    plunkerWriter = TestBed.get(PlunkerWriter);
+    data = new ExampleData();
+    data.examplePath = 'http://material.angular.io/';
+    data.exampleFiles = ['test.ts', 'test.html', 'src/detail.ts'];
   }));
 
   it('should append correct copyright', () => {
-    expect(this.plunkerWriter._appendCopyright('test.ts', 'NoContent')).toBe(`NoContent
+    expect(plunkerWriter._appendCopyright('test.ts', 'NoContent')).toBe(`NoContent
 
 /**  Copyright 2016 Google Inc. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license */`);
 
-    expect(this.plunkerWriter._appendCopyright('test.html', 'NoContent')).toBe(`NoContent
+    expect(plunkerWriter._appendCopyright('test.html', 'NoContent')).toBe(`NoContent
 
 <!-- Copyright 2016 Google Inc. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
@@ -58,18 +58,18 @@ describe('PlunkerWriter', () => {
   });
 
   it('should create form element', () => {
-    expect(this.plunkerWriter._createFormElement().outerHTML)
-      .toBe('<form action="https://plnkr.co/edit/?p=preview" method="post" target="_blank"></form>');
+    expect(plunkerWriter._createFormElement().outerHTML).toBe(
+      `<form action="https://plnkr.co/edit/?p=preview" method="post" target="_blank"></form>`);
   });
 
   it('should add files to form input', () => {
-    this.plunkerWriter.form = this.plunkerWriter._createFormElement();
+    plunkerWriter.form = plunkerWriter._createFormElement();
 
-    this.plunkerWriter._addFileToForm('NoContent', 'test.ts', 'path/to/file');
-    this.plunkerWriter._addFileToForm('Test', 'test.html', 'path/to/file');
-    this.plunkerWriter._addFileToForm('Detail', 'src/detail.ts', 'path/to/file');
+    plunkerWriter._addFileToForm('NoContent', 'test.ts', 'path/to/file');
+    plunkerWriter._addFileToForm('Test', 'test.html', 'path/to/file');
+    plunkerWriter._addFileToForm('Detail', 'src/detail.ts', 'path/to/file');
 
-    let elements = this.plunkerWriter.form.elements;
+    let elements = plunkerWriter.form.elements;
     expect(elements.length).toBe(3);
     expect(elements[0].getAttribute('name')).toBe('files[test.ts]');
     expect(elements[1].getAttribute('name')).toBe('files[test.html]');
@@ -77,10 +77,10 @@ describe('PlunkerWriter', () => {
   });
 
   it('should open a new window with plunker url', fakeAsync(() => {
-    this.plunkerWriter.openPlunker(this.data);
+    plunkerWriter.openPlunker(data);
     flushMicrotasks();
 
-    let elements = this.plunkerWriter.form.elements;
+    let elements = plunkerWriter.form.elements;
     expect(elements.length).toBe(11);
 
     // Should have correct tags
