@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PlunkerWriter } from './plunker-writer';
-import { ExampleData } from './example-data';
+import { ExampleData } from '../../examples/example-data';
 
 @Component({
   selector: 'plunker-button',
@@ -8,8 +8,12 @@ import { ExampleData } from './example-data';
   providers: [PlunkerWriter],
 })
 export class PlunkerButton {
+  exampleData: ExampleData;
 
-  exampleData: ExampleData = new ExampleData();
+  @Input()
+  set example(example: string) {
+     this.exampleData = new ExampleData(example);
+  }
 
   constructor(private plunkerWriter: PlunkerWriter) {}
 
