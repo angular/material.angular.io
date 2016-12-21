@@ -1,9 +1,6 @@
 // SETTINGS
 
-$unit: 8px; 
-$layer-1: 1;
-$sidenav: '.docs-component-viewer-sidenav'; 
-$sidenav-width: 240px;
+
 
 
 .docs-component-viewer-header {
@@ -15,76 +12,5 @@ $sidenav-width: 240px;
 
   md-tab {
     margin: 30px;
-  }
-}
-
-
-/*
-* SIDENAV 
-*/
-
-#{$sidenav} {
-  box-shadow: 3px 0px 6px rgba(0, 0, 0, .24);
-  padding-bottom: 72px;
-  width: $sidenav-width;
-  bottom: 0px;
-  overflow: auto;
-
-  &.md-sidenav-opened {
-    box-shadow: 3px 0px 6px rgba(0, 0, 0, .24);
-  }
-
-  /*
-  * Section Dividers
-  */
-  h3 {
-    border: none;
-    font-size: 10px;
-    letter-spacing: 1px;
-    line-height: $unit * 3;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-    font-weight: 400;
-    margin: 0;
-    padding: 0 ($unit * 2);
-  }
-
-  ul {
-    list-style-type: none; 
-    margin: 0;
-    padding: 0; 
-  }
-
-  // SIDENAV MAIN SECTIONS
-  li {
-    border-bottom-width: 1px; 
-    border-bottom-style: solid; 
-    margin: 0;
-    padding: 0;
-
-    &:last-child {
-      border: none;
-
-      > a {
-        line-height: $unit * 6;
-      }
-    }
-
-    > a {
-      box-sizing: border-box;
-      display: block;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: ($unit * 6) - 1;
-      text-decoration: none;
-      transition: all .3s;
-      padding: 0 ($unit * 2);
-      position: relative;
-
-      &.is-selected {
-        font-weight: 600;
-      }
-    }
   }
 }
