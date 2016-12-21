@@ -1,12 +1,27 @@
-.docs-component-viewer-sidenav {
-  &.md-sidenav-opened {
-    box-shadow: none;
-  }
+// SETTINGS
+$blue-grey-50: #ECEFF1;
+$blue-grey-100: #CFD8DC;
+$blue-grey-200: #B0BEC5;
+$blue-grey-300: #90A4AE;
+$blue-grey-400: #78909C;
+$blue-grey-500: #607D8B;
+$blue-grey-600: #546E7A;
+$blue-grey-700: #455A64;
+$cyan-700: #0097A7;
+$black: #000;
+$white: #FFF;
+$unit: 8px; 
+$layer-1: 1;
 
-  border-right: 1px solid black;
-  width: 300px;
-  margin: 20px;
-}
+$sidenav: '.docs-component-viewer-sidenav'; 
+$sidenav-background: rgba($blue-grey-50, .56);
+$sidenav-background-mobile: rgba($blue-grey-50, 1);
+$sidenav-background-dark: $blue-grey-300;
+$sidenav-color: $blue-grey-400;
+$sidenav-color-selected: $cyan-700;
+$sidenav-width: 240px;
+
+
 
 .docs-component-viewer-header {
   margin: 50px;
@@ -17,5 +32,97 @@
 
   md-tab {
     margin: 30px;
+  }
+}
+
+
+/*
+* SIDENAV 
+*/
+
+#{$sidenav} {
+  background: $sidenav-background;
+  box-shadow: 3px 0px 6px rgba($black, .24);
+  padding-bottom: 72px;
+  width: $sidenav-width;
+  bottom: 0px;
+  overflow: auto;
+
+  &.md-sidenav-opened {
+    box-shadow: 3px 0px 6px rgba($black, .24);
+  }
+}
+
+/*
+* SIDENAV SECTIONS
+*/
+
+#{$sidenav} nav {
+  margin: 0px;
+  padding: 0px;
+
+  /*
+  * Section Dividers
+  */
+  h3 {
+    background: $sidenav-background-dark;
+    border: none;
+    color: $white;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: $unit * 3;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0;
+    padding: 0 ($unit * 2);
+  }
+
+  ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0; 
+  }
+
+  // SIDENAV MAIN SECTIONS
+  li {
+    border-bottom: 1px solid rgba($blue-grey-100, .56);
+    color: $sidenav-color;
+    margin: 0;
+    padding: 0;
+
+    &:last-child {
+      border: none;
+
+      > a {
+        line-height: $unit * 6;
+      }
+    }
+
+    > a {
+      box-sizing: border-box;
+      color: $sidenav-color;
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: ($unit * 6) - 1;
+      text-decoration: none;
+      transition: all .3s;
+      padding: 0 ($unit * 2);
+      position: relative;
+
+
+      &.is-selected, 
+      &:hover, 
+      &:focus {
+        background: rgba($blue-grey-100, .24);
+        color: $sidenav-color-selected;
+      }
+
+      &.is-selected {
+        font-weight: 600;
+      }
+    }
   }
 }
