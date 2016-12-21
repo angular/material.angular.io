@@ -2,18 +2,8 @@ app-component-viewer {
   font-weight: 400;
 }
 
-.docs-component-viewer-sidenav {
-  &.md-sidenav-opened {
-    box-shadow: none;
-  }
-
-  border-right: 1px solid black;
-  width: 300px;
-  margin: 20px;
-}
-
 .docs-component-viewer-header {
-  margin-left: 20px;
+  padding-left: 20px;
 
   h1 {
     font-size: 30px;
