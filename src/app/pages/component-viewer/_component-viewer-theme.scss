@@ -1,0 +1,36 @@
+@mixin sidenav-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $sidenav: '.docs-component-viewer-sidenav'; 
+
+
+  #{$sidenav} {
+    background: rgba(md-color($foreground, secondary-text), .04);
+
+    //DIVIDERS 
+    h3 {
+      background: rgba(md-color($foreground, secondary-text), .32);
+      color: md-color($primary, default-contrast);
+    }
+
+    li {
+      border-color: rgba(md-color($foreground, secondary-text), .06);
+      color: md-color($foreground, secondary-text);
+
+      // BUTTONS 
+      > a {
+      color: md-color($foreground, secondary-text);
+
+        &.is-selected, 
+        &:hover, 
+        &:focus {
+          background: md-color($background, background);
+          color: md-color($primary);
+        }
+      }
+    }
+  }
+}
