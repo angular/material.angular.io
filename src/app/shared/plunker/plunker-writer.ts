@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { ExampleData } from '../../examples/example-data';
 import 'rxjs/add/operator/toPromise';
 
-const PLUNKER_URL = 'http://plnkr.co/edit/?p=preview';
+const PLUNKER_URL = 'https://plnkr.co/edit/?p=preview';
 
 const COPYRIGHT =
   `Copyright 2016 Google Inc. All Rights Reserved.

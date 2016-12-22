@@ -19,14 +19,14 @@ System.config({
     'main': 'main.js',
 
     // Angular specific mappings.
-    '@angular/core': 'http://unpkg.com/@angular/core/bundles/core.umd.js',
-    '@angular/common': 'http://unpkg.com/@angular/common/bundles/common.umd.js',
-    '@angular/compiler': 'http://unpkg.com/@angular/compiler/bundles/compiler.umd.js',
-    '@angular/http': 'http://unpkg.com/@angular/http/bundles/http.umd.js',
-    '@angular/forms': 'http://unpkg.com/@angular/forms/bundles/forms.umd.js',
-    '@angular/router': 'http://unpkg.com/@angular/router/bundles/router.umd.js',
-    '@angular/platform-browser': 'http://unpkg.com/@angular/platform-browser/bundles/platform-browser.umd.js',
-    '@angular/platform-browser-dynamic': 'http://unpkg.com/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+    '@angular/core': 'https://unpkg.com/@angular/core/bundles/core.umd.js',
+    '@angular/common': 'https://unpkg.com/@angular/common/bundles/common.umd.js',
+    '@angular/compiler': 'https://unpkg.com/@angular/compiler/bundles/compiler.umd.js',
+    '@angular/http': 'https://unpkg.com/@angular/http/bundles/http.umd.js',
+    '@angular/forms': 'https://unpkg.com/@angular/forms/bundles/forms.umd.js',
+    '@angular/router': 'https://unpkg.com/@angular/router/bundles/router.umd.js',
+    '@angular/platform-browser': 'https://unpkg.com/@angular/platform-browser/bundles/platform-browser.umd.js',
+    '@angular/platform-browser-dynamic': 'https://unpkg.com/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
     '@angular/material': 'https://unpkg.com/@angular/material/material.umd.js',
 
     // Rxjs mapping
