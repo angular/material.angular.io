@@ -63,6 +63,7 @@ export class PlunkerWriter {
     var form = document.createElement('form');
     form.action = PLUNKER_URL;
     form.method = 'post';
+    form.target = '_blank';
     return form;
   }
 
