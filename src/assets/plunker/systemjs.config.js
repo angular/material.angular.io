@@ -27,7 +27,7 @@ System.config({
     '@angular/router': 'http://unpkg.com/@angular/router/bundles/router.umd.js',
     '@angular/platform-browser': 'http://unpkg.com/@angular/platform-browser/bundles/platform-browser.umd.js',
     '@angular/platform-browser-dynamic': 'http://unpkg.com/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-    '@angular/material': 'https://cdn.rawgit.com/angular/material2-builds/master/bundles/material.umd.js',
+    '@angular/material': 'https://unpkg.com/@angular/material/core/theming/prebuilt/indigo-pink.css',
 
     // Rxjs mapping
     'rxjs': 'https://unpkg.com/rxjs',

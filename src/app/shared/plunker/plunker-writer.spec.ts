@@ -59,7 +59,7 @@ describe('PlunkerWriter', () => {
 
   it('should create form element', () => {
     expect(plunkerWriter._createFormElement().outerHTML).toBe(
-      `<form action="http://plnkr.co/edit/?p=preview" method="post" target="_blank"></form>`);
+      `<form action="http://plnkr.co/edit/?p=preview" method="post"></form>`);
   });
 
   it('should add files to form input', () => {
