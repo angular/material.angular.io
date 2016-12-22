@@ -52,7 +52,7 @@ import {SliderOverviewExample} from './slider-overview/slider-overview-example';
 import {
   SlideToggleConfigurableExample
 } from './slide-toggle-configurable/slide-toggle-configurable-example';
-import {IconSvgExample} from './icon-svg-example/icon-svg-example';
+import {IconSvgExample} from './icon-svg/icon-svg-example';
 import {SidenavFabExample} from './sidenav-fab/sidenav-fab-example';
 import {CardOverviewExample} from './card-overview/card-overview-example';
 import {
