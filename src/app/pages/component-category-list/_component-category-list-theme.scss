@@ -12,4 +12,8 @@
       color: md-color($primary, default-contrast);
     }
   }
+
+  .docs-component-category-list-card-summary {
+    color: md-color($foreground, secondary-text);
+  }
 }
