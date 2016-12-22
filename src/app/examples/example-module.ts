@@ -1,4 +1,6 @@
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 import {MaterialModule} from '@angular/material';
 import {ButtonOverviewExample} from './button-overview/button-overview-example';
 import {ButtonTypesExample} from './button-types/button-types-example';
@@ -36,9 +38,8 @@ import {
 import {TooltipOverviewExample} from './tooltip-overview/tooltip-overview-example';
 import {ButtonToggleOverviewExample} from './button-toggle-overview/button-toggle-overview-example';
 import {GridListOverviewExample} from './grid-list-overview/grid-list-overview-example';
-import {ExampleData} from './example-data';
 import {TooltipPositionExample} from './tooltip-position/tooltip-position-example';
-import {ProgressCircleConfigurableExample} from './progress-circle-configurable/progress-circle-configurable-example';
+import {ProgressSpinnerConfigurableExample} from './progress-circle-configurable/progress-circle-configurable-example';
 import {InputFormExample} from './input-form/input-form-example';
 import {ListOverviewExample} from './list-overview/list-overview-example';
 import {SliderOverviewExample} from './slider-overview/slider-overview-example';
@@ -46,7 +47,7 @@ import {SlideToggleConfigurableExample} from './slide-toggle-configurable/slide-
 import {IconSvgExample} from './icon-svg-example/icon-svg-example';
 import {SidenavFabExample} from './sidenav-fab/sidenav-fab-example';
 import {CardOverviewExample} from './card-overview/card-overview-example';
-import {ProgressCircleOverviewExample} from './progress-circle-overview/progress-circle-overview-example';
+import {ProgressSpinnerOverviewExample} from './progress-circle-overview/progress-circle-overview-example';
 import {TabsTemplateLabelExample} from './tabs-template-label/tabs-template-label-example';
 import {RadioOverviewExample} from './radio-overview/radio-overview-example';
 import {SidenavOverviewExample} from './sidenav-overview/sidenav-overview-example';
@@ -60,7 +61,45 @@ import {SidenavOverviewExample} from './sidenav-overview/sidenav-overview-exampl
 
 export const EXAMPLE_COMPONENTS = {
   'button-overview': ButtonOverviewExample,
-  'button-types': ButtonTypesExample
+  'button-types': ButtonTypesExample,
+  'button-toggle-exclusive': ButtonToggleExclusiveExample,
+  'button-toggle-overview': ButtonToggleOverviewExample,
+  'card-fancy': CardFancyExample,
+  'card-overview': CardOverviewExample,
+  'checkbox-configurable': CheckboxConfigurableExample,
+  'checkbox-overview': CheckboxOverviewExample,
+  'dialog-overview': DialogOverviewExample,
+  'dialog-result': DialogResultExample,
+  'grid-list-dynamic': GridListDynamicExample,
+  'grid-list-overview': GridListOverviewExample,
+  'icon-overview': IconOverviewExample,
+  'icon-svg': IconSvgExample,
+  'input-form': InputFormExample,
+  'input-overview': InputOverviewExample,
+  'list-overview': ListOverviewExample,
+  'list-sections': ListSectionsExample,
+  'menu-icons': MenuIconsExample,
+  'menu-overview': MenuOverviewExample,
+  'progress-bar-configurable': ProgressBarConfigurableExample,
+  'progress-bar-overview': ProgressBarOverviewExample,
+  'progress-spinner-configurable': ProgressSpinnerConfigurableExample,
+  'progress-spinner-overview': ProgressSpinnerOverviewExample,
+  'radio-ngmodel': RadioNgModelExample,
+  'radio-overview': RadioOverviewExample,
+  'sidenav-fab': SidenavFabExample,
+  'sidenav-overview': SidenavOverviewExample,
+  'slider-configurable': SliderConfigurableExample,
+  'slider-overview': SliderOverviewExample,
+  'slide-toggle-configurable': SlideToggleConfigurableExample,
+  'slide-toggle-overview': SlideToggleOverviewExample,
+  'snack-bar-component': SnackBarComponentExample,
+  'snack-bar-overview': SnackBarOverviewExample,
+  'tabs-overview': TabsOverviewExample,
+  'tabs-template-label': TabsTemplateLabelExample,
+  'toolbar-multirow': ToolbarMultirowExample,
+  'toolbar-overview': ToolbarOverviewExample,
+  'tooltip-overview': TooltipOverviewExample,
+  'tooltip-position': TooltipPositionExample,
 };
 
 /**
@@ -80,7 +119,6 @@ export const EXAMPLE_LIST = [
   DialogOverviewExampleDialog,
   DialogResultExample,
   DialogResultExampleDialog,
-  ExampleData,
   GridListDynamicExample,
   GridListOverviewExample,
   IconOverviewExample,
@@ -93,8 +131,8 @@ export const EXAMPLE_LIST = [
   MenuOverviewExample,
   ProgressBarConfigurableExample,
   ProgressBarOverviewExample,
-  ProgressCircleConfigurableExample,
-  ProgressCircleOverviewExample,
+  ProgressSpinnerConfigurableExample,
+  ProgressSpinnerOverviewExample,
   RadioNgModelExample,
   RadioOverviewExample,
   SidenavFabExample,
@@ -118,7 +156,9 @@ export const EXAMPLE_LIST = [
   declarations: EXAMPLE_LIST,
   entryComponents: EXAMPLE_LIST,
   imports: [
-    MaterialModule.forRoot(),
+    MaterialModule,
+    FormsModule,
+    CommonModule,
   ]
 })
 export class ExampleModule { }

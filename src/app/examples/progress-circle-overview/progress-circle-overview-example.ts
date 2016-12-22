@@ -6,4 +6,4 @@ import {Component} from '@angular/core';
   selector: 'progress-circle-overview-example',
   templateUrl: './progress-circle-overview-example.html',
 })
-export class ProgressCircleOverviewExample {}
+export class ProgressSpinnerOverviewExample {}

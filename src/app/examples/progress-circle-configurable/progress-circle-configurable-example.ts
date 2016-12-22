@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
   templateUrl: './progress-circle-configurable-example.html',
   styleUrls: ['./progress-circle-configurable-example.css'],
 })
-export class ProgressCircleConfigurableExample {
+export class ProgressSpinnerConfigurableExample {
   color = 'praimry';
   mode = 'determinate';
   value = 50;
