@@ -2,7 +2,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
 
 
 @Component({
-  moduleId: module.id,
   selector: 'configurable-slider-example',
   templateUrl: './slider-configurable-example.html',
   styleUrls: ['./slider-configurable-example.css'],

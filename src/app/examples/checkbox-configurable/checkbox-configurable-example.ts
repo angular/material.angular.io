@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 
 
 @Component({
-  moduleId: module.id,
   selector: 'checkbox-configurable-example',
   templateUrl: './checkbox-configurable-example.html',
   styleUrls: ['./checkbox-configurable-example.css'],

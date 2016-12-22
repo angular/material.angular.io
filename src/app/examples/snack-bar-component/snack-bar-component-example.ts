@@ -3,7 +3,6 @@ import {MdSnackBar} from '@angular/material';
 
 
 @Component({
-  moduleId: module.id,
   selector: 'snack-bar-component-example',
   template: '',
 })
@@ -15,7 +14,6 @@ export class SnackBarComponentExample {
 
 
 @Component({
-  moduleId: module.id,
   selector: 'snack-bar-component-example-snack',
   templateUrl: './snack-bar-component-example-snack.html',
   styleUrls: ['./snack-bar-component-example-snack.css'],
