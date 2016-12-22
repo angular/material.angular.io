@@ -18,6 +18,6 @@ export class MaterialDocsApp {
   constructor(router: Router) {
     router.events.subscribe(data => {
       this.showShadow = data.url.startsWith('/components');
-    })
+    });
   }
 }
