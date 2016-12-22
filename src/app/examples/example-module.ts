@@ -61,6 +61,10 @@ import {
 import {TabsTemplateLabelExample} from './tabs-template-label/tabs-template-label-example';
 import {RadioOverviewExample} from './radio-overview/radio-overview-example';
 import {SidenavOverviewExample} from './sidenav-overview/sidenav-overview-example';
+import {SelectOverviewExample} from './select-overview/select-overview-example';
+import {ChipsOverviewExample} from './chips-overview/chips-overview-example';
+import {ChipsStackedExample} from './chips-stacked/chips-stacked-example';
+import {SelectFormExample} from './select-form/select-form-example';
 
 
 export interface LiveExample {
@@ -81,6 +85,8 @@ export const EXAMPLE_COMPONENTS = {
     component: ButtonToggleExclusiveExample
   },
   'button-toggle-overview': {title: 'Basic button-toggles', component: ButtonToggleOverviewExample},
+  'chips-overview': {title: 'Basic chips', component: ChipsOverviewExample},
+  'chips-stacked': {title: 'Stacked chips', component: ChipsStackedExample},
   'card-fancy': {title: 'Card with multiple sections', component: CardFancyExample},
   'card-overview': {title: 'Basic cards', component: CardOverviewExample},
   'checkbox-configurable': {title: 'Configurable checkbox', component: CheckboxConfigurableExample},
@@ -112,6 +118,8 @@ export const EXAMPLE_COMPONENTS = {
   },
   'radio-ngmodel': {title: 'Radios with ngModel', component: RadioNgModelExample},
   'radio-overview': {title: 'Basic radios', component: RadioOverviewExample},
+  'select-overview': {title: 'Basic select', component: SelectOverviewExample},
+  'select-form': {title: 'Select in a form', component: SelectFormExample},
   'sidenav-fab': {title: 'Sidenav with a FAB', component: SidenavFabExample},
   'sidenav-overview': {title: 'Basic sidenav', component: SidenavOverviewExample},
   'slider-configurable': {title: 'Configurable slider', component: SliderConfigurableExample},
@@ -145,6 +153,8 @@ export const EXAMPLE_LIST = [
   ButtonTypesExample,
   CardFancyExample,
   CardOverviewExample,
+  ChipsOverviewExample,
+  ChipsStackedExample,
   CheckboxConfigurableExample,
   CheckboxOverviewExample,
   DialogOverviewExample,
@@ -168,6 +178,8 @@ export const EXAMPLE_LIST = [
   RadioNgModelExample,
   RadioOverviewExample,
   SidenavFabExample,
+  SelectOverviewExample,
+  SelectFormExample,
   SidenavOverviewExample,
   SliderConfigurableExample,
   SliderOverviewExample,

@@ -21,7 +21,7 @@ const DOCS = [
       {id: 'checkbox', name: 'Checkbox', examples: ['checkbox-configurable']},
       {id: 'input', name: 'Input', examples: ['input-form']},
       {id: 'radio', name: 'Radio button', examples: ['radio-ngmodel']},
-      {id: 'select', name: 'Select', examples: []},
+      {id: 'select', name: 'Select', examples: ['select-form']},
       {id: 'slider', name: 'Slider', examples: ['slider-configurable']},
       {id: 'slide-toggle', name: 'Slide toggle', examples: ['slide-toggle-configurable']},
     ]
@@ -53,6 +53,7 @@ const DOCS = [
     items: [
       {id: 'button', name: 'Button', examples: ['button-types']},
       {id: 'button-toggle', name: 'Button toggle', examples: ['button-toggle-exclusive']},
+      {id: 'chips', name: 'Chips', examples: ['chips-stacked']},
       {id: 'icon', name: 'Icon', examples: ['icon-svg']},
       {id: 'progress-spinner', name: 'Progress spinner',
           examples: ['progress-spinner-configurable']},

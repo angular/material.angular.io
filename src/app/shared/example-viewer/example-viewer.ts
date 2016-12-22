@@ -38,6 +38,8 @@ export class ExampleViewer {
       this._example = example;
       this.exampleData = EXAMPLE_COMPONENTS[example];
       this.selectedPortal = new ComponentPortal(this.exampleData.component);
+    } else {
+      console.log('MISSING EXAMPLE: ', example);
     }
   }
 
