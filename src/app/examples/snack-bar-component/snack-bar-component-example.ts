@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {MdSnackBar} from '@angular/material';
 
 
@@ -10,7 +10,9 @@ export class SnackBarComponentExample {
   constructor(public snackBar: MdSnackBar) {}
 
   openSnackBar() {
-    this.snackBar.openFromComponent(PizzaPartyComponent);
+    this.snackBar.openFromComponent(PizzaPartyComponent, {
+      duration: 500,
+    });
   }
 }
 
