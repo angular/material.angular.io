@@ -26,6 +26,8 @@ export class DocViewer implements OnDestroy {
     this._fetchDocument(url);
   }
 
+  @Input() plainText: boolean = false;
+
   constructor(private _appRef: ApplicationRef,
               private _componentFactoryResolver: ComponentFactoryResolver,
               private _elementRef: ElementRef,
@@ -40,7 +42,11 @@ export class DocViewer implements OnDestroy {
           // TODO(mmalerba): Trust HTML.
           if (response.ok) {
             let docHtml = response.text();
-            this._elementRef.nativeElement.innerHTML = docHtml;
+            if (this.plainText) {
+              this._elementRef.nativeElement.innerText = docHtml;
+            } else {
+              this._elementRef.nativeElement.innerHTML = docHtml;
+            }
             this._loadLiveExamples();
           } else {
             this._elementRef.nativeElement.innerText =

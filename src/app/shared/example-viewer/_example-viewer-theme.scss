@@ -15,5 +15,10 @@
       color: md-color($foreground, secondary-text);
       background: rgba(md-color($foreground, secondary-text), .03);
     }
+
+    .docs-example-viewer-source .source {
+      color: md-color($primary, default-contrast);
+      background: md-color($md-blue-grey, 600);
+    }
   }
 }
