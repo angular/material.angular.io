@@ -11,3 +11,8 @@ material-docs-app {
 material-docs-app > app-component-sidenav {
   flex: 1 1 auto;
 }
+
+app-navbar {
+  position: relative;
+  z-index: 10;
+}
