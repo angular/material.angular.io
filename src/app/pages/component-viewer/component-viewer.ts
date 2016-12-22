@@ -1,6 +1,8 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DocumentationItems, DocItem} from '../../shared/documentation-items/documentation-items';
+import {MdSidenav} from '@angular/material';
+import {ComponentPageTitle} from '../page-title/page-title';
 
 
 @Component({
@@ -12,9 +14,12 @@ import {DocumentationItems, DocItem} from '../../shared/documentation-items/docu
 export class ComponentViewer {
   componentDocItem: DocItem;
 
-  constructor(private _route: ActivatedRoute, public docItems: DocumentationItems) {
+  constructor(private _route: ActivatedRoute,
+              private _componentPageTitle: ComponentPageTitle,
+              public docItems: DocumentationItems) {
     _route.params.subscribe(p => {
       this.componentDocItem = docItems.getItemById(p['id']);
+      this._componentPageTitle.title = `Component - ${this.componentDocItem.name}`;
     });
   }
 }
