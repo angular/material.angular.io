@@ -56,14 +56,17 @@ export class PlunkerWriter {
     var exampleContents = this.exampleData.exampleFiles.map(
       (file) => this._readFile(file, this.exampleData.examplePath));
 
-    Promise.all(templateContents.concat(exampleContents)).then((_) => this.form.submit());
+    return Promise.all(templateContents.concat(exampleContents));
+  }
+
+  submit() {
+    this.form.submit();
   }
 
   _createFormElement(): HTMLFormElement {
     var form = document.createElement('form');
     form.action = PLUNKER_URL;
     form.method = 'post';
-    form.target = '_blank';
     return form;
   }
 
