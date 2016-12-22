@@ -58,7 +58,7 @@ export class DocViewer implements OnDestroy {
     // the wrong place in the DOM after switching tabs. This function is a workaround to
     // put the live examples back in the right place.
     this._clearLiveExamples();
-    this._loadLiveExamples()
+    this._loadLiveExamples();
   }
 
   /** Instantiate a ExampleViewer for each example. */
