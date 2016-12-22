@@ -23,3 +23,14 @@
 .docs-example-viewer-body {
   padding: 30px;
 }
+
+.docs-example-viewer-source {
+  md-tab-header {
+    margin: 0;
+  }
+
+  pre {
+    margin: 0;
+    padding: 30px;
+  }
+}
