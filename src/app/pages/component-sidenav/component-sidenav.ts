@@ -22,7 +22,7 @@ export class ComponentSidenav {
       if (this.isScreenSmall()) {
         this.sidenav.close();
       }
-    })
+    });
   }
 
   isScreenSmall(): boolean {

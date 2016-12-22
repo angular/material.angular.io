@@ -1,9 +1,5 @@
-import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {Http} from '@angular/http';
-import {ComponentPortal} from '@angular/material';
+import {Component, EventEmitter, Output} from '@angular/core';
 import 'rxjs/add/operator/first';
-
-import {EXAMPLE_COMPONENTS, LiveExample} from '../../examples/example-module';
 import {ComponentPageTitle} from '../page-title/page-title';
 
 @Component({

@@ -1,7 +1,6 @@
-import {Component, ViewEncapsulation, ViewChild} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DocumentationItems, DocItem} from '../../shared/documentation-items/documentation-items';
-import {MdSidenav} from '@angular/material';
 import {ComponentPageTitle} from '../page-title/page-title';
 
 
