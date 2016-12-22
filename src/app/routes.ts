@@ -7,6 +7,7 @@ import {ComponentViewer} from './pages/component-viewer/component-viewer';
 import {ComponentCategoryList} from './pages/component-category-list/component-category-list';
 import {ComponentSidenav} from './pages/component-sidenav/component-sidenav';
 import {GuideViewer} from './pages/guide-viewer/guide-viewer';
+import {PlunkerViewer} from './pages/plunker-viewer';
 
 const MATERIAL_DOCS_ROUTES: Routes = [
   {path: '', component: Homepage, pathMatch: 'full'},
@@ -21,6 +22,7 @@ const MATERIAL_DOCS_ROUTES: Routes = [
   },
   {path: 'guides', component: GuideList},
   {path: 'guide/:id', component: GuideViewer},
+  {path: 'plunker/:id', component: PlunkerViewer},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(MATERIAL_DOCS_ROUTES);

@@ -37,7 +37,7 @@ describe('PlunkerWriter', () => {
     });
 
     plunkerWriter = TestBed.get(PlunkerWriter);
-    data = new ExampleData();
+    data = new ExampleData('test');
     data.examplePath = 'http://material.angular.io/';
     data.exampleFiles = ['test.ts', 'test.html', 'src/detail.ts'];
   }));
@@ -59,7 +59,7 @@ describe('PlunkerWriter', () => {
 
   it('should create form element', () => {
     expect(plunkerWriter._createFormElement().outerHTML).toBe(
-      `<form action="https://plnkr.co/edit/?p=preview" method="post" target="_blank"></form>`);
+      `<form action="https://plnkr.co/edit/?p=preview" method="post"></form>`);
   });
 
   it('should add files to form input', () => {
