@@ -12,4 +12,8 @@
       color: md-color($primary, default-contrast);
     }
   }
+
+  .docs-component-list-item {
+    color: md-color($foreground, secondary-text);
+  }
 }

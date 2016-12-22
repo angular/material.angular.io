@@ -2,18 +2,24 @@
 
 
 .docs-component-list-category {
-  margin: 50px;
+  margin: 20px;
 }
 
 .docs-component-list-item {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  margin: 16px;
+  margin: 30px;
+  text-decoration: none;
 }
 
 .docs-component-list-item-icon {
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .docs-component-list-header {
