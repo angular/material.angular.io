@@ -1,7 +1,7 @@
 <md-list class="docs-guide-list-item">
-  <md-list-item *ngFor="let guide of guideItems.getAllItems()">
-    <a [routerLink]="['/guide/', guide.id]">
+  <a md-list-item
+     *ngFor="let guide of guideItems.getAllItems()"
+     [routerLink]="['/guide/', guide.id]">
       {{guide.name}}
-    </a>
-  </md-list-item>
+  </a>
 </md-list>
