@@ -147,7 +147,7 @@ export const EXAMPLE_COMPONENTS = {
   },
   'snack-bar-overview': {title: 'Basic snack-bar', component: SnackBarOverviewExample},
   'tabs-overview': {title: 'Basic tabs', component: TabsOverviewExample},
-  'tabs-template-label': {title: 'Tabs with a label template', component: TabsTemplateLabelExample},
+  'tabs-template-label': {title: 'Coming soon!', component: TabsTemplateLabelExample},
   'toolbar-multirow': {title: 'Multi-row toolbar', component: ToolbarMultirowExample},
   'toolbar-overview': {title: 'basic toolbar', component: ToolbarOverviewExample},
   'tooltip-overview': {title: 'Basic tooltip', component: TooltipOverviewExample},
