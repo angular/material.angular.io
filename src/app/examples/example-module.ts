@@ -108,7 +108,10 @@ export const EXAMPLE_COMPONENTS = {
   'grid-list-dynamic': {title: 'Dynamic grid-list', component: GridListDynamicExample},
   'grid-list-overview': {title: 'Basic grid-list', component: GridListOverviewExample},
   'icon-overview': {title: 'Basic icons', component: IconOverviewExample},
-  'icon-svg': {title: 'SVG icons', component: IconSvgExample},
+  'icon-svg': {
+    title: 'SVG icons',
+    component: IconSvgExample,
+    additionalFiles: ['assets/img/examples/thumbup-icon.svg']},
   'input-form': {title: 'Inputs in a form', component: InputFormExample},
   'input-overview': {title: 'Basic inputs', component: InputOverviewExample},
   'list-overview': {title: 'Basic list', component: ListOverviewExample},
