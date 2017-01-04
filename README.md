@@ -5,13 +5,13 @@ https://material2-docs-dev.firebaseapp.com/
 
 ## Deployment instructions
 ```
-> yarn install
+> npm install
 
 # Development
-> yarn run publish-dev
+> npm run publish-dev
 
 # Production
-> yarn run publish-prod
+> npm run publish-prod
 ```
 
 For development builds use the usual `ng serve` and `ng build` commands.
