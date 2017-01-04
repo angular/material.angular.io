@@ -3,12 +3,15 @@
 ## Preview
 https://material2-docs-dev.firebaseapp.com/
 
-## Production Build instructions
+## Deployment instructions
 ```
-yarn install
-yarn prerender:serve &
-yarn run prod-build
-open http://localhost:4201
+> yarn install
+
+# Development
+> yarn run publish-dev
+
+# Production
+> yarn run publish-prod
 ```
 
 For development builds use the usual `ng serve` and `ng build` commands.
