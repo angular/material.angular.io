@@ -1,6 +1,50 @@
 .docs-footer {
   margin-top: 40px;
   padding: 15px;
-  text-align: center;
   font-size: 12px;
+}
+
+.footer-list {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 8px;
+}
+
+.docs-angular-logo {
+  height: 50px;
+}
+
+.footer-logo {
+  width: 8.33%;
+}
+
+.footer-cc {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+
+  a {
+    font-size: 16px;
+    padding: 0;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 884px){
+  .footer-list {
+    flex-direction: column;
+  }
+  .footer-logo {
+    width: 0;
+  }
 }
