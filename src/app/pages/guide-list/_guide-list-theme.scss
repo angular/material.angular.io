@@ -1,0 +1,27 @@
+@import '~@angular/material/core/theming/theming';
+
+@mixin guide-list-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  app-guides {
+
+    .docs-guide-list-item {
+      table {
+        box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
+      }
+
+      th {
+        color: md-color($foreground, secondary-text);
+        background: rgba(md-color($foreground, secondary-text), .03);
+      }
+
+      td a {
+        color: md-color($primary);
+      }
+    }
+  }
+}

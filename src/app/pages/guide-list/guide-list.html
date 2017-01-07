@@ -1,12 +1,27 @@
 <div class="docs-primary-header">
   <h1>Guides</h1>
 </div>
+
 <md-list class="docs-guide-list-item">
-  <a md-list-item
-     *ngFor="let guide of guideItems.getAllItems()"
-     [routerLink]="['/guide/', guide.id]">
-      {{guide.name}}
-  </a>
+  <table>
+    <tbody>
+      <tr>
+        <th>Core Guides</th>
+      </tr>
+
+      <tr>
+        <td>
+          <a md-list-item
+             *ngFor="let guide of guideItems.getAllItems()"
+             [routerLink]="['/guide/', guide.id]">
+              {{guide.name}}
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
 </md-list>
 
 <app-footer></app-footer>
