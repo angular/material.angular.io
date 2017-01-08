@@ -1,7 +1,7 @@
 <h1 id="theming-your-angular-material-app">Theming your Angular Material app</h1>
 <h3 id="what-is-a-theme-">What is a theme?</h3>
 <p>A <strong>theme</strong> is the set of colors that will be applied to the Angular Material components. The
-library&#39;s approach to theming is based on the guidance from the <a href="https://material.google.com/style/color.html#color-color-palette">Material Design spec</a>.</p>
+library&#39;s approach to theming is based on the guidance from the <a href="https://material.google.com/style/color.html#color-color-palette">Material Design spec</a>. Here, you will find the standard color combinations for Material Design. A resource for color combinations ideas is <a href="https://www.materialpalette.com/">Material Palette</a>.</p>
 <p>In Angular Material, a theme is created by composing multiple palettes. In particular,
 a theme consists of:</p>
 <ul>
@@ -20,7 +20,7 @@ single css file for Angular Material in your app.</p>
 <p>You can include a theme file directly into your application from
 <code>@angular/material/core/theming/prebuilt</code></p>
 <p>If you&#39;re using Angular CLI, this is as simple as including one line
-in your <code>style.css</code>  file:</p>
+in your <code>styles.css</code>  file:</p>
 <pre><code class="lang-css">@<span class="hljs-keyword">import</span> <span class="hljs-string">'~@angular/material/core/theming/prebuilt/deeppurple-amber.css'</span>;
 </code></pre>
 <p>Alternatively, you can just reference the file directly. This would look something like</p>
@@ -76,7 +76,7 @@ secondary dark theme:</p>
 
   <span class="hljs-variable">$dark-theme</span>: md-dark-theme(<span class="hljs-variable">$dark-primary</span>, <span class="hljs-variable">$dark-accent</span>, <span class="hljs-variable">$dark-warn</span>);
 
-  @<span class="hljs-keyword">include</span> angular-material-theme(<span class="hljs-variable">$dark-theme</span>);   
+  @<span class="hljs-keyword">include</span> angular-material-theme(<span class="hljs-variable">$dark-theme</span>);
 }
 </code></pre>
 <p>With this, any element inside of a parent with the <code>unicorn-dark-theme</code> class will use this
