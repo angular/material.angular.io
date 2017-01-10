@@ -6,10 +6,8 @@
   $foreground: map-get($theme, foreground);
 
   app-footer {
-    footer ul {
-      a {
-        color: md-color($primary, default-contrast);
-      }
+    .docs-footer-links a {
+      color: md-color($primary, default-contrast);
     }
   }
 }

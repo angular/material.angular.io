@@ -1,32 +1,29 @@
 .docs-footer {
   margin-top: 40px;
-  padding: 15px;
+  padding: 12px;
   font-size: 12px;
 }
 
-.footer-list {
+.docs-footer-list {
   align-items: center;
   display: flex;
   flex-flow: row wrap;
   padding: 8px;
 }
 
-.docs-angular-logo {
+.docs-footer-angular-logo {
   height: 50px;
 }
 
-.footer-logo {
-  width: 8.33%;
-}
-
-.footer-cc {
+.docs-footer-copyright {
   display: flex;
   flex: 1;
   justify-content: flex-end;
 }
 
-footer ul {
+.docs-footer-links ul {
   list-style: none;
+  margin: 0 40px;
   padding: 0;
 
   a {
@@ -41,10 +38,7 @@ footer ul {
 }
 
 @media screen and (max-width: 884px){
-  .footer-list {
+  .docs-footer-list {
     flex-direction: column;
-  }
-  .footer-logo {
-    width: 0;
   }
 }
