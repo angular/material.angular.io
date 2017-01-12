@@ -36,6 +36,25 @@
       text-decoration: none;
     }
 
+    .docs-api-input-marker,
+    .docs-api-output-marker {
+      font-weight: 500;
+      padding-bottom:: 5px;
+    }
+
+    .docs-api-method-name-cell {
+      font-weight: 500;
+    }
+
+    .docs-api-method-parameters-header-cell,
+    .docs-api-method-returns-header-cell {
+      font-size: 14px;
+    }
+
+    .md-tab-body-wrapper h2 {
+      margin-top: 0px;
+    }
+
     table {
       border-collapse: collapse;
       border-radius: 2px;
@@ -52,7 +71,7 @@
 
     td {
       font-weight: 400;
-      padding: 8px 30px;
+      padding: 15px 30px;
 
       p {
         margin: 0;
@@ -65,5 +84,6 @@
       padding: 13px 32px;
       text-align: left;
     }
+
   }
 }
