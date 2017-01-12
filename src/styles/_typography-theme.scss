@@ -9,10 +9,9 @@
 
   .docs-component-viewer-tabbed-content,
   .docs-guide-content {
-       h1 {
-        color: mat-color($primary, 800);
-        background: rgba(mat-color($foreground, text), .03);
-      }
+     h1 {
+      color: mat-color($primary, 800);
+      background: rgba(mat-color($foreground, text), .03);
 
       h3, h2, h4, h5, p, ol, li{
         color: mat-color($foreground, text);
@@ -38,6 +37,10 @@
       th {
         color: mat-color($foreground, text);
         background: rgba(mat-color($foreground, secondary-text), .03);
+      }
+
+      .docs-api-method-name-cell {
+        color: md-color($primary, 800);
       }
   }
 }
