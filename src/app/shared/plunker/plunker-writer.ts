@@ -103,7 +103,9 @@ export class PlunkerWriter {
    * This will replace those placeholders with the names from the example metadata,
    * e.g. "<basic-button-example>" and "BasicButtonExample"
    */
-  _replaceExamplePlaceholderNames(data: ExampleData, fileName: string, fileContent: string): string {
+  _replaceExamplePlaceholderNames(data: ExampleData,
+                                  fileName: string,
+                                  fileContent: string): string {
     if (fileName == 'index.html') {
       // Replace the component selector in `index,html`.
       // For example, <material-docs-example></material-docs-example> will be replaced as
