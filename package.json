@@ -39,7 +39,7 @@
     "@angular/compiler-cli": "^2.4.1",
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
-    "angular-cli": "1.0.0-beta.24",
+    "@angular/cli": "1.0.0-beta.31",
     "codelyzer": "1.0.0-beta.1",
     "highlight.js": "^9.9.0",
     "jasmine-core": "2.4.1",
