@@ -1,0 +1,21 @@
+<md-sidenav-container class="example-sidenav-navigation-list-container">
+  <md-sidenav #sidenav mode="side" opened="true">
+    <md-toolbar color="primary">Title for the app</md-toolbar>
+    <md-nav-list>
+      <md-list-item *ngFor="let link of links">
+        <a md-line>{{ link.name }}</a>
+
+      </md-list-item>
+    </md-nav-list>
+  </md-sidenav>
+
+  <div class="example-scrolling-content">
+    <p>
+    Lorem ipsum dolor sit amet, pede a libero aenean phasellus, lectus metus sint ut risus, fusce vel in pellentesque. Nisl rutrum
+    etiam morbi consectetuer tempor magna, aenean nullam nunc id, neque vivamus interdum sociis nulla scelerisque sem, dolor
+    id wisi turpis magna aliquam magna.</p>
+    <button md-raised-button color="primary" (click)="sidenav.toggle()">
+      Sidenav Toggle
+    </button>
+  </div>
+</md-sidenav-container>

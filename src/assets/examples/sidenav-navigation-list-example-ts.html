@@ -1,0 +1,29 @@
+<span class="hljs-keyword">import</span> {Component, ViewEncapsulation} from <span class="hljs-string">'@angular/core'</span>;
+
+
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'sidenav-navigation-list-example'</span>,
+  templateUrl: <span class="hljs-string">'./sidenav-navigation-list-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./sidenav-navigation-list-example.css'</span>],
+  encapsulation: ViewEncapsulation.None,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SidenavNavigationListExample {
+  links = [
+    {
+      <span class="hljs-string">'name'</span>:<span class="hljs-string">'Google'</span>,
+      <span class="hljs-string">'url'</span> : <span class="hljs-string">'/components/component/sidenav'</span>
+    },
+    {
+      <span class="hljs-string">'name'</span>:<span class="hljs-string">'Wikipedia'</span>,
+      <span class="hljs-string">'url'</span> : <span class="hljs-string">'/components/component/sidenav'</span>
+    },
+    {
+      <span class="hljs-string">'name'</span>:<span class="hljs-string">'Github'</span>,
+      <span class="hljs-string">'url'</span> : <span class="hljs-string">'/components/component/sidenav'</span>
+    },
+    {
+      <span class="hljs-string">'name'</span>:<span class="hljs-string">'Facebook'</span>,
+      <span class="hljs-string">'url'</span> : <span class="hljs-string">'/components/component/sidenav'</span>
+    }
+  ]
+}

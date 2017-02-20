@@ -54,6 +54,7 @@ import {
 } from './slide-toggle-configurable/slide-toggle-configurable-example';
 import {IconSvgExample} from './icon-svg-example/icon-svg-example';
 import {SidenavFabExample} from './sidenav-fab/sidenav-fab-example';
+import {SidenavNavigationListExample} from './sidenav-navigation-list/sidenav-navigation-list-example';
 import {CardOverviewExample} from './card-overview/card-overview-example';
 import {
   ProgressSpinnerOverviewExample
@@ -135,6 +136,7 @@ export const EXAMPLE_COMPONENTS = {
   'select-overview': {title: 'Basic select', component: SelectOverviewExample},
   'select-form': {title: 'Select in a form', component: SelectFormExample},
   'sidenav-fab': {title: 'Sidenav with a FAB', component: SidenavFabExample},
+  'sidenav-navigation-list':{title: 'Sidenav with Navigation List',component:SidenavNavigationListExample},
   'sidenav-overview': {title: 'Basic sidenav', component: SidenavOverviewExample},
   'slider-configurable': {title: 'Configurable slider', component: SliderConfigurableExample},
   'slider-overview': {title: 'Basic slider', component: SliderOverviewExample},
@@ -193,6 +195,7 @@ export const EXAMPLE_LIST = [
   RadioNgModelExample,
   RadioOverviewExample,
   SidenavFabExample,
+  SidenavNavigationListExample,
   SelectOverviewExample,
   SelectFormExample,
   SidenavOverviewExample,

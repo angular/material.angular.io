@@ -33,7 +33,7 @@ const DOCS = [
     summary: 'Sidenavs, toolbars, menus',
     items: [
       {id: 'menu', name: 'Menu', examples: ['menu-icons']},
-      {id: 'sidenav', name: 'Sidenav', examples: ['sidenav-fab']},
+      {id: 'sidenav', name: 'Sidenav', examples: ['sidenav-fab','sidenav-navigation-list']},
       {id: 'toolbar', name: 'Toolbar', examples: ['toolbar-multirow']},
     ]
   },
