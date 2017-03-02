@@ -1,9 +1,9 @@
 <md-sidenav-container class="docs-component-viewer-sidenav-container">
-  <md-sidenav #sidenav class="docs-component-viewer-sidenav"
+  <md-sidenav aria-label="Component navigation" role="navigation" #sidenav class="docs-component-viewer-sidenav"
               [opened]="!isScreenSmall()"
               [mode]="isScreenSmall() ? 'over' : 'side'">
-    <nav *ngFor="let category of docItems.getItemsInCategories()">
-      <h3>{{category.name}}</h3>
+    <nav [attr.aria-labelledby]="category.id + '-id'" *ngFor="let category of docItems.getItemsInCategories()">
+      <h3 tabindex="0" id="{{category.id}}-id">{{category.name}}</h3>
       <ul>
         <li *ngFor="let component of category.items">
           <a [routerLink]="['/components/', component.id]"
@@ -15,7 +15,7 @@
     </nav>
   </md-sidenav>
 
-  <div class="docs-component-sidenav-content">
+  <div role="main" class="docs-component-sidenav-content">
     <component-page-header (toggleSidenav)="sidenav.toggle()"></component-page-header>
     <router-outlet></router-outlet>
     <app-footer></app-footer>

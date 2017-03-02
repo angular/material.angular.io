@@ -1,6 +1,12 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MaterialModule} from '@angular/material';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterTestingModule} from '@angular/router/testing';
+
 import {ComponentCategoryList, ComponentCategoryListModule} from './component-category-list';
 import {DocsAppTestingModule} from '../../testing/testing-module';
+import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
+import {ComponentPageTitle} from '../page-title/page-title';
 
 
 describe('ComponentCategoryList', () => {
@@ -9,6 +15,7 @@ describe('ComponentCategoryList', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ComponentCategoryListModule, DocsAppTestingModule],
+      providers: [ComponentPageTitle],
     }).compileComponents();
   }));
 

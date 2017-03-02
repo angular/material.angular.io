@@ -1,13 +1,15 @@
-<div class="docs-primary-header">
-  <h1>Guides</h1>
-</div>
-
-<md-nav-list class="docs-guide-list">
-  <a md-list-item *ngFor="let guide of guideItems.getAllItems()"
+<div class="docs-guides-container" role="main">
+  <div class="docs-primary-header">
+    <h1 [attr.aria-alert]="'Guides'">Guides</h1>
+  </div>
+  <md-nav-list class="docs-guide-list">
+    <a md-list-item
       class="docs-guide-item"
+      *ngFor="let guide of guideItems.getAllItems()"
       [routerLink]="['/guide/', guide.id]">
-    {{guide.name}}
-  </a>
-</md-nav-list>
+      {{guide.name}}
+    </a>
+  </md-nav-list>
+</div>
 
 <app-footer></app-footer>

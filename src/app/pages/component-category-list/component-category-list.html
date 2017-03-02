@@ -1,12 +1,13 @@
 <div class="docs-component-category-list">
-  <md-card
-      *ngFor="let category of docItems.getItemsInCategories()"
-      class="docs-component-category-list-card"
-      [routerLink]="['/categories/', category.id]">
-    <md-card-title>{{category.name}}</md-card-title>
-    <p class="docs-component-category-list-card-summary">{{category.summary}}</p>
-    <docs-svg-viewer class="docs-component-category-list-card-image"
-                     [src]="'../../../assets/img/component-categories/' + category.id + '.svg'">
-    </docs-svg-viewer>
-  </md-card>
+  <a
+    *ngFor="let category of docItems.getItemsInCategories()"
+    [routerLink]="['/components/category/', category.id]">
+    <md-card class="docs-component-category-list-card">
+      <md-card-title>{{category.name}}</md-card-title>
+      <p class="docs-component-category-list-card-summary">{{category.summary}}</p>
+      <docs-svg-viewer class="docs-component-category-list-card-image"
+                       [src]="'../../../assets/img/component-categories/' + category.id + '.svg'">
+      </docs-svg-viewer>
+    </md-card>
+  </a>
 </div>

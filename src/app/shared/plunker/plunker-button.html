@@ -1,6 +1,7 @@
 <!-- TODO: change the template to be plunker icon -->
 <div [mdTooltip]="isDisabled ? 'Building Plunker example...' : 'Edit in Plunker'">
   <button md-icon-button type="button"
+        aria-label="Edit in Plunker"
         (click)="openPlunker()"
         [disabled]="isDisabled">
     <md-icon>
