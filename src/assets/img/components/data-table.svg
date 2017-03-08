@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="109px" height="90px" viewBox="0 0 109 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>data-table</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="12.1458333" height="12"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="12.1458333" height="12" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="0" y="0" width="12.1458333" height="12"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="12.1458333" height="12" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="0" y="0" width="12.1458333" height="12"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="12.1458333" height="12" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+        <rect id="path-7" x="0" y="0" width="12.1458333" height="12"></rect>
+        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="12.1458333" height="12" fill="white">
+            <use xlink:href="#path-7"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-Directory" transform="translate(-375.000000, -3542.000000)">
+            <g id="data-table" transform="translate(375.000000, 3542.000000)">
+                <g id="checkbox" transform="translate(9.000000, 0.000000)" stroke="#CED2D4">
+                    <path d="M24.1074611,6.52553526 L52.2895653,6.52553526" id="text" stroke-width="4.31244" stroke-linecap="square"></path>
+                    <use id="rectangle" mask="url(#mask-2)" stroke-width="1.9602" xlink:href="#path-1"></use>
+                </g>
+                <path d="M0.550505051,19.25 L107.902166,19.25" id="Line" stroke="#CED2D4" stroke-width="0.55" stroke-linecap="square"></path>
+                <g id="checkbox" transform="translate(9.000000, 24.000000)">
+                    <path d="M24.1074611,6.52553526 L52.2895653,6.52553526" id="text" stroke="#CED2D4" stroke-width="4.31244" stroke-linecap="square"></path>
+                    <use id="rectangle" stroke="#00BCD4" mask="url(#mask-4)" stroke-width="1.9602" fill="#00BCD4" xlink:href="#path-3"></use>
+                </g>
+                <path d="M0.550505051,42.25 L107.902166,42.25" id="Line" stroke="#CED2D4" stroke-width="0.55" stroke-linecap="square"></path>
+                <g id="checkbox" transform="translate(9.000000, 51.000000)" stroke="#CED2D4">
+                    <path d="M24.1074611,6.52553526 L52.2895653,6.52553526" id="text" stroke-width="4.31244" stroke-linecap="square"></path>
+                    <use id="rectangle" mask="url(#mask-6)" stroke-width="1.9602" xlink:href="#path-5"></use>
+                </g>
+                <path d="M0.550505051,70.25 L107.902166,70.25" id="Line" stroke="#CED2D4" stroke-width="0.55" stroke-linecap="square"></path>
+                <g id="checkbox" transform="translate(9.000000, 78.000000)" stroke="#CED2D4">
+                    <path d="M24.1074611,6.52553526 L52.2895653,6.52553526" id="text" stroke-width="4.31244" stroke-linecap="square"></path>
+                    <use id="rectangle" mask="url(#mask-8)" stroke-width="1.9602" xlink:href="#path-7"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="106px" height="106px" viewBox="0 0 106 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>tab</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-Directory" transform="translate(-894.000000, -3587.000000)">
+            <g id="tab" transform="translate(895.000000, 3587.000000)">
+                <path d="M1.6974642e-14,8.36670579 C2.12047563e-14,3.74590178 3.73700559,0 8.35995315,0 L96.6400469,0 C101.257121,0 105,3.74159654 105,8.36670579 L105,26.9091107 L0,26.9091107 L1.6974642e-14,8.36670579 Z" id="header" fill="#CED2D4"></path>
+                <path d="M0,26 L105,26 L105,97.6462222 C105,102.259886 101.262994,106 96.6400469,106 L8.35995315,106 C3.74287852,106 0,102.248735 0,97.6462222 L0,26 Z" id="card" fill="#F4F6F7"></path>
+                <g transform="translate(0.000000, 26.000000)">
+                    <rect id="1" fill-opacity="0.3" fill="#00BDD5" x="0" y="0" width="36.2000008" height="19"></rect>
+                    <rect id="2" fill-opacity="0.3" fill="#CED2D4" x="36.2000122" y="0" width="36.2000008" height="19"></rect>
+                    <rect id="3" fill-opacity="0.5" fill="#CED2D4" x="72.400013" y="0" width="32.599987" height="19"></rect>
+                    <path d="M0.7,18.3 L35.5,18.3" id="select" stroke="#00BCD4" stroke-width="1.5" stroke-linecap="square"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
