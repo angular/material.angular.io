@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MdSnackBarModule} from '@angular/material';
 
 import {NavBar, NavBarModule} from './navbar';
+import {DocumentationItems} from '../documentation-items/documentation-items';
 import {DocsAppTestingModule} from '../../testing/testing-module';
 
 
@@ -10,7 +12,8 @@ describe('NavBar', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NavBarModule, DocsAppTestingModule],
+      imports: [NavBarModule, DocsAppTestingModule, MdSnackBarModule],
+      providers: [DocumentationItems],
     }).compileComponents();
   }));
 

@@ -1,0 +1,21 @@
+<div class="docs-search-input-container">
+  <input
+    placeholder="Search"
+    type="text"
+    class="docs-search-input"
+    (focus)="toggleIsExpanded()"
+    (blur)="toggleIsExpanded($event.relatedTarget)"
+    (keyup.enter)="handlePlainSearch($event.target.value.toLowerCase())"
+    [mdAutocomplete]="auto"
+    [formControl]="searchControl">
+  <md-icon class="docs-search-icon">search</md-icon>
+</div>
+
+<md-autocomplete #auto="mdAutocomplete" [displayWith]="displayFn">
+  <md-option
+    *ngFor="let item of filteredSuggestions | async"
+    (click)="handlePlainSearch(item.name.toLowerCase())"
+    [value]="item">
+    {{item.name}}
+  </md-option>
+</md-autocomplete>
