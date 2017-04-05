@@ -50,4 +50,9 @@ export class ExampleViewer {
   exampleFileUrl(extension: string) {
     return `/assets/examples/${this.example}-example-${extension.toLowerCase()}.html`;
   }
+
+  additonalFileUrl(filename: string){
+    return `/assets/examples/${filename}.html`;
+  }
+
 }
