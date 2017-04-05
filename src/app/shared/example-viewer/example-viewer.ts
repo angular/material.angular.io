@@ -51,7 +51,7 @@ export class ExampleViewer {
     return `/assets/examples/${this.example}-example-${extension.toLowerCase()}.html`;
   }
 
-  additonalFileUrl(filename: string){
+  additonalFileUrl(filename: string) {
     return `/assets/examples/${filename}.html`;
   }
 
