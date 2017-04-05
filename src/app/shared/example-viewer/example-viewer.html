@@ -22,7 +22,7 @@
         <pre class="docs-example-source"><doc-viewer
             [documentUrl]="exampleFileUrl(extension)"></doc-viewer></pre>
       </md-tab>
-      <md-tab *ngFor="let additionalFile of {{exampleData?.additionalFiles}}" [label]="extension">
+      <md-tab *ngFor="let additionalFile of exampleData?.additionalFiles" [label]="extension">
         <pre class="docs-example-source"><doc-viewer
             [documentUrl]="additonalFileUrl(additionalFile)"></doc-viewer></pre>
       </md-tab>
