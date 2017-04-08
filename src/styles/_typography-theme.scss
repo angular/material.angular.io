@@ -9,35 +9,39 @@
 
   .docs-component-viewer-tabbed-content,
   .docs-guide-content {
-       h1 {
-        color: mat-color($primary, 800);
-        background: rgba(mat-color($foreground, text), .03);
-      }
+    h1 {
+      color: mat-color($primary, 800);
+      background: rgba(mat-color($foreground, text), .03);
+    }
 
-      h3, h2, h4, h5, p, ol, li{
-        color: mat-color($foreground, text);
-      }
+    h3, h2, h4, h5, p, ol, li{
+      color: mat-color($foreground, text);
+    }
 
-      a {
-        color: mat-color($primary);
-      }
+    a {
+      color: mat-color($primary);
+    }
 
-      table {
-        box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
-      }
+    table {
+      box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
+    }
 
-      table tbody th{
-        border: 1px solid rgba(mat-color($foreground, text), .03);
-      }
+    table tbody th{
+      border: 1px solid rgba(mat-color($foreground, text), .03);
+    }
 
-      td {
-        color: mat-color($foreground, text);
-        border: 1px solid rgba(mat-color($foreground, secondary-text), .03);
-      }
+    td {
+      color: mat-color($foreground, text);
+      border: 1px solid rgba(mat-color($foreground, secondary-text), .03);
+    }
 
-      th {
-        color: mat-color($foreground, text);
-        background: rgba(mat-color($foreground, secondary-text), .03);
-      }
+    th {
+      color: mat-color($foreground, text);
+      background: rgba(mat-color($foreground, secondary-text), .03);
+    }
+
+    .docs-api-method-name-cell {
+      color: md-color($primary, 800);
+    }
   }
 }
