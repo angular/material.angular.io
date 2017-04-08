@@ -7,5 +7,30 @@
 .docs-guide-list-item {
   margin: 50px;
   flex-grow: 1;
-}
 
+  table {
+    border-collapse: collapse;
+    border-radius: 2px;
+    border-spacing: 0;
+    margin: 0 0 32px 0;
+    width: 100%;
+  }
+
+  table tbody th {
+    font-weight: 400;
+    padding: 13px 32px;
+    text-align: left;
+  }
+
+  td {
+    padding: 8px 20px;
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
