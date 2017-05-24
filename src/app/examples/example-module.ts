@@ -75,8 +75,8 @@ import {SelectFormExample} from './select-form/select-form-example';
 export interface LiveExample {
   title: string;
   component: any;
-  additionalFiles: string[];
-  selectorName: string;
+  additionalFiles?: string[];
+  selectorName?: string;
 }
 
 /**
