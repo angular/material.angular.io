@@ -1,14 +1,20 @@
 import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
-import {DocViewer} from './doc-viewer/doc-viewer';
-import {ExampleViewer} from './example-viewer/example-viewer';
-import {DocumentationItems} from './documentation-items/documentation-items';
-import {NavBar} from './navbar/navbar';
 import {MaterialModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+import {InlineSVGModule} from 'ng-inline-svg';
+
+import {ExampleViewer} from './example-viewer/example-viewer';
+import {DocViewer} from './doc-viewer/doc-viewer';
+import {DocumentationItems} from './documentation-items/documentation-items';
 import {PlunkerButton} from './plunker';
 import {GuideItems} from './guide-items/guide-items';
+import {ThemeStorage} from './theme-chooser/theme-storage/theme-storage';
+import {ThemeChooser} from './theme-chooser/theme-chooser';
+import {NavBar} from './navbar/navbar';
+import {SVGBuilder} from './svg-viewer/svg-builder';
+import {SVGViewer} from './svg-viewer/svg-viewer';
 
 
 @NgModule({
@@ -17,10 +23,11 @@ import {GuideItems} from './guide-items/guide-items';
     RouterModule,
     BrowserModule,
     MaterialModule,
+    InlineSVGModule,
   ],
-  declarations: [DocViewer, ExampleViewer, NavBar, PlunkerButton],
-  exports: [DocViewer, ExampleViewer, NavBar, PlunkerButton],
-  providers: [DocumentationItems, GuideItems],
+  declarations: [DocViewer, ExampleViewer, NavBar, PlunkerButton, ThemeChooser, SVGViewer],
+  exports: [DocViewer, ExampleViewer, NavBar, PlunkerButton, ThemeChooser, SVGViewer],
+  providers: [DocumentationItems, GuideItems, ThemeStorage, SVGBuilder],
   entryComponents: [
     ExampleViewer,
   ],

@@ -2,10 +2,10 @@
 
 .docs-component-category-list {
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
 
   @media (max-width: $small-breakpoint-width) {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
   }
 }
@@ -22,12 +22,9 @@
   }
 }
 
-.docs-component-category-list-card-image {
-  width: 100%;
-  height: 160px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+:host /deep/ .docs-component-category-list-card-image svg {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .docs-component-category-list-card-summary {
