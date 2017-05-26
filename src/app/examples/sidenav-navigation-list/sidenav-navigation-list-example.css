@@ -1,0 +1,22 @@
+.example-sidenav-navigation-list-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-navigation-list-container md-sidenav {
+  max-width: 200px;
+}
+
+.example-sidenav-navigation-list-container .mat-sidenav-content,
+.example-sidenav-navigation-list-container md-sidenav {
+  display: flex;
+  overflow: visible;
+}
+
+.example-scrolling-content {
+  overflow: auto;
+  padding:5px;
+}
+
+
