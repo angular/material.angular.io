@@ -57,7 +57,7 @@ import {SliderOverviewExample} from './slider-overview/slider-overview-example';
 import {
   SlideToggleConfigurableExample
 } from './slide-toggle-configurable/slide-toggle-configurable-example';
-import {IconSvgExample} from './icon-svg-example/icon-svg-example';
+import {IconSvgExample} from './icon-svg/icon-svg-example';
 import {SidenavFabExample} from './sidenav-fab/sidenav-fab-example';
 import {CardOverviewExample} from './card-overview/card-overview-example';
 import {
@@ -122,7 +122,10 @@ export const EXAMPLE_COMPONENTS = {
   'grid-list-dynamic': {title: 'Dynamic grid-list', component: GridListDynamicExample},
   'grid-list-overview': {title: 'Basic grid-list', component: GridListOverviewExample},
   'icon-overview': {title: 'Basic icons', component: IconOverviewExample},
-  'icon-svg': {title: 'SVG icons', component: IconSvgExample},
+  'icon-svg': {
+    title: 'SVG icons',
+    component: IconSvgExample,
+    additionalFiles: ['assets/img/examples/thumbup-icon.svg']},
   'input-form': {title: 'Inputs in a form', component: InputFormExample},
   'input-overview': {title: 'Basic inputs', component: InputOverviewExample},
   'list-overview': {title: 'Basic list', component: ListOverviewExample},
