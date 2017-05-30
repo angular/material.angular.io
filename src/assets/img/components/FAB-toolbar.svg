@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="90px" viewBox="0 0 105 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>FAB-toolbar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-Directory" transform="translate(-282.000000, -3587.000000)">
+            <g id="FAB-toolbar" transform="translate(282.000000, 3587.000000)">
+                <g id="Toolbar" transform="translate(0.000000, 58.000000)">
+                    <polygon id="header" fill="#00BCD4" points="2.46339416e-14 0 105 0 105 32 0 32"></polygon>
+                    <circle id="Oval" fill="#FFFFFF" opacity="0.580276268" cx="91.5" cy="15.5" r="5.5"></circle>
+                    <rect id="Rectangle" fill="#FFFFFF" opacity="0.580276268" x="71" y="10" width="11" height="11"></rect>
+                    <rect id="Rectangle" fill="#FFFFFF" opacity="0.580276268" x="55" y="10" width="11" height="11"></rect>
+                </g>
+                <g id="Fab" transform="translate(61.000000, 0.000000)">
+                    <ellipse id="oval" fill="#00BDD5" cx="22" cy="22.2022472" rx="22" ry="21.505618"></ellipse>
+                    <path d="M12.4285715,22.934935 L12.4285715,21.064935 L31,21.064935 L31,22.934935 L12.4285715,22.934935 Z M12.4285715,27.9998701 L12.4285715,26.1298701 L31,26.1298701 L31,27.9998701 L12.4285715,27.9998701 Z M12.4285715,16 L31,16 L31,17.87 L12.4285715,17.87 L12.4285715,16 Z" id="menu" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

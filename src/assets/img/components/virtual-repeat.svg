@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="94px" viewBox="0 0 105 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>virtual-repeat</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,0.619815898 L105,0.619815898 L105,68.5995447 C105,73.2113763 101.262994,76.9500046 96.6400469,76.9500046 L8.35995315,76.9500046 C3.74287852,76.9500046 0,73.2167697 0,68.5995447 L0,0.619815898 Z" id="path-1"></path>
+        <rect id="path-3" x="53" y="60" width="48" height="21"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="48" height="21" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="4" y="55" width="46" height="26"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="46" height="26" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+        <rect id="path-7" x="4" y="0" width="46" height="52"></rect>
+        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="46" height="52" fill="white">
+            <use xlink:href="#path-7"></use>
+        </mask>
+        <rect id="path-9" x="53" y="1" width="48" height="16"></rect>
+        <mask id="mask-10" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="48" height="16" fill="white">
+            <use xlink:href="#path-9"></use>
+        </mask>
+        <rect id="path-11" x="53" y="20" width="48" height="37"></rect>
+        <mask id="mask-12" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="48" height="37" fill="white">
+            <use xlink:href="#path-11"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-Directory" transform="translate(-82.000000, -3586.000000)">
+            <g id="virtual-repeat" transform="translate(82.000000, 3586.000000)">
+                <g id="grid" transform="translate(0.000000, 17.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="card" fill="#F4F6F7" xlink:href="#path-1"></use>
+                    <g id="5" mask="url(#mask-2)" stroke-width="2" stroke="#00BCD4" fill="#FFFFFF">
+                        <use mask="url(#mask-4)" xlink:href="#path-3"></use>
+                    </g>
+                    <g id="4" mask="url(#mask-2)" stroke-width="2" stroke="#00BCD4" fill="#FFFFFF">
+                        <use mask="url(#mask-6)" xlink:href="#path-5"></use>
+                    </g>
+                    <g id="1" mask="url(#mask-2)" stroke-width="2" stroke="#00BCD4" fill="#FFFFFF">
+                        <use mask="url(#mask-8)" xlink:href="#path-7"></use>
+                    </g>
+                    <g id="2" mask="url(#mask-2)" stroke-width="2" stroke="#00BCD4" fill="#FFFFFF">
+                        <use mask="url(#mask-10)" xlink:href="#path-9"></use>
+                    </g>
+                    <g id="3" mask="url(#mask-2)" stroke-width="2" stroke="#00BCD4" fill="#FFFFFF">
+                        <use mask="url(#mask-12)" xlink:href="#path-11"></use>
+                    </g>
+                </g>
+                <path d="M1.46676361e-14,9.31259381 C2.01718747e-14,4.69406331 3.73700559,0.950004578 8.35995315,0.950004578 L96.6400469,0.950004578 C101.257121,0.950004578 105,4.69318566 105,9.31259381 L105,21.6200047 L0,21.6200047 L1.46676361e-14,9.31259381 Z" id="header" fill="#00BCD4"></path>
+            </g>
+        </g>
+    </g>
+</svg>

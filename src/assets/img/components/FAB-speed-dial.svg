@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="106px" viewBox="0 0 105 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>FAB-speed-dial</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-Directory" transform="translate(-482.000000, -3582.000000)">
+            <g id="FAB-speed-dial" transform="translate(482.000000, 3582.000000)">
+                <path d="M1.6974642e-14,8.36670579 C2.12047563e-14,3.74590178 3.73700559,0 8.35995315,0 L96.6400469,0 C101.257121,0 105,3.74159654 105,8.36670579 L105,26.9091107 L0,26.9091107 L1.6974642e-14,8.36670579 Z" id="header" fill="#CED2D4"></path>
+                <path d="M0,26 L105,26 L105,97.6462222 C105,102.259886 101.262994,106 96.6400469,106 L8.35995315,106 C3.74287852,106 0,102.248735 0,97.6462222 L0,26 Z" id="card" fill="#F4F6F7"></path>
+                <g id="dial" transform="translate(74.000000, 34.000000)">
+                    <g id="fab" transform="translate(0.000000, 43.000000)">
+                        <ellipse id="Fab" fill="#00BDD5" cx="11" cy="11.3358197" rx="11" ry="10.9801411"></ellipse>
+                        <path d="M6,11.709424 L6,10.7091806 L15.4285714,10.7091806 L15.4285714,11.709424 L6,11.709424 Z M6,14.4186047 L6,13.4183613 L15.4285714,13.4183613 L15.4285714,14.4186047 L6,14.4186047 Z M6,8 L15.4285714,8 L15.4285714,9.00024339 L6,9.00024339 L6,8 Z" id="menu" fill="#FFFFFF"></path>
+                    </g>
+                    <circle id="Oval" fill-opacity="0.5" fill="#00BDD5" cx="11.5" cy="34.5" r="6.5"></circle>
+                    <circle id="Oval" fill-opacity="0.3" fill="#00BDD5" cx="11.5" cy="20.5" r="6.5"></circle>
+                    <circle id="Oval" fill-opacity="0.2" fill="#00BDD5" cx="11.5" cy="6.5" r="6.5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

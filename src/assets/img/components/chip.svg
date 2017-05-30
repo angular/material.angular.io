@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="124px" height="38px" viewBox="0 0 124 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>chip</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-Directory" transform="translate(-720.000000, -3613.000000)">
+            <g id="chip" transform="translate(720.000000, 3613.000000)">
+                <rect fill="#00BDD5" x="0" y="0" width="124" height="38" rx="19"></rect>
+                <path d="M19.0952381,19.5 L64,19.5" id="text" stroke="#FFFFFF" stroke-width="5" stroke-linecap="square"></path>
+                <circle id="Oval" fill="#F4F6F7" cx="102.5" cy="19.5" r="7.5"></circle>
+                <polygon id="clear" fill="#CED2D4" fill-rule="nonzero" points="106.875 16.00625 105.99375 15.125 102.5 18.61875 99.00625 15.125 98.125 16.00625 101.61875 19.5 98.125 22.99375 99.00625 23.875 102.5 20.38125 105.99375 23.875 106.875 22.99375 103.38125 19.5"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

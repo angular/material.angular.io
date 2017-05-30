@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="106px" viewBox="0 0 105 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>datepicker</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-Directory" transform="translate(-234.000000, -3542.000000)">
+            <g id="datepicker" transform="translate(234.000000, 3542.000000)">
+                <g id="calendar">
+                    <path d="M1.6974642e-14,8.36670579 C2.12047563e-14,3.74590178 3.73700559,0 8.35995315,0 L96.6400469,0 C101.257121,0 105,3.74159654 105,8.36670579 L105,26.9091107 L0,26.9091107 L1.6974642e-14,8.36670579 Z" id="header" fill="#00BCD4"></path>
+                    <path d="M15.1509217,13 L50.4082767,13" id="text" stroke="#FFFFFF" stroke-width="4" stroke-linecap="square"></path>
+                    <path d="M0,26 L105,26 L105,97.6462222 C105,102.259886 101.262994,106 96.6400469,106 L8.35995315,106 C3.74287852,106 0,102.248735 0,97.6462222 L0,26 Z" id="card" fill="#F4F6F7"></path>
+                </g>
+                <g id="days" transform="translate(11.000000, 35.000000)">
+                    <circle id="Oval-12" stroke="#CED2D4" cx="2.5" cy="2.5" r="2.5"></circle>
+                    <circle id="Oval-12" stroke="#CED2D4" cx="15.5" cy="2.5" r="2.5"></circle>
+                    <circle id="Oval-12" stroke="#CED2D4" cx="28.5" cy="2.5" r="2.5"></circle>
+                    <circle id="Oval-12" stroke="#CED2D4" cx="41.5" cy="2.5" r="2.5"></circle>
+                    <circle id="Oval-12" stroke="#CED2D4" cx="54.5" cy="2.5" r="2.5"></circle>
+                    <circle id="Oval-12" stroke="#CED2D4" cx="67.5" cy="2.5" r="2.5"></circle>
+                    <circle id="Oval-12" stroke="#CED2D4" cx="80.5" cy="2.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="2.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="15.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="28.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="41.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="54.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="67.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="80.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="2.5" cy="30.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="15.5" cy="30.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="28.5" cy="30.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="41.5" cy="30.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="54.5" cy="30.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#00BCD4" cx="68.5" cy="30.5" r="4.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="80.5" cy="30.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="2.5" cy="42.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="15.5" cy="42.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="28.5" cy="42.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="41.5" cy="42.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="54.5" cy="42.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="67.5" cy="42.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="80.5" cy="42.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="2.5" cy="54.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="15.5" cy="54.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="28.5" cy="54.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="41.5" cy="54.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="54.5" cy="54.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="67.5" cy="54.5" r="2.5"></circle>
+                    <circle id="Oval-12" fill="#CED2D4" cx="80.5" cy="54.5" r="2.5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
