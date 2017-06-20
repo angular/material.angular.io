@@ -20,14 +20,15 @@ export class ComponentViewer {
               private router: Router,
               public _componentPageTitle: ComponentPageTitle,
               public docItems: DocumentationItems) {
-    const id = this._route.snapshot.paramMap.get('id');
-    this.componentDocItem = docItems.getItemById(id);
+    this._route.params.subscribe(params => {
+      this.componentDocItem = docItems.getItemById(params['id']);
 
-    if (this.componentDocItem) {
-      this._componentPageTitle.title = `${this.componentDocItem.name}`;
-    } else {
-      this.router.navigate(['/components']);
-    }
+      if (this.componentDocItem) {
+        this._componentPageTitle.title = `${this.componentDocItem.name}`;
+      } else {
+        this.router.navigate(['/components']);
+      }
+    });
   }
 }
 
