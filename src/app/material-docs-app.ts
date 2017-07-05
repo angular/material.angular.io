@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {Router, NavigationStart} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -10,8 +11,9 @@ import {Router, NavigationStart} from '@angular/router';
 })
 export class MaterialDocsApp {
   showShadow = false;
+  baseTitle = 'Angular Material';
 
-  constructor(router: Router) {
+  constructor(router: Router, private _titleService: Title) {
     let previousRoute = router.routerState.snapshot.url;
 
     router.events.subscribe((data: NavigationStart) => {
@@ -24,7 +26,32 @@ export class MaterialDocsApp {
       }
 
       previousRoute = data.url;
+
+      // set page title
+      this._setTitle(window.location.pathname);
     });
+  }
+
+  private _setTitle(pathname) {
+    const title = this._getTitle(pathname);
+    title ?
+      this._titleService.setTitle(`${this.baseTitle} - ${this._capitalizeTitle(title)}`) :
+      this._titleService.setTitle(this.baseTitle);
+  }
+
+  private _getTitle(pathname) {
+    return pathname.split('/').filter(Boolean).pop();
+  }
+
+  private _trimFilename(filename) {
+    const isFilenameRegex = new RegExp(/.+\./g);
+    return ~filename.search(isFilenameRegex) ?
+      filename.match(isFilenameRegex)[0].replace('.', '') :
+      filename;
+  }
+
+  private _capitalizeTitle(title) {
+    return title[0].toUpperCase() + this._trimFilename(title.slice(1));
   }
 }
 

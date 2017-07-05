@@ -1,5 +1,5 @@
 <div class="docs-primary-header">
-  <h1>{{guide.name}}</h1>
+  <h1 [attr.aria-alert]="guide.name">{{guide.name}}</h1>
 </div>
 
 <doc-viewer class="docs-guide-content" [documentUrl]="guide.document"></doc-viewer>
