@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule, MdNativeDateModule} from '@angular/material';
 import {MaterialDocsExample} from './material-docs-example';
 import {HttpModule} from '@angular/http';
+import {CdkTableModule} from '@angular/cdk';
 
 @NgModule({
 
@@ -17,6 +18,7 @@ import {HttpModule} from '@angular/http';
     MaterialModule,
     MdNativeDateModule,
     ReactiveFormsModule,
+    CdkTableModule,
   ],
 
   declarations: [MaterialDocsExample],
