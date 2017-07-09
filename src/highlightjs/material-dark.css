@@ -1,11 +1,13 @@
-/** From https://github.com/Kelbster/highlightjs-material-dark-theme */
+/*
+Orginal Style from https://github.com/Kelbster/highlightjs-material-dark-theme  (c) Kelby Gassmanl <kelby.gassman@gmail.com>
+*/
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 1em;
   background: #2B2B2D;
   color: #CDD3D8;
-  font-family: "Fira Mono", monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 1em;
 }
 
