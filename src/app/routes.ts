@@ -28,7 +28,7 @@ export const MATERIAL_DOCS_ROUTES: Routes = [
     children: [
       {path: '', component: ComponentCategoryList},
       {path: 'component/:id', redirectTo: ':id', pathMatch: 'full'},
-      {path: 'category/:id', redirectTo: '/categories/:id', pathMatch: 'full'},
+      {path: 'category/:id', redirectTo: 'categories/:id', pathMatch: 'full'},
       {
         path: ':id',
         component: ComponentViewer,
