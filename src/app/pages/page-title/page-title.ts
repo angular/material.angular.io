@@ -13,9 +13,9 @@ export class ComponentPageTitle {
   set title(title: string) {
     this._title = title;
     if (title !== '') {
-      title = ` - ${title}`;
+      title = `${title} | `;
     }
-    this.bodyTitle.setTitle(`Angular Material${title}`);
+    this.bodyTitle.setTitle(`${title}Angular Material`);
   }
 
   constructor(private bodyTitle: Title) { }
