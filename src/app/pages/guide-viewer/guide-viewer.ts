@@ -1,5 +1,5 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import {ActivatedRoute, RouterModule} from '@angular/router';
+import {ActivatedRoute, RouterModule, Router} from '@angular/router';
 import {GuideItem, GuideItems} from '../../shared/guide-items/guide-items';
 import {FooterModule} from '../../shared/footer/footer';
 import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
@@ -15,9 +15,14 @@ export class GuideViewer implements OnInit {
 
   constructor(private _route: ActivatedRoute,
               private _componentPageTitle: ComponentPageTitle,
+              private router: Router,
               public guideItems: GuideItems) {
     _route.params.subscribe(p => {
       this.guide = guideItems.getItemById(p['id']);
+
+      if (!this.guide) {
+        this.router.navigate(['/guides']);
+      }
     });
   }
 
