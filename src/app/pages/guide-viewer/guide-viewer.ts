@@ -30,6 +30,6 @@ export class GuideViewer implements OnInit {
   imports: [DocViewerModule, FooterModule, RouterModule],
   exports: [GuideViewer],
   declarations: [GuideViewer],
-  providers: [GuideItems],
+  providers: [GuideItems, ComponentPageTitle],
 })
 export class GuideViewerModule {}

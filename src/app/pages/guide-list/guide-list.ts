@@ -24,6 +24,6 @@ export class GuideList implements OnInit {
   imports: [MdListModule, RouterModule, FooterModule, CommonModule],
   exports: [GuideList],
   declarations: [GuideList],
-  providers: [GuideItems],
+  providers: [GuideItems, ComponentPageTitle],
 })
 export class GuideListModule { }
