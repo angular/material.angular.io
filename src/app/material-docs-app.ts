@@ -13,12 +13,15 @@ export class MaterialDocsApp {
   showShadow = false;
 
   constructor(router: Router) {
+    const routesWithNavbarShadow = ['/categories', '/components'];
+
     let previousRoute = router.routerState.snapshot.url;
 
     router.events
       .filter(event => event instanceof NavigationEnd )
       .subscribe((data: NavigationEnd) => {
-        this.showShadow = /^\/(categories|components)/.test(data.urlAfterRedirects);
+        this.showShadow = !!routesWithNavbarShadow
+            .find(route => data.urlAfterRedirects.startsWith(route));
 
         // We want to reset the scroll position on navigation except when navigating within
         // the documentation for a single component.
