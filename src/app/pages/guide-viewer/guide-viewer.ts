@@ -3,7 +3,8 @@ import {ActivatedRoute, RouterModule} from '@angular/router';
 import {GuideItem, GuideItems} from '../../shared/guide-items/guide-items';
 import {FooterModule} from '../../shared/footer/footer';
 import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
-
+import {HeaderLinkModule} from '../../shared/header-link/header-link.module';
+import {TableOfContentsModule} from '../../shared/table-of-contents/table-of-contents.module';
 
 @Component({
   selector: 'guide-viewer',
@@ -21,7 +22,7 @@ export class GuideViewer {
 }
 
 @NgModule({
-  imports: [DocViewerModule, FooterModule, RouterModule],
+  imports: [DocViewerModule, FooterModule, RouterModule, HeaderLinkModule, TableOfContentsModule],
   exports: [GuideViewer],
   declarations: [GuideViewer],
   providers: [GuideItems],

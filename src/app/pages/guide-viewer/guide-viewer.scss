@@ -1,4 +1,5 @@
 @import "../../../../node_modules/@angular/material/theming";
+@import '../../../styles/constants';
 
 /* For desktop, the content should be aligned with the page title. */
 $guide-content-margin-side: 70px;
@@ -18,5 +19,24 @@ $guide-content-margin-side-xs: 15px;
   @media ($mat-xsmall) {
     margin-left: $guide-content-margin-side-xs;
     margin-right: $guide-content-margin-side-xs;
+  }
+}
+
+.docs-guide-viewer {
+  width: 80%;
+  display: block;
+  float: left;
+
+  @media (max-width: $small-breakpoint-width) {
+    width: 100%;
+  }
+}
+
+table-of-contents {
+  float: right;
+  top: 35px;
+
+  @media (max-width: $small-breakpoint-width) {
+    display: none;
   }
 }

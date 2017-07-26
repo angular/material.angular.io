@@ -11,7 +11,7 @@ import {
 import {Http} from '@angular/http';
 import {ComponentPortal, DomPortalHost} from '@angular/material';
 import {ExampleViewer} from '../example-viewer/example-viewer';
-
+import {HeaderLink} from '../header-link/header-link';
 
 @Component({
   selector: 'doc-viewer',
@@ -41,7 +41,8 @@ export class DocViewer implements OnDestroy {
           if (response.ok) {
             let docHtml = response.text();
             this._elementRef.nativeElement.innerHTML = docHtml;
-            this._loadLiveExamples();
+            this._loadComponents('material-docs-example', ExampleViewer);
+            this._loadComponents('header-link', HeaderLink);
           } else {
             this._elementRef.nativeElement.innerText =
               `Failed to load document: ${url}. Error: ${response.status}`;
@@ -58,22 +59,24 @@ export class DocViewer implements OnDestroy {
     // the wrong place in the DOM after switching tabs. This function is a workaround to
     // put the live examples back in the right place.
     this._clearLiveExamples();
-    this._loadLiveExamples();
+    this._loadComponents('material-docs-example', ExampleViewer);
+    this._loadComponents('header-link', HeaderLink);
   }
 
   /** Instantiate a ExampleViewer for each example. */
-  private _loadLiveExamples() {
+  private _loadComponents(componentName: string, componentClass: any) {
     let exampleElements =
-        this._elementRef.nativeElement.querySelectorAll('[material-docs-example]');
+        this._elementRef.nativeElement.querySelectorAll(`[${componentName}]`);
+
     Array.prototype.slice.call(exampleElements).forEach((element: Element) => {
-      let example = element.getAttribute('material-docs-example');
+      let example = element.getAttribute(componentName);
 
       let exampleContainer = document.createElement('div');
       element.appendChild(exampleContainer);
 
       let portalHost = new DomPortalHost(
           exampleContainer, this._componentFactoryResolver, this._appRef, this._injector);
-      let examplePortal = new ComponentPortal(ExampleViewer, this._viewContainerRef);
+      let examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       let exampleViewer = portalHost.attach(examplePortal);
       exampleViewer.instance.example = example;
 
