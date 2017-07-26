@@ -16,10 +16,10 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
-      "mobile": false,
+      "serviceWorker": true,
       "styles": [
         "main.scss",
-        "highlightjs/solarized-light.css",
+        "highlightjs/material-light.css",
         {"input": "assets/pink-bluegrey.css", "lazy": true},
         {"input": "assets/deeppurple-amber.css", "lazy": true},
         {"input": "assets/indigo-pink.css", "lazy": true},

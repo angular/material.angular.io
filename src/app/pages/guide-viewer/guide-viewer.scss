@@ -11,21 +11,27 @@ $guide-content-margin-side-xs: 15px;
   flex-grow: 1;
 }
 
-.docs-guide-content {
+.docs-guide-wrapper {
+  padding: 20px $content-padding-side 0;
   display: block;
-  margin: 20px $guide-content-margin-side 0;
-  flex-grow: 1;
+  text-align: center;
 
   @media ($mat-xsmall) {
-    margin-left: $guide-content-margin-side-xs;
-    margin-right: $guide-content-margin-side-xs;
+    padding-left: $content-padding-side-xs;
+    padding-right: $content-padding-side-xs;
   }
 }
 
-.docs-guide-viewer {
-  width: 80%;
+.docs-guide-inner {
+  display: inline-block;
+  text-align: left;
+  max-width: 940px;
+}
+
+.docs-guide-content {
   display: block;
   float: left;
+  width: 80%;
 
   @media (max-width: $small-breakpoint-width) {
     width: 100%;
@@ -33,8 +39,9 @@ $guide-content-margin-side-xs: 15px;
 }
 
 table-of-contents {
-  float: right;
   top: 35px;
+  float: right;
+  width: 15%;
 
   @media (max-width: $small-breakpoint-width) {
     display: none;

@@ -2,9 +2,11 @@
   <h1>{{guide.name}}</h1>
 </div>
 
-<div class="docs-guide-content">
-  <doc-viewer class="docs-guide-viewer" [documentUrl]="guide.document"></doc-viewer>
+<div class="docs-guide-wrapper">
+<div class="docs-guide-inner">
+  <doc-viewer class="docs-guide-content" [documentUrl]="guide.document"></doc-viewer>
   <table-of-contents></table-of-contents>
+</div>
 </div>
 
 <app-footer></app-footer>
