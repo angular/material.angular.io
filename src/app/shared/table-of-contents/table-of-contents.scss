@@ -5,33 +5,25 @@
   top: 0;
 }
 
-.toc-container {
+.docs-toc-container {
   padding: 5px 0 10px 12px;
 }
 
-h2 {
+.docs-toc-heading {
   margin: 0;
   padding: 0;
   font-size: 13px;
   font-weight: bold;
 }
 
-ul, li {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-li {
+a {
   line-height: 16px;
   margin: 8px 0 0;
   position: relative;
-}
-
-a {
   text-decoration: none;
+  display: block;
 }
 
-.li-h4 {
+.docs-level-h4 {
   margin-left: 12px;
 }

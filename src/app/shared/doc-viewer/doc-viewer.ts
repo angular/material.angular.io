@@ -11,7 +11,7 @@ import {
 import {Http} from '@angular/http';
 import {ComponentPortal, DomPortalHost} from '@angular/material';
 import {ExampleViewer} from '../example-viewer/example-viewer';
-import {HeaderLink} from '../header-link/header-link';
+import {HeaderLink} from './header-link';
 
 @Component({
   selector: 'doc-viewer',

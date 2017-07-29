@@ -18,24 +18,9 @@
     border: .5px solid rgba(mat-color($foreground, secondary-text), .03);
   }
 
-  .docs-markdown-h3,
-  .docs-markdown-h4 {
-    position: relative;
-    padding-left: 30px;
-    margin-left: -30px;
-
-    .material-icons {
-      display: none;
-    }
-
-    &:hover {
-      .material-icons {
-        display: block;
-        color: mat-color($foreground, secondary-text);
-        position: absolute;
-        left: 0;
-      }
-    }
+  .docs-markdown-h3 .material-icons,
+  .docs-markdown-h4 .material-icons {
+    color: mat-color($foreground, secondary-text);
   }
 }
 

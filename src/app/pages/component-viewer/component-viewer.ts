@@ -5,7 +5,6 @@ import {ComponentPageTitle} from '../page-title/page-title';
 import {MdTabsModule} from '@angular/material';
 import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
 import {CommonModule} from '@angular/common';
-import {HeaderLinkModule} from '../../shared/header-link/header-link.module';
 import {TableOfContentsModule} from '../../shared/table-of-contents/table-of-contents.module';
 
 @Component({
@@ -62,7 +61,6 @@ export class ComponentExamples extends ComponentOverview {}
     RouterModule,
     DocViewerModule,
     CommonModule,
-    HeaderLinkModule,
     TableOfContentsModule
   ],
   exports: [ComponentViewer],

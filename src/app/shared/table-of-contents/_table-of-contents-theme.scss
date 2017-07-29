@@ -5,16 +5,16 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  .toc-container {
+  .docs-toc-container {
     border-left: solid 4px mat-color($primary);
-  }
 
-  a {
-    color: mat-color($foreground, secondary-text);
+    a {
+      color: mat-color($foreground, secondary-text);
 
-    &:hover,
-    &.active {
-      color: mat-color($primary);
+      &:hover,
+      &.active {
+        color: mat-color($primary);
+      }
     }
   }
 }

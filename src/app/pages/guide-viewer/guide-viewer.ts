@@ -3,7 +3,6 @@ import {ActivatedRoute, RouterModule, Router} from '@angular/router';
 import {GuideItem, GuideItems} from '../../shared/guide-items/guide-items';
 import {FooterModule} from '../../shared/footer/footer';
 import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
-import {HeaderLinkModule} from '../../shared/header-link/header-link.module';
 import {TableOfContentsModule} from '../../shared/table-of-contents/table-of-contents.module';
 import {ComponentPageTitle} from '../page-title/page-title';
 
@@ -34,7 +33,7 @@ export class GuideViewer implements OnInit {
 }
 
 @NgModule({
-  imports: [DocViewerModule, FooterModule, RouterModule, HeaderLinkModule, TableOfContentsModule],
+  imports: [DocViewerModule, FooterModule, RouterModule, TableOfContentsModule],
   exports: [GuideViewer],
   declarations: [GuideViewer],
   providers: [GuideItems, ComponentPageTitle],

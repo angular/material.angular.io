@@ -39,7 +39,15 @@ describe('TableOfContents', () => {
   });
 
   it('should have header and links', () => {
-    component.links = [{ type: 'h2', id: 'test', name: 'test'}];
+    component.links = [
+      {
+        type: 'h2',
+        id: 'test',
+        name: 'test',
+        top: 0,
+        active: false
+      }
+    ];
 
     const header = fixture.nativeElement.querySelector('h2');
     expect(header).toBeDefined();
