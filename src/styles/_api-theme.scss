@@ -23,4 +23,16 @@
   .docs-api-h1 {
     display: none !important;
   }
+
+  .docs-api-class-name,
+  .docs-api-module-import,
+  .docs-api-class-selector-name,
+  .docs-api-class-export-name {
+    @if $is-dark-theme {
+      background: rgba(mat-color($foreground, secondary-text), .06);
+    }
+    @else {
+      background: rgba(mat-color($foreground, secondary-text), .03);
+    }
+  }
 }
