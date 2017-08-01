@@ -9,10 +9,19 @@ import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 
 interface Link {
+  /* id of the section*/
   id: string;
+
+  /* header type h3/h4 */
   type: string;
+
+  /* If the anchor is in view of the page */
   active: boolean;
+
+  /* name of the anchor */
   name: string;
+
+  /* top offset px of the anchor */
   top: number;
 }
 
@@ -37,14 +46,17 @@ export class TableOfContents implements OnInit, AfterViewInit {
 
   @Input() links: Link[] = [];
   @Input() container: string;
+  @Input() headerSelectors = '.docs-markdown-h3,.docs-markdown-h4';
 
   _rootUrl: string;
   private _scrollContainer: any;
   private _scrollSubscription: Subscription;
   private _routeSubscription: Subscription;
+  private _fragmentObserver: MutationObserver;
+  private _headerObserver: MutationObserver;
 
   private get scrollOffset(): number {
-    const { top } = this._element.nativeElement.getBoundingClientRect();
+    const {top} = this._element.nativeElement.getBoundingClientRect();
     if (typeof this._scrollContainer.scrollTop !== 'undefined') {
       return this._scrollContainer.scrollTop + top;
     } else if (typeof this._scrollContainer.pageYOffset !== 'undefined') {
@@ -81,37 +93,73 @@ export class TableOfContents implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this._route.fragment.subscribe(fragment => {
-      // Need a slight delay to ensure the content is loaded and the
-      // components are bootstrapped by the viewer
-      setTimeout(() => {
-        const element: any = this._document.querySelector(`#${fragment}`);
-        if (element) {
-          element.scrollIntoView(element);
+      // ensure we don't create memory leaks
+      if (this._fragmentObserver) {
+        this._fragmentObserver.disconnect();
+      }
+
+      // create a observer to ensure the element is loaded
+      // into view before trying to query and scroll to it
+      this._fragmentObserver = new MutationObserver(() => {
+        const target = document.getElementById(fragment);
+        if (target) {
+          target.scrollIntoView();
+          this._fragmentObserver.disconnect();
+          this._fragmentObserver = null;
         }
-      }, 500);
+      });
+
+      this._fragmentObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
     });
   }
 
   ngOnDestroy(): void {
     this._routeSubscription.unsubscribe();
     this._scrollSubscription.unsubscribe();
+
+    if (this._fragmentObserver) {
+      this._fragmentObserver.disconnect();
+    }
+
+    if (this._headerObserver) {
+      this._headerObserver.disconnect();
+    }
   }
 
   createLinks(): void {
-    // content is loading async, the timeout helps delay the query selector being empty
-    setTimeout(() => {
-      const headers = this._document.querySelectorAll('.docs-markdown-h3,.docs-markdown-h4');
-      for (const header of headers) {
-        const { top } = header.getBoundingClientRect();
-        this.links.push({
-          name: header.innerText,
-          type: header.tagName.toLowerCase(),
-          top: top,
-          id: header.id,
-          active: false
-        });
+    // ensure we don't create memory links
+    if (this._headerObserver) {
+      this._headerObserver.disconnect();
+    }
+
+    // observe body content changes until the headers
+    // are painted. this is required because the page can load async
+    this._headerObserver = new MutationObserver(() => {
+      const headers = this._document.querySelectorAll(this.headerSelectors);
+      if (headers.length) {
+        for (const header of headers) {
+          const {top} = header.getBoundingClientRect();
+          this.links.push({
+            name: header.innerText,
+            type: header.tagName.toLowerCase(),
+            top: top,
+            id: header.id,
+            active: false
+          });
+        }
+
+        this._headerObserver.disconnect();
+        this._headerObserver = null;
       }
-    }, 500);
+    });
+
+    this._headerObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
   }
 
   onScroll(): void {

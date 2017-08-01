@@ -19,10 +19,11 @@ import {Router} from '@angular/router';
   template: `
     <a
       title="Link to this heading"
+      [attr.aria-describedby]="example"
       class="docs-markdown-a docs-header-link"
       aria-label="Link to this heading"
       [href]="url">
-      <i class="material-icons">link</i>
+      <md-icon>link</md-icon>
     </a>
   `
 })
