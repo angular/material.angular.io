@@ -28,21 +28,9 @@ interface Link {
 @Component({
   selector: 'table-of-contents',
   styleUrls: ['./table-of-contents.scss'],
-  template: `
-    <div *ngIf="links?.length" class="docs-toc-container">
-      <div class="docs-toc-heading">Contents</div>
-      <nav>
-        <a [href]="_rootUrl + '#' + link.id"
-          *ngFor="let link of links; let i = index"
-          class="docs-level-{{link.type}}"
-          [class.active]="link.active">
-          {{link.name}}
-        </a>
-      </nav>
-    </div>
-  `
+  templateUrl: './table-of-contents.html'
 })
-export class TableOfContents implements OnInit, AfterViewInit {
+export class TableOfContents implements OnInit {
 
   @Input() links: Link[] = [];
   @Input() container: string;
@@ -52,17 +40,13 @@ export class TableOfContents implements OnInit, AfterViewInit {
   private _scrollContainer: any;
   private _scrollSubscription: Subscription;
   private _routeSubscription: Subscription;
-  private _fragmentObserver: MutationObserver;
-  private _headerObserver: MutationObserver;
+  private _fragmentSubscription: Subscription;
 
-  private get scrollOffset(): number {
-    const {top} = this._element.nativeElement.getBoundingClientRect();
-    if (typeof this._scrollContainer.scrollTop !== 'undefined') {
-      return this._scrollContainer.scrollTop + top;
-    } else if (typeof this._scrollContainer.pageYOffset !== 'undefined') {
-      return this._scrollContainer.pageYOffset + top;
-    }
-  }
+  /** DOM observer for route fragment activations */
+  private _fragmentObserver: MutationObserver;
+
+  /** DOM Observer for page route activations  */
+  private _headerObserver: MutationObserver;
 
   constructor(private _router: Router,
               private _route: ActivatedRoute,
@@ -79,20 +63,8 @@ export class TableOfContents implements OnInit, AfterViewInit {
         }
       }
     });
-  }
 
-  ngOnInit(): void {
-    this._scrollContainer = this.container ?
-      this._document.querySelectorAll(this.container)[0] : window;
-
-    this._scrollSubscription = Observable
-      .fromEvent(this._scrollContainer, 'scroll')
-      .debounceTime(10)
-      .subscribe(this.onScroll.bind(this));
-  }
-
-  ngAfterViewInit(): void {
-    this._route.fragment.subscribe(fragment => {
+    this._fragmentSubscription = this._route.fragment.subscribe(fragment => {
       // ensure we don't create memory leaks
       if (this._fragmentObserver) {
         this._fragmentObserver.disconnect();
@@ -116,9 +88,20 @@ export class TableOfContents implements OnInit, AfterViewInit {
     });
   }
 
+  ngOnInit(): void {
+    this._scrollContainer = this.container ?
+      this._document.querySelectorAll(this.container)[0] : window;
+
+    this._scrollSubscription = Observable
+      .fromEvent(this._scrollContainer, 'scroll')
+      .debounceTime(10)
+      .subscribe(this.onScroll.bind(this));
+  }
+
   ngOnDestroy(): void {
     this._routeSubscription.unsubscribe();
     this._scrollSubscription.unsubscribe();
+    this._fragmentSubscription.unsubscribe();
 
     if (this._fragmentObserver) {
       this._fragmentObserver.disconnect();
@@ -129,7 +112,17 @@ export class TableOfContents implements OnInit, AfterViewInit {
     }
   }
 
-  createLinks(): void {
+  /** Gets the scroll offset of the scroll container */
+  private getScrollOffset(): number {
+    const {top} = this._element.nativeElement.getBoundingClientRect();
+    if (typeof this._scrollContainer.scrollTop !== 'undefined') {
+      return this._scrollContainer.scrollTop + top;
+    } else if (typeof this._scrollContainer.pageYOffset !== 'undefined') {
+      return this._scrollContainer.pageYOffset + top;
+    }
+  }
+
+  private createLinks(): void {
     // ensure we don't create memory links
     if (this._headerObserver) {
       this._headerObserver.disconnect();
@@ -162,16 +155,17 @@ export class TableOfContents implements OnInit, AfterViewInit {
     });
   }
 
-  onScroll(): void {
+  private onScroll(): void {
     for (let i = 0; i < this.links.length; i++) {
       this.links[i].active = this.isLinkActive(this.links[i], this.links[i + 1]);
     }
   }
 
-  isLinkActive(currentLink: any, nextLink: any): boolean {
+  private isLinkActive(currentLink: any, nextLink: any): boolean {
     // A link is considered active if the page is scrolled passed the anchor without also
     // being scrolled passed the next link
-    return this.scrollOffset >= currentLink.top && !(nextLink && nextLink.top < this.scrollOffset);
+    const scrollOffset = this.getScrollOffset();
+    return scrollOffset >= currentLink.top && !(nextLink && nextLink.top < scrollOffset);
   }
 
 }
