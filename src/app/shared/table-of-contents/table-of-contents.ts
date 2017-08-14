@@ -1,6 +1,4 @@
-import {
-  Component, Input, AfterViewInit, Inject, ElementRef, OnInit
-} from '@angular/core';
+import {Component, Input, Inject, ElementRef, OnInit} from '@angular/core';
 import {DOCUMENT} from '@angular/platform-browser';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
@@ -41,7 +39,7 @@ export class TableOfContents implements OnInit {
   private _scrollSubscription: Subscription;
   private _routeSubscription: Subscription;
   private _fragmentSubscription: Subscription;
-  private _urlFragment: string = '';
+  private _urlFragment = '';
 
   constructor(private _router: Router,
               private _route: ActivatedRoute,
@@ -106,7 +104,7 @@ export class TableOfContents implements OnInit {
     if (headers.length) {
       for (const header of headers) {
         // remove the 'link' icon name from the inner text
-        const name = header.innerText.replace(/^link/, '')
+        const name = header.innerText.replace(/^link/, '');
         const {top} = header.getBoundingClientRect();
         links.push({
           name,
