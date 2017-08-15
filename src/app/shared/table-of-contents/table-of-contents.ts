@@ -44,7 +44,7 @@ export class TableOfContents implements OnInit {
   constructor(private _router: Router,
               private _route: ActivatedRoute,
               private _element: ElementRef,
-              @Inject(DOCUMENT) private _document: any) {
+              @Inject(DOCUMENT) private _document: Document) {
 
     this._routeSubscription = this._router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {

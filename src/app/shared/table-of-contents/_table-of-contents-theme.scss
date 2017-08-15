@@ -8,11 +8,11 @@
   .docs-toc-container {
     border-left: solid 4px mat-color($primary);
 
-    a {
+    .docs-link {
       color: mat-color($foreground, secondary-text);
 
       &:hover,
-      &.active {
+      &.docs-active {
         color: mat-color($primary);
       }
     }
