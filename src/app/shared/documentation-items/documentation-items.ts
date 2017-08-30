@@ -66,7 +66,7 @@ const DOCS = [
     items: [
       {id: 'dialog', name: 'Dialog', examples: ['dialog-result']},
       {id: 'tooltip', name: 'Tooltip', examples: ['tooltip-position']},
-      {id: 'snack-bar', name: 'Snackbar', examples: ['snack-bar-component']},
+      {id: 'snackbar', name: 'Snackbar', examples: ['snack-bar-component']},
     ]
   },
   {
