@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation, ViewChild, OnInit, NgModule} from '@angular/core';
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {MdSidenav, MdSidenavModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Router, RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
@@ -35,7 +36,14 @@ export class ComponentSidenav implements OnInit {
 
 
 @NgModule({
-  imports: [MdSidenavModule, RouterModule, CommonModule, ComponentHeaderModule, FooterModule],
+  imports: [
+    MdSidenavModule,
+    RouterModule,
+    CommonModule,
+    ComponentHeaderModule,
+    FooterModule,
+    BrowserAnimationsModule
+  ],
   exports: [ComponentSidenav],
   declarations: [ComponentSidenav],
   providers: [DocumentationItems],
