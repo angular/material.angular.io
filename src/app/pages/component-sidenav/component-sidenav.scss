@@ -76,6 +76,10 @@ app-component-sidenav {
   }
 }
 
+.mat-drawer-content {
+  position: absolute !important;
+}
+
 .docs-component-sidenav-content {
   min-height: 100%;
   display: flex;
