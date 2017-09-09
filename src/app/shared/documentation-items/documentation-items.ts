@@ -16,7 +16,6 @@ const DOCS = [
   {
     id: 'forms',
     name: 'Form Controls',
-    summary: 'Radio buttons, checkboxes, input fields, sliders, slide toggles, selects',
     items: [
       {id: 'autocomplete', name: 'Autocomplete', examples: ['autocomplete-overview']},
       {id: 'checkbox', name: 'Checkbox', examples: ['checkbox-configurable']},
@@ -41,18 +40,18 @@ const DOCS = [
   {
     id: 'layout',
     name: 'Layout',
-    summary: 'Lists, grid-lists, cards',
     items: [
       {id: 'list', name: 'List', examples: ['list-sections']},
       {id: 'grid-list', name: 'Grid list', examples: ['grid-list-dynamic']},
       {id: 'card', name: 'Card', examples: ['card-fancy']},
       {id: 'tabs', name: 'Tabs', examples: ['tabs-template-label']},
+      {id: 'expansion', name: 'Expansion Panel',
+          examples: ['expansion-overview', 'expansion-steps']},
     ]
   },
   {
     id: 'buttons',
-    name: 'Buttons, Indicators & Icons',
-    summary: 'Buttons, button toggles, icons, progress spinners, progress bars',
+    name: 'Buttons & Indicators',
     items: [
       {id: 'button', name: 'Button', examples: ['button-types']},
       {id: 'button-toggle', name: 'Button toggle', examples: ['button-toggle-exclusive']},
@@ -66,9 +65,8 @@ const DOCS = [
   {
     id: 'modals',
     name: 'Popups & Modals',
-    summary: 'Dialogs, tooltips, snackbars',
     items: [
-      {id: 'dialog', name: 'Dialog', examples: ['dialog-result']},
+      {id: 'dialog', name: 'Dialog', examples: ['dialog-overview']},
       {id: 'tooltip', name: 'Tooltip', examples: ['tooltip-position']},
       {id: 'snack-bar', name: 'Snackbar', examples: ['snack-bar-component']},
     ]
@@ -76,7 +74,6 @@ const DOCS = [
   {
     id: 'tables',
     name: 'Data table',
-    summary: 'Tables, sorting, and pagination',
     items: [
       {id: 'table', name: 'Table',
           examples: ['table-filtering', 'table-pagination', 'table-sorting']},

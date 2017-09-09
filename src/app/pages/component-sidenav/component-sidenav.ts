@@ -1,6 +1,7 @@
-import {Component, ViewEncapsulation, ViewChild, OnInit, NgModule} from '@angular/core';
+import {Component, NgZone, ViewEncapsulation, ViewChild, OnInit, NgModule} from '@angular/core';
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {MdSidenav, MdSidenavModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Router, RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
@@ -15,8 +16,14 @@ const SMALL_WIDTH_BREAKPOINT = 840;
   encapsulation: ViewEncapsulation.None,
 })
 export class ComponentSidenav implements OnInit {
+  private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
+
   constructor(public docItems: DocumentationItems,
-              private _router: Router) {}
+              private _router: Router,
+              zone: NgZone) {
+    // TODO(josephperrott): Move to CDK breakpoint management once available.
+    this.mediaMatcher.addListener(mql => zone.run(() => this.mediaMatcher = mql));
+  }
 
   @ViewChild(MdSidenav) sidenav: MdSidenav;
 
@@ -29,13 +36,20 @@ export class ComponentSidenav implements OnInit {
   }
 
   isScreenSmall(): boolean {
-    return window.matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`).matches;
+    return this.mediaMatcher.matches;
   }
 }
 
 
 @NgModule({
-  imports: [MdSidenavModule, RouterModule, CommonModule, ComponentHeaderModule, FooterModule],
+  imports: [
+    MdSidenavModule,
+    RouterModule,
+    CommonModule,
+    ComponentHeaderModule,
+    FooterModule,
+    BrowserAnimationsModule
+  ],
   exports: [ComponentSidenav],
   declarations: [ComponentSidenav],
   providers: [DocumentationItems],

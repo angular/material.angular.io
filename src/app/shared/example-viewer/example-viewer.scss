@@ -1,5 +1,6 @@
 :host {
   display: block;
+  padding: 20px 0;
 }
 
 .docs-example-viewer-wrapper {
@@ -18,6 +19,11 @@
 
 .docs-example-viewer-title-spacer {
   flex: 1 1 auto;
+}
+
+.docs-example-source {
+  padding: 0 0 10px 30px;
+  min-height: 150px;
 }
 
 .docs-example-viewer-body {

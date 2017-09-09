@@ -2,9 +2,17 @@
 
 .docs-markdown-h1 {
   display: inline-block;
-  font-size: 20px;
+  font-size: 34px;
   font-weight: 400;
   padding: 5px;
+}
+
+.docs-markdown-h2 {
+  font-size: 24px;
+}
+
+.docs-markdown-h3 {
+  font-size: 20px;
 }
 
 .docs-markdown-h2,
@@ -13,10 +21,12 @@
 }
 
 .docs-markdown-h5 {
-  font-size: 16px;
+  font-size: 18px;
 }
 
-.docs-markdown-p {
+.docs-markdown-p,
+.docs-markdown-ul,
+.docs-markdown-ol {
   font-size: 16px;
   line-height: 28px;
 }
@@ -26,7 +36,7 @@
 }
 
 .docs-markdown-td code {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .docs-markdown-pre {
@@ -34,6 +44,14 @@
   margin: 16px auto;
   display: block;
   padding: 20px;
+
+  .docs-markdown-code {
+    padding: 0;
+  }
+}
+
+.docs-markdown-code {
+  padding: 3px;
 }
 
 code, pre {
@@ -41,5 +59,27 @@ code, pre {
 }
 
 pre {
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.docs-header-link {
+  // deduct -30px so the anchor icon will be positioned outside
+  // the content and pad it 30px so the header will set inline
+  // with the content displayed, absolute position will make
+  // it where you can't hover the header
+  padding-left: 30px;
+  margin-left: -30px;
+  position: relative;
+
+  .material-icons {
+    display: none;
+  }
+
+  &:hover {
+    .material-icons {
+      display: block;
+      position: absolute;
+      left: 0;
+    }
+  }
 }
