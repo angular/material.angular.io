@@ -118,7 +118,7 @@ describe('ExampleViewer', () => {
       spyOn(snackBar, 'open');
       spyOn(copierService, 'copyText').and.returnValue(true);
       button.click();
-      expect(snackBar.open).toHaveBeenCalledWith('Code copied', '', { duration: 1000 });
+      expect(snackBar.open).toHaveBeenCalledWith('Code copied', '', {duration: 2500});
     });
 
     it('should display an error when copy fails', () => {
@@ -128,7 +128,7 @@ describe('ExampleViewer', () => {
       spyOn(copierService, 'copyText').and.returnValue(false);
       button.click();
       expect(snackBar.open)
-          .toHaveBeenCalledWith('Copy failed. Please try again!', '', { duration: 1000 });
+          .toHaveBeenCalledWith('Copy failed. Please try again!', '', {duration: 2500});
     });
   });
 

@@ -25,8 +25,7 @@ export class ExampleViewer {
 
   constructor(
     private snackbar: MdSnackBar,
-    private copier: CopierService
-  ) { }
+    private copier: CopierService) { }
 
   get example() {
     return this._example;
@@ -53,9 +52,9 @@ export class ExampleViewer {
 
   copySource(text: string) {
     if (this.copier.copyText(text)) {
-      this.snackbar.open('Code copied', '', {duration: 1000});
+      this.snackbar.open('Code copied', '', {duration: 2500});
     } else {
-      this.snackbar.open('Copy failed. Please try again!', '', {duration: 1000});
+      this.snackbar.open('Copy failed. Please try again!', '', {duration: 2500});
     }
   }
 }

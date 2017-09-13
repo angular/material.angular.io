@@ -19,6 +19,12 @@
 
     .docs-example-source-copy {
       color: mat-color($foreground, hint-text);
+      right: 8px;
+
+      [dir='rtl'] & {
+        right: auto;
+        left: 8px;
+      }
     }
 
     .docs-example-source {
