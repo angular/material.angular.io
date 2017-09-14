@@ -10,58 +10,51 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class CopierService {
-  private fakeElem: HTMLTextAreaElement;
+
+  private textarea: HTMLTextAreaElement;
+
+  /** Copy the text value to the clipboard. */
+  copyText(text: string): boolean {
+    this.createTextareaAndSelect(text);
+
+    const copySuccessful = document.execCommand('copy');
+    this.removeFake();
+
+    return copySuccessful;
+  }
 
   /**
-   * Creates a fake textarea element, sets its value from `text` property,
+   * Creates a hidden textarea element, sets its value from `text` property,
    * and makes a selection on it.
    */
-  createFake(text: string) {
-    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-
+  private createTextareaAndSelect(text: string) {
     // Create a fake element to hold the contents to copy
-    this.fakeElem = document.createElement('textarea');
+    this.textarea = document.createElement('textarea');
 
     // Prevent zooming on iOS
-    this.fakeElem.style.fontSize = '12pt';
+    this.textarea.style.fontSize = '12pt';
 
-    // Reset box model
-    this.fakeElem.style.border = '0';
-    this.fakeElem.style.padding = '0';
-    this.fakeElem.style.margin = '0';
-
-    // Move element out of screen horizontally
-    this.fakeElem.style.position = 'absolute';
-    this.fakeElem.style[ isRTL ? 'right' : 'left' ] = '-9999px';
+    // Hide the element
+    this.textarea.classList.add('cdk-visually-hidden');
 
     // Move element to the same position vertically
     const yPosition = window.pageYOffset || document.documentElement.scrollTop;
-    this.fakeElem.style.top = yPosition + 'px';
+    this.textarea.style.top = yPosition + 'px';
 
-    this.fakeElem.setAttribute('readonly', '');
-    this.fakeElem.value = text;
+    this.textarea.setAttribute('readonly', '');
+    this.textarea.value = text;
 
-    document.body.appendChild(this.fakeElem);
+    document.body.appendChild(this.textarea);
 
-    this.fakeElem.select();
-    this.fakeElem.setSelectionRange(0, this.fakeElem.value.length);
+    this.textarea.select();
+    this.textarea.setSelectionRange(0, this.textarea.value.length);
   }
 
-  removeFake() {
-    if (this.fakeElem) {
-      document.body.removeChild(this.fakeElem);
-      this.fakeElem = null;
-    }
-  }
-
-  copyText(text: string) {
-    try {
-      this.createFake(text);
-      return document.execCommand('copy');
-    } catch (err) {
-      return false;
-    } finally {
-      this.removeFake();
+  /** Remove the text area from the DOM. */
+  private removeFake() {
+    if (this.textarea) {
+      document.body.removeChild(this.textarea);
+      this.textarea = null;
     }
   }
 }
