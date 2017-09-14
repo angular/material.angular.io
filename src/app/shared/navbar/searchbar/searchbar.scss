@@ -1,0 +1,59 @@
+@mixin color-placeholder() {
+  -webkit-font-smoothing: antialiased;
+  color: white;
+}
+
+:host {
+  position: relative;
+  flex: 2;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &.docs-expanded .docs-search-input-container {
+    width: 100%;
+  }
+
+  .docs-search-input-container {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    height: 100%;
+    width: 200px;
+    transition: width .2s ease;
+
+    .docs-search-icon {
+      position: absolute;
+      left: 15px; top: 50%;
+      transform: translateY(-50%);
+      height: 28px;
+      width: 28px;
+    }
+  }
+
+  .docs-search-input {
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-size: 18px;
+    height: 95%;
+    line-height: 95%;
+    padding-left: 50px;
+    position: relative;
+    transition: width .2s ease;
+    width: 100%;
+
+    /* Set placeholder text to be white */
+    &::-webkit-input-placeholder { @include color-placeholder(); } /* Chrome/Opera/Safari */
+    &::-moz-placeholder { @include color-placeholder(); } /* Firefox 19+ */
+    &:-moz-placeholder { @include color-placeholder(); } /* Firefox 18- */
+    &:ms-input-placeholder { @include color-placeholder(); } /* IE 10+ */
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+}
