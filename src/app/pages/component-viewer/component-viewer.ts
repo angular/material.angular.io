@@ -23,7 +23,9 @@ export class ComponentViewer {
               public _componentPageTitle: ComponentPageTitle,
               public docItems: DocumentationItems) {
     this._route.params.subscribe(params => {
-      this.componentDocItem = docItems.getItemById(params['id']);
+      this.componentDocItem = docItems.getItemById(
+          params['id'],
+          this._route.parent.snapshot.params['section']);
 
       if (this.componentDocItem) {
         this._componentPageTitle.title = `${this.componentDocItem.name}`;

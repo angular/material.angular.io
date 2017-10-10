@@ -81,9 +81,9 @@ export class TableOfContents implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this._routeSubscription.unsubscribe();
-    this._scrollSubscription.unsubscribe();
-    this._fragmentSubscription.unsubscribe();
+    this._routeSubscription && this._routeSubscription.unsubscribe();
+    this._scrollSubscription && this._scrollSubscription.unsubscribe();
+    this._fragmentSubscription && this._fragmentSubscription.unsubscribe();
   }
 
   updateScrollPosition(): void {
