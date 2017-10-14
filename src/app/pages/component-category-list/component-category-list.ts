@@ -1,12 +1,17 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {MatCardModule} from '@angular/material';
 import {CommonModule} from '@angular/common';
-import {ActivatedRoute, Params, RouterModule} from '@angular/router';
-import {DocumentationItems, SECTIONS} from '../../shared/documentation-items/documentation-items';
+import {ActivatedRoute, RouterModule} from '@angular/router';
+import {
+  DocumentationItems,
+  SECTIONS,
+  DocCategory
+} from '../../shared/documentation-items/documentation-items';
 import {ComponentPageTitle} from '../page-title/page-title';
 import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/combineLatest';
+import {Subscription} from 'rxjs/Subscription';
+import 'rxjs/add/operator/combineLatest';
 
 
 @Component({
@@ -15,17 +20,23 @@ import 'rxjs/add/observable/combineLatest';
   styleUrls: ['./component-category-list.scss']
 })
 export class ComponentCategoryList implements OnInit {
-  params: Observable<Params>;
+  section: string;
+  categories: DocCategory[];
+  _titleUpdateSubscription: Subscription;
 
   constructor(public docItems: DocumentationItems,
               public _componentPageTitle: ComponentPageTitle,
-              private _route: ActivatedRoute) {}
+              public _route: ActivatedRoute) {}
 
   ngOnInit() {
     // Combine params from all of the path into a single object.
-    this.params = Observable.combineLatest(
-      this._route.pathFromRoot.map(route => route.params),
-      Object.assign);
+    Observable
+      .combineLatest(this._route.pathFromRoot.map(route => route.params), Object.assign)
+      .subscribe(params => {
+        this.section = params['section'];
+        this.categories = this.docItems.getCategories(this.section);
+        this._componentPageTitle.title = SECTIONS[this.section];
+      });
   }
 }
 
