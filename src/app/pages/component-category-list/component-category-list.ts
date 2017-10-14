@@ -26,7 +26,7 @@ export class ComponentCategoryList implements OnInit {
 
   constructor(public docItems: DocumentationItems,
               public _componentPageTitle: ComponentPageTitle,
-              public _route: ActivatedRoute) {}
+              private _route: ActivatedRoute) {}
 
   ngOnInit() {
     // Combine params from all of the path into a single object.
