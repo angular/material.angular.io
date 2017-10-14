@@ -1,4 +1,4 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, NgModule, OnInit, OnDestroy} from '@angular/core';
 import {MatCardModule} from '@angular/material';
 import {CommonModule} from '@angular/common';
 import {ActivatedRoute, RouterModule} from '@angular/router';
@@ -19,10 +19,10 @@ import 'rxjs/add/operator/combineLatest';
   templateUrl: './component-category-list.html',
   styleUrls: ['./component-category-list.scss']
 })
-export class ComponentCategoryList implements OnInit {
+export class ComponentCategoryList implements OnInit, OnDestroy {
   section: string;
   categories: DocCategory[];
-  _titleUpdateSubscription: Subscription;
+  private _sectionUpdateSubscription: Subscription;
 
   constructor(public docItems: DocumentationItems,
               public _componentPageTitle: ComponentPageTitle,
@@ -30,13 +30,17 @@ export class ComponentCategoryList implements OnInit {
 
   ngOnInit() {
     // Combine params from all of the path into a single object.
-    Observable
+    this._sectionUpdateSubscription = Observable
       .combineLatest(this._route.pathFromRoot.map(route => route.params), Object.assign)
       .subscribe(params => {
         this.section = params['section'];
         this.categories = this.docItems.getCategories(this.section);
         this._componentPageTitle.title = SECTIONS[this.section];
       });
+  }
+
+  ngOnDestroy() {
+    this._sectionUpdateSubscription.unsubscribe();
   }
 }
 
