@@ -6,5 +6,24 @@
       {"url": "https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"},
       {"url": "https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.5/web-animations.min.js"}
     ]
+  },
+  "dynamic": {
+    "group": [{
+      "name": "*",
+      "urls": {
+        "http:url": {
+          "match": "regex"
+        },
+        "https:url": {
+          "match": "regex"
+        }
+      },
+      "cache": {
+        "optimizeFor": "freshness",
+        "maxAgeMs": 3600000,
+        "maxEntries": 20,
+        "strategy": "lru"
+      }
+    }]
   }
 }
