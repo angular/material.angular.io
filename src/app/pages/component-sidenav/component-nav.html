@@ -1,0 +1,20 @@
+<div class="docs-component-viewer-nav">
+  <div class="docs-component-viewer-nav-inner">
+    <nav *ngFor="let category of docItems.getCategories((params | async)?.section); let i = index;">
+      <h3 (click)="toggleExpand(category.id)">
+        {{category.name}}
+        <mat-icon *ngIf="!getExpanded(category.id)">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="getExpanded(category.id)">keyboard_arrow_up</mat-icon>
+      </h3>
+      <ul [@bodyExpansion]="_getExpandedState(category.id)">
+        <li *ngFor="let component of category.items">
+          <a [routerLink]="'/' + (params | async)?.section+ '/' + component.id"
+            routerLinkActive="docs-component-viewer-sidenav-item-selected">
+            {{component.name}}
+          </a>
+        </li>
+      </ul>
+      <hr *ngIf="docItems.getCategories((params | async)?.section).length !== (i + 1)" />
+    </nav>
+  </div>
+</div>
