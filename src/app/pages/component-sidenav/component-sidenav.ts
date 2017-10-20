@@ -77,11 +77,10 @@ export class ComponentNav implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._router.events
-      .switchMap(() => this.params)
-      .takeUntil(this._onDestroy)
-      .subscribe(p => this.setExpansions());
-
-    this.setExpansions();
+        .startWith(null)
+        .switchMap(() => this.params)
+        .takeUntil(this._onDestroy)
+        .subscribe(p => this.setExpansions(p));
   }
 
   ngOnDestroy() {
@@ -89,24 +88,22 @@ export class ComponentNav implements OnInit, OnDestroy {
     this._onDestroy.complete();
   }
 
-  setExpansions() {
-    this.params.subscribe(p => {
-      const categories = this.docItems.getCategories(p.section);
-      for (const category of categories) {
-        if (this.expansions[category.id] === true) {
-          continue;
-        }
-
-        let match = false;
-        for (const item of category.items) {
-          if (this._router.url.indexOf(item.id) > -1) {
-            match = true;
-            break;
-          }
-        }
-        this.expansions[category.id] = match;
+  setExpansions(params: Params) {
+    const categories = this.docItems.getCategories(params.section);
+    for (const category of categories) {
+      if (this.expansions[category.id] === true) {
+        continue;
       }
-    });
+
+      let match = false;
+      for (const item of category.items) {
+        if (this._router.url.indexOf(item.id) > -1) {
+          match = true;
+          break;
+        }
+      }
+      this.expansions[category.id] = match;
+    }
   }
 
   _getExpandedState(category: string) {
