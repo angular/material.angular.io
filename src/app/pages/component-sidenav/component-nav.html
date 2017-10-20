@@ -1,6 +1,6 @@
 <div class="docs-component-viewer-nav">
   <div class="docs-component-viewer-nav-inner">
-    <nav *ngFor="let category of docItems.getCategories((params | async)?.section); let i = index;">
+    <nav *ngFor="let category of docItems.getCategories((params | async)?.section); let last = last;">
       <h3 (click)="toggleExpand(category.id)">
         {{category.name}}
         <mat-icon *ngIf="!getExpanded(category.id)">keyboard_arrow_down</mat-icon>
@@ -14,7 +14,7 @@
           </a>
         </li>
       </ul>
-      <hr *ngIf="docItems.getCategories((params | async)?.section).length !== (i + 1)" />
+      <hr *ngIf="!last" />
     </nav>
   </div>
 </div>

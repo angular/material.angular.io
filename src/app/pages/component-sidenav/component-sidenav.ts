@@ -1,6 +1,6 @@
 import {
   Component, Input, NgZone, ViewEncapsulation, ViewChild, OnInit, NgModule, trigger, state,
-  animate, transition, style
+  animate, transition, style, OnDestroy
 } from '@angular/core';
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {MatSidenav, MatSidenavModule, MatIconModule} from '@angular/material';
@@ -10,6 +10,9 @@ import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 import {FooterModule} from '../../shared/footer/footer';
 import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/takeUntil';
 
 const SMALL_WIDTH_BREAKPOINT = 840;
 
@@ -63,17 +66,27 @@ export class ComponentSidenav implements OnInit {
     ]),
   ],
 })
-export class ComponentNav implements OnInit {
+export class ComponentNav implements OnInit, OnDestroy {
 
   @Input() params: Observable<Params>;
   expansions = {};
+  private _onDestroy = new Subject<void>();
 
   constructor(public docItems: DocumentationItems,
               private _router: Router) { }
 
   ngOnInit() {
-    this._router.events.subscribe(() => this.setExpansions());
+    this._router.events
+      .switchMap(() => this.params)
+      .takeUntil(this._onDestroy)
+      .subscribe(p => this.setExpansions());
+
     this.setExpansions();
+  }
+
+  ngOnDestroy() {
+    this._onDestroy.next();
+    this._onDestroy.complete();
   }
 
   setExpansions() {
