@@ -8,14 +8,14 @@
   $is-dark-theme: map-get($theme, is-dark);
   $nav-background-opacity: if($is-dark-theme, 0.2, 0.03);
 
-  .docs-component-viewer-nav-inner {
+  .docs-component-viewer-nav-content {
     background: rgba(0, 0, 0, $nav-background-opacity);
 
     &::-webkit-scrollbar-thumb {
       background: rgba(0, 0, 0, .26);
     }
 
-    h3 {
+    button {
       color: rgba(mat-color($foreground, text), .5);
     }
 
@@ -36,7 +36,7 @@
 
   @media (max-width: $small-breakpoint-width) {
     .docs-component-viewer-sidenav {
-      .docs-component-viewer-nav-inner {
+      .docs-component-viewer-nav-content {
         background: none;
       }
     }

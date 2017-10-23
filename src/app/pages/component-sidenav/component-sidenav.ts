@@ -88,6 +88,7 @@ export class ComponentNav implements OnInit, OnDestroy {
     this._onDestroy.complete();
   }
 
+  /** Set the expansions based on the route url */
   setExpansions(params: Params) {
     const categories = this.docItems.getCategories(params.section);
     for (const category of categories) {
@@ -106,14 +107,17 @@ export class ComponentNav implements OnInit, OnDestroy {
     }
   }
 
+  /** Gets the expanded state */
   _getExpandedState(category: string) {
     return this.getExpanded(category) ? 'expanded' : 'collapsed';
   }
 
+  /** Toggles the expanded state */
   toggleExpand(category: string) {
     this.expansions[category] = !this.expansions[category];
   }
 
+  /** Gets whether expanded or not */
   getExpanded(category: string): boolean {
     return this.expansions[category];
   }

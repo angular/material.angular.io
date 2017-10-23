@@ -1,11 +1,11 @@
 <div class="docs-component-viewer-nav">
-  <div class="docs-component-viewer-nav-inner">
+  <div class="docs-component-viewer-nav-content">
     <nav *ngFor="let category of docItems.getCategories((params | async)?.section); let last = last;">
-      <h3 (click)="toggleExpand(category.id)">
+      <button (click)="toggleExpand(category.id)">
         {{category.name}}
         <mat-icon *ngIf="!getExpanded(category.id)">keyboard_arrow_down</mat-icon>
         <mat-icon *ngIf="getExpanded(category.id)">keyboard_arrow_up</mat-icon>
-      </h3>
+      </button>
       <ul [@bodyExpansion]="_getExpandedState(category.id)">
         <li *ngFor="let component of category.items">
           <a [routerLink]="'/' + (params | async)?.section+ '/' + component.id"

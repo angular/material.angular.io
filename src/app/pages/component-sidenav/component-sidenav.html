@@ -1,16 +1,16 @@
 <mat-sidenav-container class="docs-component-viewer-sidenav-container">
+  <!-- If on small screen, menu resides in drawer -->
   <mat-sidenav #sidenav class="docs-component-viewer-sidenav"
               *ngIf="isScreenSmall()"
               [opened]="!isScreenSmall()"
               [mode]="isScreenSmall() ? 'over' : 'side'">
-    <app-component-nav
-      [params]="params">
-    </app-component-nav>
+    <app-component-nav [params]="params"></app-component-nav>
   </mat-sidenav>
   <div class="docs-component-sidenav-content">
     <component-page-header (toggleSidenav)="sidenav.toggle()"></component-page-header>
     <div class="docs-component-sidenav-inner-content">
       <div class="docs-component-sidenav-body-content">
+        <!-- If on large screen, menu resides to left of content -->
         <app-component-nav 
           *ngIf="!isScreenSmall()"
           [params]="params">
