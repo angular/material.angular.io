@@ -22,7 +22,6 @@ docsContentRepo=https://github.com/angular/material2-docs-content
 # someone is running on a Mac.
 apiPath=${tmpAssetClonePath}/api
 guidesPath=${tmpAssetClonePath}/guides
-overviewPath=${tmpAssetClonePath}/overview
 examplesPath=${tmpAssetClonePath}/examples
 plunkerExamplesPath=${tmpAssetClonePath}/plunker/examples
 
@@ -34,7 +33,7 @@ mkdir -p ${exampleAssetsPath} ${docAssetsPath}
 git clone ${docsContentRepo} ${tmpAssetClonePath} --depth 1
 
 # Copy files over to their proper place in src/assets
-cp -R ${apiPath} ${overviewPath} ${guidesPath} ${docAssetsPath}
+cp -R ${apiPath} ${guidesPath} ${docAssetsPath}
 cp -R ${examplesPath} ${exampleAssetsPath}
 cp -R ${plunkerExamplesPath} ${plunkerExampleAssetsPath}
 
