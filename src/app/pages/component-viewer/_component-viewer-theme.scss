@@ -17,6 +17,6 @@
   }
 
   .docs-api-h3 {
-    border-bottom: 1px solid rgba(mat-color($foreground, secondary-text), 0.15);
+    border-bottom: 1px solid mat-color($foreground, divider);
   }
 }
