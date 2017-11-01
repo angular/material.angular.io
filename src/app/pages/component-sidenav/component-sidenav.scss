@@ -125,7 +125,7 @@ app-component-sidenav {
   // footer should always reside at the bottom of the screen.
   // if container not 100vh, push min height to that minus
   // the offset of the top bar and the footer height
-  min-height: calc(100vh - 264px);
+  min-height: calc(100vh - 245px);
 }
 
 @media (max-width: $small-breakpoint-width) {
@@ -133,11 +133,6 @@ app-component-sidenav {
   .docs-component-viewer-sidenav-container .docs-component-viewer-sidenav {
     // offset the top by the header + tabs on a small screen
     top: 42px;
-  }
-
-  .mat-sidenav-content {
-    // offset the top by the header + tabs on a small screen
-    margin-top: 42px;
   }
 
   .docs-component-viewer-nav {
