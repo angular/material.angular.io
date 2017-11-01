@@ -109,8 +109,7 @@ app-component-sidenav {
   display: block;
   overflow: hidden;
   position: absolute;
-  // Offset the top by the toolbar height
-  top: 50px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;

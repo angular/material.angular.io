@@ -43,6 +43,7 @@ app-component-viewer {
 .docs-component-api,
 .docs-component-overview {
   width: 80%;
+  display: inline-flex;
 
   @media (max-width: $small-breakpoint-width) {
     width: 100%;
