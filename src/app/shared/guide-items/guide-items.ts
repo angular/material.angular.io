@@ -45,7 +45,7 @@ const GUIDES = [
   {
     id: 'elevation',
     name: 'Using elevation helpers',
-    document: '/assets/documents/guides/material-material-elevation.html'
+    document: '/assets/documents/guides/material-elevation.html'
   },
 ];
 
