@@ -80,17 +80,20 @@ export class TableOfContents implements OnDestroy, OnInit {
     this._destroyed.complete();
   }
 
-  updateScrollPosition(): void {
+  contentReady(): void {
     this._links = this.createLinks();
     this.scrollFragmentIntoView();
   }
 
   /** Find the target from the url fragment and scroll it into view. */
   private scrollFragmentIntoView(): void {
-    const target = document.getElementById(this._urlFragment);
-    if (target) {
-      target.scrollIntoView();
-    }
+    this._ngZone.runTask(() => {
+      const target = document.getElementById(this._urlFragment);
+      if (target) {
+        // scrollIntoView may require next macrotask if target has just been loaded
+        setTimeout(() => target.scrollIntoView());
+      }
+    });
   }
 
   /** Gets links generated from header selectors. */

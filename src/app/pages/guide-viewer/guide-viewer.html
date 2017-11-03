@@ -4,8 +4,8 @@
 
 <div class="docs-guide-wrapper">
   <div class="docs-guide-toc-and-content">
-    <doc-viewer class="docs-guide-content" 
-    (contentLoaded)="toc.updateScrollPosition()"
+    <doc-viewer class="docs-guide-content"
+      (contentLoaded)="toc.contentReady()"
       [documentUrl]="guide.document"></doc-viewer>
     <table-of-contents #toc></table-of-contents>
   </div>
