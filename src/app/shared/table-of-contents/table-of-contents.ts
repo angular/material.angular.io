@@ -69,7 +69,7 @@ export class TableOfContents implements OnInit {
       Observable.fromEvent(this._scrollContainer, 'scroll')
         .takeUntil(this._destroyed)
         .debounceTime(10)
-        .subscribe(() => this.onScroll());
+        .subscribe(() => this.setActiveLink());
     });
   }
 
@@ -108,7 +108,7 @@ export class TableOfContents implements OnInit {
     });
   }
 
-  private onScroll(): void {
+  private setActiveLink(): void {
     this._activeLinkIndex = this.links
         .findIndex((link, i) => this.isLinkActive(link, this.links[i + 1]));
   }
