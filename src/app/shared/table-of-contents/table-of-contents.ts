@@ -1,11 +1,10 @@
-import {Component, ElementRef, Inject, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, Input, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {DOCUMENT} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/takeUntil';
-import {Observable} from 'rxjs/Observable';
+import {ScrollDispatcher, CdkScrollable} from '@angular/cdk/scrolling';
 import {Subject} from 'rxjs/Subject';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/takeUntil';
 
 interface Link {
   /* id of the section*/
@@ -26,12 +25,11 @@ interface Link {
   styleUrls: ['./table-of-contents.scss'],
   templateUrl: './table-of-contents.html',
 })
-export class TableOfContents implements OnInit {
+export class TableOfContents implements OnDestroy, OnInit {
 
-  @Input() links: Link[] = [];
-  @Input() container: string;
   @Input() headerSelectors = '.docs-markdown-h3,.docs-markdown-h4';
 
+  _links: Link[] = [];
   _activeLinkIndex: number;
   _rootUrl: string;
   private _scrollContainer: any;
@@ -41,44 +39,49 @@ export class TableOfContents implements OnInit {
   constructor(private _router: Router,
               private _route: ActivatedRoute,
               private _element: ElementRef,
+              private _scrollDispatcher: ScrollDispatcher,
+              private _ngZone: NgZone,
               @Inject(DOCUMENT) private _document: Document) {
 
-    this._router.events.takeUntil(this._destroyed).subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+    // Create new links and save root url at the end of navigation
+    this._router.events
+      .filter(event => event instanceof NavigationEnd)
+      .takeUntil(this._destroyed)
+      .subscribe(event => {
         const rootUrl = _router.url.split('#')[0];
         if (rootUrl !== this._rootUrl) {
-          this.links = this.createLinks();
+          this._links = this.createLinks();
           this._rootUrl = rootUrl;
         }
-      }
-    });
+      });
 
-    this._route.fragment.takeUntil(this._destroyed).subscribe(fragment => {
-      this._urlFragment = fragment;
-      this.scrollFragmentIntoView();
-    });
+    // Scroll to section when the fragment changes
+    this._route.fragment
+      .takeUntil(this._destroyed)
+      .subscribe(fragment => {
+        this._urlFragment = fragment;
+        this.scrollFragmentIntoView();
+      });
   }
 
-  ngOnInit(): void {
-    // On init, the sidenav content element doesn't yet exist, so it's not possible
-    // to subscribe to its scroll event until next tick (when it does exist).
-    Promise.resolve().then(() => {
-      this._scrollContainer = this.container ?
-        this._document.querySelectorAll(this.container)[0] : window;
-
-      Observable.fromEvent(this._scrollContainer, 'scroll')
-        .takeUntil(this._destroyed)
-        .debounceTime(10)
-        .subscribe(() => this.setActiveLink());
-    });
+  ngOnInit() {
+    // Update active link after scroll events
+    this._scrollDispatcher.scrolled()
+      .takeUntil(this._destroyed)
+      .subscribe(scrollable =>
+        this._ngZone.run(() => {
+          this.updateScrollContainer(scrollable);
+          this.setActiveLink();
+        }));
   }
 
   ngOnDestroy(): void {
     this._destroyed.next();
+    this._destroyed.complete();
   }
 
   updateScrollPosition(): void {
-    this.links = this.createLinks();
+    this._links = this.createLinks();
     this.scrollFragmentIntoView();
   }
 
@@ -109,8 +112,8 @@ export class TableOfContents implements OnInit {
   }
 
   private setActiveLink(): void {
-    this._activeLinkIndex = this.links
-        .findIndex((link, i) => this.isLinkActive(link, this.links[i + 1]));
+    this._activeLinkIndex = this._links
+        .findIndex((link, i) => this.isLinkActive(link, this._links[i + 1]));
   }
 
   private isLinkActive(currentLink: any, nextLink: any): boolean {
@@ -132,6 +135,12 @@ export class TableOfContents implements OnInit {
     }
 
     return 0;
+  }
+
+  private updateScrollContainer(scrollable: CdkScrollable | void): void {
+    this._scrollContainer = scrollable ?
+      scrollable.getElementRef().nativeElement :
+      window;
   }
 
 }
