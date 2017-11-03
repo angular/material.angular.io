@@ -4,7 +4,7 @@
     <a [href]="_rootUrl + '#' + link.id"
       *ngFor="let link of links; let i = index"
       class="docs-level-{{link.type}} docs-link"
-      [class.docs-active]="link.active">
+      [class.docs-active]="_activeLinkIndex === i">
       {{link.name}}
     </a>
   </nav>

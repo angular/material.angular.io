@@ -45,7 +45,6 @@ describe('TableOfContents', () => {
         id: 'test',
         name: 'test',
         top: 0,
-        active: false
       }
     ];
 

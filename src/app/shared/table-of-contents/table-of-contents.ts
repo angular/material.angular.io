@@ -14,9 +14,6 @@ interface Link {
   /* header type h3/h4 */
   type: string;
 
-  /* If the anchor is in view of the page */
-  active: boolean;
-
   /* name of the anchor */
   name: string;
 
@@ -27,7 +24,7 @@ interface Link {
 @Component({
   selector: 'table-of-contents',
   styleUrls: ['./table-of-contents.scss'],
-  templateUrl: './table-of-contents.html'
+  templateUrl: './table-of-contents.html',
 })
 export class TableOfContents implements OnInit {
 
@@ -35,6 +32,7 @@ export class TableOfContents implements OnInit {
   @Input() container: string;
   @Input() headerSelectors = '.docs-markdown-h3,.docs-markdown-h4';
 
+  _activeLinkIndex: number;
   _rootUrl: string;
   private _scrollContainer: any;
   private _destroyed = new Subject();
@@ -103,7 +101,7 @@ export class TableOfContents implements OnInit {
   }
 
   private createLinks(): Link[] {
-    const links = [];
+    const links: Link[] = [];
     const headers =
         Array.from(this._document.querySelectorAll(this.headerSelectors)) as HTMLElement[];
 
@@ -114,10 +112,9 @@ export class TableOfContents implements OnInit {
         const {top} = header.getBoundingClientRect();
         links.push({
           name,
+          top,
           type: header.tagName.toLowerCase(),
-          top: top,
-          id: header.id,
-          active: false
+          id: header.id
         });
       }
     }
@@ -126,9 +123,8 @@ export class TableOfContents implements OnInit {
   }
 
   private onScroll(): void {
-    for (let i = 0; i < this.links.length; i++) {
-      this.links[i].active = this.isLinkActive(this.links[i], this.links[i + 1]);
-    }
+    this._activeLinkIndex = this.links
+        .findIndex((link, i) => this.isLinkActive(link, this.links[i + 1]));
   }
 
   private isLinkActive(currentLink: any, nextLink: any): boolean {
