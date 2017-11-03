@@ -90,36 +90,22 @@ export class TableOfContents implements OnInit {
     }
   }
 
-  /** Gets the scroll offset of the scroll container */
-  private getScrollOffset(): number {
-    const {top} = this._element.nativeElement.getBoundingClientRect();
-    if (typeof this._scrollContainer.scrollTop !== 'undefined') {
-      return this._scrollContainer.scrollTop + top;
-    } else if (typeof this._scrollContainer.pageYOffset !== 'undefined') {
-      return this._scrollContainer.pageYOffset + top;
-    }
-  }
-
+  /** Gets links generated from header selectors. */
   private createLinks(): Link[] {
-    const links: Link[] = [];
     const headers =
         Array.from(this._document.querySelectorAll(this.headerSelectors)) as HTMLElement[];
 
-    if (headers.length) {
-      for (const header of headers) {
-        // remove the 'link' icon name from the inner text
-        const name = header.innerText.trim().replace(/^link/, '');
-        const {top} = header.getBoundingClientRect();
-        links.push({
-          name,
-          top,
-          type: header.tagName.toLowerCase(),
-          id: header.id
-        });
-      }
-    }
-
-    return links;
+    return headers.map(header => {
+      // remove the 'link' icon name from the inner text
+      const name = header.innerText.trim().replace(/^link/, '');
+      const {top} = header.getBoundingClientRect();
+      return {
+        name,
+        top,
+        type: header.tagName.toLowerCase(),
+        id: header.id
+      };
+    });
   }
 
   private onScroll(): void {
@@ -132,6 +118,20 @@ export class TableOfContents implements OnInit {
     // being scrolled passed the next link
     const scrollOffset = this.getScrollOffset();
     return scrollOffset >= currentLink.top && !(nextLink && nextLink.top < scrollOffset);
+  }
+
+  /** Gets the scroll offset of the scroll container */
+  private getScrollOffset(): number {
+    const {top} = this._element.nativeElement.getBoundingClientRect();
+    if (this._scrollContainer.scrollTop != null) {
+      return this._scrollContainer.scrollTop + top;
+    }
+
+    if (this._scrollContainer.pageYOffset != null) {
+      return this._scrollContainer.pageYOffset + top;
+    }
+
+    return 0;
   }
 
 }
