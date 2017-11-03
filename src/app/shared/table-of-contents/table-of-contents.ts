@@ -55,11 +55,7 @@ export class TableOfContents implements OnInit {
 
     this._route.fragment.takeUntil(this._destroyed).subscribe(fragment => {
       this._urlFragment = fragment;
-
-      const target = document.getElementById(this._urlFragment);
-      if (target) {
-        target.scrollIntoView();
-      }
+      this.scrollFragmentIntoView();
     });
   }
 
@@ -83,7 +79,11 @@ export class TableOfContents implements OnInit {
 
   updateScrollPosition(): void {
     this.links = this.createLinks();
+    this.scrollFragmentIntoView();
+  }
 
+  /** Find the target from the url fragment and scroll it into view. */
+  private scrollFragmentIntoView(): void {
     const target = document.getElementById(this._urlFragment);
     if (target) {
       target.scrollIntoView();
