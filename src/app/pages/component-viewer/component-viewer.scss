@@ -41,7 +41,8 @@ app-component-viewer {
   table-of-contents {
     top: 35px;
 
-    // Reposition on top of content on small screens
+    // Reposition on top of content on small screens and remove
+    // sticky positioning
     @media (max-width: $small-breakpoint-width) {
       order: -1;
       position: inherit;
