@@ -15,6 +15,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ExampleViewer} from '../example-viewer/example-viewer';
 import {HeaderLink} from './header-link';
 import {ComponentPortal, DomPortalHost} from '@angular/cdk/portal';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'doc-viewer',
@@ -40,7 +41,8 @@ export class DocViewer implements OnDestroy {
               private _elementRef: ElementRef,
               private _http: Http,
               private _injector: Injector,
-              private _viewContainerRef: ViewContainerRef) {}
+              private _viewContainerRef: ViewContainerRef,
+              private _router: Router) {}
 
   /** Fetch a document by URL. */
   private _fetchDocument(url: string) {
@@ -53,7 +55,9 @@ export class DocViewer implements OnDestroy {
         response => {
           // TODO(mmalerba): Trust HTML.
           if (response.ok) {
-            this._elementRef.nativeElement.innerHTML = response.text();
+            const currentUrl = this._router.url.split('#')[0];
+            this._elementRef.nativeElement.innerHTML =
+              response.text().replace(/href="(#\D*?)"/g, `href='${currentUrl}$1'`);
             this.textContent = this._elementRef.nativeElement.textContent;
             this._loadComponents('material-docs-example', ExampleViewer);
             this._loadComponents('header-link', HeaderLink);
