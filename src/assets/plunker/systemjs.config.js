@@ -36,6 +36,10 @@ System.config({
     '@angular/material': 'https://unpkg.com/@angular/material/bundles/material.umd.js',
     '@angular/cdk': 'https://unpkg.com/@angular/cdk/bundles/cdk.umd.js',
 
+    // Angular Material Moment Adapter for Datepicker
+    '@angular/material-moment-adapter': 'https://unpkg.com/@angular/material-moment-adapter',
+    'moment': 'https://unpkg.com/moment',
+
     // CDK Secondary entry points
     '@angular/cdk/a11y': 'https://unpkg.com/@angular/cdk/bundles/cdk-a11y.umd.js',
     '@angular/cdk/accordion': 'https://unpkg.com/@angular/cdk/bundles/cdk-accordion.umd.js',
