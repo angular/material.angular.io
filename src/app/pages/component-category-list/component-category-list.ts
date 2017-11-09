@@ -1,12 +1,17 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, NgModule, OnInit, OnDestroy} from '@angular/core';
 import {MatCardModule} from '@angular/material';
 import {CommonModule} from '@angular/common';
-import {ActivatedRoute, Params, RouterModule} from '@angular/router';
-import {DocumentationItems, SECTIONS} from '../../shared/documentation-items/documentation-items';
+import {ActivatedRoute, RouterModule} from '@angular/router';
+import {
+  DocumentationItems,
+  SECTIONS,
+  DocCategory
+} from '../../shared/documentation-items/documentation-items';
 import {ComponentPageTitle} from '../page-title/page-title';
 import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/combineLatest';
+import {Subscription} from 'rxjs/Subscription';
+import 'rxjs/add/operator/combineLatest';
 
 
 @Component({
@@ -14,8 +19,10 @@ import 'rxjs/add/observable/combineLatest';
   templateUrl: './component-category-list.html',
   styleUrls: ['./component-category-list.scss']
 })
-export class ComponentCategoryList implements OnInit {
-  params: Observable<Params>;
+export class ComponentCategoryList implements OnInit, OnDestroy {
+  section: string;
+  categories: DocCategory[];
+  private _sectionUpdateSubscription: Subscription;
 
   constructor(public docItems: DocumentationItems,
               public _componentPageTitle: ComponentPageTitle,
@@ -23,9 +30,17 @@ export class ComponentCategoryList implements OnInit {
 
   ngOnInit() {
     // Combine params from all of the path into a single object.
-    this.params = Observable.combineLatest(
-      this._route.pathFromRoot.map(route => route.params),
-      Object.assign);
+    this._sectionUpdateSubscription = Observable
+      .combineLatest(this._route.pathFromRoot.map(route => route.params), Object.assign)
+      .subscribe(params => {
+        this.section = params['section'];
+        this.categories = this.docItems.getCategories(this.section);
+        this._componentPageTitle.title = SECTIONS[this.section];
+      });
+  }
+
+  ngOnDestroy() {
+    this._sectionUpdateSubscription.unsubscribe();
   }
 }
 
