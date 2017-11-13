@@ -4,5 +4,5 @@
 <doc-viewer
   documentUrl="/assets/documents/api/{{componentViewer.componentDocItem.packageName}}-{{componentViewer.componentDocItem.id}}.html"
   class="docs-component-view-text-content docs-component-api"
-  (contentLoaded)="toc.contentReady()"></doc-viewer>
+  (contentLoaded)="toc.createLinksAndScroll()"></doc-viewer>
 <table-of-contents #toc headerSelectors=".docs-api-h3,.docs-api-h4"></table-of-contents>
