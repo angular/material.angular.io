@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component, ElementRef, NgModule, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, NgModule, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatTabsModule} from '@angular/material';
 import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
 import 'rxjs/add/operator/map';
@@ -50,14 +50,13 @@ export class ComponentViewer {
   templateUrl: './component-overview.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class ComponentOverview implements OnInit {
+export class ComponentOverview {
   @ViewChild('intialFocusTarget') focusTarget: ElementRef;
 
   constructor(public componentViewer: ComponentViewer) {}
 
-  ngOnInit() {
-    // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
-    setTimeout(() => this.focusTarget.nativeElement.focus(), 100);
+  focusInitialTarget() {
+    this.focusTarget.nativeElement.focus();
   }
 }
 

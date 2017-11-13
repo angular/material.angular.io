@@ -4,6 +4,6 @@
 <doc-viewer
     documentUrl="/assets/documents/overview/{{componentViewer.componentDocItem.packageName}}-{{componentViewer.componentDocItem.id}}.html"
     class="docs-component-view-text-content docs-component-overview"
-    (contentLoaded)="toc.createLinksAndScroll()">
+    (contentLoaded)="focusInitialTarget(); toc.createLinksAndScroll()">
 </doc-viewer>
 <table-of-contents #toc></table-of-contents>
