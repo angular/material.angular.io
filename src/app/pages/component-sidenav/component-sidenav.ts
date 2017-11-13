@@ -1,5 +1,5 @@
 import {Component, NgZone, ViewEncapsulation, ViewChild, OnInit, NgModule} from '@angular/core';
-import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
+import {DocumentationItems, SECTIONS} from '../../shared/documentation-items/documentation-items';
 import {MatSidenav, MatSidenavModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 import {FooterModule} from '../../shared/footer/footer';
 import {Observable} from 'rxjs/Observable';
+import {ComponentPageTitle} from '../page-title/page-title';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -23,6 +24,7 @@ export class ComponentSidenav implements OnInit {
 
   constructor(public docItems: DocumentationItems,
               private _route: ActivatedRoute,
+              public _componentPageTitle: ComponentPageTitle,
               private _router: Router,
               zone: NgZone) {
     // TODO(josephperrott): Move to CDK breakpoint management once available.
@@ -37,6 +39,12 @@ export class ComponentSidenav implements OnInit {
         this.sidenav.close();
       }
     });
+    // title on topbar navigation
+    this._route.params.subscribe( params => {
+      let sectionName = params['section'];
+      this._componentPageTitle.title = SECTIONS[sectionName];
+    });
+
     // Combine params from all of the path into a single object.
     this.params = Observable.combineLatest(
       this._route.pathFromRoot.map(route => route.params),
