@@ -22,7 +22,7 @@ const TEMPLATE_FILES = [
 
 const TAGS: string[] = ['angular', 'material', 'example'];
 
-const depedencies = {
+const dependencies = {
   '@angular/cdk': '^5.0.0-rc0',
   '@angular/material': '^5.0.0-rc0',
   '@angular/animations': '^5.0.0',
@@ -46,7 +46,7 @@ const depedencies = {
  * Stackblitz writer, write example files to stackblitz
  *
  * StackBlitz API
- * URL: http://plnkr.co/edit/?p=preview
+ * URL: https://run.stackblitz.com/api/aio/v1/
  * data: {
  *   // File name, directory and content of files
  *   files[file-name1]: file-content1,
@@ -57,8 +57,8 @@ const depedencies = {
  *   description: description,
  *   // Private or not
  *   private: true
- *  // Depedencies
- *  depedencies: depedencies
+ *  // Dependencies
+ *  dependencies: dependencies
  * }
  */
 @Injectable()
@@ -75,7 +75,7 @@ export class StackblitzWriter {
     TAGS.forEach((tag, i) => this._appendFormInput(form, `tags[${i}]`, tag));
     this._appendFormInput(form, 'private', 'true');
     this._appendFormInput(form, 'description', data.description);
-    this._appendFormInput(form, 'dependencies', JSON.stringify(depedencies));
+    this._appendFormInput(form, 'dependencies', JSON.stringify(dependencies));
 
     return new Promise(resolve => {
       let templateContents = TEMPLATE_FILES
