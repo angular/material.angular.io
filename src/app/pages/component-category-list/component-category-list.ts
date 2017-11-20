@@ -32,7 +32,7 @@ export class ComponentCategoryList implements OnInit, OnDestroy {
     // title on topbar navigation
     this.routeParamSubscription = this.params.subscribe(params => {
       const sectionName = params['section'];
-      this._componentPageTitle.title = SECTIONS[sectionName];;
+      this._componentPageTitle.title = SECTIONS[sectionName];
     });
   }
 
