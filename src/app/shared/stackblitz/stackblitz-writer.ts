@@ -4,7 +4,7 @@ import {ExampleData} from '@angular/material-examples';
 import 'rxjs/add/operator/toPromise';
 import {VERSION} from '@angular/material';
 
-const STACKBLITZ_URL = 'https://run.stackblitz.com/api/aio/v1/';
+const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1/';
 
 const COPYRIGHT =
   `Copyright 2017 Google Inc. All Rights Reserved.
@@ -21,19 +21,21 @@ const TEMPLATE_FILES = [
 ];
 
 const TAGS: string[] = ['angular', 'material', 'example'];
+const angularVersion = '^5.0.0';
+const materialVersion = '^5.0.0-rc.1';
 
 const dependencies = {
-  '@angular/cdk': '^5.0.0-rc0',
-  '@angular/material': '^5.0.0-rc0',
-  '@angular/animations': '^5.0.0',
-  '@angular/common': '^5.0.0',
-  '@angular/compiler': '^5.0.0',
-  '@angular/core': '^5.0.0',
-  '@angular/forms': '^5.0.0',
-  '@angular/http': '^5.0.0',
-  '@angular/platform-browser': '^5.0.0',
-  '@angular/platform-browser-dynamic': '^5.0.0',
-  '@angular/router': '^5.0.0',
+  '@angular/cdk': materialVersion,
+  '@angular/material': materialVersion,
+  '@angular/animations': angularVersion,
+  '@angular/common': angularVersion,
+  '@angular/compiler': angularVersion,
+  '@angular/core': angularVersion,
+  '@angular/forms': angularVersion,
+  '@angular/http': angularVersion,
+  '@angular/platform-browser': angularVersion,
+  '@angular/platform-browser-dynamic': angularVersion,
+  '@angular/router': angularVersion,
   'angular-in-memory-web-api': '~0.5.0',
   'core-js': '^2.4.1',
   'rxjs': '^5.5.2',
