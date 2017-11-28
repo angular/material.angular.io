@@ -5,31 +5,45 @@
 // If a category becomes empty (e.g. BS and required), then the corresponding job must be commented
 // out in Travis configuration.
 const configuration = {
-  'Chrome':       { unitTest: {target: 'SL'}, e2e: {target: null}},
-  'Firefox':      { unitTest: {target: 'SL'}, e2e: {target: null}},
-  'ChromeBeta':   { unitTest: {target: null}, e2e: {target: null}},
-  'FirefoxBeta':  { unitTest: {target: null}, e2e: {target: null}},
-  'ChromeDev':    { unitTest: {target: null}, e2e: {target: null}},
-  'FirefoxDev':   { unitTest: {target: null}, e2e: {target: null}},
-  'IE9':          { unitTest: {target: null}, e2e: {target: null}},
-  'IE10':         { unitTest: {target: null}, e2e: {target: null}},
-  'IE11':         { unitTest: {target: null}, e2e: {target: null}},
-  'Edge':         { unitTest: {target: null}, e2e: {target: null}},
-  'Android4.1':   { unitTest: {target: null}, e2e: {target: null}},
-  'Android4.2':   { unitTest: {target: null}, e2e: {target: null}},
-  'Android4.3':   { unitTest: {target: null}, e2e: {target: null}},
-  'Android4.4':   { unitTest: {target: null}, e2e: {target: null}},
-  'Android5':     { unitTest: {target: null}, e2e: {target: null}},
-  'Safari7':      { unitTest: {target: null}, e2e: {target: null}},
-  'Safari8':      { unitTest: {target: null}, e2e: {target: null}},
-  'Safari9':      { unitTest: {target: 'BS'}, e2e: {target: null}},
-  'iOS7':         { unitTest: {target: null}, e2e: {target: null}},
-  'iOS8':         { unitTest: {target: null}, e2e: {target: null}},
-  'iOS9':         { unitTest: {target: 'BS'}, e2e: {target: null}},
-  'WindowsPhone': { unitTest: {target: null}, e2e: {target: null}}
+  'ChromeHeadless_CI': { unitTest: {target: 'TC', required: true  }},
+  'FirefoxHeadless':   { unitTest: {target: 'TC', required: true  }},
+  'Chrome':            { unitTest: {target: 'SL'}, e2e: {target: null}},
+  'Firefox':           { unitTest: {target: 'SL'}, e2e: {target: null}},
+  'ChromeBeta':        { unitTest: {target: null}, e2e: {target: null}},
+  'FirefoxBeta':       { unitTest: {target: null}, e2e: {target: null}},
+  'ChromeDev':         { unitTest: {target: null}, e2e: {target: null}},
+  'FirefoxDev':        { unitTest: {target: null}, e2e: {target: null}},
+  'IE9':               { unitTest: {target: null}, e2e: {target: null}},
+  'IE10':              { unitTest: {target: null}, e2e: {target: null}},
+  'IE11':              { unitTest: {target: null}, e2e: {target: null}},
+  'Edge':              { unitTest: {target: null}, e2e: {target: null}},
+  'Android4.1':        { unitTest: {target: null}, e2e: {target: null}},
+  'Android4.2':        { unitTest: {target: null}, e2e: {target: null}},
+  'Android4.3':        { unitTest: {target: null}, e2e: {target: null}},
+  'Android4.4':        { unitTest: {target: null}, e2e: {target: null}},
+  'Android5':          { unitTest: {target: null}, e2e: {target: null}},
+  'Safari7':           { unitTest: {target: null}, e2e: {target: null}},
+  'Safari8':           { unitTest: {target: null}, e2e: {target: null}},
+  'Safari9':           { unitTest: {target: 'BS'}, e2e: {target: null}},
+  'iOS7':              { unitTest: {target: null}, e2e: {target: null}},
+  'iOS8':              { unitTest: {target: null}, e2e: {target: null}},
+  'iOS9':              { unitTest: {target: 'BS'}, e2e: {target: null}},
+  'WindowsPhone':      { unitTest: {target: null}, e2e: {target: null}}
 };
 
 exports.customLaunchers = {
+  "ChromeHeadless_CI": {
+    "base": "ChromeHeadless",
+    "flags": [
+      "--window-size=1024,768"
+    ]
+  },
+  "FirefoxHeadless": {
+    "base": "Firefox",
+    "flags": [
+      "-headless"
+    ]
+  },
   'ChromeNoSandbox': {
     base: 'Chrome',
     flags: ['--no-sandbox']
@@ -274,6 +288,7 @@ exports.customLaunchers = {
 exports.platformMap = {
   'saucelabs': buildConfiguration('unitTest', 'SL'),
   'browserstack': buildConfiguration('unitTest', 'BS'),
+  'unit': buildConfiguration('unitTest', 'TC'),
 };
 
 
@@ -296,5 +311,5 @@ function buildConfiguration(type, target) {
   return Object.keys(configuration)
     .map(item => [item, configuration[item][type]])
     .filter(([item, conf]) => conf.target == target)
-    .map(([item, conf]) => `${target}_${item.toUpperCase()}`);
+    .map(([item, conf]) => target === 'TC' ? item : `${target}_${item.toUpperCase()}`);
 }

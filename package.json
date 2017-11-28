@@ -50,6 +50,7 @@
     "karma": "1.2.0",
     "karma-browserstack-launcher": "^1.2.0",
     "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.1",
     "karma-jasmine": "^1.1.0",
     "karma-remap-istanbul": "^0.2.1",
     "karma-sauce-launcher": "^1.1.0",
