@@ -1,8 +1,13 @@
 language: node_js
 sudo: false
 
+
 node_js:
-  - '6.9.1'
+  - '7'
+
+addons:
+  chrome: stable
+  firefox: latest
 
 branches:
   only:
@@ -20,7 +25,7 @@ env:
   matrix:
     - MODE=lint
     - MODE=e2e
-    - MODE=saucelabs
+    - MODE=unit
     - MODE=browserstack
 
 matrix:

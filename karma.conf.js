@@ -77,7 +77,7 @@ module.exports = function (config) {
     } else if (platformType === 'browserstack') {
       config.browserStack.build = buildId;
       config.browserStack.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
-    } else {
+    } else if (platformType !== 'unit') {
       throw new Error(`Platform "${platform}" unknown, but Travis specified. Exiting.`);
     }
 
