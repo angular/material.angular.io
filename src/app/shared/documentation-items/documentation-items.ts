@@ -149,8 +149,8 @@ const DOCS: {[key: string]: DocCategory[]} = {
       name: 'Data table',
       items: [
         {id: 'table', name: 'Table', examples: [
-          'table-filtering', 
-          'table-pagination', 
+          'table-filtering',
+          'table-pagination',
           'table-sorting',
           'table-http',
           'table-overview',
