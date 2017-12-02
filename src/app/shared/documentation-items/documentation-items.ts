@@ -105,7 +105,7 @@ const DOCS: {[key: string]: DocCategory[]} = {
       summary: 'Sidenavs, toolbars, menus',
       items: [
         {id: 'menu', name: 'Menu', examples: ['menu-icons']},
-        {id: 'sidenav', name: 'Sidenav', examples: ['sidenav-fab']},
+        {id: 'sidenav', name: 'Sidenav', examples: ['sidenav-overview']},
         {id: 'toolbar', name: 'Toolbar', examples: ['toolbar-multirow']},
       ]
     },
@@ -149,8 +149,8 @@ const DOCS: {[key: string]: DocCategory[]} = {
       name: 'Data table',
       items: [
         {id: 'table', name: 'Table', examples: [
-          'table-filtering', 
-          'table-pagination', 
+          'table-filtering',
+          'table-pagination',
           'table-sorting',
           'table-http',
           'table-overview',
