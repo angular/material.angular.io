@@ -1,13 +1,14 @@
+import {NgModule} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {ComponentViewer, ComponentViewerModule} from './component-viewer';
-import {DocsAppTestingModule} from '../../testing/testing-module';
+import {MatButtonModule, MatIconModule} from '@angular/material';
 
 import {EXAMPLE_COMPONENTS} from '@angular/material-examples';
-import {MatButtonModule} from '@angular/material';
-import {NgModule} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ActivatedRoute} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
+import {Observable} from 'rxjs/Observable';
+import {DocsAppTestingModule} from '../../testing/testing-module';
+import {ComponentViewer, ComponentViewerModule} from './component-viewer';
 
 const docItemsId = 'button';
 const exampleKey = 'button-types';
@@ -20,7 +21,13 @@ const mockActivatedRoute = {
   params: Observable.create(observer => {
     observer.next({id: docItemsId});
     observer.complete();
-  })
+  }),
+  parent: {
+    params: Observable.create(observer => {
+      observer.next({section: 'components'});
+      observer.complete();
+    })
+  }
 };
 
 describe('ComponentViewer', () => {
@@ -48,12 +55,14 @@ describe('ComponentViewer', () => {
 });
 
 
-// Create a version of ExampleModule for testing with only one component so that we odn't have
+// Create a version of ExampleModule for testing with only one component so that we don't have
 // to compile all of the examples for these tests.
 @NgModule({
   imports: [
     MatButtonModule,
+    MatIconModule,
     NoopAnimationsModule,
+    RouterTestingModule.withRoutes([]),
   ],
   declarations: [EXAMPLE_COMPONENTS[exampleKey].component],
   entryComponents: [EXAMPLE_COMPONENTS[exampleKey].component],

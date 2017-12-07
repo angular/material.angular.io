@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Load the retry-call utility function.
+source ./scripts/retry-call.sh
+
 start_tunnel() {
   case "$MODE" in
 
@@ -16,18 +19,15 @@ start_tunnel() {
 
 wait_for_tunnel() {
   case "$MODE" in
-
-    e2e|saucelabs*)
-      ./scripts/saucelabs/block-tunnel.sh
-    ;;
-
+    e2e*|saucelabs*)
+      retryCall ${WAIT_RETRIES} ./scripts/saucelabs/wait-tunnel.sh
+      ;;
     browserstack*)
-      ./scripts/browserstack/block-tunnel.sh
-    ;;
-
+      retryCall ${WAIT_RETRIES} ./scripts/browserstack/wait-tunnel.sh
+      ;;
+    *)
+      ;;
   esac
-
-  sleep 10
 }
 
 teardown_tunnel() {

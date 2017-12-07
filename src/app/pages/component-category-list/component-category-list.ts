@@ -1,12 +1,12 @@
+import {CommonModule} from '@angular/common';
 import {Component, NgModule, OnInit} from '@angular/core';
 import {MatCardModule} from '@angular/material';
-import {CommonModule} from '@angular/common';
 import {ActivatedRoute, Params, RouterModule} from '@angular/router';
-import {DocumentationItems, SECTIONS} from '../../shared/documentation-items/documentation-items';
-import {ComponentPageTitle} from '../page-title/page-title';
-import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
-import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
+import {Observable} from 'rxjs/Observable';
+import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
+import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
+import {ComponentPageTitle} from '../page-title/page-title';
 
 
 @Component({
@@ -17,9 +17,7 @@ import 'rxjs/add/observable/combineLatest';
 export class ComponentCategoryList implements OnInit {
   params: Observable<Params>;
 
-  constructor(public docItems: DocumentationItems,
-              public _componentPageTitle: ComponentPageTitle,
-              private _route: ActivatedRoute) {}
+  constructor(public docItems: DocumentationItems, private _route: ActivatedRoute) {}
 
   ngOnInit() {
     // Combine params from all of the path into a single object.

@@ -10,6 +10,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-remap-istanbul'),
       require('@angular/cli/plugins/karma'),
       require('karma-browserstack-launcher'),
@@ -51,12 +52,9 @@ module.exports = function (config) {
       startConnect: false,
       recordVideo: false,
       recordScreenshots: false,
-      options: {
-        'selenium-version': '2.48.2',
-        'command-timeout': 600,
-        'idle-timeout': 600,
-        'max-duration': 5400
-      }
+      idleTimeout: 600,
+      commandTimeout: 600,
+      maxDuration: 5400,
     },
 
     browserStack: {
@@ -64,26 +62,23 @@ module.exports = function (config) {
       startTunnel: false,
       retryLimit: 1,
       timeout: 600,
-      pollingTimeout: 20000
+      pollingTimeout: 20000,
+      video: false,
     },
   });
 
   if (process.env['TRAVIS']) {
-
     let buildId = `TRAVIS #${process.env.TRAVIS_BUILD_NUMBER} (${process.env.TRAVIS_BUILD_ID})`;
     let platformType = process.env.MODE;
 
     if (platformType === 'saucelabs') {
-
       config.sauceLabs.build = buildId;
       config.sauceLabs.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
 
     } else if (platformType === 'browserstack') {
-
       config.browserStack.build = buildId;
       config.browserStack.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
-
-    } else {
+    } else if (platformType !== 'unit') {
       throw new Error(`Platform "${platform}" unknown, but Travis specified. Exiting.`);
     }
 
