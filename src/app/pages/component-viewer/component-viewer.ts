@@ -2,13 +2,12 @@ import {CommonModule} from '@angular/common';
 import {Component, ElementRef, NgModule, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatTabsModule} from '@angular/material';
 import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
 import {DocItem, DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {TableOfContentsModule} from '../../shared/table-of-contents/table-of-contents.module';
 import {ComponentPageTitle} from '../page-title/page-title';
 import {combineLatest} from 'rxjs/observable/combineLatest';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs/operators/map';
 
 @Component({
   selector: 'app-component-viewer',
