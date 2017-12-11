@@ -3,8 +3,8 @@ import {DOCUMENT} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ScrollDispatcher, CdkScrollable} from '@angular/cdk/scrolling';
 import {Subject} from 'rxjs/Subject';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/takeUntil';
+import {filter} from 'rxjs/operators/filter';
+import {takeUntil} from 'rxjs/operators/takeUntil';
 
 interface Link {
   /* id of the section*/
@@ -44,9 +44,10 @@ export class TableOfContents implements OnDestroy, OnInit {
               @Inject(DOCUMENT) private _document: Document) {
 
     // Create new links and save root url at the end of navigation
-    this._router.events
-      .filter(event => event instanceof NavigationEnd)
-      .takeUntil(this._destroyed)
+    this._router.events.pipe(
+        filter(event => event instanceof NavigationEnd),
+        takeUntil(this._destroyed),
+      )
       .subscribe(event => {
         const rootUrl = _router.url.split('#')[0];
         if (rootUrl !== this._rootUrl) {
@@ -57,7 +58,7 @@ export class TableOfContents implements OnDestroy, OnInit {
 
     // Scroll to section when the fragment changes
     this._route.fragment
-      .takeUntil(this._destroyed)
+      .pipe(takeUntil(this._destroyed))
       .subscribe(fragment => {
         this._urlFragment = fragment;
         this.scrollFragmentIntoView();
@@ -67,7 +68,7 @@ export class TableOfContents implements OnDestroy, OnInit {
   ngOnInit() {
     // Update active link after scroll events
     this._scrollDispatcher.scrolled()
-      .takeUntil(this._destroyed)
+      .pipe(takeUntil(this._destroyed))
       .subscribe(scrollable =>
         this._ngZone.run(() => {
           this.updateScrollContainer(scrollable);
