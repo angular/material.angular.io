@@ -33,8 +33,8 @@ import {
   CanActivateComponentSidenav
 } from './pages/component-sidenav/component-sidenav-can-load-guard';
 import {HttpClientModule} from '@angular/common/http';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
   imports: [
