@@ -92,7 +92,7 @@ export class DocViewer implements OnDestroy {
           element, this._componentFactoryResolver, this._appRef, this._injector);
       let examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       let exampleViewer = portalHost.attach(examplePortal);
-      exampleViewer.instance.example = example;
+      (exampleViewer.instance as ExampleViewer).example = example;
 
       this._portalHosts.push(portalHost);
     });
@@ -115,8 +115,10 @@ export class DocViewer implements OnDestroy {
     const anchorElements =
       [].slice.call(this._elementRef.nativeElement.querySelectorAll('a')) as HTMLAnchorElement[];
 
+    // Update hash links that are referring to the same page and host. Links that are referring
+    // to a different destination shouldn't be updated. For example the Google Fonts URL.
     anchorElements
-      .filter(anchorEl => anchorEl.hash)
+      .filter(anchorEl => anchorEl.hash && anchorEl.host === location.host)
       .forEach(anchorEl => anchorEl.href = `${baseUrl}${anchorEl.hash}`);
   }
 
