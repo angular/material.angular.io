@@ -22,7 +22,8 @@ material-docs-app > app-component-sidenav {
 
 material-docs-app > app-homepage,
 material-docs-app > app-guides,
-material-docs-app > guide-viewer {
+material-docs-app > guide-viewer,
+material-docs-app > app-component-sidenav {
   overflow-y: auto;
 }
 
@@ -33,7 +34,8 @@ material-docs-app > guide-viewer {
 
   material-docs-app > app-homepage,
   material-docs-app > app-guides,
-  material-docs-app > guide-viewer {
+  material-docs-app > guide-viewer,
+  material-docs-app > app-component-sidenav {
     overflow-y: visible;
   }
 }
