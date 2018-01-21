@@ -15,6 +15,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ExampleViewer} from '../example-viewer/example-viewer';
 import {HeaderLink} from './header-link';
 import {ComponentPortal, DomPortalHost} from '@angular/cdk/portal';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'doc-viewer',
@@ -40,7 +41,8 @@ export class DocViewer implements OnDestroy {
               private _elementRef: ElementRef,
               private _http: Http,
               private _injector: Injector,
-              private _viewContainerRef: ViewContainerRef) {}
+              private _viewContainerRef: ViewContainerRef,
+              private _router: Router) {}
 
   /** Fetch a document by URL. */
   private _fetchDocument(url: string) {
@@ -57,6 +59,7 @@ export class DocViewer implements OnDestroy {
             this.textContent = this._elementRef.nativeElement.textContent;
             this._loadComponents('material-docs-example', ExampleViewer);
             this._loadComponents('header-link', HeaderLink);
+            this._fixFragmentUrls();
             this.contentLoaded.next();
           } else {
             this._elementRef.nativeElement.innerText =
@@ -89,7 +92,7 @@ export class DocViewer implements OnDestroy {
           element, this._componentFactoryResolver, this._appRef, this._injector);
       let examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       let exampleViewer = portalHost.attach(examplePortal);
-      exampleViewer.instance.example = example;
+      (exampleViewer.instance as ExampleViewer).example = example;
 
       this._portalHosts.push(portalHost);
     });
@@ -98,6 +101,25 @@ export class DocViewer implements OnDestroy {
   private _clearLiveExamples() {
     this._portalHosts.forEach(h => h.dispose());
     this._portalHosts = [];
+  }
+
+  /**
+   * A fragment link is a link that references a specific element on the page that should be
+   * scrolled into the viewport on page load or click.
+   *
+   * By default those links refer to the root page of the documentation and the fragment links
+   * won't work properly. Those links need to be updated to be relative to the current base URL.
+   */
+  private _fixFragmentUrls() {
+    const baseUrl = this._router.url.split('#')[0];
+    const anchorElements =
+      [].slice.call(this._elementRef.nativeElement.querySelectorAll('a')) as HTMLAnchorElement[];
+
+    // Update hash links that are referring to the same page and host. Links that are referring
+    // to a different destination shouldn't be updated. For example the Google Fonts URL.
+    anchorElements
+      .filter(anchorEl => anchorEl.hash && anchorEl.host === location.host)
+      .forEach(anchorEl => anchorEl.href = `${baseUrl}${anchorEl.hash}`);
   }
 
   ngOnDestroy() {

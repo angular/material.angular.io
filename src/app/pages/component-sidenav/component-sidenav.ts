@@ -11,8 +11,10 @@ import {ComponentHeaderModule} from '../component-page-header/component-page-hea
 import {FooterModule} from '../../shared/footer/footer';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/takeUntil';
+import {switchMap} from 'rxjs/operators/switchMap';
+import {takeUntil} from 'rxjs/operators/takeUntil';
+import {startWith} from 'rxjs/operators/startWith';
+import {combineLatest} from 'rxjs/observable/combineLatest';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -45,9 +47,9 @@ export class ComponentSidenav implements OnInit {
     });
 
     // Combine params from all of the path into a single object.
-    this.params = Observable.combineLatest(
-        this._route.pathFromRoot.map(route => route.params),
-        Object.assign);
+    this.params = combineLatest(
+      this._route.pathFromRoot.map(route => route.params),
+      Object.assign);
   }
 
   isScreenSmall(): boolean {
@@ -76,11 +78,11 @@ export class ComponentNav implements OnInit, OnDestroy {
               private _router: Router) { }
 
   ngOnInit() {
-    this._router.events
-        .startWith(null)
-        .switchMap(() => this.params)
-        .takeUntil(this._onDestroy)
-        .subscribe(p => this.setExpansions(p));
+    this._router.events.pipe(
+      startWith(null),
+      switchMap(() => this.params),
+      takeUntil(this._onDestroy)
+    ).subscribe(p => this.setExpansions(p));
   }
 
   ngOnDestroy() {

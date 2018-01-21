@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 export interface DocItem {
   id: string;
   name: string;
+  packageName?: string;
   examples?: string[];
 }
 
@@ -29,13 +30,31 @@ const DOCS: {[key: string]: DocCategory[]} = {
       items: [
         {id: 'autocomplete', name: 'Autocomplete', examples: ['autocomplete-overview']},
         {id: 'checkbox', name: 'Checkbox', examples: ['checkbox-configurable']},
-        {id: 'datepicker', name: 'Datepicker', examples: ['datepicker-overview']},
+        {
+          id: 'datepicker',
+          name: 'Datepicker',
+          examples: [
+            'datepicker-overview',
+            'datepicker-start-view',
+            'datepicker-value',
+            'datepicker-min-max',
+            'datepicker-filter',
+            'datepicker-events',
+            'datepicker-disabled',
+            'datepicker-touch',
+            'datepicker-api',
+            'datepicker-locale',
+            'datepicker-moment',
+            'datepicker-formats',
+
+          ]
+        },
         {
           id: 'form-field',
           name: 'Form field',
           examples: [
             'form-field-overview',
-            'form-field-placeholder',
+            'form-field-label',
             'form-field-hint',
             'form-field-error',
             'form-field-prefix-suffix',
@@ -43,9 +62,39 @@ const DOCS: {[key: string]: DocCategory[]} = {
             'form-field-custom-control',
           ]
         },
-        {id: 'input', name: 'Input', examples: ['input-form']},
+        {
+          id: 'input',
+          name: 'Input',
+          examples: [
+            'input-overview',
+            'input-error-state-matcher',
+            'input-autosize-textarea',
+            'input-clearable',
+            'input-errors',
+            'input-form',
+            'input-hint',
+            'input-prefix-suffix',
+          ]
+        },
         {id: 'radio', name: 'Radio button', examples: ['radio-ng-model']},
-        {id: 'select', name: 'Select', examples: ['select-form']},
+        {
+          id: 'select',
+          name: 'Select',
+          examples: [
+            'select-overview',
+            'select-value-binding',
+            'select-form',
+            'select-hint-error',
+            'select-disabled',
+            'select-reset',
+            'select-optgroup',
+            'select-multiple',
+            'select-custom-trigger',
+            'select-no-ripple',
+            'select-panel-class',
+            'select-error-state-matcher',
+          ]
+        },
         {id: 'slider', name: 'Slider', examples: ['slider-configurable']},
         {id: 'slide-toggle', name: 'Slide toggle', examples: ['slide-toggle-configurable']},
       ]
@@ -56,7 +105,21 @@ const DOCS: {[key: string]: DocCategory[]} = {
       summary: 'Sidenavs, toolbars, menus',
       items: [
         {id: 'menu', name: 'Menu', examples: ['menu-icons']},
-        {id: 'sidenav', name: 'Sidenav', examples: ['sidenav-fab']},
+        {
+          id: 'sidenav',
+          name: 'Sidenav',
+          examples: [
+            'sidenav-overview',
+            'sidenav-drawer-overview',
+            'sidenav-position',
+            'sidenav-open-close',
+            'sidenav-mode',
+            'sidenav-disable-close',
+            'sidenav-autosize',
+            'sidenav-fixed',
+            'sidenav-responsive'
+          ]
+        },
         {id: 'toolbar', name: 'Toolbar', examples: ['toolbar-multirow']},
       ]
     },
@@ -64,13 +127,14 @@ const DOCS: {[key: string]: DocCategory[]} = {
       id: 'layout',
       name: 'Layout',
       items: [
-        {id: 'list', name: 'List', examples: ['list-sections']},
-        {id: 'grid-list', name: 'Grid list', examples: ['grid-list-dynamic']},
         {id: 'card', name: 'Card', examples: ['card-fancy']},
-        {id: 'stepper', name: 'Stepper', examples: ['stepper-overview']},
-        {id: 'tabs', name: 'Tabs', examples: ['tabs-template-label']},
+        {id: 'divider', name: 'Divider', examples: ['divider-overview']},
         {id: 'expansion', name: 'Expansion Panel',
             examples: ['expansion-overview', 'expansion-steps']},
+        {id: 'grid-list', name: 'Grid list', examples: ['grid-list-dynamic']},
+        {id: 'list', name: 'List', examples: ['list-sections']},
+        {id: 'stepper', name: 'Stepper', examples: ['stepper-overview']},
+        {id: 'tabs', name: 'Tabs', examples: ['tabs-template-label']},
       ]
     },
     {
@@ -91,68 +155,68 @@ const DOCS: {[key: string]: DocCategory[]} = {
       name: 'Popups & Modals',
       items: [
         {id: 'dialog', name: 'Dialog', examples: ['dialog-overview']},
-        {id: 'tooltip', name: 'Tooltip', examples: ['tooltip-position']},
         {id: 'snack-bar', name: 'Snackbar', examples: ['snack-bar-component']},
+        {id: 'tooltip', name: 'Tooltip', examples: ['tooltip-position']},
       ]
     },
     {
       id: 'tables',
       name: 'Data table',
       items: [
-        {id: 'table', name: 'Table',
-            examples: ['table-filtering', 'table-pagination', 'table-sorting']},
-        {id: 'sort', name: 'Sort header', examples: ['sort-overview']},
         {id: 'paginator', name: 'Paginator', examples: ['paginator-configurable']},
+        {id: 'sort', name: 'Sort header', examples: ['sort-overview']},
+        {id: 'table', name: 'Table', examples: [
+          'table-filtering',
+          'table-pagination',
+          'table-sorting',
+          'table-http',
+          'table-overview',
+        ]},
       ]
     }
   ],
   [CDK] : [
     {
+      id: 'component-composition',
+      name: 'Common Behaviors',
+      items: [
+        {id: 'a11y', name: 'Accessibility', examples: []},
+        {id: 'bidi', name: 'Bidirectionality', examples: []},
+        {id: 'layout', name: 'Layout', examples: []},
+        {id: 'observers', name: 'Observers', examples: []},
+        {id: 'overlay', name: 'Overlay', examples: []},
+        {id: 'portal', name: 'Portal', examples: []},
+        {id: 'scrolling', name: 'Scrolling', examples: []},
+      ]
+    },
+    {
       id: 'components',
       name: 'Components',
       items: [
-        {id: 'table', name: 'Table', examples: []},
         {id: 'stepper', name: 'Stepper', examples: []},
+        {id: 'table', name: 'Table', examples: []},
 
       ]
     },
-    {
-      id: 'component-composition',
-      name: 'Component Composition',
-      items: [
-        {id: 'observers', name: 'Observers', examples: []},
-        {id: 'layout', name: 'Layout', examples: []},
-        {id: 'overlay', name: 'Overlay', examples: []},
-        {id: 'portal', name: 'Portal', examples: []},
-        {id: 'bidi', name: 'Bidirectionality', examples: []},
-        {id: 'scrolling', name: 'Scrolling', examples: []},
-        {id: 'viewport', name: 'Viewport', examples: []},
-      ]
-    },
-    {
-      id: 'utilities',
-      name: 'Utilities',
-      items: [
-        {id: 'coercion', name: 'Coercion', examples: []},
-        {id: 'collections', name: 'Collections', examples: []},
-        {id: 'keycodes', name: 'Keycodes', examples: []},
-        {id: 'platform', name: 'Platform', examples: []},
-        {id: 'rxjs', name: 'RxJS', examples: []},
-      ]
-    },
-    {
-      id: 'accessibility',
-      name: 'Accessibility',
-      items: [
-        {id: 'focus-key-manager', name: 'Focus Key Manager', examples: []},
-        {id: 'focus-trap', name: 'Focus Trap', examples: []},
-        {id: 'interactivity-checker', name: 'Interactivity Checker', examples: []},
-        {id: 'list-key-manager', name: 'List Key Manager', examples: []},
-        {id: 'live-announcer', name: 'Live Announcer', examples: []},
-      ]
-    },
+    // TODO(jelbourn): re-add utilities and a11y as top-level categories once we can generate
+    // their API docs with dgeni. Currently our setup doesn't generate API docs for constants
+    // and standalone functions (much of the utilities) and we have no way of generating API
+    // docs more granularly than directory-level (within a11y) (same for viewport).
   ]
 };
+
+for (let category of DOCS[COMPONENTS]) {
+  for (let doc of category.items) {
+    doc.packageName = 'material';
+  }
+}
+
+for (let category of DOCS[CDK]) {
+  for (let doc of category.items) {
+    doc.packageName = 'cdk';
+  }
+}
+
 const ALL_COMPONENTS = DOCS[COMPONENTS].reduce(
   (result, category) => result.concat(category.items), []);
 const ALL_CDK = DOCS[CDK].reduce((result, cdk) => result.concat(cdk.items), []);
@@ -175,8 +239,9 @@ export class DocumentationItems {
     return [];
   }
 
-  getItemById(id: string): DocItem {
-    return ALL_DOCS.find(i => i.id === id);
+  getItemById(id: string, section: string): DocItem {
+    const sectionLookup = section == 'cdk' ? 'cdk' : 'material';
+    return ALL_DOCS.find(doc => doc.id === id && doc.packageName == sectionLookup);
   }
 
   getCategoryById(id: string): DocCategory {
