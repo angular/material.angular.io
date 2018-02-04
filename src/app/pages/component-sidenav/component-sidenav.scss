@@ -104,17 +104,6 @@ app-component-sidenav {
   flex-direction: column;
 }
 
-// Add specific rule to prevent default rule conflict
-.docs-component-viewer-sidenav-container.mat-drawer-container{
-  display: block;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .docs-component-sidenav-inner-content {
   display: flex; 
   flex-direction: column;
@@ -131,8 +120,8 @@ app-component-sidenav {
 @media (max-width: $small-breakpoint-width) {
   // Add specific rule to prevent default rule conflict
   .docs-component-viewer-sidenav-container .docs-component-viewer-sidenav {
-    // offset the top by the header + tabs on a small screen
-    top: 42px;
+    // position right above the content
+    z-index: 4;
   }
 
   .docs-component-viewer-nav {
