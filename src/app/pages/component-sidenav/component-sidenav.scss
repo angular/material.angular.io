@@ -102,19 +102,18 @@ app-component-sidenav {
 .docs-component-sidenav-content {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 }
 
 .docs-component-sidenav-inner-content {
   display: flex; 
   flex-direction: column;
+  flex: 1;
 }
 
 .docs-component-sidenav-body-content {
   display: flex;
-  // footer should always reside at the bottom of the screen.
-  // if container not 100vh, push min height to that minus
-  // the offset of the top bar and the footer height
-  min-height: calc(100vh - 229px);
+  flex: 1;
 }
 
 @media (max-width: $small-breakpoint-width) {

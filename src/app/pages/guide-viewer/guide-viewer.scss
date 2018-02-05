@@ -28,7 +28,7 @@ $guide-content-margin-side-xs: 15px;
 
   text-align: left;
   max-width: 940px;
-  margin: 0 auto 40px auto;
+  margin: 0 auto;
 
   @media (max-width: $small-breakpoint-width) {
     flex-direction: column;
