@@ -79,6 +79,10 @@ export class TableOfContents implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.updateScrollPosition();
+  }
+
   ngOnDestroy(): void {
     this._destroyed.next();
   }

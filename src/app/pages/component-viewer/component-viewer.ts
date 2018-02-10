@@ -1,5 +1,13 @@
 import {CommonModule} from '@angular/common';
-import {Component, ElementRef, NgModule, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  NgModule,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+  OnDestroy
+} from '@angular/core';
 import {MatTabsModule} from '@angular/material';
 import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
 import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
@@ -8,6 +16,10 @@ import {TableOfContentsModule} from '../../shared/table-of-contents/table-of-con
 import {ComponentPageTitle} from '../page-title/page-title';
 import {combineLatest} from 'rxjs/observable/combineLatest';
 import {map} from 'rxjs/operators/map';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
+import {TableOfContents} from '../../shared/table-of-contents/table-of-contents';
 
 @Component({
   selector: 'app-component-viewer',
@@ -15,31 +27,37 @@ import {map} from 'rxjs/operators/map';
   styleUrls: ['./component-viewer.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ComponentViewer {
+export class ComponentViewer implements OnDestroy {
   componentDocItem: DocItem;
-
   sections: Set<string> = new Set(['overview', 'api']);
+  private _subscription: Subscription;
 
   constructor(private _route: ActivatedRoute,
               private router: Router,
               public _componentPageTitle: ComponentPageTitle,
-              public docItems: DocumentationItems) {
+              public docItems: DocumentationItems,
+              ) {
     // Listen to changes on the current route for the doc id (e.g. button/checkbox) and the
     // parent route for the section (material/cdk).
-    combineLatest(_route.params, _route.parent.params).pipe(
+    this._subscription = combineLatest(_route.params, _route.parent.params).pipe(
         map((p: [Params, Params]) => ({id: p[0]['id'], section: p[1]['section']})),
-        map(p => docItems.getItemById(p.id, p.section))).subscribe(d => {
-          this.componentDocItem = d;
-          if (this.componentDocItem) {
-            this._componentPageTitle.title = `${this.componentDocItem.name}`;
-            this.componentDocItem.examples.length ?
-                this.sections.add('examples') :
-                this.sections.delete('examples');
+        map(p => docItems.getItemById(p.id, p.section)))
+      .subscribe(d => {
+        this.componentDocItem = d;
+        if (this.componentDocItem) {
+          this._componentPageTitle.title = `${this.componentDocItem.name}`;
+          this.componentDocItem.examples.length ?
+              this.sections.add('examples') :
+              this.sections.delete('examples');
 
-          } else {
-            this.router.navigate(['/components']);
-          }
-        });
+        } else {
+          this.router.navigate(['/components']);
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this._subscription.unsubscribe();
   }
 }
 
@@ -50,12 +68,23 @@ export class ComponentViewer {
 })
 export class ComponentOverview implements OnInit {
   @ViewChild('intialFocusTarget') focusTarget: ElementRef;
+  @ViewChild('toc') tableOfContents: TableOfContents;
+  showToc$: Observable<boolean>;
 
-  constructor(public componentViewer: ComponentViewer) {}
+  constructor(public componentViewer: ComponentViewer, breakpointObserver: BreakpointObserver) {
+    this.showToc$ = breakpointObserver.observe('(max-width: 1200px)')
+      .pipe(map(result => !result.matches));
+  }
 
   ngOnInit() {
     // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
     setTimeout(() => this.focusTarget.nativeElement.focus(), 100);
+  }
+
+  onContentLoaded() {
+    if (this.tableOfContents) {
+      this.tableOfContents.updateScrollPosition();
+    }
   }
 }
 
