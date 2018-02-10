@@ -62,8 +62,8 @@ export class ComponentSidenav implements OnInit {
   templateUrl: './component-nav.html',
   animations: [
     trigger('bodyExpansion', [
-      state('collapsed', style({height: '0px', visibility: 'hidden'})),
-      state('expanded', style({height: '*', visibility: 'visible'})),
+      state('collapsed', style({height: '0px', display: 'none'})),
+      state('expanded', style({height: '*', display: 'block'})),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4,0.0,0.2,1)')),
     ]),
   ],
