@@ -87,7 +87,7 @@ export class StackblitzWriter {
 
       // TODO(josephperrott): Prevent including assets to be manually checked.
       if (data.selectorName === 'icon-svg-example') {
-        this._readFile(form, data, 'assets/img/examples/thumbup-icon.svg', '');
+        this._readFile(form, data, 'assets/img/examples/thumbup-icon.svg', '', false);
       }
 
       Promise.all(templateContents.concat(exampleContents)).then(() => {
@@ -115,9 +115,13 @@ export class StackblitzWriter {
   }
 
   /** Reads the file and adds its text to the form */
-  _readFile(form: HTMLFormElement, data: ExampleData, filename: string, path: string): void {
+  _readFile(form: HTMLFormElement,
+            data: ExampleData,
+            filename: string,
+            path: string,
+            prependApp = true): void {
     this._http.get(path + filename).toPromise().then(
-      response => this._addFileToForm(form, data, response.text(), filename, path),
+      response => this._addFileToForm(form, data, response.text(), filename, path, prependApp),
       error => console.log(error));
   }
 
@@ -126,10 +130,11 @@ export class StackblitzWriter {
                  data: ExampleData,
                  content: string,
                  filename: string,
-                 path: string) {
+                 path: string,
+                 prependApp = true) {
     if (path == TEMPLATE_PATH) {
       content = this._replaceExamplePlaceholderNames(data, filename, content);
-    } else {
+    } else if (prependApp) {
       filename = 'app/' + filename;
     }
     this._appendFormInput(form, `files[${filename}]`, this._appendCopyright(filename, content));
