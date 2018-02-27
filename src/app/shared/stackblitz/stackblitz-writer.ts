@@ -114,7 +114,14 @@ export class StackblitzWriter {
     form.appendChild(input);
   }
 
-  /** Reads the file and adds its text to the form */
+  /**
+   * Reads the file and adds its text to the form
+   * @param form the html form you are appending to
+   * @param data example metadata about the example
+   * @param filename file name of the example
+   * @param path path to the src
+   * @param prependApp whether to prepend the 'app' prefix to the path
+   */
   _readFile(form: HTMLFormElement,
             data: ExampleData,
             filename: string,
@@ -125,7 +132,15 @@ export class StackblitzWriter {
       error => console.log(error));
   }
 
-  /** Adds the file text to the form. */
+  /**
+   * Adds the file text to the form.
+   * @param form the html form you are appending to
+   * @param data example metadata about the example
+   * @param content file contents
+   * @param filename file name of the example
+   * @param path path to the src
+   * @param prependApp whether to prepend the 'app' prefix to the path
+   */
   _addFileToForm(form: HTMLFormElement,
                  data: ExampleData,
                  content: string,
