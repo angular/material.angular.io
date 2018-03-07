@@ -24,30 +24,30 @@ describe('DocViewer', () => {
   }));
 
   it('should load doc into innerHTML', () => {
-    let fixture = TestBed.createComponent(DocViewerTestComponent);
+    const fixture = TestBed.createComponent(DocViewerTestComponent);
     fixture.detectChanges();
 
-    let docViewer = fixture.debugElement.query(By.directive(DocViewer));
+    const docViewer = fixture.debugElement.query(By.directive(DocViewer));
     expect(docViewer).not.toBeNull();
     expect(docViewer.nativeElement.innerHTML).toBe('<div>my docs page</div>');
   });
 
   it('should save textContent of the doc', () => {
-    let fixture = TestBed.createComponent(DocViewerTestComponent);
+    const fixture = TestBed.createComponent(DocViewerTestComponent);
     fixture.detectChanges();
 
-    let docViewer = fixture.debugElement.query(By.directive(DocViewer));
+    const docViewer = fixture.debugElement.query(By.directive(DocViewer));
     expect(docViewer.componentInstance.textContent).toBe('my docs page');
   });
 
   it('should show error message when doc not found', () => {
-    let fixture = TestBed.createComponent(DocViewerTestComponent);
+    const fixture = TestBed.createComponent(DocViewerTestComponent);
     fixture.detectChanges();
 
     fixture.componentInstance.documentUrl = 'http://material.angular.io/error-doc.html';
     fixture.detectChanges();
 
-    let docViewer = fixture.debugElement.query(By.directive(DocViewer));
+    const docViewer = fixture.debugElement.query(By.directive(DocViewer));
     expect(docViewer).not.toBeNull();
     expect(docViewer.nativeElement.innerHTML).toContain(
         'Failed to load document: http://material.angular.io/error-doc.html');

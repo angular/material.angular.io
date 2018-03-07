@@ -1,2 +1,2 @@
 export * from './material-docs-app';
-export * from './app-module';
+export * from './app.module';

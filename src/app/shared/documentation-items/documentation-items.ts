@@ -205,14 +205,14 @@ const DOCS: {[key: string]: DocCategory[]} = {
   ]
 };
 
-for (let category of DOCS[COMPONENTS]) {
-  for (let doc of category.items) {
+for (const category of DOCS[COMPONENTS]) {
+  for (const doc of category.items) {
     doc.packageName = 'material';
   }
 }
 
-for (let category of DOCS[CDK]) {
-  for (let doc of category.items) {
+for (const category of DOCS[CDK]) {
+  for (const doc of category.items) {
     doc.packageName = 'cdk';
   }
 }
@@ -240,11 +240,11 @@ export class DocumentationItems {
   }
 
   getItemById(id: string, section: string): DocItem {
-    const sectionLookup = section == 'cdk' ? 'cdk' : 'material';
-    return ALL_DOCS.find(doc => doc.id === id && doc.packageName == sectionLookup);
+    const sectionLookup = section === 'cdk' ? 'cdk' : 'material';
+    return ALL_DOCS.find(doc => doc.id === id && doc.packageName === sectionLookup);
   }
 
   getCategoryById(id: string): DocCategory {
-    return ALL_CATEGORIES.find(c => c.id == id);
+    return ALL_CATEGORIES.find(c => c.id === id);
   }
 }

@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, Input, OnDestroy, OnInit} from '@angular/core';
 import {DOCUMENT} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
@@ -29,7 +29,7 @@ interface Link {
   styleUrls: ['./table-of-contents.scss'],
   templateUrl: './table-of-contents.html'
 })
-export class TableOfContents implements OnInit {
+export class TableOfContents implements OnDestroy, OnInit {
 
   @Input() links: Link[] = [];
   @Input() container: string;

@@ -57,7 +57,7 @@ describe('StackblitzWriter', () => {
   });
 
   it('should add files to form input', () => {
-    let form = stackblitzWriter._createFormElement('index.ts');
+    const form = stackblitzWriter._createFormElement('index.ts');
 
     stackblitzWriter._addFileToForm(form, data, 'NoContent', 'test.ts', 'path/to/file');
     stackblitzWriter._addFileToForm(form, data, 'Test', 'test.html', 'path/to/file');
