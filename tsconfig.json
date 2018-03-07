@@ -4,13 +4,22 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "../dist/out-tsc-e2e",
     "sourceMap": true,
     "target": "es5",
     "typeRoots": [
-      "../node_modules/@types"
-    ]
+      "node_modules/@types"
+    ],
+    "types": [
+      "q",
+      "selenium-webdriver",
+      "jasmine"
+    ],
+    "outDir": "./dist/out-tsc"
   }
 }
