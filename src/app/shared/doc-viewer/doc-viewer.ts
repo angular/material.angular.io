@@ -55,7 +55,9 @@ export class DocViewer implements OnDestroy {
         response => {
           // TODO(mmalerba): Trust HTML.
           if (response.ok) {
-            this._elementRef.nativeElement.innerHTML = response.text();
+            const currentUrl = this._router.url.split('#')[0];
+            this._elementRef.nativeElement.innerHTML =
+              response.text().replace(/href="(#\D*?)"/g, `href='${currentUrl}$1'`);
             this.textContent = this._elementRef.nativeElement.textContent;
             this._loadComponents('material-docs-example', ExampleViewer);
             this._loadComponents('header-link', HeaderLink);
