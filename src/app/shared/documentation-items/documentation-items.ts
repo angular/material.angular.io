@@ -173,6 +173,13 @@ const DOCS: {[key: string]: DocCategory[]} = {
           'table-overview',
         ]},
       ]
+    },
+    {
+      id: 'trees',
+      name: 'Tree',
+      items: [
+        {id: 'tree', name: 'Tree', examples: ['tree-checklist', 'tree-dynamic', 'tree-loadmore']},
+      ]
     }
   ],
   [CDK] : [
@@ -195,7 +202,7 @@ const DOCS: {[key: string]: DocCategory[]} = {
       items: [
         {id: 'stepper', name: 'Stepper', examples: []},
         {id: 'table', name: 'Table', examples: []},
-
+        {id: 'tree', name: 'Tree', examples: []}
       ]
     },
     // TODO(jelbourn): re-add utilities and a11y as top-level categories once we can generate
