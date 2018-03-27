@@ -1,13 +1,13 @@
+import {NgModule} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {ActivatedRoute} from '@angular/router';
-import {of as observableOf} from 'rxjs/observable/of';
-import {ComponentViewer, ComponentViewerModule} from './component-viewer';
-import {DocsAppTestingModule} from '../../testing/testing-module';
+import {MatButtonModule, MatIconModule} from '@angular/material';
 
 import {EXAMPLE_COMPONENTS} from '@angular/material-examples';
-import {MatButtonModule, MatIconModule} from '@angular/material';
-import {NgModule} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ActivatedRoute} from '@angular/router';
+import {of as observableOf} from 'rxjs';
+import {DocsAppTestingModule} from '../../testing/testing-module';
+import {ComponentViewer, ComponentViewerModule} from './component-viewer';
 
 const docItemsId = 'button';
 const exampleKey = 'button-types';

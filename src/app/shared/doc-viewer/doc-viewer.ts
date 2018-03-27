@@ -1,3 +1,4 @@
+import {ComponentPortal, DomPortalOutlet} from '@angular/cdk/portal';
 import {
   ApplicationRef,
   Component,
@@ -7,22 +8,21 @@ import {
   Injector,
   Input,
   OnDestroy,
-  ViewContainerRef,
   Output,
+  ViewContainerRef,
 } from '@angular/core';
 import {Http} from '@angular/http';
-import {Subscription} from 'rxjs/Subscription';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 import {ExampleViewer} from '../example-viewer/example-viewer';
 import {HeaderLink} from './header-link';
-import {ComponentPortal, DomPortalHost} from '@angular/cdk/portal';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'doc-viewer',
   template: 'Loading document...',
 })
 export class DocViewer implements OnDestroy {
-  private _portalHosts: DomPortalHost[] = [];
+  private _portalOutlets: DomPortalOutlet[] = [];
   private _documentFetchSubscription: Subscription;
 
   /** The URL of the document to display. */
@@ -88,19 +88,19 @@ export class DocViewer implements OnDestroy {
 
     Array.prototype.slice.call(exampleElements).forEach((element: Element) => {
       let example = element.getAttribute(componentName);
-      let portalHost = new DomPortalHost(
+      let portalOutlet = new DomPortalOutlet(
           element, this._componentFactoryResolver, this._appRef, this._injector);
       let examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
-      let exampleViewer = portalHost.attach(examplePortal);
+      let exampleViewer = portalOutlet.attach(examplePortal);
       (exampleViewer.instance as ExampleViewer).example = example;
 
-      this._portalHosts.push(portalHost);
+      this._portalOutlets.push(portalOutlet);
     });
   }
 
   private _clearLiveExamples() {
-    this._portalHosts.forEach(h => h.dispose());
-    this._portalHosts = [];
+    this._portalOutlets.forEach(h => h.dispose());
+    this._portalOutlets = [];
   }
 
   /**
