@@ -101,7 +101,10 @@ export class ComponentNav implements OnInit, OnDestroy {
           break;
         }
       }
-      this.expansions[category.id] = match;
+
+      if (this.expansions[category.id] === false) {
+        this.expansions[category.id] = match;
+      }
     }
   }
 
@@ -117,7 +120,7 @@ export class ComponentNav implements OnInit, OnDestroy {
 
   /** Gets whether expanded or not */
   getExpanded(category: string): boolean {
-    return this.expansions[category];
+    return this.expansions[category] === undefined ? true : this.expansions[category];
   }
 
 }
