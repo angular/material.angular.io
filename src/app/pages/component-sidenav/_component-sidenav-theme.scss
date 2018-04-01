@@ -16,12 +16,12 @@
       background: rgba(0, 0, 0, .26);
     }
 
-    button {
+    .docs-nav-content-btn {
       color: rgba(mat-color($foreground, text), .5);
 
       &:focus {
         // override the default background
-        background: rgba(0, 0, 0, $nav-background-focus-opacity) !important;
+        background: rgba(0, 0, 0, $nav-background-focus-opacity);
       }
     }
 
