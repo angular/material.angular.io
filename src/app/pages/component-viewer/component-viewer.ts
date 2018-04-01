@@ -14,13 +14,9 @@ import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
 import {DocItem, DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {TableOfContentsModule} from '../../shared/table-of-contents/table-of-contents.module';
 import {ComponentPageTitle} from '../page-title/page-title';
-import {combineLatest} from 'rxjs/observable/combineLatest';
-import {map} from 'rxjs/operators/map';
-import {takeUntil} from 'rxjs/operators/takeUntil';
 import {BreakpointObserver} from '@angular/cdk/layout';
-import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
-import {Subject} from 'rxjs/Subject';
+import {Subject, Subscription, Observable, combineLatest} from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
 import {TableOfContents} from '../../shared/table-of-contents/table-of-contents';
 
 @Component({

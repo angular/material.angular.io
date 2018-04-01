@@ -1,6 +1,5 @@
 import {
-  Component, Input, NgZone, ViewEncapsulation, ViewChild, OnInit, NgModule, trigger, state,
-  animate, transition, style, OnDestroy
+  Component, Input, NgZone, ViewEncapsulation, ViewChild, OnInit, NgModule, OnDestroy
 } from '@angular/core';
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {MatSidenav, MatSidenavModule, MatIconModule} from '@angular/material';
@@ -9,12 +8,9 @@ import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 import {FooterModule} from '../../shared/footer/footer';
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
-import {switchMap} from 'rxjs/operators/switchMap';
-import {takeUntil} from 'rxjs/operators/takeUntil';
-import {startWith} from 'rxjs/operators/startWith';
-import {combineLatest} from 'rxjs/observable/combineLatest';
+import {Observable, Subject, combineLatest} from 'rxjs';
+import {switchMap, takeUntil, startWith} from 'rxjs/operators';
+import {trigger, animate, state, style, transition} from '@angular/animations';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
