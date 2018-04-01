@@ -3,7 +3,9 @@ import {Http} from '@angular/http';
 import {ExampleData} from '@angular/material-examples';
 import {VERSION} from '@angular/material';
 
-const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1/';
+import {materialVersion} from '../version/version';
+
+const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';
 
 const COPYRIGHT =
   `Copyright 2018 Google Inc. All Rights Reserved.
@@ -21,11 +23,11 @@ const TEMPLATE_FILES = [
 
 const TAGS: string[] = ['angular', 'material', 'example'];
 const angularVersion = '^5.0.0';
-const materialVersion = '5.2.0';
 
 const dependencies = {
   '@angular/cdk': materialVersion,
   '@angular/material': materialVersion,
+  '@angular/material-moment-adapter': materialVersion,
   '@angular/animations': angularVersion,
   '@angular/common': angularVersion,
   '@angular/compiler': angularVersion,
@@ -40,7 +42,8 @@ const dependencies = {
   'rxjs': '^5.5.2',
   'web-animations-js': '^2.3.1',
   'zone.js': '^0.8.14',
-  'hammerjs': '^2.0.8'
+  'hammerjs': '^2.0.8',
+  'moment': '^2.18.1',
 };
 
 /**
@@ -71,7 +74,8 @@ export class StackblitzWriter {
    * called with submit().
    */
   constructStackblitzForm(data: ExampleData): Promise<HTMLFormElement> {
-    let form = this._createFormElement();
+    const indexFile = `app%2F${data.indexFilename}.ts`;
+    const form = this._createFormElement(indexFile);
 
     TAGS.forEach((tag, i) => this._appendFormInput(form, `tags[${i}]`, tag));
     this._appendFormInput(form, 'private', 'true');
@@ -87,7 +91,7 @@ export class StackblitzWriter {
 
       // TODO(josephperrott): Prevent including assets to be manually checked.
       if (data.selectorName === 'icon-svg-example') {
-        this._readFile(form, data, 'assets/img/examples/thumbup-icon.svg', '');
+        this._readFile(form, data, 'assets/img/examples/thumbup-icon.svg', '', false);
       }
 
       Promise.all(templateContents.concat(exampleContents)).then(() => {
@@ -97,9 +101,9 @@ export class StackblitzWriter {
   }
 
   /** Constructs a new form element that will navigate to the stackblitz url. */
-  _createFormElement(): HTMLFormElement {
+  _createFormElement(indexFile: string): HTMLFormElement {
     const form = document.createElement('form');
-    form.action = STACKBLITZ_URL;
+    form.action = `${STACKBLITZ_URL}?file=${indexFile}`;
     form.method = 'post';
     form.target = '_blank';
     return form;
@@ -114,22 +118,42 @@ export class StackblitzWriter {
     form.appendChild(input);
   }
 
-  /** Reads the file and adds its text to the form */
-  _readFile(form: HTMLFormElement, data: ExampleData, filename: string, path: string): void {
+  /**
+   * Reads the file and adds its text to the form
+   * @param form the html form you are appending to
+   * @param data example metadata about the example
+   * @param filename file name of the example
+   * @param path path to the src
+   * @param prependApp whether to prepend the 'app' prefix to the path
+   */
+  _readFile(form: HTMLFormElement,
+            data: ExampleData,
+            filename: string,
+            path: string,
+            prependApp = true): void {
     this._http.get(path + filename).toPromise().then(
-      response => this._addFileToForm(form, data, response.text(), filename, path),
+      response => this._addFileToForm(form, data, response.text(), filename, path, prependApp),
       error => console.log(error));
   }
 
-  /** Adds the file text to the form. */
+  /**
+   * Adds the file text to the form.
+   * @param form the html form you are appending to
+   * @param data example metadata about the example
+   * @param content file contents
+   * @param filename file name of the example
+   * @param path path to the src
+   * @param prependApp whether to prepend the 'app' prefix to the path
+   */
   _addFileToForm(form: HTMLFormElement,
                  data: ExampleData,
                  content: string,
                  filename: string,
-                 path: string) {
+                 path: string,
+                 prependApp = true) {
     if (path == TEMPLATE_PATH) {
       content = this._replaceExamplePlaceholderNames(data, filename, content);
-    } else {
+    } else if (prependApp) {
       filename = 'app/' + filename;
     }
     this._appendFormInput(form, `files[${filename}]`, this._appendCopyright(filename, content));
@@ -171,7 +195,7 @@ export class StackblitzWriter {
       // Replace `bootstrap: [MaterialDocsExample]`
       // will be replaced as `bootstrap: [ButtonDemo]`
       // This assumes the first component listed in the main component
-      const componentList = data.componentName.split(',')[0];
+      const componentList = (data.componentName || '').split(',')[0];
       fileContent = fileContent.
         replace(/bootstrap: \[MaterialDocsExample\]/g,
           `bootstrap: [${componentList}]`);

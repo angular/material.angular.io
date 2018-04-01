@@ -41,23 +41,18 @@ export class ComponentViewer implements OnDestroy {
     // parent route for the section (material/cdk).
     this._subscription = combineLatest(_route.params, _route.parent.params).pipe(
         map((p: [Params, Params]) => ({id: p[0]['id'], section: p[1]['section']})),
-        map(p => docItems.getItemById(p.id, p.section)))
-      .subscribe(d => {
-        this.componentDocItem = d;
-        if (this.componentDocItem) {
-          this._componentPageTitle.title = `${this.componentDocItem.name}`;
-          this.componentDocItem.examples.length ?
-              this.sections.add('examples') :
-              this.sections.delete('examples');
-
-        } else {
-          this.router.navigate(['/components']);
-        }
-      });
-  }
-
-  ngOnDestroy() {
-    this._subscription.unsubscribe();
+        map(p => ({doc: docItems.getItemById(p.id, p.section), section: p.section}))
+        ).subscribe(d => {
+          this.componentDocItem = d.doc;
+          if (this.componentDocItem) {
+            this._componentPageTitle.title = `${this.componentDocItem.name}`;
+            this.componentDocItem.examples.length ?
+                this.sections.add('examples') :
+                this.sections.delete('examples');
+          } else {
+            this.router.navigate(['/' + d.section]);
+          }
+        });
   }
 }
 
