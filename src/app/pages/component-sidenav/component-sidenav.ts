@@ -1,20 +1,23 @@
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {CommonModule} from '@angular/common';
 import {
-  Component, Input, NgZone, ViewEncapsulation, ViewChild, OnInit, NgModule, trigger, state,
-  animate, transition, style, OnDestroy
+  Component,
+  Input,
+  NgModule,
+  NgZone,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
-import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
-import {MatSidenav, MatSidenavModule, MatIconModule} from '@angular/material';
+import {MatIconModule, MatSidenav, MatSidenavModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
-import {CommonModule} from '@angular/common';
-import {ComponentHeaderModule} from '../component-page-header/component-page-header';
+import {combineLatest, Observable, Subject} from 'rxjs';
+import {startWith, switchMap, takeUntil} from 'rxjs/operators';
+import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {FooterModule} from '../../shared/footer/footer';
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
-import {switchMap} from 'rxjs/operators/switchMap';
-import {takeUntil} from 'rxjs/operators/takeUntil';
-import {startWith} from 'rxjs/operators/startWith';
-import {combineLatest} from 'rxjs/observable/combineLatest';
+import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 

@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute} from '@angular/router';
-import {GuideViewer, GuideViewerModule} from './guide-viewer';
+import {Observable} from 'rxjs';
 import {DocsAppTestingModule} from '../../testing/testing-module';
+import {GuideViewer, GuideViewerModule} from './guide-viewer';
 
 const guideItemsId = 'getting-started';
 

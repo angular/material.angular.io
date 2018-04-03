@@ -1,15 +1,14 @@
-import {Component, NgModule} from '@angular/core';
-import {
-  DocumentationItems,
-  DocCategory
-} from '../../shared/documentation-items/documentation-items';
-import {ActivatedRoute, Router, RouterModule} from '@angular/router';
-import {ComponentPageTitle} from '../page-title/page-title';
-import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {CommonModule} from '@angular/common';
+import {Component, NgModule} from '@angular/core';
 import {MatCardModule} from '@angular/material';
-import {Observable} from 'rxjs/Observable';
-import {combineLatest} from 'rxjs/observable/combineLatest';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {combineLatest} from 'rxjs';
+import {
+  DocCategory,
+  DocumentationItems,
+} from '../../shared/documentation-items/documentation-items';
+import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
+import {ComponentPageTitle} from '../page-title/page-title';
 
 @Component({
   selector: 'app-components',

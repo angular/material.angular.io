@@ -1,9 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {DocsAppTestingModule} from '../../testing/testing-module';
 import {TableOfContents} from './table-of-contents';
 import {TableOfContentsModule} from './table-of-contents.module';
-import {DocsAppTestingModule} from '../../testing/testing-module';
 
 const mockActivatedRoute = {
   fragment: Observable.create(observer => {
