@@ -3,12 +3,11 @@
   "assetGroups": [{
     "name": "app",
     "installMode": "prefetch",
+    "updateMode": "prefetch",
     "resources": {
       "files": [
         "/favicon.ico",
-        "/index.html"
-      ],
-      "versionedFiles": [
+        "/index.html",
         "/*.bundle.css",
         "/*.bundle.js",
         "/*.chunk.js"
@@ -17,6 +16,7 @@
   }, {
     "name": "prefetch-assets",
     "installMode": "prefetch",
+    "updateMode": "prefetch",
     "resources": {
       "files": [
         "/assets/documents/**",
@@ -26,6 +26,7 @@
   }, {
     "name": "lazy-assets",
     "installMode": "lazy",
+    "updateMode": "prefetch",
     "resources": {
       "files": [
         "/assets/examples/**",
