@@ -181,7 +181,16 @@ const DOCS: {[key: string]: DocCategory[]} = {
         {id: 'button', name: 'Button', examples: ['button-types']},
         {id: 'button-toggle', name: 'Button toggle', examples: ['button-toggle-exclusive']},
         {id: 'badge', name: 'Badge', examples: ['badge-overview']},
-        {id: 'chips', name: 'Chips', examples: ['chips-stacked']},
+        {
+          id: 'chips',
+          name: 'Chips',
+          examples: [
+            'chips-overview',
+            'chips-stacked',
+            'chips-input',
+            'chips-autocomplete'
+          ]
+        },
         {id: 'icon', name: 'Icon', examples: ['icon-svg']},
         {id: 'progress-spinner', name: 'Progress spinner',
             examples: ['progress-spinner-configurable']},
@@ -229,11 +238,9 @@ const DOCS: {[key: string]: DocCategory[]} = {
             'table-row-context',
             'table-selection',
             'table-sorting',
-
-            // Expose these examples with 6.3.0 release (sticky table)
-            // 'table-sticky-column',
-            // 'table-sticky-footer',
-            // 'table-sticky-header',
+            'table-sticky-column',
+            'table-sticky-footer',
+            'table-sticky-header',
         ]},
       ]
     }
