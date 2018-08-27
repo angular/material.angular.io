@@ -178,7 +178,7 @@ const DOCS: {[key: string]: DocCategory[]} = {
       id: 'buttons',
       name: 'Buttons & Indicators',
       items: [
-        {id: 'button', name: 'Button', examples: ['button-types']},
+        {id: 'button', name: 'Button', examples: ['button-card', 'button-toolbar']},
         {id: 'button-toggle', name: 'Button toggle', examples: ['button-toggle-exclusive']},
         {id: 'badge', name: 'Badge', examples: ['badge-overview']},
         {id: 'chips', name: 'Chips', examples: ['chips-stacked']},
