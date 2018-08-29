@@ -16,10 +16,10 @@ elif [ -d ${MATERIAL2_LOCAL} ] ; then
 fi
 
 # Build Docs
-(cd ${baseSrcPath} && gulp docs)
+# (cd ${baseSrcPath} && gulp docs)
 
 # Build Examples
-(cd ${baseSrcPath} && gulp material-examples:build-release)
+# (cd ${baseSrcPath} && gulp material-examples:build-release)
 
 # Base Target Path
 baseTargetPath=./src/assets
