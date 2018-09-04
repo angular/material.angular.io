@@ -244,7 +244,6 @@ const DOCS: {[key: string]: DocCategory[]} = {
       items: [
         {id: 'a11y', name: 'Accessibility', examples: []},
         {id: 'bidi', name: 'Bidirectionality', examples: []},
-        {id: 'coercion', name: 'Coercion', examples: []},
         {id: 'layout', name: 'Layout', examples: []},
         {id: 'observers', name: 'Observers', examples: []},
         {id: 'overlay', name: 'Overlay', examples: []},
