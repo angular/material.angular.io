@@ -27,7 +27,7 @@ describe('ComponentCategoryList', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ComponentCategoryList);
   });
-  
+
   it('should render a card for every category', () => {
     // Usually the component category list component won't be instantiated if the activated
     // route does not contain a `section` param. In case there is no section param before
