@@ -15,5 +15,5 @@ elif is_e2e; then
   $(npm bin)/ng e2e
 elif is_test; then
   npm run build-themes
-  $(npm bin)/ng test --watch false
+  $(npm bin)/ng test --watch false --progress=false
 fi
