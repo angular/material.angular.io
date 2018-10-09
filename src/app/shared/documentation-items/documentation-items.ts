@@ -397,11 +397,9 @@ const DOCS: {[key: string]: DocCategory[]} = {
             'table-row-context',
             'table-selection',
             'table-sorting',
-
-            // Expose these examples with 6.3.0 release (sticky table)
-            // 'table-sticky-column',
-            // 'table-sticky-footer',
-            // 'table-sticky-header',
+            'table-sticky-column',
+            'table-sticky-footer',
+            'table-sticky-header',
         ]},
       ]
     }
@@ -468,7 +466,7 @@ const DOCS: {[key: string]: DocCategory[]} = {
         },
         {
           id: 'drag-drop',
-          name: 'Drag and drop',
+          name: 'Drag and Drop',
           summary: 'Directives enabling drag-and-drop interactions',
           examples: [
             'cdk-drag-drop-axis-lock',
