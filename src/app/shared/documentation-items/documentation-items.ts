@@ -466,6 +466,21 @@ const DOCS: {[key: string]: DocCategory[]} = {
           summary: 'Utilities for working with text input fields.',
           examples: []
         },
+        {
+          id: 'drag-drop',
+          name: 'Drag and drop',
+          summary: 'Directives enabling drag-and-drop interactions',
+          examples: [
+            'cdk-drag-drop-axis-lock',
+            'cdk-drag-drop-sorting',
+            'cdk-drag-drop-overview',
+            'cdk-drag-drop-horizontal-sorting',
+            'cdk-drag-drop-custom-preview',
+            'cdk-drag-drop-root-element',
+            'cdk-drag-drop-handle',
+            'cdk-drag-drop-connected-sorting',
+          ],
+        },
       ]
     },
     {
