@@ -14,8 +14,8 @@
     "build-themes": "bash ./tools/build-themes.sh",
     "prod-build": "npm run build-themes && ng build --aot --prod",
     "postinstall": "webdriver-manager update && bash ./tools/build-themes.sh && bash ./tools/fetch-assets.sh",
-    "publish-prod": "bash ./tools/deploy.sh stable prod",
-    "publish-dev": "bash ./tools/deploy.sh"
+    "publish-prod": "bash ./tools/deploy.sh v6 prod",
+    "publish-dev": "bash ./tools/deploy.sh v6 dev"
   },
   "private": true,
   "dependencies": {
