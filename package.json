@@ -31,7 +31,6 @@
     "@angular/platform-browser": "^5.2.1",
     "@angular/platform-browser-dynamic": "^5.2.1",
     "@angular/router": "^5.2.1",
-    "@angular/service-worker": "^5.2.1",
     "core-js": "^2.4.1",
     "moment": "^2.19.1",
     "rxjs": "^5.5.0",
