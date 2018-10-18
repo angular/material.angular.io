@@ -13,10 +13,14 @@ export interface VersionInfo {
 export const docVersions: VersionInfo[] = [
   {
     url: 'https://v5.material.angular.io/',
-    title: '5.2.4'
+    title: '5.2.5',
+  },
+  {
+    url: 'https://v6.material.angular.io/',
+    title: '6.4.7'
   },
   {
     url: `https://material.angular.io/`,
-    title: materialVersion
+    title: '7.0.0'
   }
 ];
