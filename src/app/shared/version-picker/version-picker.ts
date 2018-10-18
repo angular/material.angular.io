@@ -1,30 +1,28 @@
 import {Component, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatMenuModule} from '@angular/material';
-import {docVersions, materialVersion, VersionInfo} from '../version/version'
+import {MatButtonModule, MatIconModule, MatMenuModule} from '@angular/material';
+import {docVersions, materialVersion, VersionInfo} from '../version/version';
 
 @Component({
   selector: 'version-picker',
   templateUrl: './version-picker.html'
 })
 export class VersionPicker {
-
-  _versionRegex = /\d+.\d+.\d+/;
+  /** The currently running versin of Material. */
+  materialVersion = materialVersion;
+  /** The possible versions of the doc site. */
   docVersions = docVersions;
 
-  materialVersion = materialVersion;
-
-  displayVersion = materialVersion.match(this._versionRegex)[0];
-
+  /** Updates the window location if the selected version is a different version. */
   onVersionChanged(version: VersionInfo) {
-    if (version.title.match(this._versionRegex)[0] !== this.displayVersion) {
+    if (!version.url.startsWith(window.location.href)) {
       window.location.assign(version.url);
     }
   }
 }
 
 @NgModule({
-  imports: [MatButtonModule, MatMenuModule, CommonModule],
+  imports: [MatButtonModule, MatIconModule, MatMenuModule, CommonModule],
   exports: [VersionPicker],
   declarations: [VersionPicker]
 })
