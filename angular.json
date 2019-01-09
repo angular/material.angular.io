@@ -35,9 +35,9 @@
                 "input": "src/highlightjs/material-light.scss"
               },
               {
-                "input": "src/assets/pink-bluegrey.css",
+                "input": "src/assets/pink-lightgreen.css",
                 "lazy": true,
-                "bundleName": "pink-bluegrey"
+                "bundleName": "pink-lightgreen"
               },
               {
                 "input": "src/assets/deeppurple-amber.css",
@@ -110,9 +110,9 @@
                 "input": "src/highlightjs/material-light.scss"
               },
               {
-                "input": "src/assets/pink-bluegrey.css",
+                "input": "src/assets/pink-lightgreen.css",
                 "lazy": true,
-                "bundleName": "pink-bluegrey"
+                "bundleName": "pink-lightgreen"
               },
               {
                 "input": "src/assets/deeppurple-amber.css",

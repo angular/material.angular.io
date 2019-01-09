@@ -49,8 +49,8 @@ export class ThemePicker implements OnInit, OnDestroy {
     },
     {
       primary: '#E91E63',
-      accent: '#607D8B',
-      name: 'pink-bluegrey',
+      accent: '#8BC34A',
+      name: 'pink-lightgreen',
       isDark: true,
     },
     {
