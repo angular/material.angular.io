@@ -24,15 +24,8 @@ The documentation is generated from the following resources
 - [CDK components, services, and directives](https://github.com/angular/material2/tree/master/src/cdk)
 
 ## Development Setup
-1. Clone Angular Material in the parent directory of this repo
-    1. `cd ..`
-    1. `git clone git@github.com:angular/material2.git`
 1. Install Gulp globally: `npm i -g gulp`
-1. Build and copy docs and examples from Angular Material: `npm run fetch-local`
-    - Note that you may need to run this after each time that you run `npm i` as some of the examples are
-      actually placed in `node_modules/@angular/`
-    - If you see the error `Cannot find module '@angular/material-examples'`,
-      it means that you need to run `npm run fetch-local` again
+2. Run `npm install`
 
 ## Development Server
 1. Run `npm start` for a dev server. Navigate to `http://localhost:4200/`
