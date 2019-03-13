@@ -34,7 +34,7 @@ export class ComponentSidenav implements OnInit {
         .pipe(map(breakpoint => breakpoint.matches));
   }
 
-  @ViewChild(MatSidenav, { static: false }) sidenav: MatSidenav;
+  @ViewChild(MatSidenav, {static: false}) sidenav: MatSidenav;
 
   ngOnInit() {
     // Combine params from all of the path into a single object.
