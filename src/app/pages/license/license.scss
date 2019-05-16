@@ -1,0 +1,16 @@
+@import '../../../styles/constants';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+.license-content {
+    flex-grow: 1;
+    margin: $content-padding-side;
+  
+    @media (max-width: $small-breakpoint-width) {
+      margin: 0;
+    }
+}

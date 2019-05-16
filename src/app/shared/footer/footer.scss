@@ -31,6 +31,10 @@
   flex-direction: column;
   min-width: 225px;
   text-align: center;
+
+  a:any-link {
+    color: inherit;
+  }
 }
 
 .docs-footer-logo span {
