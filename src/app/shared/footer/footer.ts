@@ -1,5 +1,7 @@
 import {Component, NgModule} from '@angular/core';
 import {materialVersion} from '../version/version';
+import { RouterModule } from '@angular/router';
+import { MATERIAL_DOCS_ROUTES } from '../../routes';
 
 @Component({
   selector: 'app-footer',
@@ -14,6 +16,7 @@ export class Footer {
 
 
 @NgModule({
+  imports: [RouterModule.forRoot(MATERIAL_DOCS_ROUTES)],
   exports: [Footer],
   declarations: [Footer],
 })

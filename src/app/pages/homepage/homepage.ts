@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {FooterModule} from '../../shared/footer/footer';
 import {RouterModule} from '@angular/router';
 import {ComponentPageTitle} from '../page-title/page-title';
+import { LicenseModule } from '../license/license';
 
 @Component({
   selector: 'app-homepage',
@@ -21,7 +22,7 @@ export class Homepage implements OnInit {
 }
 
 @NgModule({
-  imports: [SvgViewerModule, MatButtonModule, FooterModule, RouterModule],
+  imports: [SvgViewerModule, MatButtonModule, FooterModule, RouterModule, LicenseModule],
   exports: [Homepage],
   declarations: [Homepage],
 })

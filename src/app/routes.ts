@@ -14,10 +14,12 @@ import {
   CanActivateComponentSidenav
 } from './pages/component-sidenav/component-sidenav-can-load-guard';
 import {GuideViewer} from './pages/guide-viewer/guide-viewer';
+import {License} from './pages/license/license';
 
 export const MATERIAL_DOCS_ROUTES: Routes = [
   {path: '', component: Homepage, pathMatch: 'full', data: {}},
   {path: 'categories', redirectTo: '/components/categories'},
+  {path: 'license', component: License},
   {path: 'guides', component: GuideList, data: {}},
   // Since https://github.com/angular/components/pull/9574, the cdk-table guide became the overview
   // document for the cdk table. To avoid any dead / broken links, we redirect to the new location.
