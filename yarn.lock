@@ -191,12 +191,6 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/material-examples@https://github.com/angular/material2-docs-content.git":
-  version "7.2.1-a8072c9"
-  resolved "https://github.com/angular/material2-docs-content.git#464ba0afbf924b975a6c033a088976f8a0b8f1e9"
-  dependencies:
-    tslib "^1.7.1"
-
 "@angular/material-moment-adapter@^7.3.7":
   version "7.3.7"
   resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-7.3.7.tgz#8ad991a1035764fffc5a433dc4038e2ea8c93104"
