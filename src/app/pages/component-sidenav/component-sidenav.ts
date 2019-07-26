@@ -2,7 +2,8 @@ import {
   Component, Input, NgZone, ViewEncapsulation, ViewChild, OnInit, NgModule, OnDestroy
 } from '@angular/core';
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
-import {MatSidenav, MatSidenavModule, MatIconModule} from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
@@ -34,7 +35,7 @@ export class ComponentSidenav implements OnInit {
         .pipe(map(breakpoint => breakpoint.matches));
   }
 
-  @ViewChild(MatSidenav) sidenav: MatSidenav;
+  @ViewChild(MatSidenav, {static: false}) sidenav: MatSidenav;
 
   ngOnInit() {
     // Combine params from all of the path into a single object.

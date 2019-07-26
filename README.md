@@ -6,10 +6,11 @@ Versions of this site are also available for
 - [Beta](https://next.material.angular.io/)
 - [v5](https://v5.material.angular.io/)
 - [v6](https://v6.material.angular.io/)
+- [v7](https://v7.material.angular.io/)
 
 ## Contributing
 Please open bugs against the Angular Material components, directives, documentation contents, API docs,
-and demos in the [Angular Material repo](https://github.com/angular/material2/issues).
+and demos in the [Angular Material repo](https://github.com/angular/components/issues).
 
 Please only open issues with the documentation site itself (not the content) in
 [this repo](https://github.com/angular/material.angular.io/issues). This includes issues like the navigation
@@ -18,14 +19,13 @@ rendering or layout of the documentation pages, etc.
 
 ### Where does the content come from?
 The documentation is generated from the following resources
-- [Guides](https://github.com/angular/material2/tree/master/guides)
-- [Examples](https://github.com/angular/material2/tree/master/src/material-examples)
-- [Material components, services, and directives](https://github.com/angular/material2/tree/master/src/lib)
-- [CDK components, services, and directives](https://github.com/angular/material2/tree/master/src/cdk)
+- [Guides](https://github.com/angular/components/tree/master/guides)
+- [Examples](https://github.com/angular/components/tree/master/src/material-examples)
+- [Material components, services, and directives](https://github.com/angular/components/tree/master/src/lib)
+- [CDK components, services, and directives](https://github.com/angular/components/tree/master/src/cdk)
 
 ## Development Setup
-1. Install Gulp globally: `npm i -g gulp`
-2. Run `npm install`
+1. Run `npm install`
 
 ## Development Server
 1. Run `npm start` for a dev server. Navigate to `http://localhost:4200/`

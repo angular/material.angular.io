@@ -1,5 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {MatSidenav} from '@angular/material';
+import {MatSidenav} from '@angular/material/sidenav';
 import {take} from 'rxjs/operators';
 import {ComponentSidenav, ComponentSidenavModule} from './component-sidenav';
 import {DocsAppTestingModule} from '../../testing/testing-module';
@@ -23,7 +23,7 @@ describe('ComponentSidenav', () => {
     // Spy on window.mediaMatch and return stub
     spyOn(window, 'matchMedia').and.returnValue({
       matches: true
-    });
+    } as any);
 
     fixture.detectChanges();
     async(() => {

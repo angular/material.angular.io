@@ -9,7 +9,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import {MatTabsModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
 import {combineLatest, Observable, Subject} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
@@ -65,8 +65,8 @@ export class ComponentViewer implements OnDestroy {
   encapsulation: ViewEncapsulation.None,
 })
 export class ComponentOverview implements OnInit {
-  @ViewChild('initialFocusTarget') focusTarget: ElementRef;
-  @ViewChild('toc') tableOfContents: TableOfContents;
+  @ViewChild('initialFocusTarget', {static: false}) focusTarget: ElementRef;
+  @ViewChild('toc', {static: false}) tableOfContents: TableOfContents;
   showToc: Observable<boolean>;
 
   constructor(public componentViewer: ComponentViewer, breakpointObserver: BreakpointObserver) {
