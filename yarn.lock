@@ -205,8 +205,8 @@
     tslib "^1.9.0"
 
 "@angular/material-examples@angular/material2-docs-content":
-  version "8.2.2-sha-361d1cf80"
-  resolved "https://codeload.github.com/angular/material2-docs-content/tar.gz/050aa5718e2a81f5ee6cbafd038eecaf55c95b6b"
+  version "8.2.2-sha-29be7686e"
+  resolved "https://codeload.github.com/angular/material2-docs-content/tar.gz/4ea08adbee93ad268ba0d7b3c815e11ea8d5a139"
   dependencies:
     tslib "^1.7.1"
 
