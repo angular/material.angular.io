@@ -36,11 +36,13 @@
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/"
-              }
+              },
+              "src/robots.txt",
+              "src/sitemap.xml"
             ],
             "styles": [
               {
-                "input": "src/main.scss"
+                "input": "src/styles.scss"
               },
               {
                 "input": "src/highlightjs/material-light.scss"
@@ -70,6 +72,7 @@
           },
           "configurations": {
             "production": {
+              "commonChunk": false,
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -115,7 +118,7 @@
             "scripts": [],
             "styles": [
               {
-                "input": "src/main.scss"
+                "input": "src/styles.scss"
               },
               {
                 "input": "src/highlightjs/material-light.scss"
