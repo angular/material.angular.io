@@ -30,8 +30,6 @@ echo ""
 
 read -rp "Press <ENTER> to continue.."
 
-npm run build-themes
-
-"$(npm bin)"/ng build --aot --prod --build-optimizer=false
-"$(npm bin)"/firebase use $projectId
-"$(npm bin)"/firebase deploy
+yarn prod-build
+yarn firebase use $projectId
+yarn firebase deploy
