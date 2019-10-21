@@ -37,6 +37,8 @@ export class TableOfContents implements OnInit, AfterViewInit, OnDestroy {
   @Input() container: string;
 
   _linkSections: LinkSection[] = [];
+  _links: Link[] = [];
+
   _rootUrl = this._router.url.split('#')[0];
   private _scrollContainer: any;
   private _destroyed = new Subject();
@@ -99,6 +101,7 @@ export class TableOfContents implements OnInit, AfterViewInit, OnDestroy {
 
   resetHeaders() {
     this._linkSections = [];
+    this._links = [];
   }
 
   addHeaders(sectionName: string, docViewerContent: HTMLElement) {
@@ -117,6 +120,7 @@ export class TableOfContents implements OnInit, AfterViewInit, OnDestroy {
       });
     });
     this._linkSections.push({name: sectionName, links});
+    this._links.push(...links);
   }
 
   /** Gets the scroll offset of the scroll container */
@@ -130,12 +134,8 @@ export class TableOfContents implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onScroll(): void {
-    const allLinks: Link[] = [];
-    this._linkSections.forEach(linkSection => {
-      allLinks.push(...linkSection.links);
-    });
-    for (let i = 0; i < allLinks.length; i++) {
-      allLinks[i].active = this.isLinkActive(allLinks[i], allLinks[i + 1]);
+    for (let i = 0; i < this._links.length; i++) {
+      this._links[i].active = this.isLinkActive(this._links[i], this._links[i + 1]);
     }
   }
 

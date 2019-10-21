@@ -63,6 +63,11 @@ export class ComponentViewer implements OnDestroy {
   }
 }
 
+/**
+ * Base component class for views displaying docs on a particular component (overview, API,
+ * examples). Responsible for resetting the focus target on doc item changes and resetting
+ * the table of contents headers.
+ */
 export class ComponentBaseView implements OnInit, OnDestroy {
   @ViewChild('initialFocusTarget', {static: false}) focusTarget: ElementRef;
   @ViewChild('toc', {static: false}) tableOfContents: TableOfContents;
@@ -77,7 +82,7 @@ export class ComponentBaseView implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.componentViewer.componentDocItem.pipe(takeUntil(this.destroyed)).subscribe(item => {
+    this.componentViewer.componentDocItem.pipe(takeUntil(this.destroyed)).subscribe(() => {
       // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
       setTimeout(() => this.focusTarget.nativeElement.focus({preventScroll: true}), 100);
       if (this.tableOfContents) {
@@ -90,7 +95,7 @@ export class ComponentBaseView implements OnInit, OnDestroy {
     this.destroyed.next();
   }
 
-  onContentRendered(sectionName: string, docViewerContent: HTMLElement) {
+  updateTableOfContents(sectionName: string, docViewerContent: HTMLElement) {
     if (this.tableOfContents) {
       this.tableOfContents.addHeaders(sectionName, docViewerContent);
       this.tableOfContents.updateScrollPosition();

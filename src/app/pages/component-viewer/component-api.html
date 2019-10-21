@@ -7,13 +7,13 @@
     <doc-viewer
       documentUrl="/docs-content/api-docs/{{docItem.packageName}}-{{docItem.id}}.html"
       class="docs-component-view-text-content docs-component-api"
-      (contentRendered)="onContentRendered(docItem.name, $event)">
+      (contentRendered)="updateTableOfContents(docItem.name, $event)">
     </doc-viewer>
 
     <doc-viewer *ngFor="let additionalApiDoc of docItem.additionalApiDocs"
       documentUrl="/docs-content/api-docs/{{additionalApiDoc.path}}"
       class="docs-component-view-text-content docs-component-api"
-      (contentRendered)="onContentRendered(additionalApiDoc.name, $event)">
+      (contentRendered)="updateTableOfContents(additionalApiDoc.name, $event)">
     </doc-viewer>
   </span>
 
