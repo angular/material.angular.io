@@ -8,6 +8,7 @@ import {StackBlitzWriter} from './stack-blitz-writer';
 @Component({
   selector: 'stack-blitz-button',
   templateUrl: './stack-blitz-button.html',
+  styleUrls: ['./stack-blitz-button.scss'],
   providers: [StackBlitzWriter],
   host: {
     '(mouseover)': 'isDisabled = !stackBlitzForm'
