@@ -1,4 +1,4 @@
-import {ComponentPortal, DomPortalHost} from '@angular/cdk/portal';
+import {ComponentPortal, DomPortalHost, DomPortalOutlet} from '@angular/cdk/portal';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {DomSanitizer} from '@angular/platform-browser';
 import {
@@ -25,7 +25,7 @@ import {HeaderLink} from './header-link';
   template: 'Loading document...',
 })
 export class DocViewer implements OnDestroy {
-  private _portalHosts: DomPortalHost[] = [];
+  private _portalHosts: DomPortalOutlet[] = [];
   private _documentFetchSubscription: Subscription;
 
   @Input() name: string;
