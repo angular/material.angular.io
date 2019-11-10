@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  HostBinding,
   NgModule,
   OnDestroy,
   OnInit,
@@ -24,9 +25,9 @@ import {map} from 'rxjs/operators';
   styleUrls: ['theme-picker.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: {'aria-hidden': 'true'},
 })
 export class ThemePicker implements OnInit, OnDestroy {
+  @HostBinding('aria-hidden') role = 'true';
   private _queryParamSubscription = Subscription.EMPTY;
   currentTheme: DocsSiteTheme;
 

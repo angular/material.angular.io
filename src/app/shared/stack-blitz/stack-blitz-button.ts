@@ -1,4 +1,4 @@
-import {Component, Input, NgModule} from '@angular/core';
+import {Component, HostListener, Input, NgModule} from '@angular/core';
 import {ExampleData} from '@angular/components-examples';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -9,9 +9,6 @@ import {StackBlitzWriter} from './stack-blitz-writer';
   selector: 'stack-blitz-button',
   templateUrl: './stack-blitz-button.html',
   providers: [StackBlitzWriter],
-  host: {
-    '(mouseover)': 'isDisabled = !stackBlitzForm'
-  }
 })
 export class StackBlitzButton {
   /**
@@ -22,6 +19,10 @@ export class StackBlitzButton {
    */
   isDisabled = false;
   stackBlitzForm: HTMLFormElement;
+
+  @HostListener('mouseover') onMouseOver() {
+    this.isDisabled = !this.stackBlitzForm;
+  }
 
   @Input()
   set example(example: string) {
