@@ -1,5 +1,5 @@
 <ng-container *ngIf="componentViewer.componentDocItem | async; let docItem">
-  <span class="cdk-visually-hidden" tabindex="-1" #initialFocusTarget>
+  <span class="cdk-visually-hidden" role="heading" aria-level="2" tabindex="-1" #initialFocusTarget>
     Overview for {{docItem?.id}}
   </span>
   <doc-viewer
