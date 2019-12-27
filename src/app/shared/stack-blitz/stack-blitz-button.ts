@@ -19,6 +19,7 @@ export class StackBlitzButton {
    */
   isDisabled = false;
   stackBlitzForm: HTMLFormElement;
+  exampleData: ExampleData;
 
   @HostListener('mouseover') onMouseOver() {
     this.isDisabled = !this.stackBlitzForm;
@@ -26,10 +27,10 @@ export class StackBlitzButton {
 
   @Input()
   set example(example: string) {
-    const exampleData = new ExampleData(example);
+    this.exampleData = new ExampleData(example);
 
     if (example) {
-      this.stackBlitzWriter.constructStackBlitzForm(exampleData)
+      this.stackBlitzWriter.constructStackBlitzForm(this.exampleData)
       .then((stackBlitzForm: HTMLFormElement) => {
         this.stackBlitzForm = stackBlitzForm;
         this.isDisabled = false;
