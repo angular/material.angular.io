@@ -1,6 +1,6 @@
 <div class="docs-component-viewer-nav">
   <div class="docs-component-viewer-nav-content">
-    <nav *ngFor="let category of docItems.getCategories((params | async)?.section); let last = last;">
+    <div *ngFor="let category of docItems.getCategories((params | async)?.section); let last = last;">
       <button cdkAccordionItem #panel="cdkAccordionItem" (click)="panel.toggle()" expanded="true"
               class="docs-nav-content-btn"
               [attr.aria-label]="category.name + ', section toggle'"
@@ -9,7 +9,8 @@
         {{category.name}}
         <mat-icon>{{panel.expanded ? 'keyboard_arrow_up' :  'keyboard_arrow_down'}}</mat-icon>
       </button>
-      <mat-nav-list dense [@bodyExpansion]="panel.expanded ? 'expanded' : 'collapsed'" id="panel-{{category.id}}">
+      <mat-nav-list dense [@bodyExpansion]="panel.expanded ? 'expanded' : 'collapsed'"
+                    id="panel-{{category.id}}" [attr.aria-label]="category.name">
         <a mat-list-item *ngFor="let component of category.items"
            [routerLink]="'/' + (params | async)?.section+ '/' + component.id"
            routerLinkActive="docs-component-viewer-sidenav-item-selected"
@@ -18,6 +19,6 @@
         </a>
       </mat-nav-list>
       <hr *ngIf="!last" />
-    </nav>
+    </div>
   </div>
 </div>
