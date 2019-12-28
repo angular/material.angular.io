@@ -1,4 +1,4 @@
-import {ComponentPortal, DomPortalHost, DomPortalOutlet} from '@angular/cdk/portal';
+import {ComponentPortal, DomPortalOutlet} from '@angular/cdk/portal';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {DomSanitizer} from '@angular/platform-browser';
 import {
@@ -107,7 +107,7 @@ export class DocViewer implements OnDestroy {
 
     Array.prototype.slice.call(exampleElements).forEach((element: Element) => {
       const example = element.getAttribute(componentName);
-      const portalHost = new DomPortalHost(
+      const portalHost = new DomPortalOutlet(
           element, this._componentFactoryResolver, this._appRef, this._injector);
       const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       const exampleViewer = portalHost.attach(examplePortal);
