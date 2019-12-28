@@ -3,7 +3,6 @@
     <div *ngFor="let category of docItems.getCategories((params | async)?.section); let last = last;">
       <button cdkAccordionItem #panel="cdkAccordionItem" (click)="panel.toggle()" expanded="true"
               class="docs-nav-content-btn"
-              [attr.aria-label]="category.name + ', section toggle'"
               [attr.aria-controls]="'panel-' + category.id"
               [attr.aria-expanded]="panel.expanded">
         {{category.name}}
