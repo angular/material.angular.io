@@ -4,29 +4,33 @@ import {
   NgModule,
   OnDestroy,
   OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import {StyleManager} from '../style-manager';
 import {DocsSiteTheme, ThemeStorage} from './theme-storage/theme-storage';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatIconModule} from '@angular/material/icon';
+import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {CommonModule} from '@angular/common';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'theme-picker',
   templateUrl: 'theme-picker.html',
   styleUrls: ['theme-picker.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class ThemePicker implements OnInit, OnDestroy {
   private _queryParamSubscription = Subscription.EMPTY;
   currentTheme: DocsSiteTheme;
 
+  // The below colors need to align with the themes defined in theme-picker.scss
   themes: DocsSiteTheme[] = [
     {
       primary: '#673AB7',
@@ -59,10 +63,13 @@ export class ThemePicker implements OnInit, OnDestroy {
     },
   ];
 
-  constructor(
-    public styleManager: StyleManager,
-    private _themeStorage: ThemeStorage,
-    private _activatedRoute: ActivatedRoute) {
+  constructor(public styleManager: StyleManager,
+              private _themeStorage: ThemeStorage,
+              private _activatedRoute: ActivatedRoute,
+              iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon('theme-example',
+                            sanitizer.bypassSecurityTrustResourceUrl(
+                                'assets/img/theme-demo-icon.svg'));
     const themeName = this._themeStorage.getStoredThemeName();
     if (themeName) {
       this.onThemeSelection(themeName);

@@ -1,0 +1,28 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     preserveAspectRatio="xMidYMid meet" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <path
+      d="M77.87 0C79.05 0 80 0.95 80 2.13C80 17.7 80 62.29 80 77.87C80 79.04 79.05 80 77.87 80C62.3 80 17.71 80 2.13 80C0.96 80 0 79.04 0 77.87C0 62.29 0 17.7 0 2.13C0 0.95 0.96 0 2.13 0C17.71 0 62.3 0 77.87 0Z"
+      id="background"></path>
+    <path
+      d="M54 40C57.32 40 60 42.69 60 46C60 47.2 60 44.8 60 46C60 49.31 57.32 52 54 52C47.2 52 32.8 52 26 52C22.69 52 20 49.31 20 46C20 44.8 20 47.2 20 46C20 42.69 22.69 40 26 40C32.8 40 47.2 40 54 40Z"
+      id="button"></path>
+    <path d="M0 0L80 0L80 17.24L0 17.24L0 0Z" id="toolbar"></path>
+  </defs>
+  <g>
+    <g>
+      <g>
+        <use xlink:href="#background" opacity="1" fill="#ffffff" fill-opacity="1"
+             class="theme-icon-background"></use>
+      </g>
+      <g>
+        <use xlink:href="#button" opacity="1" fill="#ff4081" fill-opacity="1"
+             class="theme-icon-button"></use>
+      </g>
+      <g>
+        <use xlink:href="#toolbar" opacity="1" fill="#3f51b5" fill-opacity="1"
+             class="theme-icon-toolbar"></use>
+      </g>
+    </g>
+  </g>
+</svg>
