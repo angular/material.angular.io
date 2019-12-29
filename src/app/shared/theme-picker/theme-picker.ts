@@ -9,7 +9,6 @@ import {
 import {StyleManager} from '../style-manager';
 import {DocsSiteTheme, ThemeStorage} from './theme-storage/theme-storage';
 import {MatButtonModule} from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -113,12 +112,11 @@ export class ThemePicker implements OnInit, OnDestroy {
 
 @NgModule({
   imports: [
+    CommonModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatGridListModule,
     MatTooltipModule,
-    CommonModule
   ],
   exports: [ThemePicker],
   declarations: [ThemePicker],
