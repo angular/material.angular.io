@@ -43,6 +43,6 @@ const routes: Routes = [ {path : '', component : GuideViewer} ];
   imports: [DocViewerModule, FooterModule, TableOfContentsModule, RouterModule.forChild(routes)],
   exports: [GuideViewer],
   declarations: [GuideViewer],
-  providers: [GuideItems, ComponentPageTitle],
+  providers: [GuideItems],
 })
 export class GuideViewerModule {}

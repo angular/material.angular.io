@@ -25,6 +25,6 @@ const routes: Routes = [ {path : '', component : GuideList} ];
   imports: [CommonModule, MatListModule, FooterModule, RouterModule.forChild(routes)],
   exports: [GuideList],
   declarations: [GuideList],
-  providers: [GuideItems, ComponentPageTitle],
+  providers: [GuideItems],
 })
 export class GuideListModule { }
