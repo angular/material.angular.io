@@ -17,6 +17,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DomSanitizer} from '@angular/platform-browser';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
 
 @Component({
   selector: 'theme-picker',
@@ -34,14 +35,14 @@ export class ThemePicker implements OnInit, OnDestroy {
     {
       primary: '#673AB7',
       accent: '#FFC107',
-      displayName: 'Deep Purple / Amber',
+      displayName: 'Deep Purple & Amber',
       name: 'deeppurple-amber',
       isDark: false,
     },
     {
       primary: '#3F51B5',
       accent: '#E91E63',
-      displayName: 'Indigo / Pink',
+      displayName: 'Indigo & Pink',
       name: 'indigo-pink',
       isDark: false,
       isDefault: true,
@@ -49,14 +50,14 @@ export class ThemePicker implements OnInit, OnDestroy {
     {
       primary: '#E91E63',
       accent: '#607D8B',
-      displayName: 'Pink / Blue-grey',
+      displayName: 'Pink & Blue-grey',
       name: 'pink-bluegrey',
       isDark: true,
     },
     {
       primary: '#9C27B0',
       accent: '#4CAF50',
-      displayName: 'Purple / Green',
+      displayName: 'Purple & Green',
       name: 'purple-green',
       isDark: true,
     },
@@ -65,13 +66,15 @@ export class ThemePicker implements OnInit, OnDestroy {
   constructor(public styleManager: StyleManager,
               private _themeStorage: ThemeStorage,
               private _activatedRoute: ActivatedRoute,
-              iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+              private liveAnnouncer: LiveAnnouncer,
+              iconRegistry: MatIconRegistry,
+              sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('theme-example',
                             sanitizer.bypassSecurityTrustResourceUrl(
                                 'assets/img/theme-demo-icon.svg'));
     const themeName = this._themeStorage.getStoredThemeName();
     if (themeName) {
-      this.onThemeSelection(themeName);
+      this.selectTheme(themeName);
     }
   }
 
@@ -80,7 +83,7 @@ export class ThemePicker implements OnInit, OnDestroy {
       .pipe(map((params: ParamMap) => params.get('theme')))
       .subscribe((themeName: string | null) => {
         if (themeName) {
-          this.onThemeSelection(themeName);
+          this.selectTheme(themeName);
         }
     });
   }
@@ -89,7 +92,7 @@ export class ThemePicker implements OnInit, OnDestroy {
     this._queryParamSubscription.unsubscribe();
   }
 
-  onThemeSelection(themeName: string) {
+  selectTheme(themeName: string) {
     const theme = this.themes.find(currentTheme => currentTheme.name === themeName);
 
     if (!theme) {
@@ -105,6 +108,7 @@ export class ThemePicker implements OnInit, OnDestroy {
     }
 
     if (this.currentTheme) {
+      this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);
       this._themeStorage.storeTheme(this.currentTheme);
     }
   }
