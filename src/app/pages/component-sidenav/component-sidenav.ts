@@ -11,12 +11,12 @@ import {
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
-import {ActivatedRoute, Params, Router, RouterModule, Routes} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Params, Router, RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 import {FooterModule} from '../../shared/footer/footer';
 import {combineLatest, Observable, Subject} from 'rxjs';
-import {map, startWith, switchMap, takeUntil} from 'rxjs/operators';
+import {filter, map, startWith, switchMap, takeUntil} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import {BreakpointObserver} from '@angular/cdk/layout';
@@ -29,7 +29,8 @@ import {
   ComponentApi,
   ComponentExamples,
   ComponentOverview,
-  ComponentViewer, ComponentViewerModule
+  ComponentViewer,
+  ComponentViewerModule
 } from '../component-viewer/component-viewer';
 import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
 import {FormsModule} from '@angular/forms';
@@ -37,10 +38,16 @@ import {HttpClientModule} from '@angular/common/http';
 import {StackBlitzButtonModule} from '../../shared/stack-blitz';
 import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {ExampleModule} from '@angular/components-examples';
-import {ComponentSidenavService} from './component-sidenav.service';
 import {MatDrawerToggleResult} from '@angular/material/sidenav/drawer';
 import {MatListModule} from '@angular/material/list';
 
+// These constants are used by the ComponentSidenav for orchestrating the MatSidenav in a responsive
+// way. This includes hiding the sidenav, defaulting it to open, changing the mode from over to
+// side, determining the size of the top gap, and whether the sidenav is fixed in the viewport.
+// The values were determined through the combination of Material Design breakpoints and careful
+// testing of the application across a range of common device widths (360px+).
+// These breakpoint values need to stay in sync with the related Sass variables in
+// src/styles/_constants.scss.
 const EXTRA_SMALL_WIDTH_BREAKPOINT = 720;
 const SMALL_WIDTH_BREAKPOINT = 959;
 
@@ -58,7 +65,7 @@ export class ComponentSidenav implements OnInit {
 
   constructor(public docItems: DocumentationItems,
               private _route: ActivatedRoute,
-              private componentSidenavService: ComponentSidenavService,
+              private _router: Router,
               zone: NgZone,
               breakpoints: BreakpointObserver) {
     this.isExtraScreenSmall =
@@ -72,11 +79,20 @@ export class ComponentSidenav implements OnInit {
     // Combine params from all of the path into a single object.
     this.params = combineLatest(
         this._route.pathFromRoot.map(route => route.params), Object.assign);
+
+    this._router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map((event) => this.isScreenSmall)
+    ).subscribe((shouldCloseSideNav) => {
+        if (shouldCloseSideNav && this.sidenav) {
+          this.sidenav.close();
+        }
+      }
+    );
   }
 
   toggleSidenav(sidenav: MatSidenav): Promise<MatDrawerToggleResult> {
-    this.componentSidenavService.sidenav = sidenav;
-    return this.componentSidenavService.sidenav.toggle();
+    return sidenav.toggle();
   }
 }
 
@@ -97,8 +113,7 @@ export class ComponentNav implements OnInit, OnDestroy {
   currentItemId: string;
   private _onDestroy = new Subject<void>();
 
-  constructor(public docItems: DocumentationItems, private _router: Router,
-              private componentSidenavService: ComponentSidenavService) {}
+  constructor(public docItems: DocumentationItems, private _router: Router) {}
 
   ngOnInit() {
     this._router.events.pipe(
@@ -146,28 +161,6 @@ export class ComponentNav implements OnInit, OnDestroy {
   /** Gets whether expanded or not */
   getExpanded(category: string): boolean {
     return this.expansions[category] === undefined ? true : this.expansions[category];
-  }
-
-  /**
-   * If the component sidenav can be resolved, then close it, and wait for it to be closed,
-   * before navigating to avoid jank.
-   * @param path component.id sub-path to use for navigation
-   */
-  selectNavItem(path: string): void {
-    if (this.componentSidenavService.sidenav) {
-      this.componentSidenavService.sidenav.close().then(() => this.openNavItem(path));
-    } else {
-      this.openNavItem(path);
-    }
-  }
-
-  /**
-   * @param path component.id sub-path to use for navigation
-   */
-  openNavItem(path: string) {
-    this.params.subscribe((params: Params) => {
-      this._router.navigateByUrl(`/${params.section}/${path}`);
-    });
   }
 }
 
