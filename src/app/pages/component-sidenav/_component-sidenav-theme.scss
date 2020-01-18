@@ -31,7 +31,7 @@
       border-top: solid 1px rgba(mat-color($foreground, secondary-text), .1)
     }
 
-    a {
+    button {
       color: mat-color($foreground, secondary-text);
 
       &.docs-component-viewer-sidenav-item-selected,

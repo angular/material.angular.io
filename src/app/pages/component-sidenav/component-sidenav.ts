@@ -37,9 +37,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {StackBlitzButtonModule} from '../../shared/stack-blitz';
 import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {ExampleModule} from '@angular/components-examples';
+import {ComponentSidenavService} from './component-sidenav.service';
+import {MatDrawerToggleResult} from '@angular/material/sidenav/drawer';
 import {MatListModule} from '@angular/material/list';
 
-const SMALL_WIDTH_BREAKPOINT = 720;
+const EXTRA_SMALL_WIDTH_BREAKPOINT = 720;
+const SMALL_WIDTH_BREAKPOINT = 959;
 
 @Component({
   selector: 'app-component-sidenav',
@@ -50,21 +53,30 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 export class ComponentSidenav implements OnInit {
   @ViewChild(MatSidenav) sidenav: MatSidenav;
   params: Observable<Params>;
+  isExtraScreenSmall: Observable<boolean>;
   isScreenSmall: Observable<boolean>;
 
   constructor(public docItems: DocumentationItems,
               private _route: ActivatedRoute,
+              private componentSidenavService: ComponentSidenavService,
               zone: NgZone,
               breakpoints: BreakpointObserver) {
+    this.isExtraScreenSmall =
+        breakpoints.observe(`(max-width: ${EXTRA_SMALL_WIDTH_BREAKPOINT}px)`)
+            .pipe(map(breakpoint => breakpoint.matches));
     this.isScreenSmall = breakpoints.observe(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)
-        .pipe(map(breakpoint => breakpoint.matches));
+    .pipe(map(breakpoint => breakpoint.matches));
   }
 
   ngOnInit() {
     // Combine params from all of the path into a single object.
     this.params = combineLatest(
-      this._route.pathFromRoot.map(route => route.params),
-      Object.assign);
+        this._route.pathFromRoot.map(route => route.params), Object.assign);
+  }
+
+  toggleSidenav(sidenav: MatSidenav): Promise<MatDrawerToggleResult> {
+    this.componentSidenavService.sidenav = sidenav;
+    return this.componentSidenavService.sidenav.toggle();
   }
 }
 
@@ -85,8 +97,8 @@ export class ComponentNav implements OnInit, OnDestroy {
   currentItemId: string;
   private _onDestroy = new Subject<void>();
 
-  constructor(public docItems: DocumentationItems,
-              private _router: Router) { }
+  constructor(public docItems: DocumentationItems, private _router: Router,
+              private componentSidenavService: ComponentSidenavService) {}
 
   ngOnInit() {
     this._router.events.pipe(
@@ -134,6 +146,28 @@ export class ComponentNav implements OnInit, OnDestroy {
   /** Gets whether expanded or not */
   getExpanded(category: string): boolean {
     return this.expansions[category] === undefined ? true : this.expansions[category];
+  }
+
+  /**
+   * If the component sidenav can be resolved, then close it, and wait for it to be closed,
+   * before navigating to avoid jank.
+   * @param path component.id sub-path to use for navigation
+   */
+  selectNavItem(path: string): void {
+    if (this.componentSidenavService.sidenav) {
+      this.componentSidenavService.sidenav.close().then(() => this.openNavItem(path));
+    } else {
+      this.openNavItem(path);
+    }
+  }
+
+  /**
+   * @param path component.id sub-path to use for navigation
+   */
+  openNavItem(path: string) {
+    this.params.subscribe((params: Params) => {
+      this._router.navigateByUrl(`/${params.section}/${path}`);
+    });
   }
 }
 
