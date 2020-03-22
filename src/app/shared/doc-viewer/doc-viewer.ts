@@ -14,7 +14,8 @@ import {
   Output,
   SecurityContext,
   ViewContainerRef,
-  Renderer2
+  Renderer2,
+  AfterContentChecked
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -27,7 +28,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   selector: 'doc-viewer',
   template: 'Loading document...',
 })
-export class DocViewer implements OnDestroy {
+export class DocViewer implements OnDestroy, AfterContentChecked {
+  c = 1;
   private _portalHosts: DomPortalOutlet[] = [];
   private _documentFetchSubscription: Subscription;
 
@@ -47,16 +49,16 @@ export class DocViewer implements OnDestroy {
   textContent = '';
 
   constructor(private _appRef: ApplicationRef,
-    private _componentFactoryResolver: ComponentFactoryResolver,
-    private _elementRef: ElementRef,
-    private _http: HttpClient,
-    private _injector: Injector,
-    private _viewContainerRef: ViewContainerRef,
-    private _ngZone: NgZone,
-    private _domSanitizer: DomSanitizer,
-    private copier: CopierService,
-    private snackbar: MatSnackBar,
-    private render: Renderer2) {
+              private _componentFactoryResolver: ComponentFactoryResolver,
+              private _elementRef: ElementRef,
+              private _http: HttpClient,
+              private _injector: Injector,
+              private _viewContainerRef: ViewContainerRef,
+              private _ngZone: NgZone,
+              private _domSanitizer: DomSanitizer,
+              private copier: CopierService,
+              private snackbar: MatSnackBar,
+              private render: Renderer2) {
   }
 
   /** Fetch a document by URL. */
@@ -73,7 +75,7 @@ export class DocViewer implements OnDestroy {
   }
 
   /**
-   * Updates the displayed document. 
+   * Updates the displayed document.
    * @param rawDocument The raw document content to show.
    */
   private updateDocument(rawDocument: string) {
@@ -137,7 +139,7 @@ export class DocViewer implements OnDestroy {
       this._documentFetchSubscription.unsubscribe();
     }
   }
-  //function to call copy function from copierService
+  /** function to call copy function from copierService. */
   copySource(text: string) {
     if (this.copier.copyText(text)) {
       this.snackbar.open('Code copied', '', { duration: 2500 });
@@ -146,27 +148,28 @@ export class DocViewer implements OnDestroy {
     }
   }
 
-  //ngAfterContentChecked is used since ngOninit and ngContentinit does not get the pre tags from html since not loaded 
-  //Since ngaftercontentchecked is called again and again when page scroll done so var c is assigned to prevent function call to copycode()
-
-  c = 1;
+  // ngAfterContentChecked is used since ngOninit and ngContentinit does not get the
+  // pre tags from html since not loaded
+  // Since ngaftercontentchecked is called again and again when page scroll done
+  // so var c is assigned to prevent function call to copycode()
   ngAfterContentChecked() {
-    if (this.c == 1)
+    if (this.c === 1){
       this.copycode();
+    }
   }
   copycode() {
     const pre = this._elementRef.nativeElement.querySelectorAll('pre');
     if (pre.length > 0) {
       pre.forEach((e: any) => {
-        let mat = this.render.createElement('mat-icon');
+        const mat = this.render.createElement('mat-icon');
         this.render.appendChild(mat, this.render.createText('content_copy'));
         this.render.addClass(mat, 'mat-icon');
-        this.render.addClass(mat, 'material-icons')
+        this.render.addClass(mat, 'material-icons');
         this.render.setStyle(mat, 'font-size', '20px');
-        let button = this.render.createElement('button');
+        const button = this.render.createElement('button');
         this.render.addClass(button, 'mat-icon-button');
-        button.id = "copy";
-        button.title = "Copy code"
+        button.id = 'copy';
+        button.title = 'Copy code';
         this.render.appendChild(button, mat);
         this.render.appendChild(e, button);
         this.render.listen(button, 'click', (event) => {
