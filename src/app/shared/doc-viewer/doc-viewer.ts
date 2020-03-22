@@ -153,7 +153,7 @@ export class DocViewer implements OnDestroy, AfterContentChecked {
   // Since ngaftercontentchecked is called again and again when page scroll done
   // so var c is assigned to prevent function call to copycode()
   ngAfterContentChecked() {
-    if (this.c === 1){
+    if (this.c === 1) {
       this.copycode();
     }
   }
@@ -174,8 +174,8 @@ export class DocViewer implements OnDestroy, AfterContentChecked {
         this.render.appendChild(e, button);
         this.render.listen(button, 'click', (event) => {
           this.copySource(e.textContent);
-        })
-      })
+        });
+      });
       this.c = 0;
     }
   }
