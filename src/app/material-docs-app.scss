@@ -26,6 +26,28 @@ material-docs-app > guide-viewer {
   overflow-y: auto;
 }
 
+#skip-link-wrapper {
+  z-index: 10;
+  position: fixed;
+  top: 15px;
+  width: 16%;
+  margin: 0 42% 0 42%;
+  text-align: center;
+  padding: 0.2em 0 0.2em 0;
+  background: white;
+  border-radius: 20px;
+  opacity: 0;
+}
+
+#skip-link-wrapper:focus-within {
+  opacity: 1;
+}
+
+#skip-link-wrapper a {
+  text-decoration: none;
+  color: black;
+}
+
 @media (max-width: 720px) {
   material-docs-app {
     top: 92px;

@@ -1,4 +1,6 @@
 import {NgModule, OnInit, Directive, ElementRef, HostBinding} from '@angular/core';
+import {Event, NavigationEnd, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 /** The timeout id of the previous focus change. */
 let lastTimeoutId = -1;
@@ -9,14 +11,30 @@ let lastTimeoutId = -1;
 export class NavigationFocus implements OnInit {
   @HostBinding('tabindex') role = '-1';
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef, private router: Router) {}
 
   ngOnInit() {
-    clearTimeout(lastTimeoutId);
-    // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
-    lastTimeoutId = window.setTimeout(() => this.el.nativeElement.focus({preventScroll: true}),
-      100);
+    let previousUrl = window.location.hostname;
+    this.router.events
+      .pipe(filter((event: Event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        const afterUrl = window.location.hostname;
+        // only want to focus on the element if it the navigation was a soft nav,
+        // otherwise first focusable element should be the skip link
+        if (isSoftNav(previousUrl)) {
+          // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
+          clearTimeout(lastTimeoutId);
+          lastTimeoutId = window.setTimeout(() => this.el.nativeElement.focus({preventScroll: true}),
+            100);
+        }
+        previousUrl = afterUrl;
+      });
   }
+}
+
+function isSoftNav(url: string) {
+  const withinApp = /(localhost|material.angular.io)/;
+  return url.match(withinApp);
 }
 
 @NgModule({
