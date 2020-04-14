@@ -1,5 +1,5 @@
 import {NgModule, OnInit, Directive, ElementRef, HostBinding} from '@angular/core';
-import {Event, NavigationEnd, Router} from '@angular/router';
+import {Event, Router, NavigationEnd} from '@angular/router';
 import {filter} from 'rxjs/operators';
 
 /** The timeout id of the previous focus change. */
@@ -14,27 +14,26 @@ export class NavigationFocus implements OnInit {
   constructor(private el: ElementRef, private router: Router) {}
 
   ngOnInit() {
-    let previousUrl = window.location.hostname;
+    let previousHostName = window.location.hostname;
     this.router.events
       .pipe(filter((event: Event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        const afterUrl = window.location.hostname;
-        // only want to focus on the element if it the navigation was a soft nav,
+        const afterHostName = window.location.hostname
+        // only want to focus on the element if the navigation was a soft nav,
         // otherwise first focusable element should be the skip link
-        if (isSoftNav(previousUrl)) {
+        if (isSoftNav(previousHostName, afterHostName)) {
           // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
           clearTimeout(lastTimeoutId);
           lastTimeoutId = window.setTimeout(() => this.el.nativeElement.focus({preventScroll: true}),
             100);
         }
-        previousUrl = afterUrl;
+        previousHostName = afterHostName;
       });
   }
 }
 
-function isSoftNav(url: string) {
-  const withinApp = /(localhost|material.angular.io)/;
-  return url.match(withinApp);
+function isSoftNav(previousHostName: string, afterHostName: string) {
+  return previousHostName === afterHostName;
 }
 
 @NgModule({

@@ -11,7 +11,7 @@
   <div class="docs-component-sidenav-content">
     <component-page-header (toggleSidenav)="toggleSidenav(sidenav)"></component-page-header>
     <div class="docs-component-sidenav-inner-content">
-      <main class="docs-component-sidenav-body-content" id="main-content" role="main" aria-label="Side navigation bar">
+      <main class="docs-component-sidenav-body-content" id="main-content" aria-label="Main content">
         <!-- If on large screen, menu resides to left of content -->
         <app-component-nav
           *ngIf="(isScreenSmall | async) === false"

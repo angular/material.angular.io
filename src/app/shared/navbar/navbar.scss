@@ -40,6 +40,22 @@
   display: none;
 }
 
+.skip-link-wrapper {
+  position: absolute;
+  top: 15px;
+  width: 16%;
+  margin: 0 42% 0 42%;
+  text-align: center;
+  padding: 0.2em 0 0.2em 0;
+  background: white;
+  border-radius: 20px;
+}
+
+.skip-link-wrapper a {
+  text-decoration: none;
+  color: black;
+}
+
 /**
   * Rules for when the device is detected to be a small screen.
   * Moves content two rows instead of one.

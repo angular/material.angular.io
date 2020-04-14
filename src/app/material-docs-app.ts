@@ -11,8 +11,6 @@ import {GaService} from './shared/ga/ga';
   encapsulation: ViewEncapsulation.None,
 })
 export class MaterialDocsApp {
-  skipLinkTarget: string;
-
   constructor(router: Router, ga: GaService) {
     let previousRoute = router.routerState.snapshot.url;
     router.events
@@ -26,11 +24,6 @@ export class MaterialDocsApp {
         }
         previousRoute = urlAfterRedirects;
         ga.locationChanged(urlAfterRedirects);
-
-        // set skip link
-        if(!router.url.endsWith('#main-content')) {
-          this.skipLinkTarget = router.url + "#main-content";
-        }
       });
   }
 }
