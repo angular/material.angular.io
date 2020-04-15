@@ -1,3 +1,5 @@
+@import './_navbar-theme.scss';
+
 .docs-navbar-header {
   display: flex;
   flex-wrap: wrap;
@@ -42,18 +44,9 @@
 
 .skip-link-wrapper {
   position: absolute;
-  top: 15px;
-  width: 16%;
-  margin: 0 42% 0 42%;
-  text-align: center;
-  padding: 0.2em 0 0.2em 0;
-  background: white;
-  border-radius: 20px;
-}
-
-.skip-link-wrapper a {
-  text-decoration: none;
-  color: black;
+  top: 10px;
+  left: 44%;
+  border-radius: 5px;
 }
 
 /**
