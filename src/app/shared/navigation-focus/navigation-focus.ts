@@ -11,29 +11,32 @@ let lastTimeoutId = -1;
 export class NavigationFocus implements OnInit {
   @HostBinding('tabindex') role = '-1';
 
+  private previousLocation: URL;
+  private currentLocation: URL;
+
   constructor(private el: ElementRef, private router: Router) {}
 
   ngOnInit() {
-    let previousHostName = window.location.hostname;
-    this.router.events
-      .pipe(filter((event: Event) => event instanceof NavigationEnd))
+    this.currentLocation = new URL(window.location.href);
+    this.router.events.pipe(filter((event: Event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        const afterHostName = window.location.hostname
-        // only want to focus on the element if the navigation was a soft nav,
-        // otherwise first focusable element should be the skip link
-        if (isSoftNav(previousHostName, afterHostName)) {
-          // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
+        this.previousLocation = this.currentLocation;
+        this.currentLocation = new URL(window.location.href);
+        if (this.currentLocation.hash) {
           clearTimeout(lastTimeoutId);
-          lastTimeoutId = window.setTimeout(() => this.el.nativeElement.focus({preventScroll: true}),
-            100);
+          // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
+          lastTimeoutId = window.setTimeout(() => document.getElementById(this.currentLocation.hash)!.focus(), 100);
+        } else if (isSoftNav(this.currentLocation, this.previousLocation)) {
+          clearTimeout(lastTimeoutId);
+          // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
+          lastTimeoutId = window.setTimeout(() => this.el.nativeElement.focus({preventScroll: true}), 100)
         }
-        previousHostName = afterHostName;
-      });
+      })
   }
 }
 
-function isSoftNav(previousHostName: string, afterHostName: string) {
-  return previousHostName === afterHostName;
+function isSoftNav(previousUrl: URL, currentUrl: URL) {
+  return previousUrl.hostname === currentUrl.hostname;
 }
 
 @NgModule({

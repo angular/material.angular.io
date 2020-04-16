@@ -91,7 +91,7 @@ export class ComponentBaseView implements OnInit, OnDestroy {
       // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
       setTimeout(() =>
       {
-        this.focusTarget.nativeElement.id = 'main-content';//.focus({preventScroll: true})
+        this.focusTarget.nativeElement.id = 'main-content';
       }, 100);
       if (this.tableOfContents) {
         this.tableOfContents.resetHeaders();
