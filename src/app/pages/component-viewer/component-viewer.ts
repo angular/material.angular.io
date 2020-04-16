@@ -19,6 +19,7 @@ import {DocItem, DocumentationItems} from '../../shared/documentation-items/docu
 import {TableOfContents} from '../../shared/table-of-contents/table-of-contents';
 import {TableOfContentsModule} from '../../shared/table-of-contents/table-of-contents.module';
 import {ComponentPageTitle} from '../page-title/page-title';
+import {NavigationFocusModule} from "../../shared/navigation-focus/navigation-focus";
 
 @Component({
   selector: 'app-component-viewer',
@@ -88,7 +89,10 @@ export class ComponentBaseView implements OnInit, OnDestroy {
   ngOnInit() {
     this.componentViewer.componentDocItem.pipe(takeUntil(this.destroyed)).subscribe(() => {
       // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
-      setTimeout(() => this.focusTarget.nativeElement.focus({preventScroll: true}), 100);
+      setTimeout(() =>
+      {
+        this.focusTarget.nativeElement.id = 'main-content';//.focus({preventScroll: true})
+      }, 100);
       if (this.tableOfContents) {
         this.tableOfContents.resetHeaders();
       }
@@ -163,6 +167,7 @@ export class ComponentExamples extends ComponentBaseView {
     DocViewerModule,
     CommonModule,
     TableOfContentsModule,
+    NavigationFocusModule,
   ],
   exports: [ComponentViewer],
   declarations: [ComponentViewer, ComponentOverview, ComponentApi, ComponentExamples],
