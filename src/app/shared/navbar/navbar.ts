@@ -1,4 +1,4 @@
-import {Component, Input, NgModule} from '@angular/core';
+import {Component, Input, NgModule, OnDestroy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
@@ -9,7 +9,8 @@ import {SECTIONS} from '../documentation-items/documentation-items';
 import {ThemeStorage} from '../theme-picker/theme-storage/theme-storage';
 import {StyleManager} from '../style-manager';
 import {HttpClientModule} from '@angular/common/http';
-import {filter} from "rxjs/operators";
+import {filter} from 'rxjs/operators';
+import {Subscription} from 'rxjs';
 
 const SECTIONS_KEYS = Object.keys(SECTIONS);
 
@@ -18,18 +19,20 @@ const SECTIONS_KEYS = Object.keys(SECTIONS);
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss']
 })
-export class NavBar {
+export class NavBar implements OnDestroy {
+  private subscriptions = new Subscription();
   isNextVersion = location.hostname.startsWith('next.material.angular.io');
   skipLinkHref: string;
   skipLinkHidden = true;
+
   constructor(router: Router) {
-    router.events
+    this.subscriptions.add(router.events
       .pipe(filter((event: Event) => event instanceof NavigationEnd))
       .subscribe(() => {
         // set skip link
         const baseUrl = router.url.split('#')[0];
         this.skipLinkHref = `${baseUrl}#main-content`;
-      });
+      }));
   }
 
   get sections() {
@@ -38,6 +41,10 @@ export class NavBar {
 
   get sectionKeys() {
     return SECTIONS_KEYS;
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }
 
