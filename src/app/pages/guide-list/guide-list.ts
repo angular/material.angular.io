@@ -20,10 +20,14 @@ export class GuideList implements OnInit {
   }
 }
 
-const routes: Routes = [ {path : '', component : GuideList} ];
+const routes: Routes = [{path: '', component: GuideList}];
 
 @NgModule({
-  imports: [CommonModule, MatListModule, FooterModule, RouterModule.forChild(routes), NavigationFocusModule],
+  imports: [CommonModule,
+            MatListModule,
+            FooterModule,
+            RouterModule.forChild(routes),
+            NavigationFocusModule],
   exports: [GuideList],
   declarations: [GuideList],
   providers: [GuideItems],

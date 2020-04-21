@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {
   Component,
   Directive,
-  ElementRef,
   NgModule,
   OnDestroy,
   OnInit,
@@ -74,7 +73,6 @@ export class ComponentViewer implements OnDestroy {
  */
 @Directive()
 export class ComponentBaseView implements OnInit, OnDestroy {
-  @ViewChild('initialFocusTarget') focusTarget: ElementRef;
   @ViewChild('toc') tableOfContents: TableOfContents;
 
   showToc: Observable<boolean>;
@@ -88,8 +86,6 @@ export class ComponentBaseView implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.componentViewer.componentDocItem.pipe(takeUntil(this.destroyed)).subscribe(() => {
-      // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
-      setTimeout(() => this.focusTarget.nativeElement.id = 'main-content', 100);
       if (this.tableOfContents) {
         this.tableOfContents.resetHeaders();
       }

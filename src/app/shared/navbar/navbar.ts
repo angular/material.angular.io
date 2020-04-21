@@ -1,4 +1,4 @@
-import {Component, Input, NgModule, OnDestroy} from '@angular/core';
+import {Component, NgModule, OnDestroy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
@@ -29,7 +29,6 @@ export class NavBar implements OnDestroy {
     this.subscriptions.add(router.events
       .pipe(filter((event: Event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        // set skip link
         const baseUrl = router.url.split('#')[0];
         this.skipLinkHref = `${baseUrl}#main-content`;
       }));
