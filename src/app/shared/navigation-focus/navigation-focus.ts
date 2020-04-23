@@ -6,13 +6,15 @@ import {NavigationFocusService} from './navigation-focus.service';
 })
 export class NavigationFocus implements OnDestroy {
   @HostBinding('tabindex') role = '-1';
-
+  
   constructor(private el: ElementRef, private navigationFocusService: NavigationFocusService) {
     this.navigationFocusService.requestFocusOnNavigation(el, true);
+    this.navigationFocusService.requestSkipLinkFocus(el, true);
   }
 
   ngOnDestroy() {
     this.navigationFocusService.requestFocusOnNavigation(this.el, false);
+    this.navigationFocusService.requestSkipLinkFocus(this.el, false);
   }
 }
 
