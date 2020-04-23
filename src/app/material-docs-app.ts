@@ -3,7 +3,6 @@ import {Event, NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 
 import {GaService} from './shared/ga/ga';
-import {NavigationFocusService} from './shared/navigation-focus/navigation-focus.service';
 
 @Component({
   selector: 'material-docs-app',
