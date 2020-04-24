@@ -2,9 +2,10 @@ import {
   AfterViewInit, Component, ElementRef, Inject, Input, OnDestroy, OnInit
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subject, fromEvent} from 'rxjs';
 import {debounceTime, takeUntil} from 'rxjs/operators';
+import {NavigationFocusService} from '../navigation-focus/navigation-focus.service';
 
 interface LinkSection {
   name: string;
@@ -47,16 +48,16 @@ export class TableOfContents implements OnInit, AfterViewInit, OnDestroy {
   constructor(private _router: Router,
               private _route: ActivatedRoute,
               private _element: ElementRef,
+              private _navigationFocusService: NavigationFocusService,
               @Inject(DOCUMENT) private _document: Document) {
 
-    this._router.events.pipe(takeUntil(this._destroyed)).subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+    this._navigationFocusService.navigationEndEvents.pipe(takeUntil(this._destroyed))
+      .subscribe(() => {
         const rootUrl = _router.url.split('#')[0];
         if (rootUrl !== this._rootUrl) {
           this._rootUrl = rootUrl;
         }
-      }
-    });
+      });
 
     this._route.fragment.pipe(takeUntil(this._destroyed)).subscribe(fragment => {
       this._urlFragment = fragment;

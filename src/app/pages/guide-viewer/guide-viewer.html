@@ -8,6 +8,7 @@
                 (contentRendered)="toc.addHeaders('Guide Content', $event); toc.updateScrollPosition()"
                 [documentUrl]="guide?.document"
                 focusOnNavigation
+                id="guide-content"
                 aria-label="Guide content"></doc-viewer>
     <table-of-contents #toc container="guide-viewer"></table-of-contents>
   </div>

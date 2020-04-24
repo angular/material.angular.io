@@ -1,8 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {Event, NavigationEnd, Router} from '@angular/router';
-import {filter} from 'rxjs/operators';
 
 import {GaService} from './shared/ga/ga';
+import {NavigationFocusService} from './shared/navigation-focus/navigation-focus.service';
 
 @Component({
   selector: 'material-docs-app',
@@ -11,20 +11,18 @@ import {GaService} from './shared/ga/ga';
   encapsulation: ViewEncapsulation.None,
 })
 export class MaterialDocsApp {
-  constructor(router: Router, ga: GaService) {
+  constructor(router: Router, ga: GaService, navigationFocusService: NavigationFocusService) {
     let previousRoute = router.routerState.snapshot.url;
-    router.events
-      .pipe(filter((event: Event) => event instanceof NavigationEnd))
-      .subscribe((data: Event) => {
-        const urlAfterRedirects = (data as NavigationEnd).urlAfterRedirects;
-        // We want to reset the scroll position on navigation except when navigating within
-        // the documentation for a single component.
-        if (!isNavigationWithinComponentView(previousRoute, urlAfterRedirects)) {
-          resetScrollPosition();
-        }
-        previousRoute = urlAfterRedirects;
-        ga.locationChanged(urlAfterRedirects);
-      });
+    navigationFocusService.navigationEndEvents .subscribe((data: Event) => {
+      const urlAfterRedirects = (data as NavigationEnd).urlAfterRedirects;
+      // We want to reset the scroll position on navigation except when navigating within
+      // the documentation for a single component.
+      if (!isNavigationWithinComponentView(previousRoute, urlAfterRedirects)) {
+        resetScrollPosition();
+      }
+      previousRoute = urlAfterRedirects;
+      ga.locationChanged(urlAfterRedirects);
+    });
   }
 }
 

@@ -11,12 +11,12 @@ import {
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
-import {ActivatedRoute, NavigationEnd, Params, Router, RouterModule, Routes} from '@angular/router';
+import {ActivatedRoute, Params, Router, RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 import {FooterModule} from '../../shared/footer/footer';
 import {combineLatest, Observable, Subject} from 'rxjs';
-import {filter, map, startWith, switchMap, takeUntil} from 'rxjs/operators';
+import {map, startWith, switchMap, takeUntil} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import {BreakpointObserver} from '@angular/cdk/layout';
@@ -40,6 +40,7 @@ import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {MatDrawerToggleResult} from '@angular/material/sidenav/drawer';
 import {MatListModule} from '@angular/material/list';
 import {NavigationFocusModule} from '../../shared/navigation-focus/navigation-focus';
+import {NavigationFocusService} from '../../shared/navigation-focus/navigation-focus.service';
 
 // These constants are used by the ComponentSidenav for orchestrating the MatSidenav in a responsive
 // way. This includes hiding the sidenav, defaulting it to open, changing the mode from over to
@@ -65,7 +66,7 @@ export class ComponentSidenav implements OnInit {
 
   constructor(public docItems: DocumentationItems,
               private _route: ActivatedRoute,
-              private _router: Router,
+              private _navigationFocusService: NavigationFocusService,
               zone: NgZone,
               breakpoints: BreakpointObserver) {
     this.isExtraScreenSmall =
@@ -80,15 +81,13 @@ export class ComponentSidenav implements OnInit {
     this.params = combineLatest(
         this._route.pathFromRoot.map(route => route.params), Object.assign);
 
-    this._router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map((event) => this.isScreenSmall)
-    ).subscribe((shouldCloseSideNav) => {
-        if (shouldCloseSideNav && this.sidenav) {
-          this.sidenav.close();
+    this._navigationFocusService.navigationEndEvents.pipe(map(() => this.isScreenSmall))
+      .subscribe((shouldCloseSideNav) => {
+          if (shouldCloseSideNav && this.sidenav) {
+            this.sidenav.close();
+          }
         }
-      }
-    );
+      );
   }
 
   toggleSidenav(sidenav: MatSidenav): Promise<MatDrawerToggleResult> {
