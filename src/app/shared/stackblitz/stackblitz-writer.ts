@@ -30,7 +30,7 @@ const TEMPLATE_FILES = [
 ];
 
 const TAGS: string[] = ['angular', 'material', 'example'];
-const angularVersion = '>=7.0.0';
+const angularVersion = '^7.0.0';
 
 const dependencies = {
   '@angular/cdk': materialVersion,
