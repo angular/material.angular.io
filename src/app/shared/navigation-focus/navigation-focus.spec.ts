@@ -24,10 +24,10 @@ describe('Navigation focus service', () => {
   }));
 
   it('should set skip link href', () => {
-    const div = document.createElement("div");
+    const div = document.createElement('div');
     div.id = 'skip-link-target';
     const element = new ElementRef(div);
-    navigationFocusService.requestSkipLinkFocus(element);
+    navigationFocusService.requestSkipLinkFocus(element, true);
     expect(navigationFocusService.getSkipLinkHref()).toBe('/#skip-link-target');
   });
 });

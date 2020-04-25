@@ -15,7 +15,7 @@ import {ActivatedRoute, Params, Router, RouterModule, Routes} from '@angular/rou
 import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 import {FooterModule} from '../../shared/footer/footer';
-import {combineLatest, Observable, Subject} from 'rxjs';
+import {combineLatest, Observable, Subject, Subscription} from 'rxjs';
 import {map, startWith, switchMap, takeUntil} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
@@ -58,11 +58,12 @@ const SMALL_WIDTH_BREAKPOINT = 959;
   styleUrls: ['./component-sidenav.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ComponentSidenav implements OnInit {
+export class ComponentSidenav implements OnInit, OnDestroy {
   @ViewChild(MatSidenav) sidenav: MatSidenav;
   params: Observable<Params>;
   isExtraScreenSmall: Observable<boolean>;
   isScreenSmall: Observable<boolean>;
+  private subscriptions = new Subscription();
 
   constructor(public docItems: DocumentationItems,
               private _route: ActivatedRoute,
@@ -88,6 +89,10 @@ export class ComponentSidenav implements OnInit {
           }
         }
       );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   toggleSidenav(sidenav: MatSidenav): Promise<MatDrawerToggleResult> {
