@@ -15,7 +15,7 @@ describe('Navigation focus service', () => {
         imports: [RouterTestingModule],
         providers: [NavigationFocusService]
       });
-      router = TestBed.get(Router);
+      router = TestBed.inject(Router);
     }
   );
 
@@ -27,7 +27,19 @@ describe('Navigation focus service', () => {
     const div = document.createElement('div');
     div.id = 'skip-link-target';
     const element = new ElementRef(div);
-    navigationFocusService.requestSkipLinkFocus(element, true);
+    navigationFocusService.requestSkipLinkFocus(element);
     expect(navigationFocusService.getSkipLinkHref()).toBe('/#skip-link-target');
   });
+
+  it('should be within component view', () => {
+    const previousUrl = '/components/autocomplete/overview';
+    const newUrl = '/components/autocomplete/overview#simple-autocomplete';
+    expect(navigationFocusService.isNavigationWithinComponentView(previousUrl, newUrl)).toBeTrue();
+  })
+
+  it('should not be within component view', () => {
+    const previousUrl = '/cdk/clipboard/overview';
+    const newUrl = '/cdk/categories';
+    expect(navigationFocusService.isNavigationWithinComponentView(previousUrl, newUrl)).toBeFalse();
+  })
 });

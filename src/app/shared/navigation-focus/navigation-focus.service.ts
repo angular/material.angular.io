@@ -34,20 +34,23 @@ export class NavigationFocusService implements OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  requestFocusOnNavigation(el: ElementRef, wantsFocus: boolean) {
-    wantsFocus ? this.navigationFocusRequests.push(el) :
-      this.navigationFocusRequests.splice(this.navigationFocusRequests.indexOf(el), 1);
+  requestFocusOnNavigation(el: ElementRef) {
+    this.navigationFocusRequests.push(el);
   }
 
-  requestSkipLinkFocus(el: ElementRef, wantsFocus: boolean) {
-    if (wantsFocus) {
-      this.navigationFocusRequests.push(el);
-      const baseUrl = this.router.url.split('#')[0];
-      const skipLinKTargetId = el.nativeElement.id;
-      this.skipLinkHref = `${baseUrl}#${skipLinKTargetId}`;
-    } else {
-      this.skipLinkFocusRequests.splice(this.skipLinkFocusRequests.indexOf(el), 1);
-    }
+  relinquishFocusOnDestroy(el: ElementRef) {
+    this.navigationFocusRequests.splice(this.navigationFocusRequests.indexOf(el), 1);
+  }
+
+  requestSkipLinkFocus(el: ElementRef) {
+    this.navigationFocusRequests.push(el);
+    const baseUrl = this.router.url.split('#')[0];
+    const skipLinKTargetId = el.nativeElement.id;
+    this.skipLinkHref = `${baseUrl}#${skipLinKTargetId}`;
+  }
+
+  relinquishSkipLinkFocusOnDestroy(el: ElementRef) {
+    this.skipLinkFocusRequests.splice(this.skipLinkFocusRequests.indexOf(el), 1);
   }
 
   getSkipLinkHref(): string {
