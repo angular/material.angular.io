@@ -10,7 +10,7 @@ export class NavigationFocus implements OnDestroy {
 
   constructor(private el: ElementRef, private navigationFocusService: NavigationFocusService) {
     if (!this.el.nativeElement.id) {
-      this.el.nativeElement.id = this.el.nativeElement.className + '-focus-target';
+      this.el.nativeElement.id = 'skip-link-target-${uid++}';
     }
     this.navigationFocusService.requestFocusOnNavigation(el);
     this.navigationFocusService.requestSkipLinkFocus(el);
@@ -21,7 +21,7 @@ export class NavigationFocus implements OnDestroy {
     this.navigationFocusService.relinquishSkipLinkFocusOnDestroy(this.el);
   }
 }
-
+let uid = 0;
 @NgModule({
   declarations: [NavigationFocus],
   exports: [NavigationFocus],

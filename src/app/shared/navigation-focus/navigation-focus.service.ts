@@ -43,7 +43,7 @@ export class NavigationFocusService implements OnDestroy {
   }
 
   requestSkipLinkFocus(el: ElementRef) {
-    this.navigationFocusRequests.push(el);
+    this.skipLinkFocusRequests.push(el);
     const baseUrl = this.router.url.split('#')[0];
     const skipLinKTargetId = el.nativeElement.id;
     this.skipLinkHref = `${baseUrl}#${skipLinKTargetId}`;
@@ -51,6 +51,12 @@ export class NavigationFocusService implements OnDestroy {
 
   relinquishSkipLinkFocusOnDestroy(el: ElementRef) {
     this.skipLinkFocusRequests.splice(this.skipLinkFocusRequests.indexOf(el), 1);
+    if (this.skipLinkFocusRequests.length) {
+      const skipLinkFocusTarget = this.skipLinkFocusRequests[this.skipLinkFocusRequests.length - 1];
+      const baseUrl = this.router.url.split('#')[0];
+      const skipLinKTargetId = skipLinkFocusTarget.nativeElement.id;
+      this.skipLinkHref = `${baseUrl}#${skipLinKTargetId}`;
+    }
   }
 
   getSkipLinkHref(): string {
