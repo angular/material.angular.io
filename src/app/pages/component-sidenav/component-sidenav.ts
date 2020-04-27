@@ -82,13 +82,14 @@ export class ComponentSidenav implements OnInit, OnDestroy {
     this.params = combineLatest(
         this._route.pathFromRoot.map(route => route.params), Object.assign);
 
-    this._navigationFocusService.navigationEndEvents.pipe(map(() => this.isScreenSmall))
+    this.subscriptions.add(
+      this._navigationFocusService.navigationEndEvents.pipe(map(() => this.isScreenSmall))
       .subscribe((shouldCloseSideNav) => {
           if (shouldCloseSideNav && this.sidenav) {
             this.sidenav.close();
           }
         }
-      );
+      ));
   }
 
   ngOnDestroy() {

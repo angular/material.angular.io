@@ -1,4 +1,4 @@
-import {ElementRef, Injectable, OnDestroy} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {Event, NavigationEnd, Router} from '@angular/router';
 import {filter, skip} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
@@ -8,9 +8,9 @@ import {Subscription} from 'rxjs';
 })
 export class NavigationFocusService implements OnDestroy {
   private subscriptions = new Subscription();
-  private navigationFocusRequests: ElementRef[] = [];
-  private skipLinkFocusRequests: ElementRef[] = [];
-  private skipLinkHref = '';
+  private navigationFocusRequests: HTMLElement[] = [];
+  private skipLinkFocusRequests: HTMLElement[] = [];
+  private skipLinkHref: string|null;
 
   readonly navigationEndEvents = this.router.events
     .pipe(filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd));
@@ -23,7 +23,7 @@ export class NavigationFocusService implements OnDestroy {
         setTimeout(() => {
           if (this.navigationFocusRequests.length) {
             this.navigationFocusRequests[this.navigationFocusRequests.length - 1]
-              .nativeElement.focus({preventScroll: true});
+              .focus({preventScroll: true});
           }
         }, 100);
       }
@@ -34,32 +34,31 @@ export class NavigationFocusService implements OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  requestFocusOnNavigation(el: ElementRef) {
+  requestFocusOnNavigation(el: HTMLElement) {
     this.navigationFocusRequests.push(el);
   }
 
-  relinquishFocusOnDestroy(el: ElementRef) {
+  relinquishFocusOnNavigation(el: HTMLElement) {
     this.navigationFocusRequests.splice(this.navigationFocusRequests.indexOf(el), 1);
   }
 
-  requestSkipLinkFocus(el: ElementRef) {
+  requestSkipLinkFocus(el: HTMLElement) {
     this.skipLinkFocusRequests.push(el);
-    const baseUrl = this.router.url.split('#')[0];
-    const skipLinKTargetId = el.nativeElement.id;
-    this.skipLinkHref = `${baseUrl}#${skipLinKTargetId}`;
+    this.setSkipLinkHref(el);
   }
 
-  relinquishSkipLinkFocusOnDestroy(el: ElementRef) {
+  relinquishSkipLinkFocus(el: HTMLElement) {
     this.skipLinkFocusRequests.splice(this.skipLinkFocusRequests.indexOf(el), 1);
-    if (this.skipLinkFocusRequests.length) {
-      const skipLinkFocusTarget = this.skipLinkFocusRequests[this.skipLinkFocusRequests.length - 1];
-      const baseUrl = this.router.url.split('#')[0];
-      const skipLinKTargetId = skipLinkFocusTarget.nativeElement.id;
-      this.skipLinkHref = `${baseUrl}#${skipLinKTargetId}`;
-    }
+    const skipLinkFocusTarget = this.skipLinkFocusRequests[this.skipLinkFocusRequests.length - 1];
+    this.setSkipLinkHref(skipLinkFocusTarget);
   }
 
-  getSkipLinkHref(): string {
+  setSkipLinkHref(el: HTMLElement|null) {
+    const baseUrl = this.router.url.split('#')[0];
+    this.skipLinkHref = el ? `${baseUrl}#${el.id}` : null;
+  }
+
+  getSkipLinkHref(): string|null {
     return this.skipLinkHref;
   }
 
