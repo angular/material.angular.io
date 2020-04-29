@@ -1,5 +1,5 @@
 <div class="docs-example-viewer-wrapper">
-  <div class="docs-example-viewer-title">
+  <div class="docs-example-viewer-title" *ngIf="view !== 'compact'">
     <div class="docs-example-viewer-title-spacer">{{exampleData?.title}}</div>
 
     <button mat-icon-button type="button" (click)="toggleSourceView()"
@@ -15,10 +15,14 @@
     <stack-blitz-button [example]="example"></stack-blitz-button>
   </div>
 
-  <div class="docs-example-viewer-source" *ngIf="showSource">
+  <div class="docs-example-viewer-source" *ngIf="view === 'full'">
     <mat-tab-group>
       <mat-tab *ngFor="let tabName of _getExampleTabNames()" [label]="tabName">
         <div class="docs-example-source-wrapper">
+          <button mat-icon-button type="button" (click)="toggleCompactView()"
+                  [matTooltip]="'View ' + exampleData?.title + ' source'" aria-label="View source">
+            <mat-icon>expand_more</mat-icon>
+          </button>
           <button mat-icon-button type="button" class="docs-example-source-copy"
                   title="Copy example source" aria-label="Copy example source to clipboard"
                   (click)="copySource(viewer.textContent)">
@@ -29,6 +33,18 @@
         </div>
       </mat-tab>
     </mat-tab-group>
+  </div>
+
+  <div class="docs-example-viewer-source-compact" *ngIf="view === 'compact'">
+
+    <div class="docs-example-source-wrapper">
+      <button mat-icon-button type="button" (click)="toggleCompactView()"
+              [matTooltip]="'View ' + exampleData?.title + ' source'" aria-label="View source">
+        <mat-icon>expand_less</mat-icon>
+      </button>
+      <pre class="docs-example-source"><doc-viewer
+        #viewer [documentUrl]="exampleTabs['HTML']"></doc-viewer></pre>
+    </div>
   </div>
 
   <div class="docs-example-viewer-body">

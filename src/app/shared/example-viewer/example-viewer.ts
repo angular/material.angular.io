@@ -19,9 +19,6 @@ export class ExampleViewer {
   /** Data for the currently selected example. */
   exampleData: LiveExample;
 
-  /** Whether the source for the example is being displayed. */
-  showSource = false;
-
   /** Component type for the current example. */
   _exampleComponentType: Type<any>|null = null;
 
@@ -43,10 +40,18 @@ export class ExampleViewer {
   }
   private _example: string;
 
-  constructor(private snackbar: MatSnackBar, private copier: CopierService) {}
+  /** View of the component. ('compact' | 'full' | 'closed') */
+  @Input() view: string;
+
+  constructor(private snackbar: MatSnackBar, private copier: CopierService) {
+  }
+
+  toggleCompactView() {
+    this.view === 'compact' ? this.view = 'full' : this.view = 'compact';
+  }
 
   toggleSourceView(): void {
-    this.showSource = !this.showSource;
+    this.view === 'full' ? this.view = 'close' : this.view = 'full';
   }
 
   copySource(text: string) {

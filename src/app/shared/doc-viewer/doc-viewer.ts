@@ -55,6 +55,7 @@ export class DocViewer implements OnDestroy {
 
   /** Fetch a document by URL. */
   private _fetchDocument(url: string) {
+    console.log(url)
     // Cancel previous pending request
     if (this._documentFetchSubscription) {
       this._documentFetchSubscription.unsubscribe();
@@ -113,6 +114,7 @@ export class DocViewer implements OnDestroy {
       const exampleViewer = portalHost.attach(examplePortal);
       if (example !== null) {
         (exampleViewer.instance as ExampleViewer).example = example;
+        (exampleViewer.instance as ExampleViewer).view = 'compact';
       }
 
       this._portalHosts.push(portalHost);
