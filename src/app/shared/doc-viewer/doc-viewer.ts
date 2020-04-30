@@ -157,8 +157,8 @@ export class DocViewer implements OnDestroy {
       const moduleImportPath = element.getAttribute(moduleImportPathAttribute);
       const portalHost = new DomPortalOutlet(
           element, this._componentFactoryResolver, this._appRef, this._injector);
-      const docsApiModuleImportPortal = new ComponentPortal(DocsApiModuleImport, this._viewContainerRef);
-      const docuApiModuleImport = portalHost.attach(docsApiModuleImportPortal);
+      const componentPortal = new ComponentPortal(DocsApiModuleImport, this._viewContainerRef);
+      const docuApiModuleImport = portalHost.attach(componentPortal);
       if (exportName !== null && moduleImportPath !== null) {
         const component = (docuApiModuleImport.instance as DocsApiModuleImport);
         component.exportName = exportName;
