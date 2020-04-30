@@ -25,6 +25,12 @@ export class ExampleViewer {
   /** Module factory that declares the example component. */
   _exampleModuleFactory: NgModuleFactory<any>|null = null;
 
+  /** View of the component. ('compact' | 'full' | 'closed') */
+  view: string;
+
+  /** Whether this is an embedded example in the docs or a standalone example */
+  _embedded: boolean;
+
   /** String key of the currently displayed example. */
   @Input()
   get example() { return this._example; }
@@ -40,8 +46,16 @@ export class ExampleViewer {
   }
   private _example: string;
 
-  /** View of the component. ('compact' | 'full' | 'closed') */
-  @Input() view: string;
+  @Input() set embedded(embedded: boolean) {
+    this.view = embedded ? 'compact' : 'closed';
+    this._embedded = embedded;
+  }
+
+  /** Range of lines of the source code to display - only valid for embedded examples */
+  @Input() lines: [number, number];
+
+  /** Name of file to display in compact view - only valid for embedded examples */
+  @Input() file: string = 'HTML';
 
   constructor(private snackbar: MatSnackBar, private copier: CopierService) {
   }

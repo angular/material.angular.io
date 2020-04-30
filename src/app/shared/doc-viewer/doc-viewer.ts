@@ -38,6 +38,8 @@ export class DocViewer implements OnDestroy {
     }
   }
 
+  @Input() lines: [number, number];
+
   @Output() contentRendered = new EventEmitter<HTMLElement>();
 
   /** The document text. It should not be HTML encoded. */
@@ -55,7 +57,6 @@ export class DocViewer implements OnDestroy {
 
   /** Fetch a document by URL. */
   private _fetchDocument(url: string) {
-    console.log(url)
     // Cancel previous pending request
     if (this._documentFetchSubscription) {
       this._documentFetchSubscription.unsubscribe();
@@ -83,6 +84,13 @@ export class DocViewer implements OnDestroy {
     this._elementRef.nativeElement.innerHTML = rawDocument;
     this.textContent = this._elementRef.nativeElement.textContent;
 
+    // janky way to differentiate between document/standalone example and embedded example load
+    if (this.textContent.startsWith('<') && this.lines) {
+      // janky slice to get lines
+      this._elementRef.nativeElement.innerHTML =
+        rawDocument.split('\n').slice(this.lines[0], this.lines[1]).join('\n');
+    }
+
     this._loadComponents('material-docs-example', ExampleViewer);
     this._loadComponents('header-link', HeaderLink);
 
@@ -108,13 +116,20 @@ export class DocViewer implements OnDestroy {
 
     Array.prototype.slice.call(exampleElements).forEach((element: Element) => {
       const example = element.getAttribute(componentName);
+      // const file = element.getAttribute(file);
+      // this.lines = element.getAttribute(lines);
+      // temporary data to test flow of info
+      this.lines = [0, 5];
+      const file = 'HTML';
       const portalHost = new DomPortalOutlet(
           element, this._componentFactoryResolver, this._appRef, this._injector);
       const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       const exampleViewer = portalHost.attach(examplePortal);
       if (example !== null) {
         (exampleViewer.instance as ExampleViewer).example = example;
-        (exampleViewer.instance as ExampleViewer).view = 'compact';
+        (exampleViewer.instance as ExampleViewer).embedded = true;
+        (exampleViewer.instance as ExampleViewer).lines = this.lines;
+        (exampleViewer.instance as ExampleViewer).file = file;
       }
 
       this._portalHosts.push(portalHost);
