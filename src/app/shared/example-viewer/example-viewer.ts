@@ -1,8 +1,16 @@
-import {Component, Input, NgModuleFactory, Type, ɵNgModuleFactory} from '@angular/core';
+import {
+  Component,
+  Input,
+  NgModuleFactory,
+  Type,
+  ViewChild,
+  ɵNgModuleFactory
+} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {EXAMPLE_COMPONENTS, LiveExample} from '@angular/components-examples';
 import {CopierService} from '../copier/copier.service';
+import {CodeSnippet} from './code-snippet';
 
 /** Regular expression that matches a file name and its extension */
 const fileExtensionRegex = /(.*)\.(\w+)/;
@@ -13,6 +21,7 @@ const fileExtensionRegex = /(.*)\.(\w+)/;
   styleUrls: ['./example-viewer.scss']
 })
 export class ExampleViewer {
+  @ViewChild('snippet') snippet: CodeSnippet;
   /** Map of example files that should be displayed in the view-source tab. */
   exampleTabs: {[tabName: string]: string};
 
@@ -29,9 +38,7 @@ export class ExampleViewer {
   view: 'compact' | 'full' | 'collapsed' = 'compact';
 
   /** Initial view of the example component. */
-  @Input() set initialView(initialView: 'compact' | 'full' | 'collapsed') {
-    this.view = initialView;
-  }
+  @Input() initialView: 'compact' | 'full' | 'collapsed';
 
   /** Whether to show toggle for compact view. */
   @Input() showCompactToggle: boolean;
@@ -58,6 +65,10 @@ export class ExampleViewer {
   @Input() file: string = 'HTML';
 
   constructor(private snackbar: MatSnackBar, private copier: CopierService) {
+  }
+
+  ngOnInit() {
+    this.view = this.initialView;
   }
 
   toggleCompactView() {

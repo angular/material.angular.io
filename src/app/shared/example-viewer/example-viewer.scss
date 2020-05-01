@@ -21,18 +21,6 @@
   flex: 1 1 auto;
 }
 
-.docs-example-source-copy {
-  position: absolute;
-  top: 8px;
-  display: none;
-}
-
-.docs-example-source-wrapper:hover {
-  .docs-example-source-copy {
-    display: inline-block;
-  }
-}
-
 .docs-example-source {
   padding: 0 30px 10px 30px;
   min-height: 150px;
@@ -40,4 +28,9 @@
 
 .docs-example-viewer-body {
   padding: 30px;
+}
+
+.button-bar {
+  display: flex;
+  justify-content: flex-end;
 }

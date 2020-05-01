@@ -13,20 +13,35 @@
   <div class="docs-example-viewer-source" *ngIf="view === 'full'">
     <mat-tab-group>
       <mat-tab *ngFor="let tabName of _getExampleTabNames()" [label]="tabName">
-        <example-code-viewer (toggleCompactViewEvent)="toggleCompactView()" (copySourceEvent)="copySource($event)"
-                             [exampleTabs]="exampleTabs" [fileName]="tabName" [compactView]="false"
-                             [showCompactToggle]="showCompactToggle">
-        </example-code-viewer>
+        <div class="button-bar">
+          <button mat-icon-button type="button" (click)="toggleCompactView()"
+                  aria-label="View less" *ngIf="showCompactToggle">
+            <mat-icon>unfold_less</mat-icon>
+          </button>
+          <button mat-icon-button type="button" class="docs-example-source-copy"
+                  title="Copy example source" aria-label="Copy example source to clipboard">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+        <code-snippet #snippet [source]="exampleTabs[tabName]"></code-snippet>
       </mat-tab>
     </mat-tab-group>
   </div>
 
-  <div class="docs-example-viewer-source-compact" *ngIf="view === 'compact' && showCompactToggle">
-    <example-code-viewer (toggleCompactViewEvent)="toggleCompactView()" [exampleTabs]="exampleTabs"
-                         [fileName]="file" [compactView]="true" [lines]="lines" [showCompactToggle]="true">
-    </example-code-viewer>
+  <div class="docs-example-viewer-source-compact" *ngIf="view === 'compact'">
+    <div class="button-bar">
+      <button mat-icon-button type="button" (click)="toggleCompactView()" aria-label="View less">
+        <mat-icon>unfold_more</mat-icon>
+      </button>
+      <button mat-icon-button type="button" class="docs-example-source-copy"
+              title="Copy example source" aria-label="Copy example source to clipboard">
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </div>
+    <code-snippet #snippet [source]="exampleTabs[file]" [lines]="lines" *ngIf="file!=='demo'"></code-snippet>
   </div>
-  <div class="docs-example-viewer-body">
+
+  <div class="docs-example-viewer-body" *ngIf="view!=='compact' || file==='demo'">
     <ng-template *ngIf="_exampleComponentType && _exampleModuleFactory"
                  [ngComponentOutlet]="_exampleComponentType"
                  [ngComponentOutletNgModuleFactory]="_exampleModuleFactory"></ng-template>
