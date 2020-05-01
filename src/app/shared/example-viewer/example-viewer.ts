@@ -25,11 +25,16 @@ export class ExampleViewer {
   /** Module factory that declares the example component. */
   _exampleModuleFactory: NgModuleFactory<any>|null = null;
 
-  /** View of the component. ('compact' | 'full' | 'closed') */
-  view: string;
+  /** View of the example component. */
+  view: 'compact' | 'full' | 'collapsed' = 'compact';
 
-  /** Whether this is an embedded example in the docs or a standalone example */
-  _embedded: boolean;
+  /** Initial view of the example component. */
+  @Input() set initialView(initialView: 'compact' | 'full' | 'collapsed') {
+    this.view = initialView;
+  }
+
+  /** Whether to show toggle for compact view. */
+  @Input() showCompactToggle: boolean;
 
   /** String key of the currently displayed example. */
   @Input()
@@ -46,15 +51,10 @@ export class ExampleViewer {
   }
   private _example: string;
 
-  @Input() set embedded(embedded: boolean) {
-    this.view = embedded ? 'compact' : 'closed';
-    this._embedded = embedded;
-  }
-
-  /** Range of lines of the source code to display - only valid for embedded examples */
+  /** Range of lines of the source code to display in compact view. */
   @Input() lines: [number, number];
 
-  /** Name of file to display in compact view - only valid for embedded examples */
+  /** Name of file to display in compact view. */
   @Input() file: string = 'HTML';
 
   constructor(private snackbar: MatSnackBar, private copier: CopierService) {
@@ -65,7 +65,7 @@ export class ExampleViewer {
   }
 
   toggleSourceView(): void {
-    this.view === 'full' ? this.view = 'close' : this.view = 'full';
+    this.view === 'full' ? this.view = 'collapsed' : this.view = 'full';
   }
 
   copySource(text: string) {

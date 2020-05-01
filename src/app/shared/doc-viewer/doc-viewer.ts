@@ -127,7 +127,8 @@ export class DocViewer implements OnDestroy {
       const exampleViewer = portalHost.attach(examplePortal);
       if (example !== null) {
         (exampleViewer.instance as ExampleViewer).example = example;
-        (exampleViewer.instance as ExampleViewer).embedded = true;
+        (exampleViewer.instance as ExampleViewer).showCompactToggle = true;
+        (exampleViewer.instance as ExampleViewer).initialView = 'compact';
         (exampleViewer.instance as ExampleViewer).lines = this.lines;
         (exampleViewer.instance as ExampleViewer).file = file;
       }
