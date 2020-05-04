@@ -89,6 +89,7 @@ export class DocViewer implements OnDestroy {
       // janky slice to get lines
       this._elementRef.nativeElement.innerHTML =
         rawDocument.split('\n').slice(this.lines[0], this.lines[1]).join('\n');
+        this.textContent = this._elementRef.nativeElement.textContent;
     }
 
     this._loadComponents('material-docs-example', ExampleViewer);

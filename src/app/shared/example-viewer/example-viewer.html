@@ -18,7 +18,8 @@
                   aria-label="View less" *ngIf="showCompactToggle">
             <mat-icon>unfold_less</mat-icon>
           </button>
-          <button mat-icon-button type="button" class="docs-example-source-copy"
+          <button mat-icon-button type="button" (click)="copySource(this.snippet.viewer.textContent)"
+                  class="docs-example-source-copy"
                   title="Copy example source" aria-label="Copy example source to clipboard">
             <mat-icon>content_copy</mat-icon>
           </button>
@@ -33,7 +34,8 @@
       <button mat-icon-button type="button" (click)="toggleCompactView()" aria-label="View less">
         <mat-icon>unfold_more</mat-icon>
       </button>
-      <button mat-icon-button type="button" class="docs-example-source-copy"
+      <button mat-icon-button type="button" (click)="copySource(this.snippet.viewer.textContent)"
+              class="docs-example-source-copy"
               title="Copy example source" aria-label="Copy example source to clipboard">
         <mat-icon>content_copy</mat-icon>
       </button>

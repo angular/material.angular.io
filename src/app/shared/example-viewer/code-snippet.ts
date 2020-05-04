@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
+import {DocViewer} from '../doc-viewer/doc-viewer';
 
 @Component({
   selector: 'code-snippet',
@@ -9,5 +10,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 export class CodeSnippet {
   @Input() source: string;
   @Input() lines:[number, number];
+
+  @ViewChild('viewer') viewer:DocViewer;
 
 }
