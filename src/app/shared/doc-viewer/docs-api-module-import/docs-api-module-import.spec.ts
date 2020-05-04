@@ -7,7 +7,7 @@ import { CopierService } from '../../copier/copier.service';
 import { DocViewerModule } from '../../doc-viewer/doc-viewer-module';
 import { DocsApiModuleImport } from './docs-api-module-import';
 
-const exportName = '{MatButton}';
+const exportName = 'MatButton';
 const moduleImportPath = `@angular/material/button`;
 
 describe('DocsApiModuleImport', () => {

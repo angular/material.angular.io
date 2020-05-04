@@ -4,7 +4,7 @@ import { CopierService } from '../../copier/copier.service';
 
 const EXPORT_NAME_PLACEHOLDER = '{{exportName}}';
 const MODULE_IMPORT_PATH_PLACEHOLDER = '{{moduleImportPath}}';
-const MODULE_IMPORT_TEMPLATE = `import ${EXPORT_NAME_PLACEHOLDER} from '${MODULE_IMPORT_PATH_PLACEHOLDER}';`;
+const MODULE_IMPORT_TEMPLATE = `import {${EXPORT_NAME_PLACEHOLDER}} from '${MODULE_IMPORT_PATH_PLACEHOLDER}';`;
 
 @Component({
   selector: '[docs-api-module-import]',
