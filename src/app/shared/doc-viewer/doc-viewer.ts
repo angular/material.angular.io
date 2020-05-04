@@ -80,16 +80,14 @@ export class DocViewer implements OnDestroy {
       const absoluteUrl = `${location.pathname}#${fragmentUrl}`;
       return `href="${this._domSanitizer.sanitize(SecurityContext.URL, absoluteUrl)}"`;
     });
-
     this._elementRef.nativeElement.innerHTML = rawDocument;
     this.textContent = this._elementRef.nativeElement.textContent;
-
-    // janky way to differentiate between document/standalone example and embedded example load
-    if (this.textContent.startsWith('<') && this.lines) {
-      // janky slice to get lines
+    // TODO: better way to differentiate between document and example load
+    if (rawDocument.startsWith('<span') && this.lines) {
+      // TODO: better way to get span of lines
       this._elementRef.nativeElement.innerHTML =
         rawDocument.split('\n').slice(this.lines[0], this.lines[1]).join('\n');
-        this.textContent = this._elementRef.nativeElement.textContent;
+      this.textContent = this._elementRef.nativeElement.textContent;
     }
 
     this._loadComponents('material-docs-example', ExampleViewer);
@@ -117,8 +115,6 @@ export class DocViewer implements OnDestroy {
 
     Array.prototype.slice.call(exampleElements).forEach((element: Element) => {
       const example = element.getAttribute(componentName);
-      // const file = element.getAttribute(file);
-      // this.lines = element.getAttribute(lines);
       // temporary data to test flow of info
       this.lines = [0, 5];
       const file = 'HTML';
@@ -129,7 +125,7 @@ export class DocViewer implements OnDestroy {
       if (example !== null) {
         (exampleViewer.instance as ExampleViewer).example = example;
         (exampleViewer.instance as ExampleViewer).showCompactToggle = true;
-        (exampleViewer.instance as ExampleViewer).initialView = 'compact';
+        (exampleViewer.instance as ExampleViewer).view = 'compact';
         (exampleViewer.instance as ExampleViewer).lines = this.lines;
         (exampleViewer.instance as ExampleViewer).file = file;
       }

@@ -40,10 +40,10 @@
         <mat-icon>content_copy</mat-icon>
       </button>
     </div>
-    <code-snippet #snippet [source]="exampleTabs[file]" [lines]="lines" *ngIf="file!=='demo'"></code-snippet>
+    <code-snippet #snippet [source]="exampleTabs[file]" [lines]="lines" *ngIf="file !== 'demo'"></code-snippet>
   </div>
 
-  <div class="docs-example-viewer-body" *ngIf="view!=='compact' || file==='demo'">
+  <div class="docs-example-viewer-body" *ngIf="view !== 'compact' || file === 'demo'">
     <ng-template *ngIf="_exampleComponentType && _exampleModuleFactory"
                  [ngComponentOutlet]="_exampleComponentType"
                  [ngComponentOutletNgModuleFactory]="_exampleModuleFactory"></ng-template>

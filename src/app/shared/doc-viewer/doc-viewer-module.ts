@@ -27,7 +27,7 @@ import {CodeSnippet} from '../example-viewer/code-snippet';
     StackBlitzButtonModule
   ],
   providers: [CopierService],
-    declarations: [DocViewer, ExampleViewer, HeaderLink, CodeSnippet],
+  declarations: [DocViewer, ExampleViewer, HeaderLink, CodeSnippet],
   entryComponents: [ExampleViewer, HeaderLink],
   exports: [DocViewer, ExampleViewer, HeaderLink],
 })
