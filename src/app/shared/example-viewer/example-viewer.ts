@@ -1,4 +1,11 @@
-import {Component, Input, NgModuleFactory, Type, ViewChild, ɵNgModuleFactory} from '@angular/core';
+import {
+  Component,
+  Input,
+  NgModuleFactory, QueryList,
+  Type,
+  ViewChildren,
+  ɵNgModuleFactory
+} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {EXAMPLE_COMPONENTS, LiveExample} from '@angular/components-examples';
@@ -16,7 +23,7 @@ const fileExtensionRegex = /(.*)\.(\w+)/;
   styleUrls: ['./example-viewer.scss']
 })
 export class ExampleViewer {
-  @ViewChild('snippet') snippet: CodeSnippet;
+  @ViewChildren(CodeSnippet) snippet: QueryList<CodeSnippet>;
 
   /** Map of example files that should be displayed in the view-source tab. */
   exampleTabs: {[tabName: string]: string};
@@ -34,7 +41,7 @@ export class ExampleViewer {
   @Input() view: Views;
 
   /** Whether to show toggle for compact view. */
-  @Input() showCompactToggle: boolean;
+  @Input() showCompactToggle = false;
 
   /** String key of the currently displayed example. */
   @Input()
@@ -52,10 +59,10 @@ export class ExampleViewer {
   private _example: string;
 
   /** Range of lines of the source code to display in compact view. */
-  @Input() lines: [number, number];
+  @Input() lines: readonly [number, number];
 
   /** Name of file to display in compact view. */
-  @Input() file = 'HTML';
+  @Input() file: string;
 
   constructor(private snackbar: MatSnackBar, private copier: CopierService) {
   }

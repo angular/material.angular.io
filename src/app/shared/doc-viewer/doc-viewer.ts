@@ -38,7 +38,7 @@ export class DocViewer implements OnDestroy {
     }
   }
 
-  @Input() lines: [number, number];
+  @Input() lines: readonly [number, number];
 
   @Output() contentRendered = new EventEmitter<HTMLElement>();
 
@@ -82,9 +82,7 @@ export class DocViewer implements OnDestroy {
     });
     this._elementRef.nativeElement.innerHTML = rawDocument;
     this.textContent = this._elementRef.nativeElement.textContent;
-    // TODO: better way to differentiate between document and example load
-    if (rawDocument.startsWith('<span') && this.lines) {
-      // TODO: better way to get span of lines
+    if (this.lines) {
       this._elementRef.nativeElement.innerHTML =
         rawDocument.split('\n').slice(this.lines[0], this.lines[1]).join('\n');
       this.textContent = this._elementRef.nativeElement.textContent;
@@ -115,19 +113,13 @@ export class DocViewer implements OnDestroy {
 
     Array.prototype.slice.call(exampleElements).forEach((element: Element) => {
       const example = element.getAttribute(componentName);
-      // temporary data to test flow of info
-      this.lines = [0, 5];
-      const file = 'HTML';
       const portalHost = new DomPortalOutlet(
           element, this._componentFactoryResolver, this._appRef, this._injector);
       const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       const exampleViewer = portalHost.attach(examplePortal);
       if (example !== null) {
         (exampleViewer.instance as ExampleViewer).example = example;
-        (exampleViewer.instance as ExampleViewer).showCompactToggle = true;
-        (exampleViewer.instance as ExampleViewer).view = 'compact';
-        (exampleViewer.instance as ExampleViewer).lines = this.lines;
-        (exampleViewer.instance as ExampleViewer).file = file;
+        (exampleViewer.instance as ExampleViewer).view = 'collapsed';
       }
 
       this._portalHosts.push(portalHost);

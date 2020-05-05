@@ -9,6 +9,6 @@ import {DocViewer} from '../doc-viewer/doc-viewer';
 })
 export class CodeSnippet {
   @Input() source: string;
-  @Input() lines: [number, number];
+  @Input() lines: readonly [number, number];
   @ViewChild('viewer') viewer: DocViewer;
 }
