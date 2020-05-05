@@ -15,11 +15,12 @@
       <mat-tab *ngFor="let tabName of _getExampleTabNames()" [label]="tabName">
         <div class="button-bar">
           <button mat-icon-button type="button" (click)="toggleCompactView()"
+                  class="docs-example-compact-toggle" [matTooltip]="'Compact view'"
                   aria-label="View less" *ngIf="showCompactToggle">
             <mat-icon>unfold_less</mat-icon>
           </button>
           <button mat-icon-button type="button" (click)="copySource(this.snippet.viewer.textContent)"
-                  class="docs-example-source-copy"
+                  class="docs-example-source-copy" [matTooltip]="'Copy example source'"
                   title="Copy example source" aria-label="Copy example source to clipboard">
             <mat-icon>content_copy</mat-icon>
           </button>
@@ -31,11 +32,13 @@
 
   <div class="docs-example-viewer-source-compact" *ngIf="view === 'compact'">
     <div class="button-bar">
-      <button mat-icon-button type="button" (click)="toggleCompactView()" aria-label="View less">
+      <button mat-icon-button type="button" (click)="toggleCompactView()"
+              class="docs-example-compact-toggle" [matTooltip]="'View full source code'"
+              aria-label="View less">
         <mat-icon>unfold_more</mat-icon>
       </button>
       <button mat-icon-button type="button" (click)="copySource(this.snippet.viewer.textContent)"
-              class="docs-example-source-copy"
+              class="docs-example-source-copy" [matTooltip]="'Copy example source'"
               title="Copy example source" aria-label="Copy example source to clipboard">
         <mat-icon>content_copy</mat-icon>
       </button>

@@ -1,12 +1,14 @@
 :host {
   display: block;
-  padding: 20px 0;
 }
 
 .docs-example-viewer-wrapper {
   h3 {
     margin-top: 10px;
   }
+  box-shadow: none;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 4px;
 }
 
 .docs-example-viewer-title {
@@ -21,16 +23,30 @@
   flex: 1 1 auto;
 }
 
-.docs-example-source {
-  padding: 0 30px 10px 30px;
-  min-height: 150px;
-}
-
 .docs-example-viewer-body {
   padding: 30px;
 }
 
 .button-bar {
-  display: flex;
-  justify-content: flex-end;
+  float: right;
 }
+
+code-snippet {
+  background: rgba(0, 0, 0, 0.01)
+}
+
+.docs-example-source {
+  margin: 0;
+  border: none;
+  background: none;
+}
+
+.docs-example-source-copy {
+  right: 0;
+  color: rgba(0, 0, 0, .6);
+}
+
+.docs-example-compact-toggle {
+  color: rgba(0, 0, 0, .6);
+}
+

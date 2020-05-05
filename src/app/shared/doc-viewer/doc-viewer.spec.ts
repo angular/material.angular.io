@@ -75,13 +75,13 @@ describe('DocViewer', () => {
     const testUrl = 'http://material.angular.io/example-html.html';
 
     fixture.componentInstance.documentUrl = testUrl;
-    fixture.componentInstance.lines = [1, 2];
+    fixture.componentInstance.lines = [0, 1];
     fixture.detectChanges();
 
     http.expectOne(testUrl).flush(FAKE_DOCS[testUrl]);
 
     const docViewer = fixture.debugElement.query(By.directive(DocViewer));
-    expect(docViewer.componentInstance.textContent).toBe('line 2');
+    expect(docViewer.componentInstance.textContent).toBe('line 1');
   });
 
   it('should show error message when doc not found', () => {
