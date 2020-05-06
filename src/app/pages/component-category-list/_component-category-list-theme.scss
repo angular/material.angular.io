@@ -8,4 +8,9 @@
   .docs-component-category-list-card-summary {
     color: mat-color($foreground, secondary-text);
   }
+
+  .mat-card {
+    box-shadow: none !important;
+    border: 1px solid mat-color($foreground, divider);
+  }
 }

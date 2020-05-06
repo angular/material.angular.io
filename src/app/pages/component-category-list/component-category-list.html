@@ -2,12 +2,12 @@
      id="category-summary"
      focusOnNavigation>{{_categoryListSummary}}</div>
 <div class="docs-component-category-list">
-  <a *ngFor="let category of docItems.getCategories((params | async)?.section)"
+  <a *ngFor="let component of docItems.getItems((params | async)?.section)"
      class="docs-component-category-list-item"
-    [routerLink]="[category.id]">
+    [routerLink]="'/' + (params | async)?.section + '/' + component.id">
     <mat-card class="docs-component-category-list-card">
-      <mat-card-title>{{category.name}}</mat-card-title>
-      <mat-card-content class="docs-component-category-list-card-summary">{{category.summary}}</mat-card-content>
+      <mat-card-title>{{component.name}}</mat-card-title>
+      <mat-card-content class="docs-component-category-list-card-summary">{{component.summary}}</mat-card-content>
     </mat-card>
   </a>
 </div>
