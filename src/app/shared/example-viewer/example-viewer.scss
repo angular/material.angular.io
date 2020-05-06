@@ -16,7 +16,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: 8px 20px;
+  padding: 8px 8px 8px 16px;
 }
 
 .docs-example-viewer-title-spacer {
@@ -29,6 +29,7 @@
 
 .button-bar {
   float: right;
+  padding: 8px;
 }
 
 code-snippet {
@@ -36,9 +37,9 @@ code-snippet {
 }
 
 .docs-example-source {
+  // TODO(annieyw): remove when standalone snippets are removed
   padding: 0;
   margin: 0;
   border: none;
   background: none;
 }
-

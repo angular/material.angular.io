@@ -23,7 +23,7 @@ const fileExtensionRegex = /(.*)\.(\w+)/;
   styleUrls: ['./example-viewer.scss']
 })
 export class ExampleViewer {
-  @ViewChildren(CodeSnippet) snippet: QueryList<CodeSnippet>;
+  @ViewChildren(CodeSnippet) readonly snippet: QueryList<CodeSnippet>;
 
   /** Map of example files that should be displayed in the view-source tab. */
   exampleTabs: {[tabName: string]: string};
@@ -64,7 +64,7 @@ export class ExampleViewer {
   /** Name of file to display in compact view. */
   @Input() file: string;
 
-  constructor(private snackbar: MatSnackBar, private copier: CopierService) {
+  constructor(private readonly snackbar: MatSnackBar, private readonly copier: CopierService) {
   }
 
   toggleCompactView() {

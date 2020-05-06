@@ -13,7 +13,6 @@
 
     .docs-example-viewer-title {
       color: mat-color($foreground, secondary-text);
-      background: rgba(mat-color($foreground, secondary-text), 0.03);
     }
 
     .docs-example-button {
@@ -31,6 +30,10 @@
 
     code-snippet {
       background: rgba(mat-color($foreground, secondary-text), 0.01);
+    }
+
+    .docs-example-viewer-source code-snippet {
+      border-bottom: 1px solid mat-color($foreground, divider);
     }
   }
 }
