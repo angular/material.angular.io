@@ -83,6 +83,12 @@ export class ExampleViewer {
     }
   }
 
+  generateUrl(file: string): string {
+    const fileName = file.split('.').join('-') + '.html';
+    const examplePath = `${this.exampleData.module.importSpecifier}/${this.example}`;
+    return `/docs-content/examples-highlighted/${examplePath}/${fileName}`;
+  }
+
   _getExampleTabNames() {
     return Object.keys(this.exampleTabs);
   }

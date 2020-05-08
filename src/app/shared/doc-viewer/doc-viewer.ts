@@ -113,6 +113,8 @@ export class DocViewer implements OnDestroy {
 
     [...exampleElements].forEach((element: Element) => {
       const example = element.getAttribute(componentName);
+      const lines = element.getAttribute('lines');
+      const file = element.getAttribute('file');
       const portalHost = new DomPortalOutlet(
           element, this._componentFactoryResolver, this._appRef, this._injector);
       const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
@@ -120,7 +122,14 @@ export class DocViewer implements OnDestroy {
       if (example !== null) {
         const exampleViewerComponent = exampleViewer.instance as ExampleViewer;
         exampleViewerComponent.example = example;
-        exampleViewerComponent.view = 'collapsed';
+        if (file) {
+          exampleViewerComponent.view = 'compact';
+          exampleViewerComponent.showCompactToggle = true;
+          exampleViewerComponent.file = file;
+        }
+        if (lines) {
+          exampleViewerComponent.lines = JSON.parse(lines);
+        }
       }
 
       this._portalHosts.push(portalHost);

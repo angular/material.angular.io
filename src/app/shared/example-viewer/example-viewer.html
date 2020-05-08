@@ -52,10 +52,10 @@
         </mat-icon>
       </button>
     </div>
-    <code-snippet [source]="file" [lines]="lines" *ngIf="file !== 'demo'"></code-snippet>
+    <code-snippet [source]="generateUrl(file)" [lines]="lines"></code-snippet>
   </div>
 
-  <div class="docs-example-viewer-body" *ngIf="view !== 'compact' || file === 'demo'">
+  <div class="docs-example-viewer-body" *ngIf="view !== 'compact'">
     <ng-template *ngIf="_exampleComponentType && _exampleModuleFactory"
                  [ngComponentOutlet]="_exampleComponentType"
                  [ngComponentOutletNgModuleFactory]="_exampleModuleFactory"></ng-template>
