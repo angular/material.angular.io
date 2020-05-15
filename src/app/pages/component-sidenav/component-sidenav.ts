@@ -11,12 +11,12 @@ import {
 import {DocumentationItems} from '../../shared/documentation-items/documentation-items';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
-import {ActivatedRoute, Params, Router, RouterModule, Routes} from '@angular/router';
+import {ActivatedRoute, Params, RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 import {FooterModule} from '../../shared/footer/footer';
 import {combineLatest, Observable, Subject, Subscription} from 'rxjs';
-import {map, startWith, switchMap, takeUntil} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import {BreakpointObserver} from '@angular/cdk/layout';
@@ -113,11 +113,10 @@ export class ComponentSidenav implements OnInit, OnDestroy {
 })
 export class ComponentNav implements OnInit, OnDestroy {
   @Input() params: Observable<Params>;
-  expansions: {[key: string]: boolean} = {};
   currentItemId: string;
   private _onDestroy = new Subject<void>();
 
-  constructor(public docItems: DocumentationItems, private _router: Router) {}
+  constructor(public docItems: DocumentationItems) {}
 
   ngOnInit() {
   }

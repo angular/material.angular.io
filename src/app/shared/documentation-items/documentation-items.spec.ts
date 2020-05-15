@@ -16,17 +16,6 @@ describe('DocViewer', () => {
     docsItems = di;
   }));
 
-  it('get a list of categories', () => {
-    expect(docsItems.getCategories(COMPONENTS)).toBeDefined();
-    expect(docsItems.getCategories(COMPONENTS).length).toBeGreaterThan(0);
-    for (const category of docsItems.getCategories(COMPONENTS)) {
-      expect(category.id).toBeDefined();
-      expect(category.name).toBeDefined();
-      expect(category.items).toBeDefined();
-      expect(category.items.length).toBeGreaterThan(0);
-    }
-  });
-
   it('should get a list of all doc items', () => {
     expect(docsItems.getItems(COMPONENTS)).toBeDefined();
     expect(docsItems.getItems(COMPONENTS).length).toBeGreaterThan(0);
