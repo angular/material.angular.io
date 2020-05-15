@@ -48,12 +48,29 @@ describe('ExampleViewer', () => {
 
   it('should toggle between the 3 views', async(() => {
     fixture.detectChanges();
-    component.view = 'compact';
-    expect(component.view).toBe('compact');
+    // need to specify a file because toggling from snippet to full changes the tabs to match
+    component.file = 'file.html';
+    component.view = 'snippet';
+    expect(component.view).toBe('snippet');
     component.toggleCompactView();
     expect(component.view).toBe('full');
     component.toggleSourceView();
-    expect(component.view).toBe('collapsed');
+    expect(component.view).toBe('demo');
+  }));
+
+  it('should change to correct tab', async(() => {
+    fixture.detectChanges();
+    component.file = 'file.html';
+    component.selectCorrectTab();
+    expect(component.selectedTab).toBe(0);
+
+    component.file = 'file.ts';
+    component.selectCorrectTab();
+    expect(component.selectedTab).toBe(1);
+
+    component.file = 'file.css';
+    component.selectCorrectTab();
+    expect(component.selectedTab).toBe(2);
   }));
 
   it('should set and return example properly', async(() => {

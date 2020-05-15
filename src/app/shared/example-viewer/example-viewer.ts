@@ -1,7 +1,7 @@
 import {
   Component,
   Input,
-  NgModuleFactory, QueryList,
+  NgModuleFactory, OnInit, QueryList,
   Type,
   ViewChildren,
   ɵNgModuleFactory
@@ -12,7 +12,7 @@ import {EXAMPLE_COMPONENTS, LiveExample} from '@angular/components-examples';
 import {CopierService} from '../copier/copier.service';
 import {CodeSnippet} from './code-snippet';
 
-export type Views = 'compact' | 'full' | 'collapsed';
+export type Views = 'snippet' | 'full' | 'demo';
 
 /** Regular expression that matches a file name and its extension */
 const fileExtensionRegex = /(.*)\.(\w+)/;
@@ -22,14 +22,20 @@ const fileExtensionRegex = /(.*)\.(\w+)/;
   templateUrl: './example-viewer.html',
   styleUrls: ['./example-viewer.scss']
 })
-export class ExampleViewer {
+export class ExampleViewer implements OnInit {
   @ViewChildren(CodeSnippet) readonly snippet: QueryList<CodeSnippet>;
+
+  /** The tab to jump to when expanding from snippet view. */
+  selectedTab: number;
 
   /** Map of example files that should be displayed in the view-source tab. */
   exampleTabs: {[tabName: string]: string};
 
   /** Data for the currently selected example. */
   exampleData: LiveExample;
+
+  /** URL to fetch code snippet for snippet view. */
+  fileUrl: string;
 
   /** Component type for the current example. */
   _exampleComponentType: Type<any>|null = null;
@@ -59,7 +65,7 @@ export class ExampleViewer {
   private _example: string;
 
   /** Range of lines of the source code to display in compact view. */
-  @Input() lines: readonly [number, number];
+  @Input() region: string;
 
   /** Name of file to display in compact view. */
   @Input() file: string;
@@ -67,12 +73,34 @@ export class ExampleViewer {
   constructor(private readonly snackbar: MatSnackBar, private readonly copier: CopierService) {
   }
 
+  ngOnInit() {
+    if (this.file) {
+      this.fileUrl = this.generateUrl(this.file);
+    }
+  }
+
+  selectCorrectTab() {
+    const fileType = this.file.split('.')[1];
+    if (fileType === 'html') {
+      this.selectedTab = 0;
+    } else if (fileType === 'ts') {
+      this.selectedTab = 1;
+    } else if (fileType === 'css') {
+      this.selectedTab = 2;
+    }
+  }
+
   toggleCompactView() {
-    this.view === 'compact' ? this.view = 'full' : this.view = 'compact';
+    if (this.view === 'snippet') {
+      this.view = 'full';
+      this.selectCorrectTab();
+    } else {
+      this.view = 'snippet';
+    }
   }
 
   toggleSourceView(): void {
-    this.view === 'full' ? this.view = 'collapsed' : this.view = 'full';
+    this.view === 'full' ? this.view = 'demo' : this.view = 'full';
   }
 
   copySource(text: string) {
@@ -84,7 +112,14 @@ export class ExampleViewer {
   }
 
   generateUrl(file: string): string {
-    const fileName = file.split('.').join('-') + '.html';
+    let fileName: string;
+    if (this.region !== 'undefined') {
+      const fileSplit = file.split('.');
+      fileName = fileSplit[0] + '_' + this.region + '-' + fileSplit[1] + '.html';
+    } else {
+      fileName = file.replace('.', '-') + '.html';
+    }
+
     const examplePath = `${this.exampleData.module.importSpecifier}/${this.example}`;
     return `/docs-content/examples-highlighted/${examplePath}/${fileName}`;
   }

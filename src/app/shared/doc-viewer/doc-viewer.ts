@@ -38,12 +38,37 @@ export class DocViewer implements OnDestroy {
     }
   }
 
-  @Input() lines: readonly [number, number];
-
   @Output() contentRendered = new EventEmitter<HTMLElement>();
 
   /** The document text. It should not be HTML encoded. */
   textContent = '';
+
+  private static initExampleViewer(exampleViewerComponent: ExampleViewer,
+                                   example: string,
+                                   expanded: string | null,
+                                   file: string | null,
+                                   region: string | null) {
+    exampleViewerComponent.example = example;
+    if (expanded === 'true') {
+      exampleViewerComponent.view = 'full';
+    } else {
+      if (file) {
+        // if the html div has field `file` then it should be in compact view to show the code
+        // snippet
+        exampleViewerComponent.view = 'snippet';
+        exampleViewerComponent.showCompactToggle = true;
+        exampleViewerComponent.file = file;
+        if (region) {
+          // `lines` should only exist when `file` exists but not vice versa
+          // it is valid for embedded example snippets to show the whole file (esp short files)
+          exampleViewerComponent.region = region;
+        }
+      } else {
+        // otherwise it is an embedded demo
+        exampleViewerComponent.view = 'demo';
+      }
+    }
+  }
 
   constructor(private _appRef: ApplicationRef,
               private _componentFactoryResolver: ComponentFactoryResolver,
@@ -82,12 +107,6 @@ export class DocViewer implements OnDestroy {
     });
     this._elementRef.nativeElement.innerHTML = rawDocument;
     this.textContent = this._elementRef.nativeElement.textContent;
-    if (this.lines) {
-      this._elementRef.nativeElement.innerHTML =
-        rawDocument.split('\n').slice(this.lines[0], this.lines[1]).join('\n');
-      this.textContent = this._elementRef.nativeElement.textContent;
-    }
-
     this._loadComponents('material-docs-example', ExampleViewer);
     this._loadComponents('header-link', HeaderLink);
 
@@ -113,25 +132,17 @@ export class DocViewer implements OnDestroy {
 
     [...exampleElements].forEach((element: Element) => {
       const example = element.getAttribute(componentName);
-      const lines = element.getAttribute('lines');
+      const region = element.getAttribute('region');
       const file = element.getAttribute('file');
+      const expanded = element.getAttribute('expanded');
       const portalHost = new DomPortalOutlet(
           element, this._componentFactoryResolver, this._appRef, this._injector);
       const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       const exampleViewer = portalHost.attach(examplePortal);
+      const exampleViewerComponent = exampleViewer.instance as ExampleViewer;
       if (example !== null) {
-        const exampleViewerComponent = exampleViewer.instance as ExampleViewer;
-        exampleViewerComponent.example = example;
-        if (file) {
-          exampleViewerComponent.view = 'compact';
-          exampleViewerComponent.showCompactToggle = true;
-          exampleViewerComponent.file = file;
-        }
-        if (lines) {
-          exampleViewerComponent.lines = JSON.parse(lines);
-        }
+        DocViewer.initExampleViewer(exampleViewerComponent, example, expanded, file, region);
       }
-
       this._portalHosts.push(portalHost);
     });
   }

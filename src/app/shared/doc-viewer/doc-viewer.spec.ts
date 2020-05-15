@@ -5,6 +5,7 @@ import {By} from '@angular/platform-browser';
 import {DocsAppTestingModule} from '../../testing/testing-module';
 import {DocViewer} from './doc-viewer';
 import {DocViewerModule} from './doc-viewer-module';
+import {ExampleViewer} from '../example-viewer/example-viewer';
 
 
 describe('DocViewer', () => {
@@ -70,18 +71,65 @@ describe('DocViewer', () => {
     expect(docViewer.nativeElement.innerHTML).toContain('id="my-header"');
   });
 
-  it('should show part of example source code', () => {
+  it('should instantiate example viewer in compact view with region', () => {
     const fixture = TestBed.createComponent(DocViewerTestComponent);
-    const testUrl = 'http://material.angular.io/example-html.html';
+    const testUrl = 'http://material.angular.io/compact-example.html';
 
     fixture.componentInstance.documentUrl = testUrl;
-    fixture.componentInstance.lines = [0, 1];
     fixture.detectChanges();
 
     http.expectOne(testUrl).flush(FAKE_DOCS[testUrl]);
 
-    const docViewer = fixture.debugElement.query(By.directive(DocViewer));
-    expect(docViewer.componentInstance.textContent).toBe('line 1');
+    const exampleViewer = fixture.debugElement.query(By.directive(ExampleViewer));
+    expect(exampleViewer.componentInstance.file).toBe('some-example.html');
+    expect(exampleViewer.componentInstance.showCompactToggle).toBeTrue();
+    expect(exampleViewer.componentInstance.region).toBe('some-region');
+    expect(exampleViewer.componentInstance.view).toBe('snippet');
+  });
+
+  it('should instantiate example viewer in collapsed view', () => {
+    const fixture = TestBed.createComponent(DocViewerTestComponent);
+    const testUrl = 'http://material.angular.io/collapsed-example.html';
+
+    fixture.componentInstance.documentUrl = testUrl;
+    fixture.detectChanges();
+
+    http.expectOne(testUrl).flush(FAKE_DOCS[testUrl]);
+
+    const exampleViewer = fixture.debugElement.query(By.directive(ExampleViewer));
+    expect(exampleViewer.componentInstance.file).toBeUndefined();
+    expect(exampleViewer.componentInstance.showCompactToggle).toBeFalse();
+    expect(exampleViewer.componentInstance.view).toBe('demo');
+  });
+
+  it('should instantiate example viewer in compact view with whole snippet', () => {
+    const fixture = TestBed.createComponent(DocViewerTestComponent);
+    const testUrl = 'http://material.angular.io/whole-snippet-example.html';
+
+    fixture.componentInstance.documentUrl = testUrl;
+    fixture.detectChanges();
+
+    http.expectOne(testUrl).flush(FAKE_DOCS[testUrl]);
+
+    const exampleViewer = fixture.debugElement.query(By.directive(ExampleViewer));
+    expect(exampleViewer.componentInstance.file).toBe('whole-snippet-example.ts');
+    expect(exampleViewer.componentInstance.showCompactToggle).toBeTrue();
+    expect(exampleViewer.componentInstance.view).toBe('snippet');
+  });
+
+  it('should instantiate example viewer in full view', () => {
+    const fixture = TestBed.createComponent(DocViewerTestComponent);
+    const testUrl = 'http://material.angular.io/expanded-example.html';
+
+    fixture.componentInstance.documentUrl = testUrl;
+    fixture.detectChanges();
+
+    http.expectOne(testUrl).flush(FAKE_DOCS[testUrl]);
+
+    const exampleViewer = fixture.debugElement.query(By.directive(ExampleViewer));
+    expect(exampleViewer.componentInstance.file).toBeUndefined();
+    expect(exampleViewer.componentInstance.showCompactToggle).toBeFalse();
+    expect(exampleViewer.componentInstance.view).toBe('full');
   });
 
   it('should show error message when doc not found', () => {
@@ -127,8 +175,13 @@ const FAKE_DOCS: {[key: string]: string} = {
       <div material-docs-example="some-example"></div>`,
   'http://material.angular.io/doc-with-links.html': `<a href="#test">Test link</a>`,
   'http://material.angular.io/doc-with-element-ids.html': `<h4 id="my-header">Header</h4>`,
-  'http://material.angular.io/example-html.html':
-    `<span>line 1</span>
-     <span>line 2</span>
-     <span>line 3</span>`,
+  'http://material.angular.io/compact-example.html':
+    '<div material-docs-example="some-example" file="some-example.html"' +
+    ' region="some-region"></div>',
+  'http://material.angular.io/collapsed-example.html':
+    '<div material-docs-example="collapsed-example"></div>',
+  'http://material.angular.io/whole-snippet-example.html':
+    '<div material-docs-example="whole-snippet-example" file="whole-snippet-example.ts"></div>',
+  'http://material.angular.io/expanded-example.html':
+    '<div material-docs-example="expanded-snippet-example" expanded="true"></div>'
 };
