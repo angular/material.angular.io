@@ -65,10 +65,10 @@ export class ExampleViewer implements OnInit {
   private _example: string;
 
   /** Range of lines of the source code to display in compact view. */
-  @Input() region: string;
+  @Input() region?: string;
 
   /** Name of file to display in compact view. */
-  @Input() file: string;
+  @Input() file?: string;
 
   constructor(private readonly snackbar: MatSnackBar, private readonly copier: CopierService) {
   }
@@ -80,13 +80,19 @@ export class ExampleViewer implements OnInit {
   }
 
   selectCorrectTab() {
-    const fileType = this.file.split('.')[1];
-    if (fileType === 'html') {
-      this.selectedTab = 0;
-    } else if (fileType === 'ts') {
-      this.selectedTab = 1;
-    } else if (fileType === 'css') {
-      this.selectedTab = 2;
+    const fileType = this.file?.split('.').slice(-1)[0];
+    switch (fileType) {
+      case 'html':
+        this.selectedTab = 0;
+        break;
+      case 'ts':
+        this.selectedTab = 1;
+        break;
+      case 'css':
+        this.selectedTab = 2;
+        break;
+      default:
+        console.error(`Unexpected file type: ${fileType}. Expected html, ts, or css.`);
     }
   }
 
@@ -113,11 +119,11 @@ export class ExampleViewer implements OnInit {
 
   generateUrl(file: string): string {
     let fileName: string;
-    if (this.region !== 'undefined') {
-      const fileSplit = file.split('.');
-      fileName = fileSplit[0] + '_' + this.region + '-' + fileSplit[1] + '.html';
+    const last = file.lastIndexOf('.');
+    if (this.region) {
+      fileName = file.substring(0, last) + '_' + this.region + '-' + file.substring(last + 1) + '.html';
     } else {
-      fileName = file.replace('.', '-') + '.html';
+      fileName = file.substring(0, last) + '-' + file.substring(last + 1) + '.html';
     }
 
     const examplePath = `${this.exampleData.module.importSpecifier}/${this.example}`;

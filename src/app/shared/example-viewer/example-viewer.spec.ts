@@ -73,6 +73,34 @@ describe('ExampleViewer', () => {
     expect(component.selectedTab).toBe(2);
   }));
 
+  it('should generate correct url with region', async(() => {
+    fixture.detectChanges();
+    component.example = exampleKey;
+    component.region = 'region';
+    const url = component.generateUrl('a.b.html');
+    expect(url).toBe(exampleBasePath + '/a.b_region-html.html');
+  }));
+
+  it('should generate correct url without region', async(() => {
+    fixture.detectChanges();
+    component.example = exampleKey;
+    component.region = undefined;
+    const url = component.generateUrl('a.b.ts');
+    expect(url).toBe(exampleBasePath + '/a.b-ts.html');
+  }));
+
+  it('should print an error message about incorrect file type', async(() => {
+    spyOn(console, 'error');
+    fixture.detectChanges();
+    component.file = 'file.bad';
+    component.selectCorrectTab();
+
+
+    expect(console.error).toHaveBeenCalled();
+    expect(console.error).toHaveBeenCalledWith(
+      'Unexpected file type: bad. Expected html, ts, or css.');
+  }));
+
   it('should set and return example properly', async(() => {
     component.example = exampleKey;
     fixture.detectChanges();
