@@ -15,7 +15,7 @@ import {ActivatedRoute, Params, RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ComponentHeaderModule} from '../component-page-header/component-page-header';
 import {FooterModule} from '../../shared/footer/footer';
-import {combineLatest, Observable, Subject, Subscription} from 'rxjs';
+import {combineLatest, Observable, Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
@@ -111,20 +111,11 @@ export class ComponentSidenav implements OnInit, OnDestroy {
     ]),
   ],
 })
-export class ComponentNav implements OnInit, OnDestroy {
+export class ComponentNav {
   @Input() params: Observable<Params>;
   currentItemId: string;
-  private _onDestroy = new Subject<void>();
 
   constructor(public docItems: DocumentationItems) {}
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    this._onDestroy.next();
-    this._onDestroy.complete();
-  }
 }
 
 const routes: Routes = [ {
