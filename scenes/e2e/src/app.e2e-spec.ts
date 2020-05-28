@@ -1,23 +1,28 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import {AppPage} from './app.po';
+import {browser} from 'protractor';
+import {screenshot} from '../screenshot';
 
 describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
+    browser.driver.manage().window().setSize(300, 480);
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('scenes app is running!');
+  it('screenshot for input scene', () => {
+    page.navigateTo('input');
+    screenshot('input');
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+  it('screenshot for button scene', () => {
+    page.navigateTo('button');
+    screenshot('button');
   });
+
+  it('screenshot for checkbox scene', () => {
+    page.navigateTo('checkbox');
+    screenshot('checkbox');
+  });
+
 });

@@ -10,14 +10,14 @@
 }
 
 #left {
-  width: 250px;
+  width: 40%;
   position: absolute
 }
 
 #right {
-  width: 250px;
+  width: 40%;
   position: absolute;
-  left: 300px;
+  left: 55%;
 
 }
 
@@ -25,3 +25,6 @@
   margin-bottom: -5px
 }
 
+.examples {
+  top: 7%;
+}

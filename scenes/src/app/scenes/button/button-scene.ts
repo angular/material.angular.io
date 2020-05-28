@@ -3,7 +3,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: 'button-scene',
+  selector: 'app-button-scene',
   templateUrl: './button-scene.html',
   styleUrls: ['./button-scene.scss']
 })

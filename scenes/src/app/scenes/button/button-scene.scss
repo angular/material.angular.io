@@ -1,23 +1,39 @@
 .buttons {
   position: relative;
-  width: 130px;
+  width: 25%;
+  top: 8%;
 }
 
 button {
   margin: 15px !important;
   width: 100px;
-  height: 45px;
-  font-size: 15px;
+  height: 50px;
 }
 
 #right {
   position: absolute;
-  left: 240px;
+  left: 15%;
 }
 
 #left {
   position: absolute;
-  left: 70px;
+  left: 55%;
+}
+
+.mat-button-wrapper {
+  font-size: 15px;
+}
+
+.mat-raised-button[disabled][disabled] {
+  color: rgba(red, 0.45);
+}
+
+.mat-button[disabled][disabled] {
+  color: rgba(red, 0.45);
+}
+
+.mat-stroked-button[disabled][disabled] {
+  color: rgba(red, 0.45);
 }
 
 

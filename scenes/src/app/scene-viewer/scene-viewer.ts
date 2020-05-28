@@ -5,7 +5,7 @@ import {ButtonSceneModule} from '../scenes/button/button-scene';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: 'scene-viewer',
+  selector: 'app-scene-viewer',
   templateUrl: './scene-viewer.html',
   styleUrls: ['./scene-viewer.scss']
 })

@@ -1,0 +1,24 @@
+.boxes {
+  width: 25%;
+  position: absolute;
+  top: 10%;
+}
+
+#right {
+  left: 55%;
+}
+
+#left {
+  left: 15%;
+}
+
+.mat-checkbox-inner-container {
+  height: 40px!important;
+  width: 40px!important;
+  margin-top: 25px !important;
+}
+
+.mat-checkbox-label {
+  margin-top: 32px;
+  font-size: 20px;
+}

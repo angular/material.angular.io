@@ -15,7 +15,7 @@ $warn: mat-palette($mat-red);
 $theme: mat-light-theme($primary, $accent, $warn);
 
 $background: map-get($theme, background);
-$background: map_merge($background, (background: $background-color));
+$background: map_merge($background, (background: $background-color, disabled-button: rgba(red, 0.5)));
 $theme: map_merge($theme, (background: $background));
 
 
@@ -25,6 +25,8 @@ $theme: map_merge($theme, (foreground: $foreground));
 
 @include angular-material-theme($theme);
 
+
 body {
-  background-color: #fff2f4;
+  margin: 0;
+  color: red;
 }

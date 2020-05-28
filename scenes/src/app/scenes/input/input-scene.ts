@@ -8,7 +8,7 @@ import { CommonModule} from '@angular/common';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: 'input-scene',
+  selector: 'app-input-scene',
   templateUrl: './input-scene.html',
   styleUrls: ['./input-scene.scss']
 })
@@ -23,7 +23,7 @@ export class InputScene {
     FormsModule,
     MatInputModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
   ],
   exports: [InputScene],
   declarations: [InputScene]
