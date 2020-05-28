@@ -6,7 +6,7 @@ import {ButtonSceneModule} from '../scenes/button/button-scene';
 
 @Component({
   selector: 'app-button',
-  template: `<scene-viewer hueRotation="15"><button-scene></button-scene></scene-viewer>`
+  template: `<app-scene-viewer hueRotation="15"><app-button-scene></app-button-scene></app-scene-viewer>`
 })
 export class ButtonPage {
 

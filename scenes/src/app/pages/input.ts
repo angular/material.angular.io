@@ -6,7 +6,7 @@ import {InputSceneModule} from '../scenes/input/input-scene';
 
 @Component({
   selector: 'app-input',
-  template: `<scene-viewer hueRotation="0"><input-scene></input-scene></scene-viewer>`
+  template: `<app-scene-viewer hueRotation="0"><app-input-scene></app-input-scene></app-scene-viewer>`
 })
 export class InputPage {
 

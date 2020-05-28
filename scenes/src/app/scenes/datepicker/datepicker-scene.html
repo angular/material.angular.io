@@ -1,0 +1,12 @@
+<mat-form-field id="left">
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field id="right">
+  <input matInput [matDatepicker]="dp3">
+  <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+  <mat-datepicker #dp3></mat-datepicker>
+</mat-form-field>
+

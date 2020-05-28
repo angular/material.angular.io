@@ -6,7 +6,7 @@ import {CheckboxSceneModule} from '../scenes/checkbox/checkbox-scene';
 
 @Component({
   selector: 'app-checkbox',
-  template: `<scene-viewer hueRotation="30"><checkbox-scene></checkbox-scene></scene-viewer>`
+  template: `<app-scene-viewer hueRotation="30"><app-checkbox-scene></app-checkbox-scene></app-scene-viewer>`
 })
 export class CheckboxPage {
 
