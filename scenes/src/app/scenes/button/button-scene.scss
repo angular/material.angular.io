@@ -1,0 +1,23 @@
+.buttons {
+  position: relative;
+  width: 130px;
+}
+
+button {
+  margin: 15px !important;
+  width: 100px;
+  height: 45px;
+  font-size: 15px;
+}
+
+#right {
+  position: absolute;
+  left: 240px;
+}
+
+#left {
+  position: absolute;
+  left: 70px;
+}
+
+
