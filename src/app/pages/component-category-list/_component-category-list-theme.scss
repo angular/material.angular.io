@@ -9,8 +9,12 @@
     color: mat-color($foreground, secondary-text);
   }
 
-  .mat-card {
-    box-shadow: none !important;
+  .docs-component-category-list-card {
     border: 1px solid mat-color($foreground, divider);
+    border-radius: 4px;
+  }
+
+  .docs-component-category-list-card-title {
+    color: mat-color($foreground, text);
   }
 }

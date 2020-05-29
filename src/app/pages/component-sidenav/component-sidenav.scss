@@ -86,8 +86,8 @@ app-component-sidenav {
   flex: 1 1 auto;
 }
 
-.mat-list-base {
-  padding-top: 0 !important;
+div .mat-list-base {
+  padding-top: 0;
 }
 
 .mat-list-item-content {
