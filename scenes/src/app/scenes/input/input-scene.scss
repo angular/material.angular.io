@@ -9,16 +9,9 @@
   margin: 10px;
 }
 
-#left {
-  width: 40%;
-  position: absolute
-}
 
 #right {
-  width: 40%;
-  position: absolute;
-  left: 55%;
-
+  left: 260px;
 }
 
 .clear {
@@ -26,5 +19,7 @@
 }
 
 .examples {
-  top: 7%;
+  position: absolute;
+  width: 200px;
+  top: 25px
 }

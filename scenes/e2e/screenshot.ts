@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import {browser} from 'protractor';
+import {by, element} from 'protractor';
 
 const OUTPUT_DIR = path.join(__dirname, 'screenshots');
 
@@ -24,7 +24,7 @@ export class Screenshot {
 
   constructor(id: string) {
     this.id = id;
-    browser.takeScreenshot().then(png => this.storeScreenshot(png));
+    element(by.id('wrapper')).takeScreenshot().then(png => this.storeScreenshot(png));
   }
 
   /** Replaces the existing screenshot with the newly generated one. */

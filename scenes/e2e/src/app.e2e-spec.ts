@@ -1,5 +1,4 @@
 import {AppPage} from './app.po';
-import {browser} from 'protractor';
 import {screenshot} from '../screenshot';
 
 describe('workspace-project App', () => {
@@ -7,7 +6,6 @@ describe('workspace-project App', () => {
 
   beforeEach(() => {
     page = new AppPage();
-    browser.driver.manage().window().setSize(300, 480);
   });
 
   it('screenshot for input scene', () => {
@@ -23,6 +21,11 @@ describe('workspace-project App', () => {
   it('screenshot for checkbox scene', () => {
     page.navigateTo('checkbox');
     screenshot('checkbox');
+  });
+
+  it('screenshot for datepicker scene', () => {
+    page.navigateTo('datepicker');
+    screenshot('datepicker');
   });
 
 });

@@ -6,23 +6,22 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MAT_DATEPICKER_SCROLL_STRATEGY} from '@angular/material/datepicker';
-import {CdkScrollableModule} from '@angular/cdk/scrolling';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    MatDatepickerModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
     MatDialogModule,
-    CdkScrollableModule
+    ScrollingModule
   ],
-  providers: [{provide: MAT_DATEPICKER_SCROLL_STRATEGY, useValue: {}}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

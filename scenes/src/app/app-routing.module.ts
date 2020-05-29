@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {InputPage} from './pages/input';
-import {ButtonPage} from './pages/button';
-import {CheckboxPage} from './pages/checkbox';
-import {DatepickerPage} from './pages/datepicker';
+import {InputScene} from './scenes/input/input-scene';
+import {SceneViewer} from './scene-viewer/scene-viewer';
+import {ButtonScene} from './scenes/button/button-scene';
+import {CheckboxScene} from './scenes/checkbox/checkbox-scene';
+import {DatepickerScene} from './scenes/datepicker/datepicker-scene';
 
 
 const routes: Routes = [
-  {path: 'input', component: InputPage},
-  {path: 'button', component: ButtonPage},
-  {path: 'checkbox', component: CheckboxPage},
-  {path: 'datepicker', component: DatepickerPage},
+  {path: 'button', component: SceneViewer, data: {hueRotate: 0, scene: ButtonScene}},
+  {path: 'checkbox', component: SceneViewer, data: {hueRotate: 15, scene: CheckboxScene}},
+  {path: 'datepicker', component: SceneViewer, data: {hueRotate: 30, scene: DatepickerScene}},
+  {path: 'input', component: SceneViewer, data: {hueRotate: 45, scene: InputScene}},
 ];
 
 @NgModule({

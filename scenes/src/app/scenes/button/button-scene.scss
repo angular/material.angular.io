@@ -1,7 +1,7 @@
 .buttons {
   position: relative;
-  width: 25%;
-  top: 8%;
+  width: 50px;
+  top: 20px;
 }
 
 button {
@@ -10,14 +10,14 @@ button {
   height: 50px;
 }
 
-#right {
-  position: absolute;
-  left: 15%;
-}
-
 #left {
   position: absolute;
-  left: 55%;
+  left: 80px;
+}
+
+#right {
+  position: absolute;
+  left: 260px;
 }
 
 .mat-button-wrapper {

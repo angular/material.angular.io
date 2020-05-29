@@ -15,7 +15,7 @@ export class DatepickerScene {
 
     // Highlight the 1st and 20th day of each month.
     return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
-  };
+  }
 }
 
 @NgModule({

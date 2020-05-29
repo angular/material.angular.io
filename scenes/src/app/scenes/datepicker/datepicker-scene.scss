@@ -5,10 +5,10 @@
 
 #left {
   position: absolute;
-  top: -20px;
+  top: -200px;
+  left: 30px;
 }
 
-#right {
-  position: absolute;
-  left: 200px;
+.mat-datepicker-content {
+  box-shadow: none;
 }
