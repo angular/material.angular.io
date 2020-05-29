@@ -32,13 +32,6 @@ export interface DocItem {
   additionalApiDocs?: AdditionalApiDoc[];
 }
 
-export interface DocCategory {
-  id: string;
-  name: string;
-  items: DocItem[];
-  summary?: string;
-}
-
 export interface DocSection {
   name: string;
   summary: string;
@@ -56,10 +49,10 @@ export const SECTIONS: { [key: string]: DocSection } = {
   [CDK]: {
     name: 'CDK',
     summary: 'The Component Dev Kit (CDK) is a set of tools that implement common interaction ' +
-      'patterns whilst being unopinionated about their presentation. It represents an abstraction ' +
-      'of the core functionalities found in the Angular Material library, without any styling ' +
-      'specific to Material Design. Think of the CDK as a blank state of well-tested functionality ' +
-      'upon which you can develop your own bespoke components.'
+      'patterns whilst being unopinionated about their presentation. It represents an ' +
+      'abstraction of the core functionalities found in the Angular Material library, without ' +
+      'any styling specific to Material Design. Think of the CDK as a blank state of well-tested ' +
+      'functionality upon which you can develop your own bespoke components.'
   },
 };
 
@@ -144,15 +137,6 @@ const DOCS: { [key: string]: DocItem[] } = {
       },
     },
     {
-      id: 'divider',
-      name: 'Divider',
-      summary: 'A vertical or horizontal visual divider.',
-      exampleSpecs: {
-        prefix: 'divider-',
-      },
-      additionalApiDocs: [{name: 'Testing', path: 'material-divider-testing.html'}],
-    },
-    {
       id: 'dialog',
       name: 'Dialog',
       summary: 'A configurable modal that displays dynamic content.',
@@ -160,6 +144,15 @@ const DOCS: { [key: string]: DocItem[] } = {
         prefix: 'dialog-',
       },
       additionalApiDocs: [{name: 'Testing', path: 'material-dialog-testing.html'}],
+    },
+    {
+      id: 'divider',
+      name: 'Divider',
+      summary: 'A vertical or horizontal visual divider.',
+      exampleSpecs: {
+        prefix: 'divider-',
+      },
+      additionalApiDocs: [{name: 'Testing', path: 'material-divider-testing.html'}],
     },
     {
       id: 'expansion',
@@ -289,15 +282,6 @@ const DOCS: { [key: string]: DocItem[] } = {
       additionalApiDocs: [{name: 'Testing', path: 'material-sidenav-testing.html'}],
     },
     {
-      id: 'slider',
-      name: 'Slider',
-      summary: 'Allows the user to input a value by dragging along a slider.',
-      exampleSpecs: {
-        prefix: 'slider-',
-      },
-      additionalApiDocs: [{name: 'Testing', path: 'material-slider-testing.html'}],
-    },
-    {
       id: 'slide-toggle',
       name: 'Slide toggle',
       summary: 'Captures boolean values as a clickable and draggable switch.',
@@ -305,6 +289,15 @@ const DOCS: { [key: string]: DocItem[] } = {
         prefix: 'slide-toggle-',
       },
       additionalApiDocs: [{name: 'Testing', path: 'material-slide-toggle-testing.html'}],
+    },
+    {
+      id: 'slider',
+      name: 'Slider',
+      summary: 'Allows the user to input a value by dragging along a slider.',
+      exampleSpecs: {
+        prefix: 'slider-',
+      },
+      additionalApiDocs: [{name: 'Testing', path: 'material-slider-testing.html'}],
     },
     {
       id: 'snack-bar',
@@ -401,26 +394,6 @@ const DOCS: { [key: string]: DocItem[] } = {
       },
     },
     {
-      id: 'test-harnesses',
-      name: 'Component Harnesses',
-      summary: 'Foundation for component test harnesses.',
-      exampleSpecs: {
-        prefix: 'cdk-test-harnesses-',
-      },
-      overviewPath: 'cdk/testing/test-harnesses.html',
-      apiDocId: 'cdk-testing',
-      additionalApiDocs: [
-        {
-          name: 'Testbed',
-          path: 'cdk-testing-testbed.html'
-        },
-        {
-          name: 'Protractor',
-          path: 'cdk-testing-protractor.html'
-        }
-      ],
-    },
-    {
       id: 'drag-drop',
       name: 'Drag and Drop',
       summary: 'Directives enabling drag-and-drop interactions',
@@ -477,14 +450,6 @@ const DOCS: { [key: string]: DocItem[] } = {
       },
     },
     {
-      id: 'text-field',
-      name: 'Text field',
-      summary: 'Utilities for working with text input fields.',
-      exampleSpecs: {
-        prefix: 'text-field-',
-      },
-    },
-    {
       id: 'stepper',
       name: 'Stepper',
       summary: 'Presents content as steps through which to progress.',
@@ -498,6 +463,34 @@ const DOCS: { [key: string]: DocItem[] } = {
       summary: 'A configurable component for displaying tabular data.',
       exampleSpecs: {
         prefix: 'cdk-table-',
+      },
+    },
+    {
+      id: 'test-harnesses',
+      name: 'Component Harnesses',
+      summary: 'Foundation for component test harnesses.',
+      exampleSpecs: {
+        prefix: 'cdk-test-harnesses-',
+      },
+      overviewPath: 'cdk/testing/test-harnesses.html',
+      apiDocId: 'cdk-testing',
+      additionalApiDocs: [
+        {
+          name: 'Testbed',
+          path: 'cdk-testing-testbed.html'
+        },
+        {
+          name: 'Protractor',
+          path: 'cdk-testing-protractor.html'
+        }
+      ],
+    },
+    {
+      id: 'text-field',
+      name: 'Text field',
+      summary: 'Utilities for working with text input fields.',
+      exampleSpecs: {
+        prefix: 'text-field-',
       },
     },
     {
