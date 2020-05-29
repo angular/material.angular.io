@@ -1,31 +1,18 @@
 import {AppPage} from './app.po';
 import {screenshot} from '../screenshot';
 
-describe('workspace-project App', () => {
+describe('screenshot scenes for each component', () => {
   let page: AppPage;
+  const components = ['button', 'checkbox', 'datepicker', 'input'];
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('screenshot for input scene', () => {
-    page.navigateTo('input');
-    screenshot('input');
-  });
-
-  it('screenshot for button scene', () => {
-    page.navigateTo('button');
-    screenshot('button');
-  });
-
-  it('screenshot for checkbox scene', () => {
-    page.navigateTo('checkbox');
-    screenshot('checkbox');
-  });
-
-  it('screenshot for datepicker scene', () => {
-    page.navigateTo('datepicker');
-    screenshot('datepicker');
-  });
-
+  for (const comp of components) {
+    it('screenshot for ' + comp + ' scene', () => {
+      page.navigateTo(comp);
+      screenshot(comp);
+    });
+  }
 });

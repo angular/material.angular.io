@@ -26,17 +26,12 @@ export class SceneViewer implements OnInit {
   scene: ViewContainerRef;
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver,
-              private route: ActivatedRoute) {
-
-  }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.hueRotation = this.route.snapshot.data['hueRotate'];
     this.component = this.route.snapshot.data['scene'];
-    const wrapper = document.getElementById('wrapper');
-    if (wrapper) {
-      wrapper.style.filter = 'hue-rotate(' + this.hueRotation + 'deg)';
-    }
+
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.component);
     this.scene.createComponent(componentFactory);
   }

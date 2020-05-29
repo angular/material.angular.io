@@ -4,8 +4,8 @@
   top: 20px;
 }
 
-button {
-  margin: 15px !important;
+div.buttons button {
+  margin: 15px;
   width: 100px;
   height: 50px;
 }
@@ -23,17 +23,3 @@ button {
 .mat-button-wrapper {
   font-size: 15px;
 }
-
-.mat-raised-button[disabled][disabled] {
-  color: rgba(red, 0.45);
-}
-
-.mat-button[disabled][disabled] {
-  color: rgba(red, 0.45);
-}
-
-.mat-stroked-button[disabled][disabled] {
-  color: rgba(red, 0.45);
-}
-
-

@@ -2,18 +2,16 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {by, element} from 'protractor';
 
-const OUTPUT_DIR = path.join(__dirname, 'screenshots');
+const OUTPUT_DIR = path.join(__dirname, '..', '..', 'src', 'assets', 'screenshots');
 
 
 export class Screenshot {
-  id: string;
-
   /** The filename used to store the screenshot. */
   get filename(): string {
     return this.id
         .toLowerCase()
         .replace(/\s/g, '_')
-        .replace(/[^/a-z0-9_]+/g, '')
+        .replace(/[^/a-z0-9_-]+/g, '')
       + '.scene.png';
   }
 
@@ -22,15 +20,16 @@ export class Screenshot {
     return path.resolve(OUTPUT_DIR, this.filename);
   }
 
-  constructor(id: string) {
-    this.id = id;
+  constructor(readonly id: string) {}
+
+  takeScreenshot() {
     element(by.id('wrapper')).takeScreenshot().then(png => this.storeScreenshot(png));
   }
 
   /** Replaces the existing screenshot with the newly generated one. */
   storeScreenshot(png: any) {
     if (!fs.existsSync(OUTPUT_DIR)) {
-      fs.mkdirSync(OUTPUT_DIR, '744');
+      fs.mkdirSync(OUTPUT_DIR, '444');
     }
 
     if (fs.existsSync(OUTPUT_DIR)) {
@@ -40,5 +39,6 @@ export class Screenshot {
 }
 
 export function screenshot(id: string) {
-  return new Screenshot(id);
+  const s = new Screenshot(id);
+  s.takeScreenshot();
 }
