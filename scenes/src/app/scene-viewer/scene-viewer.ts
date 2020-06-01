@@ -20,8 +20,15 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./scene-viewer.scss']
 })
 export class SceneViewer implements OnInit {
-  @Input() hueRotation: string;
+  /**
+   * Degree to change hue of scene by. All scenes default to a reddish hue.
+   * e.g. 90 = greenish, 180 = blueish
+   */
+  @Input() hueRotation: number;
+
+  /** Component of scene to display */
   @Input() component: any;
+
   @ViewChild('scene', {read: ViewContainerRef, static: true})
   scene: ViewContainerRef;
 

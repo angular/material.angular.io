@@ -22,12 +22,13 @@ export class Screenshot {
 
   constructor(readonly id: string) {}
 
-  takeScreenshot() {
-    element(by.id('wrapper')).takeScreenshot().then(png => this.storeScreenshot(png));
+  async takeScreenshot() {
+    const png = await element(by.id('wrapper')).takeScreenshot();
+    this.storeScreenshot(png);
   }
 
   /** Replaces the existing screenshot with the newly generated one. */
-  storeScreenshot(png: any) {
+  storeScreenshot(png: string) {
     if (!fs.existsSync(OUTPUT_DIR)) {
       fs.mkdirSync(OUTPUT_DIR, '444');
     }
@@ -38,7 +39,7 @@ export class Screenshot {
   }
 }
 
-export function screenshot(id: string) {
+export function screenshot(id: string): Promise<void> {
   const s = new Screenshot(id);
-  s.takeScreenshot();
+  return s.takeScreenshot();
 }

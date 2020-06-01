@@ -4,18 +4,18 @@
   top: 30px;
 }
 
-#right {
+.right {
   left: 290px;
 }
 
-#left {
+.left {
   left: 60px;
 }
 
-.mat-checkbox-inner-container {
-  height: 40px!important;
-  width: 40px!important;
-  margin-top: 25px !important;
+div.boxes .mat-checkbox-inner-container {
+  height: 40px;
+  width: 40px;
+  margin-top: 25px;
 }
 
 .mat-checkbox-label {
