@@ -36,7 +36,7 @@ app-component-sidenav {
 
 .docs-component-viewer-nav {
   position: sticky;
-  top: 25px;
+  top: 0;
 
   .docs-component-viewer-nav-content {
     width: $sidenav-width;
@@ -90,8 +90,8 @@ div .mat-list-base {
   padding-top: 0;
 }
 
-.mat-list-item-content {
-  padding-left: 25px !important;
+div.docs-component-viewer-nav-content .mat-nav-list .mat-list-item .mat-list-item-content {
+  padding-left: 25px;
 }
 
 @media (max-width: $small-breakpoint-width) {
