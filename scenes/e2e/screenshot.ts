@@ -23,7 +23,7 @@ export class Screenshot {
   constructor(readonly id: string) {}
 
   async takeScreenshot() {
-    const png = await element(by.id('wrapper')).takeScreenshot();
+    const png = await element(by.tagName('app-scene-viewer')).takeScreenshot();
     this.storeScreenshot(png);
   }
 
