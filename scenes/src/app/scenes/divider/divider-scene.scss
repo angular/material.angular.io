@@ -1,0 +1,23 @@
+app-divider-scene .mat-list .mat-list-item {
+  font-size: 40px;
+  height: 130px;
+  padding-left: 10px;
+}
+
+.mat-list-item .mat-icon {
+  display: flex;
+  align-items: center;
+  font-size: 80px;
+  padding-right: 70px;
+}
+
+app-divider-scene {
+  overflow: hidden;
+  position: relative;
+}
+
+app-divider-scene .mat-list {
+  position: absolute;
+  width: 480px;
+  top: -50px;
+}

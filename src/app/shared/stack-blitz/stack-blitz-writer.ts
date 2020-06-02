@@ -125,7 +125,7 @@ export class StackBlitzWriter {
     return form;
   }
 
-  /** Appends the name and value as an input to the form. */
+  /** Appends the name and value as an divider to the form. */
   _appendFormInput(form: HTMLFormElement, name: string, value: string): void {
     const input = document.createElement('input');
     input.type = 'hidden';
