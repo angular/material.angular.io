@@ -1,0 +1,23 @@
+.scene-slide-toggle {
+  margin-bottom: 25px;
+  position: absolute;
+  left: 90px;
+}
+
+mat-slide-toggle {
+  position: absolute;
+  left: 240px;
+}
+
+mat-icon {
+  vertical-align: middle;
+  padding-right: 10px;
+}
+
+.scene-slide-toggle-dark {
+  top: 100px;
+}
+
+.scene-slide-toggle-notifications {
+  bottom: 100px;
+}
