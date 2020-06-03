@@ -1,25 +1,25 @@
-.buttons {
+.scene-buttons {
   position: relative;
   width: 50px;
   top: 20px;
 }
 
-div.buttons button {
+div.scene-buttons button {
   margin: 15px;
   width: 100px;
   height: 50px;
 }
 
-.left {
+.scene-buttons-left {
   position: absolute;
   left: 80px;
 }
 
-.right {
+.scene-buttons-right {
   position: absolute;
   left: 260px;
 }
 
 .mat-button-wrapper {
-  font-size: 15px;
+  font-size: 18px;
 }
