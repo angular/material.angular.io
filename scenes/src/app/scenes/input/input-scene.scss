@@ -1,23 +1,17 @@
-.example-form {
-  min-width: 150px;
-  max-width: 400px;
-  width: 100%;
-}
-
-.example-full-width {
+.scene-inputs .mat-form-field {
   width: 100%;
   margin: 10px;
 }
 
-#right {
+.scene-inputs-right {
   left: 260px;
 }
 
-.clear {
-  margin-bottom: -5px
+.scene-inputs .scene-input-clear {
+  margin-bottom: -10px
 }
 
-.examples {
+.scene-inputs {
   position: absolute;
   width: 200px;
   top: 25px
