@@ -1,8 +1,3 @@
-<div class="scene-datepicker">
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker [dateClass]="dateClass" #picker [opened]="true"></mat-datepicker>
-  </mat-form-field>
-</div>
+<mat-calendar [dateClass]="dateClass" class="scene-datepicker-left"></mat-calendar>
+<mat-calendar class="scene-datepicker-right"></mat-calendar>
 

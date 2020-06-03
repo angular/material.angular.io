@@ -1,14 +1,22 @@
-.example-custom-date-class {
-  background: orange;
+.scene-datepicker-custom-date-class {
+  background: rgba(black, 0.2);
   border-radius: 100%;
 }
 
-.scene-datepicker {
-  position: absolute;
-  top: -200px;
-  left: 30px;
+.scene-datepicker-left {
+  top: -100px;
+  left: -40px;
 }
 
-.mat-datepicker-content {
-  box-shadow: none;
+.scene-datepicker-right {
+  top: 50px;
+  left: 220px;
+  background: rgba(white, 0.8);
+}
+
+mat-calendar {
+  position: absolute;
+  width: 230px;
+  border: 1px solid;
+  border-radius: 5px;
 }
