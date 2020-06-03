@@ -1,18 +1,18 @@
-.boxes {
+.scene-checkboxes {
   width: 100px;
   position: absolute;
   top: 30px;
 }
 
-.right {
+.scene-checkboxes-right {
   left: 290px;
 }
 
-.left {
+.scene-checkboxes-left {
   left: 60px;
 }
 
-div.boxes .mat-checkbox-inner-container {
+div.scene-checkboxes .mat-checkbox-inner-container {
   height: 40px;
   width: 40px;
   margin-top: 25px;
