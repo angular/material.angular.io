@@ -1,0 +1,35 @@
+app-ripple-scene button, .scene-ripple-wrapper {
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  top: 110px;
+  left: 140px;
+}
+
+.mat-button-wrapper {
+  font-size: 20px;
+}
+
+.scene-button-ripple {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  left: -10px;
+  background: rgba(white, 0.25);
+}
+
+.scene-ripple-wrapper {
+  overflow: hidden;
+}
+
+.scene-background-ripple {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: rgba(black, 0.1);
+  top: -100px;
+  left: 180px;
+}
