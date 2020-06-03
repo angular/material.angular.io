@@ -1,0 +1,26 @@
+//.scene-button-toggle {
+//  position: absolute;
+//  top: 105px;
+//  left: 105px;
+//}
+//.scene-button-toggle .mat-button-toggle {
+//  font-size: 40px;
+//  width: 90px;
+//  height: 90px;
+//}
+//
+//.scene-button-toggle .mat-button-toggle-button {
+//  padding-top: 20px;
+//}
+
+.scene-button-toggle-bold {
+  font-weight: bold;
+}
+
+.scene-button-toggle-italic {
+  font-style: italic;
+}
+
+.scene-button-toggle-underline .mat-button-toggle-label-content{
+  text-decoration: underline;
+}
