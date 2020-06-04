@@ -7,9 +7,6 @@
     </div>
     <div class="docs-header-start">
       <a mat-raised-button class="docs-button" routerLink="/guide/getting-started">Get started</a>
-      <a class="docs-link" routerLink="/guides">More guides
-        <mat-icon>chevron_right</mat-icon>
-      </a>
     </div>
   </div>
 </header>
@@ -19,8 +16,7 @@
     <div class="docs-homepage-row-column">
       <h1>What is this?</h1>
       <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a volutpat ipsum. Phasellus massa mi, accumsan eget
-      magna sed, fermentum tincidunt massa. Fusce quis tortor lacus.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </p>
       <p>
       Integer imperdiet nisi quis mauris viverra, dapibus
@@ -42,9 +38,59 @@
       magna sed, fermentum tincidunt massa.
       </p>
       <p>
-      Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra, dapibus
-      condimentum urna ullamcorper.
+      Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra.
       </p>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="docs-homepage-row docs-carousel-wrapper">
+    <div class="docs-guides-carousel">
+      <a *ngFor="let guide of guideItems.getAllItems()"
+         [routerLink]="['/guide/', guide.id]">
+        <mat-card>
+          <mat-card-title>{{guide.name}}</mat-card-title>
+          <div class="docs-mat-card-divider"></div>
+          <mat-card-content class="docs-component-category-list-card-summary">
+            Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra, dapibus
+            condimentum urna ullamcorper. Sed vitae finibus felis, vitae dictum est. Duis at mauris nibh. Aenean
+            malesuada ac
+            turpis eu laoreet.
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </div>
+    <a class="docs-link" routerLink="/guides">
+      View all guides
+      <mat-icon>chevron_right</mat-icon>
+    </a>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="docs-homepage-row docs-top-components">
+    <h1>Top components</h1>
+    <div class="docs-component">
+      <img src="../../../assets/screenshots/datepicker.scene.png" alt="datepicker">
+      <h2>
+      Datepicker
+      </h2>
+      <mat-icon class="docs-trending-up-icon">trending_up</mat-icon> 5,378
+    </div>
+    <div class="docs-component">
+      <img src="../../../assets/screenshots/button-toggle.scene.png" alt="button-toggle">
+      <h2>
+      Button toggle
+      </h2>
+      <mat-icon class="docs-trending-down-icon">trending_down</mat-icon> 4,567
+    </div>
+    <div class="docs-component">
+    <img src="../../../assets/screenshots/slider.scene.png" alt="slider">
+      <h2>
+      Slider
+      </h2>
+      <mat-icon class="docs-trending-up-icon">trending_up</mat-icon> 3,728
     </div>
 
   </div>
@@ -52,9 +98,6 @@
   <div class="docs-homepage-bottom-start">
     <a mat-raised-button class="docs-button" routerLink="/guide/getting-started" color="accent">
       Get started
-    </a>
-    <a class="docs-link" routerLink="/guides">More guides
-      <mat-icon>chevron_right</mat-icon>
     </a>
   </div>
 </main>

@@ -26,10 +26,12 @@
       color: mat-color($foreground, secondary-text);
     }
 
-    .docs-homepage-bottom-start {
-      .docs-link {
-        color: mat-color($foreground, text)
-      }
+    .docs-link {
+      color: mat-color($foreground, secondary-text)
+    }
+
+    .docs-mat-card-divider {
+      background: mat-color($accent)
     }
 
   }
