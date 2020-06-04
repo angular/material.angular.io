@@ -1,5 +1,5 @@
 // The margin between two sections
-$margin-promotion-sections: 60px;
+$margin-promotion-sections: 50px;
 $margin-promotion-sections-small: 15px;
 
 .docs-header-background {
@@ -14,13 +14,13 @@ $margin-promotion-sections-small: 15px;
 .docs-header-headline {
   h1 {
     font-size: 56px;
-    font-weight: 300;
+    font-weight: bold;
     line-height: 56px;
     margin: 15px 5px;
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 300;
     line-height: 28px;
     margin: 15px 0 25px 0;
@@ -51,9 +51,17 @@ $margin-promotion-sections-small: 15px;
 
 
 .docs-homepage-row {
+  width: 75%;
   display: flex;
-  max-width: 920px;
+  flex-direction: row;
   margin: $margin-promotion-sections 0;
+}
+
+.docs-homepage-row-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 40px;
 }
 
 .docs-homepage-row .docs-svg-image{
@@ -68,6 +76,25 @@ $margin-promotion-sections-small: 15px;
 .docs-homepage-bottom-start {
   text-align: center;
   margin: $margin-promotion-sections 0;
+
+  .mat-raised-button {
+    font-size: 15px;
+  }
+
+  a {
+    margin: 0 15px;
+    text-decoration: none;
+    letter-spacing: 0.15px;
+  }
+
+  a.docs-link:hover {
+    letter-spacing: 0;
+    font-weight: bold;
+  }
+
+  mat-icon {
+    vertical-align: middle;
+  }
 }
 
 .docs-homepage-promo-img,

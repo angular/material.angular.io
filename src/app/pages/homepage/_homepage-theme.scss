@@ -16,10 +16,21 @@
 
     .docs-header-start {
       color: mat-color($primary);
+
+      .docs-link {
+        color: mat-color($primary, default-contrast);
+      }
     }
 
     .docs-homepage-row {
       color: mat-color($foreground, secondary-text);
     }
+
+    .docs-homepage-bottom-start {
+      .docs-link {
+        color: mat-color($foreground, text)
+      }
+    }
+
   }
 }

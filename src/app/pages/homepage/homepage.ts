@@ -5,6 +5,7 @@ import {FooterModule} from '../../shared/footer/footer';
 import {RouterModule, Routes} from '@angular/router';
 import {ComponentPageTitle} from '../page-title/page-title';
 import {NavigationFocusModule} from '../../shared/navigation-focus/navigation-focus';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-homepage',
@@ -28,7 +29,7 @@ const routes: Routes = [ {path: '', component: Homepage}];
             MatButtonModule,
             FooterModule,
             RouterModule.forChild(routes),
-            NavigationFocusModule],
+            NavigationFocusModule, MatIconModule],
   exports: [Homepage],
   declarations: [Homepage],
 })
