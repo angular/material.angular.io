@@ -2,16 +2,38 @@
 
 .docs-component-category-list-summary {
   padding: 25px 40px 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1780px) {
+  .docs-component-category-list-summary {
+    max-width: 1160px;
+  }
+}
+
+@media (max-width: 1480px) {
+  .docs-component-category-list-summary {
+    max-width: 860px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .docs-component-category-list-summary {
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 639px) {
+  .docs-component-category-list-summary {
+    max-width: 280px;
+  }
 }
 
 .docs-component-category-list {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
-
-  @media (max-width: $small-breakpoint-width) {
-    justify-content: center;
-  }
 }
 
 .docs-component-category-list-item {
