@@ -11,6 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import {GuideItems} from '../../shared/guide-items/guide-items';
 import {CommonModule} from '@angular/common';
 
+const TOP_COMPONENTS = ['slider', 'button-toggle', 'datepicker'];
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.html',
@@ -19,14 +21,19 @@ import {CommonModule} from '@angular/common';
 export class Homepage implements OnInit {
   isNextVersion = location.hostname.startsWith('next.material.angular.io');
 
-  constructor(public _componentPageTitle: ComponentPageTitle, public guideItems: GuideItems) {}
+  constructor(public _componentPageTitle: ComponentPageTitle, public guideItems: GuideItems) {
+  }
 
   ngOnInit(): void {
     this._componentPageTitle.title = '';
   }
+
+  getTopComponents(): string[] {
+    return TOP_COMPONENTS;
+  }
 }
 
-const routes: Routes = [ {path: '', component: Homepage}];
+const routes: Routes = [{path: '', component: Homepage}];
 
 @NgModule({
   imports: [SvgViewerModule,

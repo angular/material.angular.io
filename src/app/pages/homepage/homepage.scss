@@ -10,15 +10,14 @@ $margin-promotion-sections-small: 15px;
 .docs-header-background::before {
   content: " ";
   position: absolute;
-  background-image: url("../../../assets/img/angular-material-logo.svg");
-  background-size: 30%;
+  background-image: url("../../../assets/img/homepage/angular-white-transparent.svg");
+  background-size: 30% auto;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background-repeat: no-repeat;
-  background-position: 75% 50px;
-  filter: grayscale(100%);
+  background-position: 65% 5%;
   opacity: 0.2;
 }
 
@@ -51,10 +50,19 @@ $margin-promotion-sections-small: 15px;
   flex-direction: column;
   padding: 16px;
 
+  a {
+    text-decoration: none;
+  }
+
+  a.docs-link:hover {
+    letter-spacing: 0;
+    font-weight: bold;
+  }
+
   h2 {
     font-size: 25px;
     font-weight: 400;
-    margin: 0 0 16px 0;
+    margin: 16px 0;
     padding: 0;
   }
 
@@ -83,24 +91,19 @@ $margin-promotion-sections-small: 15px;
 }
 
 .docs-carousel-wrapper {
-  a.docs-link {
-    width: 100%;
-    flex: 0 0 100%;
-    margin-top: 15px;
-    text-decoration: none;
-    letter-spacing: 0.15px;
-  }
+  flex-direction: column;
 
-  a.docs-link:hover {
-    letter-spacing: 0;
-    font-weight: bold;
+  a.docs-link {
+    margin-top: 15px;
+    letter-spacing: 0.15px;
+    align-self: flex-end;
   }
 }
 
 .docs-guides-carousel {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
+  overflow-x: scroll;
 
   .docs-mat-card-divider {
     width: 30%;
@@ -109,7 +112,7 @@ $margin-promotion-sections-small: 15px;
   }
 
   .mat-card {
-    padding-top: 30px;
+    padding: 30px;
     width: 260px;
     height: 260px;
     text-align: center;
@@ -121,13 +124,20 @@ $margin-promotion-sections-small: 15px;
   }
 }
 
-.docs-guides-carousel:hover {
-  overflow-x: scroll;
-}
-
 .docs-top-components {
   flex-wrap: wrap;
+
+  a.docs-link {
+    width: 100%;
+    text-align: right;
+    margin-top: 15px;
+    letter-spacing: 0.1px;
+  }
+
   h1 {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: $margin-promotion-sections;
     width: 100%;
     flex: 0 0 100%;
   }
@@ -156,15 +166,8 @@ $margin-promotion-sections-small: 15px;
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 0 40px;
-}
-
-.docs-homepage-row .docs-svg-image{
-  max-width: 90%;
-}
-
-.docs-homepage-reverse-row {
-  flex-direction: row-reverse;
+  margin: 0 5%;
+  width: 20%;
 }
 
 .docs-header-start,
@@ -209,5 +212,9 @@ $margin-promotion-sections-small: 15px;
 
   .docs-homepage-row {
     margin: $margin-promotion-sections-small 0;
+  }
+
+  .docs-top-components h1 {
+    margin-bottom: $margin-promotion-sections-small;
   }
 }

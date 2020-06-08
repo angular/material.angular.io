@@ -14,7 +14,7 @@
 <main class="docs-homepage-promo">
   <div class="docs-homepage-row">
     <div class="docs-homepage-row-column">
-      <h1>What is this?</h1>
+      <h2>What is this?</h2>
       <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </p>
@@ -24,7 +24,7 @@
       </p>
     </div>
     <div class="docs-homepage-row-column">
-      <h1>What is this project?</h1>
+      <h2>What is this project?</h2>
       <p>
       Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra, dapibus
       condimentum urna ullamcorper. Sed vitae finibus felis, vitae dictum est. Duis at mauris nibh. Aenean malesuada ac
@@ -32,7 +32,7 @@
       </p>
     </div>
     <div class="docs-homepage-row-column">
-      <h1>Objectives</h1>
+      <h2>Objectives</h2>
       <p>
       In a volutpat ipsum. Phasellus massa mi, accumsan eget
       magna sed, fermentum tincidunt massa.
@@ -41,6 +41,24 @@
       Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra.
       </p>
     </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="docs-homepage-row docs-top-components">
+    <h1>Top components</h1>
+    <a *ngFor="let comp of getTopComponents()" class="docs-component" routerLink="/components/{{comp}}">
+      <img src="../../../assets/screenshots/{{comp}}.scene.png" alt="{{comp}}">
+      <h2>
+        {{(comp[0].toUpperCase() + comp.slice(1)).replace('-', ' ')}}
+      </h2>
+      <!--      <mat-icon class="docs-trending-up-icon">trending_up</mat-icon> 5,378-->
+    </a>
+
+    <a class="docs-link" routerLink="/components">
+      View all components
+      <mat-icon>chevron_right</mat-icon>
+    </a>
   </div>
 
   <mat-divider></mat-divider>
@@ -65,34 +83,6 @@
       View all guides
       <mat-icon>chevron_right</mat-icon>
     </a>
-  </div>
-
-  <mat-divider></mat-divider>
-
-  <div class="docs-homepage-row docs-top-components">
-    <h1>Top components</h1>
-    <div class="docs-component">
-      <img src="../../../assets/screenshots/datepicker.scene.png" alt="datepicker">
-      <h2>
-      Datepicker
-      </h2>
-      <mat-icon class="docs-trending-up-icon">trending_up</mat-icon> 5,378
-    </div>
-    <div class="docs-component">
-      <img src="../../../assets/screenshots/button-toggle.scene.png" alt="button-toggle">
-      <h2>
-      Button toggle
-      </h2>
-      <mat-icon class="docs-trending-down-icon">trending_down</mat-icon> 4,567
-    </div>
-    <div class="docs-component">
-    <img src="../../../assets/screenshots/slider.scene.png" alt="slider">
-      <h2>
-      Slider
-      </h2>
-      <mat-icon class="docs-trending-up-icon">trending_up</mat-icon> 3,728
-    </div>
-
   </div>
 
   <div class="docs-homepage-bottom-start">
