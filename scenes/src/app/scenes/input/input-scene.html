@@ -1,5 +1,5 @@
-<div class="scene-inputs scene-inputs-left">
-  <mat-form-field class="scene-input-clear">
+<div class="scene-inputs">
+  <mat-form-field appearance="outline" class="scene-input-clear">
     <mat-label>Clearable input</mat-label>
     <input matInput type="text" [(ngModel)]="value">
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -7,21 +7,21 @@
     </button>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Input</mat-label>
     <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
     <mat-hint align="start"><strong>Prompt</strong> </mat-hint>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Input</mat-label>
     <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
     <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
   </mat-form-field>
 </div>
 
-<div class="scene-inputs scene-inputs-right">
-  <mat-form-field class="scene-input-clear">
+<div class="scene-inputs">
+  <mat-form-field appearance="outline" class="scene-input-clear">
     <mat-label>Clearable input</mat-label>
     <input matInput type="text" [(ngModel)]="value">
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -29,13 +29,13 @@
     </button>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Input</mat-label>
     <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
     <mat-hint align="start"><strong>Prompt</strong> </mat-hint>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Input</mat-label>
     <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
     <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
