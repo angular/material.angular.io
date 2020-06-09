@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SceneViewer } from './scene-viewer/scene-viewer';
 import { RipplesScene } from './scenes/ripples/ripples-scene';
-
-
 import { InputScene } from './scenes/input/input-scene';
 
 
