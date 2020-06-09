@@ -25,7 +25,7 @@
 
       &.docs-component-viewer-sidenav-item-selected {
         background: rgba(mat-color($primary, default), 0.15);
-        color: mat-color($primary, default);
+        color: lighten(mat-color($primary, default), if($is-dark-theme, 25%, 0));
       }
 
       &.docs-component-viewer-sidenav-item-selected:hover {
