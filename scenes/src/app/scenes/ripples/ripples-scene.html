@@ -1,6 +1,7 @@
-<div class="scene-background-ripple"></div>
-<button mat-raised-button color="primary">RIPPLES</button>
-<div class="scene-ripple-wrapper">
-  <div class="scene-button-ripple"></div>
+<div class="scene-ripples-wrapper" #wrapper
+  matRipple
+  [matRippleDisabled]="true">
 </div>
-
+<button mat-raised-button color="primary" id="scene-ripples-button" #button
+        matRipple
+        [matRippleDisabled]="true">RIPPLES</button>

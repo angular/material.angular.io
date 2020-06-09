@@ -1,10 +1,6 @@
-import {Component, NgModule, ViewEncapsulation} from '@angular/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
+import {AfterViewInit, Component, NgModule, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
-import { CommonModule} from '@angular/common';
+import {MatRipple, MatRippleModule} from '@angular/material/core';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -12,21 +8,33 @@ import { CommonModule} from '@angular/common';
   templateUrl: './ripples-scene.html',
   styleUrls: ['./ripples-scene.scss']
 })
-export class RipplesScene {
-  value = 'Clear me';
+export class RipplesScene implements AfterViewInit {
+  @ViewChild('button', {read: MatRipple}) buttonRipple: MatRipple;
+  @ViewChild('wrapper', {read: MatRipple}) wrapperRipple: MatRipple;
+
+  ngAfterViewInit() {
+    this.buttonRipple.launch(140, 100, {
+      persistent: true,
+      animation: {enterDuration: 0},
+      radius: 50,
+    });
+
+    this.wrapperRipple.launch(300, 100, {
+      persistent: true,
+      animation: {enterDuration: 0},
+      radius: 150,
+    });
+  }
 }
 
 @NgModule({
   imports: [
-    MatFormFieldModule,
-    MatIconModule,
-    FormsModule,
-    MatInputModule,
     MatButtonModule,
-    CommonModule,
+    MatRippleModule,
   ],
   exports: [RipplesScene],
   declarations: [RipplesScene]
 })
-export class InputSceneModule {}
+export class InputSceneModule {
+}
 

@@ -12,7 +12,7 @@ describe('screenshot scenes for each component', () => {
   });
 
   for (const comp of components) {
-    it('screenshot for ' + comp + ' scene', async () => {
+    it(`screenshot for ${comp} scene`, async () => {
       await page.navigateTo(comp);
       await screenshot(comp);
     });
