@@ -1,0 +1,47 @@
+app-horizontal-carousel {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#docs-guides-carousel {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.docs-mat-card-divider {
+  width: 30%;
+  height: 5px;
+  margin: 15px auto;
+}
+
+.docs-guides-card.mat-card {
+  width: 190px;
+  height: 190px;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.mat-card-title {
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.docs-carousel-nav {
+  position: absolute;
+}
+
+.docs-carousel-nav-prev {
+  left: -64px;
+}
+
+.docs-carousel-nav-next {
+  left: 100%;
+}
