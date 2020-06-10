@@ -8,7 +8,7 @@ import { InputScene } from './scenes/input/input-scene';
 const routes: Routes = [
   {path: 'ripples', component: SceneViewer, data: {hueRotate: 120, scene: RipplesScene}},
   {path: 'slider', component: SceneViewer, data: {hueRotate: 135, scene: RipplesScene}},
-  {path: 'input', component: SceneViewer, data: {hueRotate: 45, scene: InputScene}},
+  {path: 'input', component: SceneViewer, data: {hueRotate: 45, scale: 0.7, scene: InputScene}},
 ];
 
 @NgModule({
