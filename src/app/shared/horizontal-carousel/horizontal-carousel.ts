@@ -7,6 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 
 const CARD_WIDTH = 250;
+const CAROUSEL_WIDTH_RATIO = 0.75; // carousel width should be 75% of page
 
 @Component({
   selector: 'app-horizontal-carousel',
@@ -16,14 +17,14 @@ const CARD_WIDTH = 250;
 })
 
 export class HorizontalCarousel implements AfterViewInit {
-  position: number = 0;
+  position = 0;
   showPrevArrow = false;
   showNextArrow = true;
-  guideItemsLen: number;
+  guideItemsLength: number;
   visibleCards: number;
 
   constructor(public guideItems: GuideItems) {
-    this.guideItemsLen = guideItems.getAllItems().length;
+    this.guideItemsLength = guideItems.getAllItems().length;
   }
 
   private _index = 0;
@@ -35,11 +36,11 @@ export class HorizontalCarousel implements AfterViewInit {
   set index(i: number) {
     this._index = i;
     this.showPrevArrow = i > 0;
-    this.showNextArrow = i < (this.guideItemsLen - this.visibleCards);
+    this.showNextArrow = i < (this.guideItemsLength - this.visibleCards);
   }
 
-  onResize(evt: Event) {
-    this.resizeCarousel((evt.target as Window).innerWidth);
+  onResize() {
+    this.resizeCarousel(window.innerWidth);
   }
 
   ngAfterViewInit(): void {
@@ -47,30 +48,28 @@ export class HorizontalCarousel implements AfterViewInit {
   }
 
   resizeCarousel(width: number) {
-    const newVisibleCards = Math.floor((width * 0.75) / CARD_WIDTH);
+    const newVisibleCards = Math.floor((width * CAROUSEL_WIDTH_RATIO) / CARD_WIDTH);
     if (this.visibleCards !== newVisibleCards) {
       this.visibleCards = newVisibleCards;
-      this.showNextArrow = this.index < (this.guideItemsLen - this.visibleCards);
+      this.showNextArrow = this.index < (this.guideItemsLength - this.visibleCards);
     }
     this.visibleCards = newVisibleCards;
-    const carousel = document.getElementById('docs-guides-carousel');
-    if (carousel) {
-      carousel.style.width = `${this.visibleCards * CARD_WIDTH}px`;
-    }
+    const carousel = document.querySelector('.docs-guides-carousel') as HTMLElement;
+    carousel.style.width = `${this.visibleCards * CARD_WIDTH}px`;
   }
 
   next() {
     this.index += 1;
-    const cards = document.getElementsByClassName('docs-guides-card');
+    const cards = document.getElementsByClassName('docs-carousel-card-container');
     this.position += CARD_WIDTH;
     [].forEach.call(cards, (card: HTMLElement) => {
       card.style.transform = `translateX(-${this.position}px)`;
     });
   }
 
-  prev() {
+  previous() {
     this.index -= 1;
-    const cards = document.getElementsByClassName('docs-guides-card');
+    const cards = document.getElementsByClassName('docs-carousel-card-container');
     this.position -= CARD_WIDTH;
     [].forEach.call(cards, (card: HTMLElement) => {
       card.style.transform = `translateX(-${this.position}px)`;

@@ -29,7 +29,8 @@ const routes: Routes = [ {path: '', component: Homepage}];
             MatButtonModule,
             FooterModule,
             RouterModule.forChild(routes),
-            NavigationFocusModule, HorizontalCarouselModule],
+            NavigationFocusModule,
+            HorizontalCarouselModule],
   exports: [Homepage],
   declarations: [Homepage],
 })

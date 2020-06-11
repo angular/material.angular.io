@@ -5,7 +5,7 @@ app-horizontal-carousel {
   align-items: center;
 }
 
-#docs-guides-carousel {
+.docs-guides-carousel {
   display: flex;
   flex-direction: row;
   overflow: hidden;
@@ -23,6 +23,9 @@ app-horizontal-carousel {
   margin: 10px;
   padding: 20px;
   text-align: center;
+}
+
+.docs-carousel-card-container {
   transition: transform 0.5s ease-in-out;
 }
 
