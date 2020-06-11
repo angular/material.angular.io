@@ -1,12 +1,15 @@
-mat-progress-spinner {
-  position: absolute;
-  top: 80px;
-  left: 180px;
+.scene-spinner-container {
+  position: relative;
 }
 
-.scene-progress-spinner-label {
+.scene-spinner-label {
   position: absolute;
-  top: 115px;
-  left: 209px;
-  font-size: 25px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border-color: pink;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 10px;
 }
