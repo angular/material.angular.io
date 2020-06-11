@@ -1,10 +1,11 @@
 .scene-slide-toggle {
   margin: 15px;
   width: 250px;
+  display: flex;
 }
 
 mat-slide-toggle {
-  float: right;
+  margin-left: auto;
 }
 
 mat-icon {

@@ -10,7 +10,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
   styleUrls: ['./slide-toggle-scene.scss']
 })
 export class SlideToggleScene {
-
 }
 
 @NgModule({
@@ -22,4 +21,3 @@ export class SlideToggleScene {
   declarations: [SlideToggleScene]
 })
 export class SlideToggleSceneModule {}
-
