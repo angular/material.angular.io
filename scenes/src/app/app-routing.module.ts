@@ -19,7 +19,11 @@ const routes: Routes = [
     data: {hueRotate: 135, scale: 1.5, scene: ButtonToggleScene}
   },
   {path: 'slide-toggle', component: SceneViewer, data: {hueRotate: 90, scene: SlideToggleScene}},
-  {path: 'divider', component: SceneViewer, data: {hueRotate: 105, scene: DividerScene}},
+  {
+    path: 'divider',
+    component: SceneViewer,
+    data: {hueRotate: 105, scale: 2.0, scene: DividerScene}
+  },
 ];
 
 @NgModule({

@@ -60,7 +60,7 @@ describe('StackBlitzWriter', () => {
       `method="post" target="_blank"></form>`);
   });
 
-  it('should add files to form divider', () => {
+  it('should add files to form input', () => {
     const form = stackBlitzWriter._createFormElement('index.ts');
 
     stackBlitzWriter._addFileToForm(form, data, 'NoContent', 'test.ts', 'path/to/file');
