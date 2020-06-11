@@ -1,4 +1,4 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, NgModule, OnInit, ViewEncapsulation} from '@angular/core';
 import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {MatButtonModule} from '@angular/material/button';
 import {FooterModule} from '../../shared/footer/footer';
@@ -6,16 +6,21 @@ import {RouterModule, Routes} from '@angular/router';
 import {ComponentPageTitle} from '../page-title/page-title';
 import {NavigationFocusModule} from '../../shared/navigation-focus/navigation-focus';
 import {HorizontalCarouselModule} from '../../shared/horizontal-carousel/horizontal-carousel';
+import {GuideItems} from '../../shared/guide-items/guide-items';
+import {CommonModule} from '@angular/common';
+import {CarouselItem} from '../../shared/horizontal-carousel/horizontal-carousel-directive';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.html',
-  styleUrls: ['./homepage.scss']
+  styleUrls: ['./homepage.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class Homepage implements OnInit {
   isNextVersion = location.hostname.startsWith('next.material.angular.io');
 
-  constructor(public _componentPageTitle: ComponentPageTitle) {}
+  constructor(public _componentPageTitle: ComponentPageTitle, public guideItems: GuideItems) {}
 
   ngOnInit(): void {
     this._componentPageTitle.title = '';
@@ -30,9 +35,9 @@ const routes: Routes = [ {path: '', component: Homepage}];
             FooterModule,
             RouterModule.forChild(routes),
             NavigationFocusModule,
-            HorizontalCarouselModule],
+            HorizontalCarouselModule, CommonModule, MatCardModule],
   exports: [Homepage],
-  declarations: [Homepage],
+  declarations: [Homepage, CarouselItem],
 })
 export class HomepageModule {
 }

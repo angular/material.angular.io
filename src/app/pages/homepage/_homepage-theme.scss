@@ -21,5 +21,9 @@
     .docs-homepage-row {
       color: mat-color($foreground, secondary-text);
     }
+
+    .docs-mat-card-divider {
+      background: mat-color($accent);
+    }
   }
 }

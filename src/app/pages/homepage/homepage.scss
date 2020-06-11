@@ -86,6 +86,29 @@ $margin-promotion-sections-small: 15px;
   justify-content: center;
 }
 
+/** Carousel content styles */
+.docs-mat-card-divider {
+  width: 30%;
+  height: 5px;
+  margin: 15px auto;
+}
+
+.docs-guides-card.mat-card {
+  width: 190px;
+  height: 190px;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+mat-card-title {
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
 
 /**
   * Rules for when the device is detected to be a small screen.

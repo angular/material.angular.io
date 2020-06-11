@@ -5,36 +5,15 @@ app-horizontal-carousel {
   align-items: center;
 }
 
-.docs-guides-carousel {
+.docs-carousel {
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  z-index: -1;
 }
 
-.docs-mat-card-divider {
-  width: 30%;
-  height: 5px;
-  margin: 15px auto;
-}
-
-.docs-guides-card.mat-card {
-  width: 190px;
-  height: 190px;
-  margin: 10px;
-  padding: 20px;
-  text-align: center;
-}
-
-.docs-carousel-card-container {
+.docs-carousel-item-container {
   transition: transform 0.5s ease-in-out;
-}
-
-.mat-card-title {
-  font-size: 20px;
-}
-
-a {
-  text-decoration: none;
 }
 
 .docs-carousel-nav {
@@ -42,9 +21,13 @@ a {
 }
 
 .docs-carousel-nav-prev {
-  left: -64px;
+  left: -10px;
 }
 
 .docs-carousel-nav-next {
-  left: 100%;
+  right: -10px;
+}
+
+.docs-carousel-wrapper {
+  width: 100%;
 }

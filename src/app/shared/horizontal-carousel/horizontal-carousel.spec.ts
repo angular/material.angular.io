@@ -32,18 +32,24 @@ describe('HorizontalCarousel', () => {
   });
 
   it('should trigger onResize method when window is resized', () => {
+    component.width = '250';
     const spyOnResize = spyOn(component, 'onResize');
-    window.dispatchEvent(new Event('resize'));
+    // window.dispatchEvent(new Event('resize'));
+    window.resizeTo(1680, 1000);
     expect(spyOnResize).toHaveBeenCalled();
-  });
-
-  it('should resize carousel', () => {
-    component.resizeCarousel(1680);
-    expect(component.visibleCards).toEqual(5);
 
     const carousel = fixture.nativeElement.querySelector('#docs-guides-carousel');
     expect(carousel?.style.width).toEqual('1250px');
-
+    expect(component.visibleCards).toEqual(5);
   });
+
+  // it('should resize carousel', () => {
+  //   component.resizeCarousel(1680);
+  //   expect(component.visibleCards).toEqual(5);
+  //
+  //   const carousel = fixture.nativeElement.querySelector('#docs-guides-carousel');
+  //   expect(carousel?.style.width).toEqual('1250px');
+  //
+  // });
 
 });

@@ -1,23 +1,12 @@
-<button mat-button class="docs-carousel-nav docs-carousel-nav-prev" (click)="previous()" *ngIf="this.showPrevArrow">
+<button mat-mini-fab class="docs-carousel-nav docs-carousel-nav-prev" (click)="previous()" *ngIf="this.showPrevArrow">
   <mat-icon>navigate_before</mat-icon>
 </button>
 <div class="docs-carousel-wrapper" (window:resize)="onResize()">
-  <div class="docs-guides-carousel">
-    <a class='docs-carousel-card-container' *ngFor="let guide of guideItems.getAllItems()"
-       [routerLink]="['/guide/', guide.id]">
-      <mat-card class="docs-guides-card">
-        <mat-card-title>{{guide.name}}</mat-card-title>
-        <div class="docs-mat-card-divider"></div>
-        <mat-card-content class="docs-component-category-list-card-summary">
-          Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra, dapibus
-          condimentum urna ullamcorper. Sed vitae finibus felis, vitae dictum est.
-          turpis eu laoreet.
-        </mat-card-content>
-      </mat-card>
-    </a>
+  <div class="docs-carousel">
+    <ng-content></ng-content>
   </div>
 </div>
-<button mat-button class="docs-carousel-nav docs-carousel-nav-next" (click)="next()" *ngIf="this.showNextArrow">
+<button mat-mini-fab class="docs-carousel-nav docs-carousel-nav-next" (click)="next()" *ngIf="this.showNextArrow">
   <mat-icon>navigate_next</mat-icon>
 </button>
 

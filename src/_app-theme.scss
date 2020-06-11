@@ -7,7 +7,6 @@
 @import './app/pages/homepage/homepage-theme';
 @import './app/shared/example-viewer/example-viewer-theme';
 @import './app/shared/footer/footer-theme';
-@import './app/shared/horizontal-carousel/horizontal-carousel-theme';
 @import './app/shared/navbar/navbar-theme';
 @import './app/shared/table-of-contents/table-of-contents-theme';
 @import './styles/api-theme';
@@ -56,7 +55,6 @@
   @include footer-theme($theme);
   @include guide-list-theme($theme);
   @include home-page-theme($theme);
-  @include horizontal-carousel-theme($theme);
   @include nav-bar-theme($theme);
   @include table-of-contents-theme($theme);
 }
