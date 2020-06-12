@@ -15,12 +15,6 @@
     color: mat-color($foreground, secondary-text);
   }
 
-  .docs-component-category-list-card {
-    //border: 1px solid mat-color($foreground, divider);
-    //border-radius: 4px;
-    //background: mat-color($background, card);
-  }
-
   .docs-component-category-list-card:hover {
     background: rgba(0, 0, 0, $nav-background-opacity);
   }
