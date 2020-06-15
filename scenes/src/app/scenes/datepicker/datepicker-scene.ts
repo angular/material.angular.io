@@ -1,7 +1,6 @@
 import {Component, NgModule, ViewEncapsulation} from '@angular/core';
-import {MatCalendarCellCssClasses, MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -10,19 +9,11 @@ import {MatInputModule} from '@angular/material/input';
   styleUrls: ['./datepicker-scene.scss']
 })
 export class DatepickerScene {
-  dateClass = (d: Date): MatCalendarCellCssClasses => {
-    const date = d.getDate();
-
-    // Highlight the 1st and 20th day of each month.
-    return (date === 1 || date === 20) ? 'scene-datepicker-custom-date-class' : '';
-  }
 }
 
 @NgModule({
   imports: [
-    MatFormFieldModule,
     MatDatepickerModule,
-    MatInputModule,
   ],
   exports: [DatepickerScene],
   declarations: [DatepickerScene],
