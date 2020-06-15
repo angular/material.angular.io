@@ -20,7 +20,7 @@ const MODULE_IMPORT_TEMPLATE = `import {${EXPORT_NAME_PLACEHOLDER}} from '${MODU
       mat-icon-button
       (click)="copyModuleImport()"
       matTooltip="Copy module import">
-      <span class="material-icons">file_copy</span>
+      <span class="material-icons">content_copy</span>
     </button>
   `,
 })
