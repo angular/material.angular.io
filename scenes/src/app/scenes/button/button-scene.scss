@@ -1,13 +1,9 @@
 .scene-buttons {
-  width: 100px;
-  text-align: center;
-}
-
-app-button-scene {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 div.scene-buttons button {
-  margin: 8px;
+  margin: 16px;
 }
