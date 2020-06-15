@@ -1,5 +1,6 @@
 import {Component, NgModule, ViewEncapsulation} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -13,6 +14,7 @@ export class ButtonScene {
 @NgModule({
   imports: [
     MatButtonModule,
+    MatIconModule,
   ],
   exports: [ButtonScene],
   declarations: [ButtonScene]

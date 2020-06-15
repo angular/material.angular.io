@@ -1,25 +1,13 @@
 .scene-buttons {
-  position: relative;
-  width: 50px;
-  top: 20px;
+  width: 100px;
+  text-align: center;
+}
+
+app-button-scene {
+  display: flex;
+  flex-direction: row;
 }
 
 div.scene-buttons button {
-  margin: 15px;
-  width: 100px;
-  height: 50px;
-}
-
-.scene-buttons-left {
-  position: absolute;
-  left: 80px;
-}
-
-.scene-buttons-right {
-  position: absolute;
-  left: 260px;
-}
-
-.mat-button-wrapper {
-  font-size: 18px;
+  margin: 8px;
 }

@@ -12,8 +12,8 @@ describe('screenshot scenes for each component', () => {
                       'button-toggle',
                       'slide-toggle',
                       'divider',
-                      'progress-spinner'];
-
+                      'progress-spinner',
+                      'button'];
 
   beforeEach(() => {
     page = new AppPage();
