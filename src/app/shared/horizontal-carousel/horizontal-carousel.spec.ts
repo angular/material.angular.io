@@ -2,6 +2,7 @@ import {HorizontalCarousel, HorizontalCarouselModule} from './horizontal-carouse
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DocsAppTestingModule} from '../../testing/testing-module';
 import {Component, ViewChild} from '@angular/core';
+import {CarouselItem} from './horizontal-carousel-directive';
 
 describe('HorizontalCarousel', () => {
   let fixture: ComponentFixture<CarouselTestComponent>;
@@ -11,24 +12,27 @@ describe('HorizontalCarousel', () => {
     TestBed.configureTestingModule(
       {
         imports: [HorizontalCarouselModule, DocsAppTestingModule],
-        declarations: [CarouselTestComponent]
+        declarations: [CarouselTestComponent, CarouselItem]
       }
     ).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CarouselTestComponent);
-    component = fixture.componentInstance.carousel;
+
     fixture.detectChanges();
   });
 
   it('should not show prev nav arrow when instantiated', () => {
     const navPrevious = fixture.nativeElement.querySelector('.docs-carousel-nav-prev');
     expect(navPrevious).toBeNull();
+
+    const navNext = fixture.nativeElement.querySelector('.docs-carousel-nav-next');
+    expect(navNext).toBeDefined();
   });
 
   it('should show prev nav arrow after increasing index', () => {
-    debugger;
+    component = fixture.componentInstance.carousel;
     component.next();
     expect(component.index).toEqual(1);
 
@@ -37,17 +41,18 @@ describe('HorizontalCarousel', () => {
   });
 
   it('should trigger onResize method when window is resized', () => {
-    // component.width = '250';
+    component = fixture.componentInstance.carousel;
+    const carousel = fixture.nativeElement.querySelector('.docs-carousel');
     const spyOnResize = spyOn(component, 'onResize');
-    window.resizeTo(1680, 1000);
+    spyOnProperty(window, 'innerWidth').and.returnValue(1680);
+
+    window.dispatchEvent(new Event('resize'));
     expect(spyOnResize).toHaveBeenCalled();
 
-    const carousel = fixture.nativeElement.querySelector('.docs-guides-carousel');
-    expect(carousel?.style.width).toEqual('1250px');
+    expect(carousel.style.width).toEqual('1250px');
     expect(component.visibleCards).toEqual(5);
   });
 });
-
 
 @Component({
   selector: 'test-carousel',
@@ -62,3 +67,4 @@ describe('HorizontalCarousel', () => {
 class CarouselTestComponent {
   @ViewChild(HorizontalCarousel) carousel: HorizontalCarousel;
 }
+

@@ -1,16 +1,15 @@
 import {
-  AfterContentChecked, AfterContentInit,
-  AfterViewInit, ChangeDetectorRef,
-  Component, ContentChildren,
+  AfterContentInit,
+  Component,
+  ContentChildren,
   HostBinding,
   Input,
-  NgModule, OnInit, QueryList,
+  NgModule,
+  QueryList,
   ViewEncapsulation
 } from '@angular/core';
 import {GuideItems} from '../guide-items/guide-items';
-import {MatCardModule} from '@angular/material/card';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {CarouselItem} from './horizontal-carousel-directive';
@@ -36,9 +35,6 @@ export class HorizontalCarousel implements AfterContentInit {
 
   @HostBinding('style.width') width: string;
 
-  // constructor(private cdRef: ChangeDetectorRef) {
-  // }
-
   private _index = 0;
 
   get index(): number {
@@ -52,23 +48,12 @@ export class HorizontalCarousel implements AfterContentInit {
   }
 
   onResize() {
-    this._resizeCarousel(window.innerWidth);
+    this._resizeCarousel();
   }
 
   ngAfterContentInit(): void {
     this.shiftWidth = this.items.first.elem.nativeElement.clientWidth;
-    this._resizeCarousel(window.innerWidth);
-  }
-
-  private _resizeCarousel(width: number) {
-    // debugger;
-    const newVisibleCards = Math.floor((width * CAROUSEL_WIDTH_RATIO) / this.shiftWidth);
-    if (this.visibleCards !== newVisibleCards) {
-      this.visibleCards = newVisibleCards;
-      this.showNextArrow = this.index < (this.items.length - this.visibleCards);
-    }
-    this.visibleCards = newVisibleCards;
-    this.width = `${this.visibleCards * this.shiftWidth}px`;
+    this._resizeCarousel();
   }
 
   next() {
@@ -86,10 +71,21 @@ export class HorizontalCarousel implements AfterContentInit {
       card.elem.nativeElement.style.transform = `translateX(-${this.position}px)`;
     });
   }
+
+  private _resizeCarousel() {
+    const newVisibleCards = Math.floor((window.innerWidth * CAROUSEL_WIDTH_RATIO) /
+      this.shiftWidth);
+    if (this.visibleCards !== newVisibleCards) {
+      this.visibleCards = newVisibleCards;
+      this.showNextArrow = this.index < (this.items.length - this.visibleCards);
+    }
+    this.visibleCards = newVisibleCards;
+    this.width = `${this.visibleCards * this.shiftWidth}px`;
+  }
 }
 
 @NgModule({
-  imports: [MatCardModule, CommonModule, RouterModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule],
   exports: [HorizontalCarousel],
   declarations: [HorizontalCarousel],
   providers: [GuideItems]
