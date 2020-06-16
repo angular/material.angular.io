@@ -1,13 +1,13 @@
-import {Directive} from '@angular/core';
+import {Directive, ElementRef, HostBinding} from '@angular/core';
 import {HorizontalCarousel} from './horizontal-carousel';
 
 @Directive({
   selector: '[carousel-item]',
-  host: {
-    '[style.width]': 'carousel.itemWidth + "px"',
-    '[style.height]': 'carousel.itemHeight + "px"'
-  }
 })
 export class CarouselItem {
-  constructor(public carousel: HorizontalCarousel) {}
+  @HostBinding('style.width') width = `${this.carousel.itemWidth}px`;
+  @HostBinding('style.height') height = `${this.carousel.itemHeight}px`;
+
+  constructor(public carousel: HorizontalCarousel, public elem: ElementRef) {
+  }
 }

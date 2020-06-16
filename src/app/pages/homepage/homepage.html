@@ -56,10 +56,10 @@
     </div>
   </div>
 
-  <app-horizontal-carousel [itemWidth]="200" [itemHeight]="200">
-    <a class='docs-carousel-item-container' *ngFor="let guide of guideItems.getAllItems()"
+  <app-horizontal-carousel [itemWidth]="250" [itemHeight]="200">
+    <a carousel-item class='docs-carousel-item-container' *ngFor="let guide of guideItems.getAllItems()"
        [routerLink]="['/guide/', guide.id]">
-      <mat-card carousel-item class="docs-guides-card">
+      <mat-card class="docs-guides-card">
         <mat-card-title>{{guide.name}}</mat-card-title>
         <div class="docs-mat-card-divider"></div>
         <mat-card-content class="docs-component-category-list-card-summary">

@@ -1,9 +1,10 @@
 import {
-  AfterViewInit,
-  Component,
+  AfterContentChecked, AfterContentInit,
+  AfterViewInit, ChangeDetectorRef,
+  Component, ContentChildren,
   HostBinding,
   Input,
-  NgModule,
+  NgModule, OnInit, QueryList,
   ViewEncapsulation
 } from '@angular/core';
 import {GuideItems} from '../guide-items/guide-items';
@@ -12,6 +13,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {CarouselItem} from './horizontal-carousel-directive';
 
 const CAROUSEL_WIDTH_RATIO = 0.75; // carousel width should be approximately 75% of page
 
@@ -22,21 +24,20 @@ const CAROUSEL_WIDTH_RATIO = 0.75; // carousel width should be approximately 75%
   encapsulation: ViewEncapsulation.None,
 })
 
-export class HorizontalCarousel implements AfterViewInit {
-  @Input() itemWidth = 190;
-  @Input() itemHeight = 190;
+export class HorizontalCarousel implements AfterContentInit {
+  @Input() itemWidth: number;
+  @Input() itemHeight: number;
+  @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
   position = 0;
   showPrevArrow = false;
   showNextArrow = true;
-  guideItemsLength = this.guideItems.getAllItems().length;
   visibleCards: number;
-  items: NodeListOf<HTMLElement>;
-  shiftWidth = 0;
+  shiftWidth: number;
 
   @HostBinding('style.width') width: string;
 
-  constructor(readonly guideItems: GuideItems) {
-  }
+  // constructor(private cdRef: ChangeDetectorRef) {
+  // }
 
   private _index = 0;
 
@@ -47,24 +48,24 @@ export class HorizontalCarousel implements AfterViewInit {
   set index(i: number) {
     this._index = i;
     this.showPrevArrow = i > 0;
-    this.showNextArrow = i < (this.guideItemsLength - this.visibleCards);
+    this.showNextArrow = i < (this.items.length - this.visibleCards);
   }
 
   onResize() {
     this._resizeCarousel(window.innerWidth);
   }
 
-  ngAfterViewInit(): void {
-    this.items = document.querySelectorAll('.docs-carousel-item-container');
-    this.shiftWidth = this.items[0].clientWidth;
+  ngAfterContentInit(): void {
+    this.shiftWidth = this.items.first.elem.nativeElement.clientWidth;
     this._resizeCarousel(window.innerWidth);
   }
 
   private _resizeCarousel(width: number) {
+    // debugger;
     const newVisibleCards = Math.floor((width * CAROUSEL_WIDTH_RATIO) / this.shiftWidth);
     if (this.visibleCards !== newVisibleCards) {
       this.visibleCards = newVisibleCards;
-      this.showNextArrow = this.index < (this.guideItemsLength - this.visibleCards);
+      this.showNextArrow = this.index < (this.items.length - this.visibleCards);
     }
     this.visibleCards = newVisibleCards;
     this.width = `${this.visibleCards * this.shiftWidth}px`;
@@ -73,16 +74,16 @@ export class HorizontalCarousel implements AfterViewInit {
   next() {
     this.index += 1;
     this.position += this.shiftWidth;
-    this.items.forEach((card) => {
-      card.style.transform = `translateX(-${this.position}px)`;
+    this.items.forEach((card: CarouselItem) => {
+      card.elem.nativeElement.style.transform = `translateX(-${this.position}px)`;
     });
   }
 
   previous() {
     this.index -= 1;
     this.position -= this.shiftWidth;
-    this.items.forEach((card) => {
-      card.style.transform = `translateX(-${this.position}px)`;
+    this.items.forEach((card: CarouselItem) => {
+      card.elem.nativeElement.style.transform = `translateX(-${this.position}px)`;
     });
   }
 }

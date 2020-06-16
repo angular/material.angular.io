@@ -25,5 +25,9 @@
     .docs-mat-card-divider {
       background: mat-color($accent);
     }
+
+    .docs-guides-card.mat-card:hover {
+      background: mat-color($background, hover);
+    }
   }
 }
