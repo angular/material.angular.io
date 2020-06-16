@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <app-horizontal-carousel [itemWidth]="250" [itemHeight]="200">
+  <app-horizontal-carousel [itemWidth]="250" [itemHeight]="250">
     <a carousel-item class='docs-carousel-item-container' *ngFor="let guide of guideItems.getAllItems()"
        [routerLink]="['/guide/', guide.id]">
       <mat-card class="docs-guides-card">

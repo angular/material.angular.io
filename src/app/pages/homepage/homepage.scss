@@ -96,6 +96,7 @@ $margin-promotion-sections-small: 15px;
 .docs-carousel-item-container {
   transition: transform 0.5s ease-in-out;
   padding: 10px;
+  display: flex;
 }
 
 .docs-guides-card.mat-card {

@@ -8,7 +8,6 @@ app-horizontal-carousel {
 .docs-carousel {
   display: flex;
   flex-direction: row;
-  //overflow: hidden;
 }
 
 .docs-carousel-nav {
@@ -24,8 +23,7 @@ app-horizontal-carousel {
 }
 
 .docs-carousel-wrapper {
-  //display: flex;
-  //width: inherit;
+  display: flex;
   width: 100%;
-  //overflow: hidden;
+  overflow: hidden;
 }
