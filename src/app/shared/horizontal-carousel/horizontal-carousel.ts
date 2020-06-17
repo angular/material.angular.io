@@ -3,10 +3,12 @@ import {
   Component,
   ContentChildren,
   HostBinding,
+  Inject,
+  InjectionToken,
   Input,
   NgModule,
+  Optional,
   QueryList,
-  ViewEncapsulation
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
@@ -15,17 +17,19 @@ import {CarouselItem} from './horizontal-carousel-directive';
 
 const CAROUSEL_WIDTH_RATIO = 0.75; // carousel width should be approximately 75% of page
 
+
+export const WINDOW = new InjectionToken('window');
+
 @Component({
   selector: 'app-horizontal-carousel',
   templateUrl: './horizontal-carousel.html',
   styleUrls: ['./horizontal-carousel.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
-
 export class HorizontalCarousel implements AfterContentInit {
   @Input() itemWidth: number;
   @Input() itemHeight: number;
   @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
+
   position = 0;
   showPrevArrow = false;
   showNextArrow = true;
@@ -33,6 +37,9 @@ export class HorizontalCarousel implements AfterContentInit {
   shiftWidth: number;
 
   @HostBinding('style.width') width: string;
+
+  constructor(@Optional() @Inject(WINDOW) readonly _window: any) {
+  }
 
   private _index = 0;
 
@@ -51,8 +58,10 @@ export class HorizontalCarousel implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.shiftWidth = this.items.first.elem.nativeElement.clientWidth;
-    this._resizeCarousel();
+    setTimeout(() => {
+      this.shiftWidth = this.items.first.elem.nativeElement.clientWidth;
+      this._resizeCarousel();
+    });
   }
 
   next() {
@@ -72,8 +81,10 @@ export class HorizontalCarousel implements AfterContentInit {
   }
 
   private _resizeCarousel() {
-    const newVisibleCards = Math.floor((window.innerWidth * CAROUSEL_WIDTH_RATIO) /
-      this.shiftWidth);
+    const documentWindow = this._window || window;
+    const newVisibleCards = Math.min(
+      Math.floor((documentWindow.innerWidth * CAROUSEL_WIDTH_RATIO) / this.shiftWidth),
+      this.items.length);
     if (this.visibleCards !== newVisibleCards) {
       this.visibleCards = newVisibleCards;
       this.showNextArrow = this.index < (this.items.length - this.visibleCards);

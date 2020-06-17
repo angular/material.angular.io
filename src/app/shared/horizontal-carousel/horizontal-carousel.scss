@@ -1,7 +1,6 @@
-app-horizontal-carousel {
+:host {
   position: relative;
   display: flex;
-  flex-direction: row;
   align-items: center;
 }
 
@@ -15,11 +14,11 @@ app-horizontal-carousel {
 }
 
 .docs-carousel-nav-prev {
-  left: -10px;
+  left: -40px;
 }
 
 .docs-carousel-nav-next {
-  right: -10px;
+  right: -40px;
 }
 
 .docs-carousel-wrapper {
