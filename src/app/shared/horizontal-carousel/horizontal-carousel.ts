@@ -8,7 +8,6 @@ import {
   QueryList,
   ViewEncapsulation
 } from '@angular/core';
-import {GuideItems} from '../guide-items/guide-items';
 import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -86,9 +85,8 @@ export class HorizontalCarousel implements AfterContentInit {
 
 @NgModule({
   imports: [CommonModule, MatIconModule, MatButtonModule],
-  exports: [HorizontalCarousel],
-  declarations: [HorizontalCarousel],
-  providers: [GuideItems]
+  exports: [HorizontalCarousel, CarouselItem],
+  declarations: [HorizontalCarousel, CarouselItem],
 })
 export class HorizontalCarouselModule {
 }

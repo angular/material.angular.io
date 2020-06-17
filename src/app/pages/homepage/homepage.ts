@@ -8,7 +8,6 @@ import {NavigationFocusModule} from '../../shared/navigation-focus/navigation-fo
 import {HorizontalCarouselModule} from '../../shared/horizontal-carousel/horizontal-carousel';
 import {GuideItems} from '../../shared/guide-items/guide-items';
 import {CommonModule} from '@angular/common';
-import {CarouselItem} from '../../shared/horizontal-carousel/horizontal-carousel-directive';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
@@ -37,7 +36,8 @@ const routes: Routes = [ {path: '', component: Homepage}];
             NavigationFocusModule,
             HorizontalCarouselModule, CommonModule, MatCardModule],
   exports: [Homepage],
-  declarations: [Homepage, CarouselItem],
+  declarations: [Homepage],
+  providers: [GuideItems]
 })
 export class HomepageModule {
 }

@@ -2,7 +2,6 @@ import {HorizontalCarousel, HorizontalCarouselModule} from './horizontal-carouse
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DocsAppTestingModule} from '../../testing/testing-module';
 import {Component, ViewChild} from '@angular/core';
-import {CarouselItem} from './horizontal-carousel-directive';
 
 describe('HorizontalCarousel', () => {
   let fixture: ComponentFixture<CarouselTestComponent>;
@@ -12,7 +11,7 @@ describe('HorizontalCarousel', () => {
     TestBed.configureTestingModule(
       {
         imports: [HorizontalCarouselModule, DocsAppTestingModule],
-        declarations: [CarouselTestComponent, CarouselItem]
+        declarations: [CarouselTestComponent]
       }
     ).compileComponents();
   }));
@@ -58,7 +57,7 @@ describe('HorizontalCarousel', () => {
   selector: 'test-carousel',
   template:
       `
-    <app-horizontal-carousel [itemWidth]="250" [itemHeight]="110">
+    <app-horizontal-carousel itemWidth="250" itemHeight="110">
       <div carousel-item class="docs-carousel-item-container"></div>
       <div carousel-item class="docs-carousel-item-container"></div>
       <div carousel-item class="docs-carousel-item-container"></div>
