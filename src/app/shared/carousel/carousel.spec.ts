@@ -1,4 +1,4 @@
-import {HorizontalCarousel, HorizontalCarouselModule, WINDOW} from './horizontal-carousel';
+import {Carousel, HorizontalCarouselModule} from './carousel';
 import {async, ComponentFixture, fakeAsync, flush, TestBed} from '@angular/core/testing';
 import {DocsAppTestingModule} from '../../testing/testing-module';
 import {Component, ViewChild} from '@angular/core';
@@ -6,68 +6,67 @@ import {Component, ViewChild} from '@angular/core';
 
 describe('HorizontalCarousel', () => {
   let fixture: ComponentFixture<CarouselTestComponent>;
-  let component: HorizontalCarousel;
-  let fakeWindow: any;
+  let component: Carousel;
 
 
   beforeEach(async(() => {
-    fakeWindow = {innerWidth: 1000};
     TestBed.configureTestingModule(
       {
         imports: [HorizontalCarouselModule, DocsAppTestingModule],
         declarations: [CarouselTestComponent],
-        providers: [{provide: WINDOW, useValue: fakeWindow}]
       }
     ).compileComponents();
   }));
 
   beforeEach(fakeAsync(() => {
     fixture = TestBed.createComponent(CarouselTestComponent);
+    fixture.nativeElement.style.width = '1300px';
     fixture.detectChanges();
     flush();
+    component = fixture.componentInstance.carousel;
   }));
 
   it('should not show prev nav arrow when instantiated', () => {
     const navPrevious = fixture.nativeElement.querySelector('.docs-carousel-nav-prev');
-    expect(navPrevious).toBeNull();
+    expect(navPrevious.style.visibility).toBe('hidden');
 
     const navNext = fixture.nativeElement.querySelector('.docs-carousel-nav-next');
-    expect(navNext).toBeDefined();
+    expect(navNext.style.visibility).toBe('visible');
   });
 
   it('should show prev nav arrow after increasing index', () => {
-    component = fixture.componentInstance.carousel;
     component.next();
+    fixture.detectChanges();
+
     expect(component.index).toEqual(1);
 
     const navPrevious = fixture.nativeElement.querySelector('.docs-carousel-nav-prev');
-    expect(navPrevious).toBeDefined();
+    expect(navPrevious.style.visibility).toBe('visible');
   });
 
   it('should hide next nav arrow after reaching end of items', () => {
-    component = fixture.componentInstance.carousel;
-    expect(component.visibleCards).toBe(3);
+    expect(component.visibleCards).toBe(4);
 
+    component.next();
     component.next();
     component.next();
     component.next();
     fixture.detectChanges();
 
-    expect(component.index).toEqual(3);
+    expect(component.index).toEqual(4);
 
     const navPrevious = fixture.nativeElement.querySelector('.docs-carousel-nav-next');
-    expect(navPrevious).toBeNull();
+    expect(navPrevious.style.visibility).toBe('hidden');
   });
 
   it('should resize carousel when not all content can be displayed', () => {
-    component = fixture.componentInstance.carousel;
-    const carousel = fixture.nativeElement.querySelector('.docs-carousel-wrapper');
-    fakeWindow.innerWidth = 1680;
+    const carouselWrapper = fixture.nativeElement.querySelector('.docs-carousel-wrapper');
+    fixture.nativeElement.style.width = '1350px';
     window.dispatchEvent(new Event('resize'));
 
     fixture.detectChanges();
 
-    expect(carousel.clientWidth).toEqual(1250);
+    expect(carouselWrapper.clientWidth).toEqual(1250);
     expect(component.visibleCards).toEqual(5);
   });
 
@@ -75,14 +74,13 @@ describe('HorizontalCarousel', () => {
     fixture.componentInstance.numberOfItems = 2;
     fixture.detectChanges();
 
-    component = fixture.componentInstance.carousel;
-    const carousel = fixture.nativeElement.querySelector('.docs-carousel-wrapper');
-    fakeWindow.innerWidth = 1680;
+    const carouselWrapper = fixture.nativeElement.querySelector('.docs-carousel-wrapper');
+    fixture.nativeElement.style.width = '1350px';
     window.dispatchEvent(new Event('resize'));
 
     fixture.detectChanges();
 
-    expect(carousel.clientWidth).toEqual(500);
+    expect(carouselWrapper.clientWidth).toEqual(500);
     expect(component.visibleCards).toEqual(2);
   });
 });
@@ -91,14 +89,14 @@ describe('HorizontalCarousel', () => {
   selector: 'test-carousel',
   template:
       `
-    <app-horizontal-carousel itemWidth="250" itemHeight="110">
+    <app-carousel itemWidth="250" itemHeight="110">
       <div carousel-item class="docs-carousel-item-container"
            *ngFor="let i of [].constructor(numberOfItems) "></div>
-    </app-horizontal-carousel>`,
+    </app-carousel>`,
   styles: ['.docs-carousel-item-container { display: flex; }']
 })
 class CarouselTestComponent {
   numberOfItems = 6;
-  @ViewChild(HorizontalCarousel) carousel: HorizontalCarousel;
+  @ViewChild(Carousel) carousel: Carousel;
 }
 

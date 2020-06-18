@@ -1,7 +1,8 @@
 :host {
-  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .docs-carousel {
@@ -9,20 +10,7 @@
   flex-direction: row;
 }
 
-.docs-carousel-nav {
-  position: absolute;
-}
-
-.docs-carousel-nav-prev {
-  left: -40px;
-}
-
-.docs-carousel-nav-next {
-  right: -40px;
-}
-
 .docs-carousel-wrapper {
   display: flex;
-  width: 100%;
   overflow: hidden;
 }

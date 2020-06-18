@@ -5,7 +5,7 @@ import {FooterModule} from '../../shared/footer/footer';
 import {RouterModule, Routes} from '@angular/router';
 import {ComponentPageTitle} from '../page-title/page-title';
 import {NavigationFocusModule} from '../../shared/navigation-focus/navigation-focus';
-import {HorizontalCarouselModule} from '../../shared/horizontal-carousel/horizontal-carousel';
+import {HorizontalCarouselModule} from '../../shared/carousel/carousel';
 import {GuideItems} from '../../shared/guide-items/guide-items';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
@@ -19,7 +19,7 @@ import {MatCardModule} from '@angular/material/card';
 export class Homepage implements OnInit {
   isNextVersion = location.hostname.startsWith('next.material.angular.io');
 
-  constructor(public _componentPageTitle: ComponentPageTitle, public guideItems: GuideItems) {}
+  constructor(readonly _componentPageTitle: ComponentPageTitle, readonly guideItems: GuideItems) {}
 
   ngOnInit(): void {
     this._componentPageTitle.title = '';

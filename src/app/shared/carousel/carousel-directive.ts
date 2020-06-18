@@ -1,13 +1,14 @@
 import {Directive, ElementRef, HostBinding} from '@angular/core';
-import {HorizontalCarousel} from './horizontal-carousel';
+import {Carousel} from './carousel';
 
 @Directive({
   selector: '[carousel-item]',
 })
-export class CarouselItem {
+export class CarouselItemDirective {
   @HostBinding('style.width') width = `${this.carousel.itemWidth}px`;
   @HostBinding('style.height') height = `${this.carousel.itemHeight}px`;
+  @HostBinding('tabindex') readonly tabindex = '-1';
 
-  constructor(public carousel: HorizontalCarousel, public elem: ElementRef) {
+  constructor(readonly carousel: Carousel, readonly elem: ElementRef) {
   }
 }
