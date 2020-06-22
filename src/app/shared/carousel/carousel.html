@@ -2,8 +2,8 @@
         [style.visibility]="this.showPrevArrow ? 'visible' : 'hidden'">
   <mat-icon>navigate_before</mat-icon>
 </button>
-<div class="docs-carousel-wrapper" (window:resize)="onResize()" #wrapper [style.minWidth]="shiftWidth + 'px'">
-  <div class="docs-carousel">
+<div class="docs-carousel-content-wrapper" (window:resize)="onResize()" #contentWrapper [style.minWidth]="shiftWidth + 'px'">
+  <div class="docs-carousel-content">
     <ng-content></ng-content>
   </div>
 </div>

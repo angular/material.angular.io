@@ -2,18 +2,27 @@ import {
   AfterContentInit,
   Component,
   ContentChildren,
+  Directive,
   ElementRef,
+  HostBinding,
   Input,
-  NgModule,
   QueryList,
   ViewChild,
 } from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {CarouselItemDirective} from './carousel-directive';
+
 
 const BUTTON_WIDTH = 40;
+
+@Directive({
+  selector: '[carousel-item]',
+})
+export class CarouselItem {
+  @HostBinding('style.width') width = `${this.carousel.itemWidth}px`;
+  @HostBinding('tabindex') readonly tabindex = '-1';
+
+  constructor(readonly carousel: Carousel, readonly elem: ElementRef) {
+  }
+}
 
 @Component({
   selector: 'app-carousel',
@@ -22,9 +31,8 @@ const BUTTON_WIDTH = 40;
 })
 export class Carousel implements AfterContentInit {
   @Input() itemWidth: number;
-  @Input() itemHeight: number;
-  @ContentChildren(CarouselItemDirective) items: QueryList<CarouselItemDirective>;
-  @ViewChild('wrapper') wrapper: ElementRef;
+  @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
+  @ViewChild('contentWrapper') wrapper: ElementRef;
 
   position = 0;
   showPrevArrow = false;
@@ -69,7 +77,7 @@ export class Carousel implements AfterContentInit {
   private _shiftItems(shiftIndex: number) {
     this.index += shiftIndex;
     this.position += shiftIndex * this.shiftWidth;
-    this.items.forEach((item: CarouselItemDirective) => {
+    this.items.forEach((item: CarouselItem) => {
       item.elem.nativeElement.style.transform = `translateX(-${this.position}px)`;
     });
   }
@@ -91,10 +99,3 @@ export class Carousel implements AfterContentInit {
   }
 }
 
-@NgModule({
-  imports: [CommonModule, MatIconModule, MatButtonModule],
-  exports: [Carousel, CarouselItemDirective],
-  declarations: [Carousel, CarouselItemDirective],
-})
-export class HorizontalCarouselModule {
-}
