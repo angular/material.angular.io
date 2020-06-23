@@ -1,5 +1,4 @@
 import {Component, NgModule, ViewEncapsulation} from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
 import {MatRadioModule} from '@angular/material/radio';
 
 @Component({
@@ -13,7 +12,6 @@ export class RadioScene {
 
 @NgModule({
   imports: [
-    MatIconModule,
     MatRadioModule,
   ],
   exports: [RadioScene],
