@@ -50,14 +50,15 @@ describe('HorizontalCarousel', () => {
 
     component.next();
     component.next();
-    component.next();
-    component.next();
+    expect(component.index).toEqual(2);
     fixture.detectChanges();
-
-    expect(component.index).toEqual(4);
 
     const navPrevious = fixture.nativeElement.querySelector('.docs-carousel-nav-next');
     expect(navPrevious).toBeNull();
+
+    // in case of keyboard nav at end of items
+    component.next();
+    expect(component.index).toEqual(2);
   });
 
   it('should resize carousel when not all content can be displayed', () => {
