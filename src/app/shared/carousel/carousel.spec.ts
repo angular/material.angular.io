@@ -46,7 +46,7 @@ describe('HorizontalCarousel', () => {
   });
 
   it('should hide next nav arrow after reaching end of items', () => {
-    expect(component.visibleCards).toBe(4);
+    expect(component.visibleItems).toBe(4);
 
     component.next();
     component.next();
@@ -68,7 +68,7 @@ describe('HorizontalCarousel', () => {
     fixture.detectChanges();
 
     expect(carouselWrapper.clientWidth).toEqual(1250);
-    expect(component.visibleCards).toEqual(5);
+    expect(component.visibleItems).toEqual(5);
   });
 
   it('should not resize carousel when all content can be displayed', () => {
@@ -82,7 +82,7 @@ describe('HorizontalCarousel', () => {
     fixture.detectChanges();
 
     expect(carouselWrapper.clientWidth).toEqual(500);
-    expect(component.visibleCards).toEqual(2);
+    expect(component.visibleItems).toEqual(2);
   });
 });
 

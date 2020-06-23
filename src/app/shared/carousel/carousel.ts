@@ -17,7 +17,7 @@ import {
 })
 export class CarouselItem {
   @HostBinding('style.width.px') width = this.carousel.itemWidth;
-  @HostBinding('tabindex') readonly tabindex = '-1';
+  @HostBinding('tabindex') tabindex = '-1';
 
   constructor(readonly carousel: Carousel, readonly elem: ElementRef) {
   }
@@ -30,6 +30,7 @@ export class CarouselItem {
   encapsulation: ViewEncapsulation.None
 })
 export class Carousel implements AfterContentInit {
+  @Input('aria-label') ariaLabel: string;
   @Input() itemWidth: number;
   @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
   @ViewChild('contentWrapper') wrapper: ElementRef;
@@ -37,8 +38,9 @@ export class Carousel implements AfterContentInit {
   position = 0;
   showPrevArrow = false;
   showNextArrow = true;
-  visibleCards: number;
+  visibleItems: number;
   shiftWidth: number;
+  itemsArray: CarouselItem[];
 
   constructor(private readonly host: ElementRef) {
   }
@@ -52,7 +54,7 @@ export class Carousel implements AfterContentInit {
   set index(i: number) {
     this._index = i;
     this.showPrevArrow = i > 0;
-    this.showNextArrow = i < (this.items.length - this.visibleCards);
+    this.showNextArrow = i < (this.items.length - this.visibleItems);
   }
 
   onResize() {
@@ -61,17 +63,33 @@ export class Carousel implements AfterContentInit {
 
   ngAfterContentInit(): void {
     setTimeout(() => {
+      this.itemsArray = this.items.toArray();
       this.shiftWidth = this.items.first.elem.nativeElement.clientWidth;
       this._resizeCarousel();
     });
   }
 
   next() {
-    this._shiftItems(1);
+    // prevent keyboard navigation from going out of bounds
+    if (this.showNextArrow) {
+      this._shiftItems(1);
+      this.setTabIndex();
+    }
   }
 
   previous() {
-    this._shiftItems(-1);
+    // prevent keyboard navigation from going out of bounds
+    if (this.showPrevArrow) {
+      this._shiftItems(-1);
+      this.setTabIndex();
+    }
+  }
+
+  private setTabIndex() {
+    for (let i = 0; i < this.items.length; i++) {
+      this.itemsArray[i].tabindex =
+        (i >= this.index && i < this.index + this.visibleItems) ? '0' : '-1';
+    }
   }
 
   private _shiftItems(shiftIndex: number) {
@@ -83,19 +101,21 @@ export class Carousel implements AfterContentInit {
   }
 
   private _resizeCarousel() {
-    const newVisibleCards = Math.max(1, Math.min(
+    const newVisibleItems = Math.max(1, Math.min(
       Math.floor((this.host.nativeElement.offsetWidth) / this.shiftWidth),
       this.items.length));
-    if (this.visibleCards !== newVisibleCards) {
-      const shiftIndex = this.index - (this.items.length - this.visibleCards) + 1;
-      if (shiftIndex > 0) {
-        this._shiftItems(-shiftIndex);
+    if (this.visibleItems !== newVisibleItems) {
+      if (this.visibleItems < newVisibleItems) {
+        const shiftIndex = this.index - (this.items.length - this.visibleItems) + 1;
+        if (shiftIndex > 0) {
+          this._shiftItems(-shiftIndex);
+        }
       }
-      this.visibleCards = newVisibleCards;
-      this.showNextArrow = this.index < (this.items.length - this.visibleCards);
+      this.visibleItems = newVisibleItems;
+      this.showNextArrow = this.index < (this.items.length - this.visibleItems);
+      this.setTabIndex();
     }
-    this.visibleCards = newVisibleCards;
-    this.wrapper.nativeElement.style.width = `${this.visibleCards * this.shiftWidth}px`;
+    this.wrapper.nativeElement.style.width = `${this.visibleItems * this.shiftWidth}px`;
   }
 }
 

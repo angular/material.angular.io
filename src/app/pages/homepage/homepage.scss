@@ -86,31 +86,6 @@ $margin-promotion-sections-small: 15px;
   justify-content: center;
 }
 
-.docs-homepage-carousel {
-  width: 75%;
-}
-
-/** Carousel content styles */
-.docs-mat-card-divider {
-  width: 30%;
-  height: 5px;
-  margin: 15px auto;
-}
-
-.docs-carousel-item {
-  transition: transform 0.5s ease-in-out;
-  padding: 10px;
-  display: flex;
-  text-decoration: none;
-}
-
-.docs-guides-card.mat-card {
-  text-align: center;
-}
-
-.docs-homepage-carousel-card-title.mat-card-title {
-  font-size: 20px;
-}
 
 /**
   * Rules for when the device is detected to be a small screen.

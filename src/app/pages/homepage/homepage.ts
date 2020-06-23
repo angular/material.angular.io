@@ -5,10 +5,8 @@ import {FooterModule} from '../../shared/footer/footer';
 import {RouterModule, Routes} from '@angular/router';
 import {ComponentPageTitle} from '../page-title/page-title';
 import {NavigationFocusModule} from '../../shared/navigation-focus/navigation-focus';
-import {CarouselModule} from '../../shared/carousel/carousel-module';
 import {GuideItems} from '../../shared/guide-items/guide-items';
 import {CommonModule} from '@angular/common';
-import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-homepage',
@@ -19,7 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 export class Homepage implements OnInit {
   isNextVersion = location.hostname.startsWith('next.material.angular.io');
 
-  constructor(readonly _componentPageTitle: ComponentPageTitle, readonly guideItems: GuideItems) {}
+  constructor(readonly _componentPageTitle: ComponentPageTitle) {}
 
   ngOnInit(): void {
     this._componentPageTitle.title = '';
@@ -34,7 +32,7 @@ const routes: Routes = [ {path: '', component: Homepage}];
             FooterModule,
             RouterModule.forChild(routes),
             NavigationFocusModule,
-            CarouselModule, CommonModule, MatCardModule],
+            CommonModule],
   exports: [Homepage],
   declarations: [Homepage],
   providers: [GuideItems]

@@ -55,23 +55,6 @@
       <p>Built by the Angular team to integrate seamlessly with Angular.</p>
     </div>
   </div>
-
-  <div class="docs-homepage-carousel">
-  <app-carousel [itemWidth]="250">
-    <a carousel-item class='docs-carousel-item' *ngFor="let guide of guideItems.getAllItems()"
-       [routerLink]="['/guide/', guide.id]">
-      <mat-card class="docs-guides-card">
-        <mat-card-title class="docs-homepage-carousel-card-title">{{guide.name}}</mat-card-title>
-        <div class="docs-mat-card-divider"></div>
-        <mat-card-content class="docs-component-category-list-card-summary">
-          Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra, dapibus
-          condimentum urna ullamcorper. Sed vitae finibus felis, vitae dictum est.
-          turpis eu laoreet.
-        </mat-card-content>
-      </mat-card>
-    </a>
-  </app-carousel>
-  </div>
   <div class="docs-homepage-bottom-start">
     <a mat-raised-button class="docs-button" routerLink="/guide/getting-started" color="accent">
       Get started
