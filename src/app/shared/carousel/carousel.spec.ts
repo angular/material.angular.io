@@ -1,7 +1,8 @@
-import {Carousel, HorizontalCarouselModule} from './carousel';
+import {Carousel} from './carousel';
 import {async, ComponentFixture, fakeAsync, flush, TestBed} from '@angular/core/testing';
 import {DocsAppTestingModule} from '../../testing/testing-module';
 import {Component, ViewChild} from '@angular/core';
+import {CarouselModule} from './carousel-module';
 
 
 describe('HorizontalCarousel', () => {
@@ -12,7 +13,7 @@ describe('HorizontalCarousel', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule(
       {
-        imports: [HorizontalCarouselModule, DocsAppTestingModule],
+        imports: [CarouselModule, DocsAppTestingModule],
         declarations: [CarouselTestComponent],
       }
     ).compileComponents();
@@ -28,10 +29,10 @@ describe('HorizontalCarousel', () => {
 
   it('should not show prev nav arrow when instantiated', () => {
     const navPrevious = fixture.nativeElement.querySelector('.docs-carousel-nav-prev');
-    expect(navPrevious.style.visibility).toBe('hidden');
+    expect(navPrevious).toBeNull();
 
     const navNext = fixture.nativeElement.querySelector('.docs-carousel-nav-next');
-    expect(navNext.style.visibility).toBe('visible');
+    expect(navNext).toBeDefined();
   });
 
   it('should show prev nav arrow after increasing index', () => {
@@ -41,7 +42,7 @@ describe('HorizontalCarousel', () => {
     expect(component.index).toEqual(1);
 
     const navPrevious = fixture.nativeElement.querySelector('.docs-carousel-nav-prev');
-    expect(navPrevious.style.visibility).toBe('visible');
+    expect(navPrevious).toBeDefined();
   });
 
   it('should hide next nav arrow after reaching end of items', () => {
@@ -56,11 +57,11 @@ describe('HorizontalCarousel', () => {
     expect(component.index).toEqual(4);
 
     const navPrevious = fixture.nativeElement.querySelector('.docs-carousel-nav-next');
-    expect(navPrevious.style.visibility).toBe('hidden');
+    expect(navPrevious).toBeNull();
   });
 
   it('should resize carousel when not all content can be displayed', () => {
-    const carouselWrapper = fixture.nativeElement.querySelector('.docs-carousel-wrapper');
+    const carouselWrapper = fixture.nativeElement.querySelector('.docs-carousel-content-wrapper');
     fixture.nativeElement.style.width = '1350px';
     window.dispatchEvent(new Event('resize'));
 
@@ -74,7 +75,7 @@ describe('HorizontalCarousel', () => {
     fixture.componentInstance.numberOfItems = 2;
     fixture.detectChanges();
 
-    const carouselWrapper = fixture.nativeElement.querySelector('.docs-carousel-wrapper');
+    const carouselWrapper = fixture.nativeElement.querySelector('.docs-carousel-content-wrapper');
     fixture.nativeElement.style.width = '1350px';
     window.dispatchEvent(new Event('resize'));
 
@@ -89,7 +90,7 @@ describe('HorizontalCarousel', () => {
   selector: 'test-carousel',
   template:
       `
-    <app-carousel itemWidth="250" itemHeight="110">
+    <app-carousel itemWidth="250">
       <div carousel-item class="docs-carousel-item-container"
            *ngFor="let i of [].constructor(numberOfItems) "></div>
     </app-carousel>`,

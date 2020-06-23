@@ -1,14 +1,14 @@
-<button mat-mini-fab class="docs-carousel-nav docs-carousel-nav-prev" (click)="previous()"
-        [style.visibility]="this.showPrevArrow ? 'visible' : 'hidden'">
-  <mat-icon>navigate_before</mat-icon>
-</button>
-<div class="docs-carousel-content-wrapper" (window:resize)="onResize()" #contentWrapper [style.minWidth]="shiftWidth + 'px'">
+<div class="docs-carousel-content-wrapper" #contentWrapper (window:resize)="onResize()"
+     [style.minWidth]="shiftWidth + 'px'">
+  <button mat-mini-fab class="docs-carousel-nav docs-carousel-nav-prev" (click)="previous()" *ngIf="this.showPrevArrow">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
   <div class="docs-carousel-content">
     <ng-content></ng-content>
   </div>
+  <button mat-mini-fab class="docs-carousel-nav docs-carousel-nav-next" (click)="next()" *ngIf="this.showNextArrow">
+    <mat-icon>navigate_next</mat-icon>
+  </button>
 </div>
-<button mat-mini-fab class="docs-carousel-nav docs-carousel-nav-next" (click)="next()"
-        [style.visibility]="this.showNextArrow ? 'visible' : 'hidden'">
-  <mat-icon>navigate_next</mat-icon>
-</button>
+
 

@@ -8,16 +8,15 @@ import {
   Input,
   QueryList,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 
-
-const BUTTON_WIDTH = 40;
 
 @Directive({
   selector: '[carousel-item]',
 })
 export class CarouselItem {
-  @HostBinding('style.width') width = `${this.carousel.itemWidth}px`;
+  @HostBinding('style.width.px') width = this.carousel.itemWidth;
   @HostBinding('tabindex') readonly tabindex = '-1';
 
   constructor(readonly carousel: Carousel, readonly elem: ElementRef) {
@@ -28,6 +27,7 @@ export class CarouselItem {
   selector: 'app-carousel',
   templateUrl: './carousel.html',
   styleUrls: ['./carousel.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class Carousel implements AfterContentInit {
   @Input() itemWidth: number;
@@ -84,7 +84,7 @@ export class Carousel implements AfterContentInit {
 
   private _resizeCarousel() {
     const newVisibleCards = Math.max(1, Math.min(
-      Math.floor((this.host.nativeElement.offsetWidth - 2 * BUTTON_WIDTH) / this.shiftWidth),
+      Math.floor((this.host.nativeElement.offsetWidth) / this.shiftWidth),
       this.items.length));
     if (this.visibleCards !== newVisibleCards) {
       const shiftIndex = this.index - (this.items.length - this.visibleCards) + 1;
