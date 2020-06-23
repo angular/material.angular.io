@@ -1,9 +1,8 @@
 import {
   Component,
   ComponentFactoryResolver,
-  HostBinding,
   Input,
-  NgModule,
+  NgModule, OnDestroy,
   OnInit,
   ViewChild,
   ViewContainerRef,
@@ -11,7 +10,6 @@ import {
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -19,9 +17,7 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
   templateUrl: './scene-viewer.html',
   styleUrls: ['./scene-viewer.scss'],
 })
-export class SceneViewer implements OnInit {
-
-  @HostBinding('style.filter') filter: SafeStyle;
+export class SceneViewer implements OnInit, OnDestroy {
 
   /**
    * Degree to change hue of scene by. All scenes default to a reddish hue.
@@ -34,9 +30,12 @@ export class SceneViewer implements OnInit {
 
   set hueRotation(deg: number) {
     this._hueRotation = deg;
-    // Modern browsers have security built in so this is just bypassing Angular's redundant checks.
-    // Furthermore these checks will soon be removed.
-    this.filter = this.sanitizer.bypassSecurityTrustStyle(`hue-rotate(${this.hueRotation}deg)`);
+    // Currently this is the only way to ensure overlay elements are also filtered.
+    // Generally setting the filter on the document is not a good idea but this is a one off
+    // component used only for generating images.
+    // Change this when overlay supports setting a host element and set the filter
+    // on there instead.
+    document.body.style.filter = `hue-rotate(${this.hueRotation}deg)`;
   }
 
   private _hueRotation: number;
@@ -51,8 +50,7 @@ export class SceneViewer implements OnInit {
   scene: ViewContainerRef;
 
   constructor(private readonly componentFactoryResolver: ComponentFactoryResolver,
-              private route: ActivatedRoute,
-              private sanitizer: DomSanitizer) {
+              private route: ActivatedRoute) {
     this.hueRotation = this.route.snapshot.data['hueRotate'];
     this.component = this.route.snapshot.data['scene'];
     this.scale = this.route.snapshot.data['scale'];
@@ -63,6 +61,10 @@ export class SceneViewer implements OnInit {
     const sceneComponent = this.scene.createComponent(componentFactory).location.nativeElement;
     sceneComponent.style.transform = `scale(${this.scale})`;
     sceneComponent.style.transformOrigin = 'center';
+  }
+
+  ngOnDestroy() {
+    document.body.style.filter = '';
   }
 }
 
