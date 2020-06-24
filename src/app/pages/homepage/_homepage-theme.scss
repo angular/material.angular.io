@@ -34,5 +34,20 @@
       background: mat-color($accent)
     }
 
+    .docs-mat-card-divider {
+      background: mat-color($accent);
+    }
+
+    [carousel-item]:hover {
+      .docs-guides-card.mat-card {
+        background: mat-color($background, hover);
+      }
+    }
+
+    [carousel-item]:focus {
+    .docs-guides-card.mat-card {
+      background: mat-color($background, focused-button);
+    }
+  }
   }
 }

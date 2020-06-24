@@ -90,39 +90,33 @@ $margin-promotion-sections-small: 15px;
   }
 }
 
-.docs-carousel-wrapper {
-  flex-direction: column;
-
-  a.docs-link {
-    margin-top: 15px;
-    letter-spacing: 0.15px;
-    align-self: flex-end;
-  }
+.docs-homepage-carousel {
+  padding-top: $margin-promotion-sections;
+  width: 75%;
 }
 
-.docs-guides-carousel {
+/** Carousel content styles */
+.docs-mat-card-divider {
+  width: 30%;
+  height: 5px;
+  margin: 15px auto;
+}
+
+.docs-carousel-item {
+  transition: transform 0.5s ease-in-out;
+  padding: 10px;
   display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
-
-  .docs-mat-card-divider {
-    width: 30%;
-    height: 5px;
-    margin: 15px auto;
-  }
-
-  .mat-card {
-    padding: 30px;
-    width: 260px;
-    height: 260px;
-    text-align: center;
-  }
-
-  a {
-    text-decoration: none;
-    margin: 5px 20px;
-  }
+  text-decoration: none;
 }
+
+.docs-guides-card.mat-card {
+  text-align: center;
+}
+
+.docs-homepage-carousel-card-title.mat-card-title {
+  font-size: 20px;
+}
+
 
 .docs-top-components {
   flex-wrap: wrap;
@@ -142,16 +136,16 @@ $margin-promotion-sections-small: 15px;
     flex: 0 0 100%;
   }
 
+  h2 {
+    font-size: 20px;
+  }
+
   .docs-component {
     width: 30%;
     margin: 0 auto;
     text-align: center;
   }
 
-  img {
-    width: 90%;
-    margin: 0 auto;
-  }
 
   .docs-trending-up-icon {
     color: mediumseagreen;
@@ -216,5 +210,9 @@ $margin-promotion-sections-small: 15px;
 
   .docs-top-components h1 {
     margin-bottom: $margin-promotion-sections-small;
+  }
+
+  .docs-homepage-carousel {
+    padding-top: $margin-promotion-sections-small;
   }
 }
