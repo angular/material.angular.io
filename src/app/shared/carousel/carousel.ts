@@ -19,7 +19,7 @@ export class CarouselItem {
   @HostBinding('style.width.px') width = this.carousel.itemWidth;
   @HostBinding('tabindex') tabindex = '-1';
 
-  constructor(readonly carousel: Carousel, readonly elem: ElementRef) {
+  constructor(readonly carousel: Carousel, readonly element: ElementRef) {
   }
 }
 
@@ -42,7 +42,7 @@ export class Carousel implements AfterContentInit {
   shiftWidth: number;
   itemsArray: CarouselItem[];
 
-  constructor(private readonly host: ElementRef) {
+  constructor(private readonly element: ElementRef) {
   }
 
   private _index = 0;
@@ -62,9 +62,10 @@ export class Carousel implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
+    // timeout to make sure clientWidth is defined
     setTimeout(() => {
       this.itemsArray = this.items.toArray();
-      this.shiftWidth = this.items.first.elem.nativeElement.clientWidth;
+      this.shiftWidth = this.items.first.element.nativeElement.clientWidth;
       this._resizeCarousel();
     });
   }
@@ -73,7 +74,7 @@ export class Carousel implements AfterContentInit {
     // prevent keyboard navigation from going out of bounds
     if (this.showNextArrow) {
       this._shiftItems(1);
-      this.setTabIndex();
+      this._updateItemTabIndices();
     }
   }
 
@@ -81,11 +82,11 @@ export class Carousel implements AfterContentInit {
     // prevent keyboard navigation from going out of bounds
     if (this.showPrevArrow) {
       this._shiftItems(-1);
-      this.setTabIndex();
+      this._updateItemTabIndices();
     }
   }
 
-  private setTabIndex() {
+  private _updateItemTabIndices() {
     for (let i = 0; i < this.items.length; i++) {
       this.itemsArray[i].tabindex =
         (i >= this.index && i < this.index + this.visibleItems) ? '0' : '-1';
@@ -96,13 +97,13 @@ export class Carousel implements AfterContentInit {
     this.index += shiftIndex;
     this.position += shiftIndex * this.shiftWidth;
     this.items.forEach((item: CarouselItem) => {
-      item.elem.nativeElement.style.transform = `translateX(-${this.position}px)`;
+      item.element.nativeElement.style.transform = `translateX(-${this.position}px)`;
     });
   }
 
   private _resizeCarousel() {
     const newVisibleItems = Math.max(1, Math.min(
-      Math.floor((this.host.nativeElement.offsetWidth) / this.shiftWidth),
+      Math.floor((this.element.nativeElement.offsetWidth) / this.shiftWidth),
       this.items.length));
     if (this.visibleItems !== newVisibleItems) {
       if (this.visibleItems < newVisibleItems) {
@@ -113,7 +114,7 @@ export class Carousel implements AfterContentInit {
       }
       this.visibleItems = newVisibleItems;
       this.showNextArrow = this.index < (this.items.length - this.visibleItems);
-      this.setTabIndex();
+      this._updateItemTabIndices();
     }
     this.wrapper.nativeElement.style.width = `${this.visibleItems * this.shiftWidth}px`;
   }
