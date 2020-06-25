@@ -34,7 +34,7 @@ type SceneViewerRoute = {
 
 const routes: SceneViewerRoute[] = [
   {path: 'autocomplete', component: SceneViewer, data: {scene: PlaceHolderScene}},
-  {path: 'badge', component: SceneViewer, data: {scene: BadgeScene}},
+  {path: 'badge', component: SceneViewer, data: {scale: 1.5, scene: BadgeScene}},
   {path: 'bottom-sheet', component: SceneViewer, data: {scene: PlaceHolderScene}},
   {path: 'button', component: SceneViewer, data: {scene: ButtonScene}},
   {path: 'button-toggle', component: SceneViewer, data: {scale: 1.5, scene: ButtonToggleScene}},
