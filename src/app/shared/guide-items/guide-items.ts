@@ -12,70 +12,61 @@ const GUIDES = [
     id: 'getting-started',
     name: 'Getting started',
     document: '/docs-content/guides/getting-started.html',
-    overview: 'Setup your Angular project to begin using Angular Material. Learn about' +
-      ' prerequisites, installing Angular Material, and optionally displaying a sample material' +
-      ' component in your application to verify your setup.'
+    overview: 'Add Angular Material to your project!'
   },
   {
     id: 'schematics',
     name: 'Schematics',
     document: '/docs-content/guides/schematics.html',
-    overview: 'Angular Material comes packaged with Angular CLI schematics to make creating ' +
-      'Material applications easier.'
+    overview: 'Use schematics to quickly generate views with Material Design components.'
   },
   {
     id: 'theming',
     name: 'Theming Angular Material',
     document: '/docs-content/guides/theming.html',
-    overview: 'Define your own themes through Angular Material\'s tooling with Sass.'
+    overview: `Customize your application with Angular Material's theming system.`
   },
   {
     id: 'theming-your-components',
     name: 'Theming your own components',
     document: '/docs-content/guides/theming-your-components.html',
-    overview: 'Define themes for your custom components.'
+    overview: `Use Angular Material's theming system in your own custom components.`
   },
   {
     id: 'typography',
-    name: `Angular Material's Typography`,
+    name: `Customizing Typography`,
     document: '/docs-content/guides/typography.html',
-    overview: 'Angular Material\'s typography is based on the guidelines from  the Material' +
-      ' Design spec and is arranged into typography levels'
+    overview: 'Configure the typography settings for Angular Material components.'
   },
   {
     id: 'customizing-component-styles',
     name: 'Customizing component styles',
     document: '/docs-content/guides/customizing-component-styles.html',
-    overview: 'Learn about view encapsulation, selector specificity, and component location when' +
-      'customizing styles.'
+    overview: 'Understand how to approach style customization with Angular Material components.'
   },
   {
     id: 'creating-a-custom-form-field-control',
     name: 'Custom form field control',
     document: '/docs-content/guides/creating-a-custom-form-field-control.html',
-    overview: 'Custom form field controls can add additional logic to the existing form field' +
-      ' component.'
+    overview: 'Build a custom control that integrates with `<mat-form-field>`.'
   },
   {
     id: 'elevation',
     name: 'Elevation helpers',
     document: '/docs-content/guides/elevation.html',
-    overview: 'Elevation classes and mixins allow you to add separation between elements along' +
-      ' the z-axis'
+    overview: 'Enhance your components with elevation and depth.'
   },
   {
     id: 'creating-a-custom-stepper-using-the-cdk-stepper',
     name: 'Custom stepper using the CdkStepper',
     document: '/docs-content/guides/creating-a-custom-stepper-using-the-cdk-stepper.html',
-    overview: 'Build a custom stepper which you can completely style yourself without any' +
-      ' specific Material Design styling.'
+    overview: 'Create a custom stepper components using Angular CDK.'
   },
   {
     id: 'using-component-harnesses',
     name: `Testing with component harnesses`,
     document: '/docs-content/guides/using-component-harnesses.html',
-    overview: 'Use a component harness in your test to simulation interacts with a component the' +
-      ' same way a user would.'
+    overview: 'Write tests with component harnesses for convenience and meaningful results.'
   }
 ];
 
