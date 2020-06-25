@@ -12,7 +12,7 @@ import {GuideItems} from '../../shared/guide-items/guide-items';
 import {CommonModule} from '@angular/common';
 import {CarouselModule} from '../../shared/carousel/carousel-module';
 
-const TOP_COMPONENTS = ['slider', 'button-toggle', 'datepicker'];
+const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle'];
 
 @Component({
   selector: 'app-homepage',

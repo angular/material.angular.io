@@ -30,6 +30,10 @@
       color: mat-color($foreground, secondary-text)
     }
 
+    a.docs-link:hover {
+      color: mat-color($foreground, text);
+    }
+
     .docs-mat-card-divider {
       background: mat-color($accent)
     }
@@ -45,9 +49,10 @@
     }
 
     [carousel-item]:focus {
-    .docs-guides-card.mat-card {
-      background: mat-color($background, focused-button);
+      .docs-guides-card.mat-card {
+        background: mat-color($background, focused-button);
+      }
+      outline: none;
     }
-  }
   }
 }

@@ -12,47 +12,43 @@
 </header>
 
 <main class="docs-homepage-promo">
-  <div class="docs-homepage-row">
+  <div class="docs-homepage-row docs-introduction">
     <div class="docs-homepage-row-column">
-      <h2>What is this?</h2>
+      <h2>High quality</h2>
       <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Internationalized and accessible components for everyone. Well tested to ensure performance and reliability.
+      </p>
+      <p>Straightforward APIs with consistent cross platform behaviour.</p>
+    </div>
+    <div class="docs-homepage-row-column">
+      <h2>Versatile</h2>
+      <p>
+        Provide tools that help developers build their own custom components with common interaction patterns.
       </p>
       <p>
-      Integer imperdiet nisi quis mauris viverra, dapibus
-      condimentum urna ullamcorper.
+        Customizable within the bounds of the Material Design specification.
       </p>
     </div>
     <div class="docs-homepage-row-column">
-      <h2>What is this project?</h2>
+      <h2>Frictionless</h2>
       <p>
-      Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra, dapibus
-      condimentum urna ullamcorper. Sed vitae finibus felis, vitae dictum est. Duis at mauris nibh. Aenean malesuada ac
-      turpis eu laoreet.
-      </p>
-    </div>
-    <div class="docs-homepage-row-column">
-      <h2>Objectives</h2>
-      <p>
-      In a volutpat ipsum. Phasellus massa mi, accumsan eget
-      magna sed, fermentum tincidunt massa.
+        Built by the Angular team to integrate seamlessly with Angular.
       </p>
       <p>
-      Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra.
+        Start from scratch or drop into your existing applications.
       </p>
     </div>
   </div>
 
   <mat-divider></mat-divider>
 
-  <div class="docs-homepage-row docs-top-components">
-    <h1>Top components</h1>
+  <div class="docs-homepage-row docs-featured-components">
+    <h1>Featured components</h1>
     <a *ngFor="let comp of getTopComponents()" class="docs-component" routerLink="/components/{{comp}}">
-      <img src="../../../assets/screenshots/{{comp}}.scene.png" alt="{{comp}}">
-      <h2>
+      <img alt="{{comp}}" src="../../../assets/screenshots/{{comp}}.scene.png">
+      <p>
         {{(comp[0].toUpperCase() + comp.slice(1)).replace('-', ' ')}}
-      </h2>
-      <!--      <mat-icon class="docs-trending-up-icon">trending_up</mat-icon> 5,378-->
+      </p>
     </a>
 
     <a class="docs-link" routerLink="/components">
@@ -78,6 +74,11 @@
         </mat-card>
       </a>
     </app-carousel>
+
+    <a class="docs-link" routerLink="/guides">
+      View all guides
+      <mat-icon>chevron_right</mat-icon>
+    </a>
   </div>
 
   <div class="docs-homepage-bottom-start">
