@@ -26,6 +26,10 @@
       color: mat-color($foreground, secondary-text);
     }
 
+    .docs-homepage-featured-components h1 {
+      color: mat-color($foreground, secondary-text);
+    }
+
     a {
       color: mat-color($foreground, secondary-text)
     }
@@ -34,12 +38,8 @@
       color: mat-color($foreground, text);
     }
 
-    .docs-mat-card-divider {
+    .docs-homepage-guides-card-divider {
       background: mat-color($accent)
-    }
-
-    .docs-mat-card-divider {
-      background: mat-color($accent);
     }
 
     [carousel-item]:hover {
