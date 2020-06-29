@@ -8,9 +8,9 @@ $margin-promotion-sections-small: 15px;
 }
 
 .docs-header-background::before {
-  content: " ";
+  content: '';
   position: absolute;
-  background-image: url("../../../assets/img/homepage/angular-white-transparent.svg");
+  background-image: url('../../../assets/img/homepage/angular-white-transparent.svg');
   background-size: 30% auto;
   top: 0;
   bottom: 0;
@@ -92,7 +92,7 @@ $margin-promotion-sections-small: 15px;
 
 .docs-homepage-guides {
   text-align: right;
-  padding-top: $margin-promotion-sections;
+  margin: $margin-promotion-sections 0;
   width: 75%;
 
   .docs-homepage-guides-card-divider {
@@ -118,11 +118,11 @@ $margin-promotion-sections-small: 15px;
 
 
 .docs-homepage-featured-components {
-  padding-top: $margin-promotion-sections;
+  margin: $margin-promotion-sections 0;
   width: 75%;
   position: relative;
 
-  h1 {
+  h2 {
     font-size: 25px;
     margin-top: 0;
   }
@@ -139,7 +139,7 @@ $margin-promotion-sections-small: 15px;
   a.docs-link {
     position: absolute;
     right: 0;
-    bottom: 10px;
+    //bottom: 10px;
   }
 
 }
@@ -184,15 +184,7 @@ $margin-promotion-sections-small: 15px;
     margin: $margin-promotion-sections-small 0;
   }
 
-  .docs-homepage-row {
+  .docs-homepage-row, .docs-homepage-featured-components, .docs-homepage-guides {
     margin: $margin-promotion-sections-small 0;
-  }
-
-  .docs-top-components h1 {
-    margin-bottom: $margin-promotion-sections-small;
-  }
-
-  .docs-homepage-carousel {
-    padding-top: $margin-promotion-sections-small;
   }
 }

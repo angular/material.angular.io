@@ -43,7 +43,7 @@
   <mat-divider></mat-divider>
 
   <div class="docs-homepage-featured-components">
-    <h1>Featured components</h1>
+    <h2>Featured components</h2>
     <app-carousel [itemWidth]="280">
       <a *ngFor="let comp of getTopComponents()" carousel-item class='docs-featured-components-carousel-item'
          routerLink="/components/{{comp}}">
@@ -70,9 +70,7 @@
           <mat-card-title>{{guide.name}}</mat-card-title>
           <div class="docs-homepage-guides-card-divider"></div>
           <mat-card-content class="docs-component-category-list-card-summary">
-            Fusce quis tortor lacus. Integer imperdiet nisi quis mauris viverra, dapibus
-            condimentum urna ullamcorper. Sed vitae finibus felis, vitae dictum est.
-            turpis eu laoreet.
+            {{guide.overview}}
           </mat-card-content>
         </mat-card>
       </a>

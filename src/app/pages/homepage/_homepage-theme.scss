@@ -26,11 +26,11 @@
       color: mat-color($foreground, secondary-text);
     }
 
-    .docs-homepage-featured-components h1 {
+    .docs-homepage-featured-components h2 {
       color: mat-color($foreground, secondary-text);
     }
 
-    a {
+    a.docs-link, a.docs-featured-components-carousel-item {
       color: mat-color($foreground, secondary-text)
     }
 
@@ -43,13 +43,13 @@
     }
 
     [carousel-item]:hover {
-      .docs-guides-card.mat-card {
+      .docs-homepage-guides-card {
         background: mat-color($background, hover);
       }
     }
 
     [carousel-item]:focus {
-      .docs-guides-card.mat-card {
+      .docs-homepage-guides-card {
         background: mat-color($background, focused-button);
       }
       outline: none;
