@@ -26,7 +26,7 @@
       color: mat-color($foreground, secondary-text);
     }
 
-    .docs-homepage-featured-components h2 {
+    .docs-homepage-carousel-row h2 {
       color: mat-color($foreground, secondary-text);
     }
 
@@ -46,11 +46,19 @@
       .docs-homepage-guides-card {
         background: mat-color($background, hover);
       }
+
+      img {
+        opacity: .5;
+      }
     }
 
     [carousel-item]:focus {
       .docs-homepage-guides-card {
         background: mat-color($background, focused-button);
+      }
+
+      img {
+        transform: scale(1.2);
       }
       outline: none;
     }

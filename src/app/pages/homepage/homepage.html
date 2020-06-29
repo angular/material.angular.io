@@ -42,15 +42,13 @@
 
   <mat-divider></mat-divider>
 
-  <div class="docs-homepage-featured-components">
+  <div class="docs-homepage-featured-components docs-homepage-carousel-row">
     <h2>Featured components</h2>
     <app-carousel [itemWidth]="280">
       <a *ngFor="let comp of getTopComponents()" carousel-item class='docs-featured-components-carousel-item'
          routerLink="/components/{{comp}}">
-        <img alt="{{comp}}" src="../../../assets/screenshots/{{comp}}.scene.png">
-        <p>
-          {{(comp[0].toUpperCase() + comp.slice(1)).replace('-', ' ')}}
-        </p>
+        <div class="docs-homepage-img-container"><img alt="{{comp}}" src="../../../assets/screenshots/{{comp}}.scene.png"></div>
+        {{(comp[0].toUpperCase() + comp.slice(1)).replace('-', ' ')}}
       </a>
     </app-carousel>
 
@@ -62,10 +60,11 @@
 
   <mat-divider></mat-divider>
 
-  <div class="docs-homepage-guides">
+  <div class="docs-homepage-guides docs-homepage-carousel-row">
+    <h2>Guides</h2>
     <app-carousel [itemWidth]="250">
       <a carousel-item class='docs-homepage-guides-carousel-item' *ngFor="let guide of guideItems.getAllItems()"
-         [routerLink]="['/guide/', guide.id]">
+         routerLink='/guide/{{guide.id}}'>
         <mat-card class="docs-homepage-guides-card">
           <mat-card-title>{{guide.name}}</mat-card-title>
           <div class="docs-homepage-guides-card-divider"></div>
