@@ -44,9 +44,9 @@
 
   <div class="docs-homepage-featured-components docs-homepage-carousel-row">
     <h2>Featured components</h2>
-    <app-carousel [itemWidth]="280">
+    <app-carousel [itemWidth]="280" [aria-label]="'Featured components'">
       <a *ngFor="let comp of getTopComponents()" carousel-item class='docs-featured-components-carousel-item'
-         routerLink="/components/{{comp}}">
+         routerLink="/components/{{comp}}" role="listitem">
         <div class="docs-homepage-img-container"><img alt="{{comp}}" src="../../../assets/screenshots/{{comp}}.scene.png"></div>
         {{(comp[0].toUpperCase() + comp.slice(1)).replace('-', ' ')}}
       </a>
@@ -62,9 +62,9 @@
 
   <div class="docs-homepage-guides docs-homepage-carousel-row">
     <h2>Guides</h2>
-    <app-carousel [itemWidth]="250">
+    <app-carousel [itemWidth]="250" [aria-label]="'Guides'">
       <a carousel-item class='docs-homepage-guides-carousel-item' *ngFor="let guide of guideItems.getAllItems()"
-         routerLink='/guide/{{guide.id}}'>
+         routerLink='/guide/{{guide.id}}' role="listitem">
         <mat-card class="docs-homepage-guides-card">
           <mat-card-title>{{guide.name}}</mat-card-title>
           <div class="docs-homepage-guides-card-divider"></div>
