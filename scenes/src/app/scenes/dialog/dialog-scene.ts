@@ -13,7 +13,10 @@ export class DialogScene {
   }
 
   openDialog() {
-    this.dialog.open(DialogSceneExampleDialog);
+    this.dialog.open(DialogSceneExampleDialog, {
+      height: '190px',
+      width: '300px'
+    });
   }
 }
 
