@@ -17,11 +17,10 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
   encapsulation: ViewEncapsulation.None,
   selector: 'app-autocomplete-scene',
   templateUrl: './autocomplete-scene.html',
-  styleUrls: ['./autocomplete-scene.scss'],
 })
 export class AutocompleteScene implements AfterViewInit {
   myControl = new FormControl();
-  options: string[] = ['hello'];
+  options: string[] = ['hello', 'hello world'];
 
   @ViewChild(MatInput) input: MatInput;
 
