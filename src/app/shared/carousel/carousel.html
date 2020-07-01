@@ -1,12 +1,12 @@
 <div #contentWrapper (keydown.arrowleft)="previous()" (keydown.arrowright)="next()"
      (window:resize)="onResize()" [style.minWidth]="shiftWidth + 'px'" class="docs-carousel-content-wrapper" role="region"
-     tabindex="0">
+     tabindex="-1">
   <button (click)="previous()" *ngIf="this.showPrevArrow" class="docs-carousel-nav docs-carousel-nav-prev" mat-mini-fab>
     <mat-icon>navigate_before</mat-icon>
   </button>
-  <div class="docs-carousel-content" role="list">
+  <app-carousel-content-manager>
     <ng-content></ng-content>
-  </div>
+  </app-carousel-content-manager>
   <button (click)="next()" *ngIf="this.showNextArrow" class="docs-carousel-nav docs-carousel-nav-next" mat-mini-fab>
     <mat-icon>navigate_next</mat-icon>
   </button>

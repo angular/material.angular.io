@@ -1,27 +1,66 @@
 import {
   AfterContentInit,
-  Component,
+  Component, ContentChild,
   ContentChildren,
   Directive,
   ElementRef,
-  HostBinding,
+  HostBinding, HostListener,
   Input,
   QueryList,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import {FocusableOption, FocusKeyManager} from '@angular/cdk/a11y';
 
 
 @Directive({
   selector: '[carousel-item]',
 })
-export class CarouselItem {
+export class CarouselItem implements FocusableOption {
+  @HostBinding('attr.role') readonly role = 'listitem'
   @HostBinding('style.width.px') width = this.carousel.itemWidth;
   @HostBinding('tabindex') tabindex = '-1';
 
   constructor(readonly carousel: Carousel, readonly element: ElementRef) {
   }
+
+  focus(): void {
+    this.element.nativeElement.focus();
+  }
 }
+
+@Component({
+  selector: 'app-carousel-content-manager',
+  template: `<ng-content></ng-content>`
+})
+export class CarouselContentManagerComponent implements AfterContentInit {
+
+  activeItemIndex = 0;
+
+  @HostBinding('attr.role') readonly role = 'list';
+
+  private focusKeyManager: FocusKeyManager<CarouselItem>;
+
+  @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
+
+  @HostListener('keydown', ['$event'])
+  onKeydown(event: KeyboardEvent) {
+    this.focusKeyManager.onKeydown(event);
+    this.activeItemIndex += 1;
+    this.setActiveItem(this.activeItemIndex);
+  }
+
+  ngAfterContentInit() {
+    this.focusKeyManager =
+      new FocusKeyManager<CarouselItem>(this.items).withHorizontalOrientation('ltr') as FocusKeyManager<CarouselItem>;
+    this.focusKeyManager.setActiveItem(0);
+  }
+
+  setActiveItem(index: number): void {
+    this.focusKeyManager.setActiveItem(index);
+  }
+}
+
 
 @Component({
   selector: 'app-carousel',
@@ -33,6 +72,7 @@ export class Carousel implements AfterContentInit {
   @Input('aria-label') ariaLabel: string;
   @Input() itemWidth: number;
   @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
+  @ContentChild(CarouselContentManagerComponent) contentManager: CarouselContentManagerComponent;
   @ViewChild('contentWrapper') wrapper: ElementRef;
 
   position = 0;
