@@ -16,6 +16,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {BottomSheetSceneModule} from './scenes/bottom-sheet/bottom-sheet-scene';
 import {GridListSceneModule} from './scenes/grid-list/grid-list-scene';
 import {SnackBarSceneModule} from './scenes/snack-bar/snack-bar-scene';
+import {SelectSceneModule} from './scenes/select/select-scene';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {AutocompleteSceneModule} from './scenes/autocomplete/autocomplete-scene';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import {SnackBarSceneModule} from './scenes/snack-bar/snack-bar-scene';
     BottomSheetSceneModule,
     GridListSceneModule,
     SnackBarSceneModule,
+    SelectSceneModule,
+    MatAutocompleteModule,
+    AutocompleteSceneModule
   ],
   bootstrap: [AppComponent],
   providers: [{

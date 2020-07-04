@@ -24,6 +24,9 @@ import {MenuScene} from './scenes/menu/menu-scene';
 import {BadgeScene} from './scenes/badge/badge-scene';
 import {PaginatorScene} from './scenes/paginator/paginator-scene';
 import {TableScene} from './scenes/table/table-scene';
+import {ExpansionScene} from './scenes/expansion/expansion-scene';
+import {SelectScene} from './scenes/select/select-scene';
+import {AutocompleteScene} from './scenes/autocomplete/autocomplete-scene';
 
 let hue = 0;
 
@@ -38,7 +41,7 @@ type SceneViewerRoute = {
 };
 
 const routes: SceneViewerRoute[] = [
-  {path: 'autocomplete', component: SceneViewer, data: {scene: PlaceHolderScene}},
+  {path: 'autocomplete', component: SceneViewer, data: {scene: AutocompleteScene}},
   {path: 'badge', component: SceneViewer, data: {scale: 1.5, scene: BadgeScene}},
   {path: 'bottom-sheet', component: SceneViewer, data: {scene: BottomSheetScene}},
   {path: 'button', component: SceneViewer, data: {scene: ButtonScene}},
@@ -49,7 +52,7 @@ const routes: SceneViewerRoute[] = [
   {path: 'datepicker', component: SceneViewer, data: {scale: 0.8, scene: DatepickerScene}},
   {path: 'dialog', component: SceneViewer, data: {scene: PlaceHolderScene}},
   {path: 'divider', component: SceneViewer, data: {scale: 2, scene: DividerScene}},
-  {path: 'expansion', component: SceneViewer, data: {scene: PlaceHolderScene}},
+  {path: 'expansion', component: SceneViewer, data: {scene: ExpansionScene}},
   {path: 'form-field', component: SceneViewer, data: {scene: PlaceHolderScene}},
   {path: 'grid-list', component: SceneViewer, data: {scene: GridListScene}},
   {path: 'icon', component: SceneViewer, data: {scene: PlaceHolderScene}},
@@ -65,7 +68,7 @@ const routes: SceneViewerRoute[] = [
   },
   {path: 'radio', component: SceneViewer, data: {scene: RadioScene}},
   {path: 'ripple', component: SceneViewer, data: {scene: RipplesScene}},
-  {path: 'select', component: SceneViewer, data: {scene: PlaceHolderScene}},
+  {path: 'select', component: SceneViewer, data: {scene: SelectScene}},
   {path: 'sidenav', component: SceneViewer, data: {scene: PlaceHolderScene}},
   {path: 'slide-toggle', component: SceneViewer, data: {scene: SlideToggleScene}},
   {path: 'slider', component: SceneViewer, data: {scene: SliderScene}},

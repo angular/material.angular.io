@@ -7,6 +7,7 @@ describe('screenshot scenes for each component', () => {
   let page: AppPage;
 
   const components = [
+    'autocomplete',
     'badge',
     'bottom-sheet',
     'button',
@@ -15,6 +16,7 @@ describe('screenshot scenes for each component', () => {
     'chips',
     'datepicker',
     'divider',
+    'expansion',
     'grid-list',
     'input',
     'menu',
@@ -23,6 +25,7 @@ describe('screenshot scenes for each component', () => {
     'progress-spinner',
     'radio',
     'ripple',
+    'select',
     'slide-toggle',
     'slider',
     'stepper',
