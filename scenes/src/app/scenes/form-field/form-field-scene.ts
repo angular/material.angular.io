@@ -10,7 +10,6 @@ import {MatInputModule} from '@angular/material/input';
   templateUrl: './form-field-scene.html',
 })
 export class FormFieldScene {
-  hide = true;
 }
 
 @NgModule({
