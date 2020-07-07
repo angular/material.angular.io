@@ -63,6 +63,15 @@
   }
 }
 
+.docs-component-category-list-card {
+  overflow: hidden;
+}
+
+.docs-component-category-list-card-image-wrapper {
+  height: 156px;
+  background-size: cover;
+}
+
 .docs-component-category-list-card-summary {
   padding: 0 15px 15px 15px;
   min-height: 2.4em;
