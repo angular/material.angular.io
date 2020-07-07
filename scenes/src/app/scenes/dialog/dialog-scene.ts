@@ -14,8 +14,8 @@ export class DialogScene {
 
   openDialog() {
     this.dialog.open(DialogSceneExampleDialog, {
-      height: '190px',
-      width: '300px',
+      // height: '80%',
+      // width: '80%',
       hasBackdrop: false
     });
   }
@@ -34,12 +34,11 @@ export class DialogSceneModule {
 @Component({
   selector: 'app-dialog-scene-example-dialog',
   template: `
-    <h1 mat-dialog-title>Reset settings</h1>
-    <div mat-dialog-content>This will reset your device to its default factory settings.</div>
+    <div mat-dialog-content>Discard draft?</div>
     <div mat-dialog-actions>
       <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button mat-dialog-close>Accept</button>
-    </div>`
+      <button mat-button mat-dialog-close>Discard</button>
+    </div>`,
 })
 export class DialogSceneExampleDialog {}
 
