@@ -1,29 +1,17 @@
 @import '../../../styles/constants';
 
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .docs-component-category-list-summary {
   padding: 25px 40px 0;
   font-size: 18px;
   line-height: 1.5;
   display: flex;
   justify-content: center;
-}
-
-@media (max-width: 2215px) {
-  .docs-component-category-list-summary {
-    max-width: 1560px;
-  }
-}
-
-@media (max-width: 1895px) {
-  .docs-component-category-list-summary {
-    max-width: 1240px;
-  }
-}
-
-@media (max-width: 1575px) {
-  .docs-component-category-list-summary {
-    max-width: 920px;
-  }
 }
 
 @media (max-width: 1255px) {
@@ -42,6 +30,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
+  justify-content: center;
 }
 
 .docs-component-category-list-item {
