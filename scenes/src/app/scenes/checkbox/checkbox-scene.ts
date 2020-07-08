@@ -1,6 +1,5 @@
 import {Component, NgModule, ViewEncapsulation} from '@angular/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -14,7 +13,6 @@ export class CheckboxScene {
 @NgModule({
   imports: [
     MatCheckboxModule,
-    MatIconModule,
   ],
   exports: [CheckboxScene],
   declarations: [CheckboxScene]

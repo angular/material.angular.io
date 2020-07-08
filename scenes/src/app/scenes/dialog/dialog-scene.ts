@@ -14,8 +14,6 @@ export class DialogScene {
 
   openDialog() {
     this.dialog.open(DialogSceneExampleDialog, {
-      // height: '80%',
-      // width: '80%',
       hasBackdrop: false
     });
   }
