@@ -44,7 +44,7 @@
 
   <div class="docs-homepage-featured-components docs-homepage-carousel-row">
     <h2>Featured components</h2>
-    <app-carousel [itemWidth]="280" [aria-label]="'Featured components'">
+    <app-carousel [itemWidth]="260" [aria-label]="'Featured components'">
       <a *ngFor="let comp of getTopComponents()" carousel-item class='docs-featured-components-carousel-item'
          routerLink="/components/{{comp}}">
         <div class="docs-homepage-img-container"><img alt="{{comp}}" src="../../../assets/screenshots/{{comp}}.scene.png"></div>
@@ -62,7 +62,7 @@
 
   <div class="docs-homepage-guides docs-homepage-carousel-row">
     <h2>Guides</h2>
-    <app-carousel [itemWidth]="250" [aria-label]="'Guides'">
+    <app-carousel [itemWidth]="260" [aria-label]="'Guides'">
       <a carousel-item class='docs-homepage-guides-carousel-item' *ngFor="let guide of guideItems.getAllItems()"
          routerLink='/guide/{{guide.id}}'>
         <mat-card class="docs-homepage-guides-card">
@@ -81,11 +81,6 @@
     </a>
   </div>
 
-  <div class="docs-homepage-bottom-start">
-    <a mat-raised-button class="docs-button" routerLink="/guide/getting-started" color="accent">
-      Get started
-    </a>
-  </div>
 </main>
 
 <app-footer></app-footer>

@@ -68,14 +68,16 @@ export class Carousel implements AfterContentInit {
       case 'Tab':
         if (!this.focusKeyManager.activeItem) {
           this.focusKeyManager.setFirstItemActive();
+          this._updateItemTabIndices();
         }
         break;
-        
+
       case 'ArrowLeft':
         if (this.focusKeyManager.activeItemIndex === this.index) {
           this.previous();
         }
         this.focusKeyManager.setPreviousItemActive();
+        this._updateItemTabIndices();
         break;
 
       case 'ArrowRight':
@@ -83,6 +85,7 @@ export class Carousel implements AfterContentInit {
           this.next();
         }
         this.focusKeyManager.setNextItemActive();
+        this._updateItemTabIndices();
         break;
 
       default:
@@ -119,6 +122,12 @@ export class Carousel implements AfterContentInit {
     }
   }
 
+  private _updateItemTabIndices() {
+    this.items.forEach((item: CarouselItem) => {
+      item.tabindex = item === this.focusKeyManager.activeItem ? '0' : '-1';
+    });
+  }
+
   private _shiftItems(shiftIndex: number) {
     this.index += shiftIndex;
     this.position += shiftIndex * this.shiftWidth;
@@ -136,6 +145,12 @@ export class Carousel implements AfterContentInit {
         const shiftIndex = this.index - (this.items.length - this.visibleItems) + 1;
         if (shiftIndex > 0) {
           this._shiftItems(-shiftIndex);
+        }
+      } else {
+        if (this.focusKeyManager.activeItemIndex && this.focusKeyManager.activeItemIndex >
+          this.index + newVisibleItems - 1) {
+          this.focusKeyManager.setPreviousItemActive();
+          this._updateItemTabIndices();
         }
       }
       this.visibleItems = newVisibleItems;
