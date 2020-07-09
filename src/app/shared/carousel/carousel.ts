@@ -1,10 +1,10 @@
 import {
   AfterContentInit,
-  Component, ContentChild,
+  Component,
   ContentChildren,
   Directive,
   ElementRef,
-  HostBinding, HostListener,
+  HostBinding,
   Input,
   QueryList,
   ViewChild,
@@ -17,7 +17,7 @@ import {FocusableOption, FocusKeyManager} from '@angular/cdk/a11y';
   selector: '[carousel-item]',
 })
 export class CarouselItem implements FocusableOption {
-  @HostBinding('attr.role') readonly role = 'listitem'
+  @HostBinding('attr.role') readonly role = 'listitem';
   @HostBinding('style.width.px') width = this.carousel.itemWidth;
   @HostBinding('tabindex') tabindex = '-1';
 
@@ -25,42 +25,9 @@ export class CarouselItem implements FocusableOption {
   }
 
   focus(): void {
-    this.element.nativeElement.focus();
+    this.element.nativeElement.focus({preventScroll: true});
   }
 }
-
-@Component({
-  selector: 'app-carousel-content-manager',
-  template: `<ng-content></ng-content>`
-})
-export class CarouselContentManagerComponent implements AfterContentInit {
-
-  activeItemIndex = 0;
-
-  @HostBinding('attr.role') readonly role = 'list';
-
-  private focusKeyManager: FocusKeyManager<CarouselItem>;
-
-  @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
-
-  @HostListener('keydown', ['$event'])
-  onKeydown(event: KeyboardEvent) {
-    this.focusKeyManager.onKeydown(event);
-    this.activeItemIndex += 1;
-    this.setActiveItem(this.activeItemIndex);
-  }
-
-  ngAfterContentInit() {
-    this.focusKeyManager =
-      new FocusKeyManager<CarouselItem>(this.items).withHorizontalOrientation('ltr') as FocusKeyManager<CarouselItem>;
-    this.focusKeyManager.setActiveItem(0);
-  }
-
-  setActiveItem(index: number): void {
-    this.focusKeyManager.setActiveItem(index);
-  }
-}
-
 
 @Component({
   selector: 'app-carousel',
@@ -72,15 +39,14 @@ export class Carousel implements AfterContentInit {
   @Input('aria-label') ariaLabel: string;
   @Input() itemWidth: number;
   @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
-  @ContentChild(CarouselContentManagerComponent) contentManager: CarouselContentManagerComponent;
   @ViewChild('contentWrapper') wrapper: ElementRef;
-
   position = 0;
   showPrevArrow = false;
   showNextArrow = true;
   visibleItems: number;
   shiftWidth: number;
   itemsArray: CarouselItem[];
+  private focusKeyManager: FocusKeyManager<CarouselItem>;
 
   constructor(private readonly element: ElementRef) {
   }
@@ -97,11 +63,34 @@ export class Carousel implements AfterContentInit {
     this.showNextArrow = i < (this.items.length - this.visibleItems);
   }
 
+  onKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'ArrowLeft':
+        if (this.focusKeyManager.activeItemIndex === this.index) {
+          this.previous();
+        }
+        this.focusKeyManager.setPreviousItemActive();
+        break;
+
+      case 'ArrowRight':
+        if (this.focusKeyManager.activeItemIndex === this.index + this.visibleItems - 1) {
+          this.next();
+        }
+        this.focusKeyManager.setNextItemActive();
+        break;
+
+      default:
+        break;
+    }
+  }
+
   onResize() {
     this._resizeCarousel();
   }
 
   ngAfterContentInit(): void {
+    this.focusKeyManager =
+      new FocusKeyManager<CarouselItem>(this.items) as FocusKeyManager<CarouselItem>;
     // timeout to make sure clientWidth is defined
     setTimeout(() => {
       this.itemsArray = this.items.toArray();
@@ -114,7 +103,6 @@ export class Carousel implements AfterContentInit {
     // prevent keyboard navigation from going out of bounds
     if (this.showNextArrow) {
       this._shiftItems(1);
-      this._updateItemTabIndices();
     }
   }
 
@@ -122,14 +110,6 @@ export class Carousel implements AfterContentInit {
     // prevent keyboard navigation from going out of bounds
     if (this.showPrevArrow) {
       this._shiftItems(-1);
-      this._updateItemTabIndices();
-    }
-  }
-
-  private _updateItemTabIndices() {
-    for (let i = 0; i < this.items.length; i++) {
-      this.itemsArray[i].tabindex =
-        (i >= this.index && i < this.index + this.visibleItems) ? '0' : '-1';
     }
   }
 
@@ -154,7 +134,6 @@ export class Carousel implements AfterContentInit {
       }
       this.visibleItems = newVisibleItems;
       this.showNextArrow = this.index < (this.items.length - this.visibleItems);
-      this._updateItemTabIndices();
     }
     this.wrapper.nativeElement.style.width = `${this.visibleItems * this.shiftWidth}px`;
   }
