@@ -65,6 +65,12 @@ export class Carousel implements AfterContentInit {
 
   onKeydown(event: KeyboardEvent) {
     switch (event.key) {
+      case 'Tab':
+        if (!this.focusKeyManager.activeItem) {
+          this.focusKeyManager.setFirstItemActive();
+        }
+        break;
+        
       case 'ArrowLeft':
         if (this.focusKeyManager.activeItemIndex === this.index) {
           this.previous();

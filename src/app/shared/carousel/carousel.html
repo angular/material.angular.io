@@ -1,6 +1,6 @@
 <div #contentWrapper (keyup)="onKeydown($event)"
      (window:resize)="onResize()" [style.minWidth]="shiftWidth + 'px'" class="docs-carousel-content-wrapper" role="region"
-     tabindex="0">
+     >
   <button (click)="previous()" *ngIf="this.showPrevArrow" class="docs-carousel-nav docs-carousel-nav-prev" mat-mini-fab>
     <mat-icon>navigate_before</mat-icon>
   </button>
