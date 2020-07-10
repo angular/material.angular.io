@@ -47,7 +47,9 @@
     <app-carousel [itemWidth]="260" [aria-label]="'Featured components'">
       <a *ngFor="let comp of getTopComponents()" carousel-item class='docs-featured-components-carousel-item'
          routerLink="/components/{{comp}}">
-        <div class="docs-homepage-img-container"><img alt="{{comp}}" src="../../../assets/screenshots/{{comp}}.scene.png"></div>
+        <div class="docs-homepage-img-container">
+          <img alt="" src="../../../assets/screenshots/{{comp}}.scene.png" role="presentation">
+        </div>
         {{(comp[0].toUpperCase() + comp.slice(1)).replace('-', ' ')}}
       </a>
     </app-carousel>

@@ -1,12 +1,14 @@
 <div #contentWrapper (keyup)="onKeydown($event)"
      (window:resize)="onResize()" [style.minWidth]="shiftWidth + 'px'" class="docs-carousel-content-wrapper" role="region">
-  <button (click)="previous()" *ngIf="this.showPrevArrow" class="docs-carousel-nav docs-carousel-nav-prev" mat-mini-fab>
+  <button (click)="previous()" *ngIf="this.showPrevArrow"
+          class="docs-carousel-nav docs-carousel-nav-prev" mat-mini-fab aria-label="previous">
     <mat-icon>navigate_before</mat-icon>
   </button>
   <div class= "docs-carousel-content" role="list">
     <ng-content></ng-content>
   </div>
-  <button (click)="next()" *ngIf="this.showNextArrow" class="docs-carousel-nav docs-carousel-nav-next" mat-mini-fab>
+  <button (click)="next()" *ngIf="this.showNextArrow"
+          class="docs-carousel-nav docs-carousel-nav-next" mat-mini-fab aria-label="next">
     <mat-icon>navigate_next</mat-icon>
   </button>
 </div>
