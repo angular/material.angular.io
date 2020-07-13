@@ -5,27 +5,31 @@ $margin-promotion-sections-small: 15px;
 .docs-header-background {
   overflow: hidden;
   position: relative;
+  height: 420px;
 }
 
 .docs-header-background::before {
   content: '';
   position: absolute;
   background-image: url('../../../assets/img/homepage/angular-white-transparent.svg');
-  background-size: 30% auto;
+  background-size: 600px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background-repeat: no-repeat;
-  background-position: 65% 5%;
+  background-position: 80% 20px;
   opacity: 0.2;
 }
 
 .docs-header-section {
-  position: relative;
+  width: 90%;
+  position: absolute;
   z-index: 0;
   text-align: center;
-  padding-top: $margin-promotion-sections;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .docs-header-headline {
@@ -88,11 +92,12 @@ $margin-promotion-sections-small: 15px;
 .docs-homepage-carousel-row {
   margin: $margin-promotion-sections 0;
   width: 75%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 
   a.docs-link {
-    position: absolute;
-    right: 6px;
+    width: 100%;
+    text-align: right;
   }
 
   h2 {
@@ -153,17 +158,29 @@ $margin-promotion-sections-small: 15px;
   width: 30%;
 }
 
-.docs-header-start,
-.docs-homepage-bottom-start {
+.docs-header-start {
   text-align: center;
-  margin: $margin-promotion-sections 0;
+  margin: $margin-promotion-sections 0 0 0;
 
   .mat-raised-button {
     font-size: 15px;
   }
 }
 
+@media (max-width: 1200px) {
+  .docs-header-background {
+    height: 330px;
+  }
+  .docs-header-background:before {
+    background-image: none;
+  }
+}
+
 @media (max-width: 850px) {
+
+  .docs-header-background:before {
+    background-image: none;
+  }
   .docs-introduction {
     flex-direction: column;
   }
@@ -177,13 +194,12 @@ $margin-promotion-sections-small: 15px;
   * Rules for when the device is detected to be a small screen.
   */
 @media (max-width: 720px) {
-  .docs-header-section {
-    padding-top: $margin-promotion-sections-small;
+  .docs-header-background {
+    height: 200px;
   }
 
-  .docs-header-start,
-  .docs-homepage-bottom-start {
-    margin: $margin-promotion-sections-small 0;
+  .docs-header-start {
+    margin: $margin-promotion-sections-small 0 0 0;
   }
 
   .docs-homepage-row, .docs-homepage-carousel-row {
