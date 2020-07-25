@@ -89,6 +89,7 @@ const DOCS: { [key: string]: DocItem[] } = {
       summary: 'An interactive button with a range of presentation options.',
       exampleSpecs: {
         prefix: 'button-',
+        exclude: ['button-toggle-appearance', 'button-toggle-exclusive', 'button-toggle-overview']
       },
       additionalApiDocs: [{name: 'Testing', path: 'material-button-testing.html'}],
     },
