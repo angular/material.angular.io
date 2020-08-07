@@ -1,7 +1,11 @@
 @import '../../../styles/constants';
 
+:host {
+  min-height: 100%;
+}
+
 .docs-guide {
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .docs-guide-list {
