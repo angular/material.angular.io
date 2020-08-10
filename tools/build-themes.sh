@@ -13,7 +13,7 @@ for FILE in $FILES
 do
   FILENAME=${FILE#$INPUT_PATH}
   BASENAME=${FILENAME%.scss}
-  $(npm bin)/node-sass $FILE > $DEST_PATH/$BASENAME.css
+  "$(npm bin)"/node-sass "$FILE" > "$DEST_PATH/$BASENAME.css"
 done
 
 echo Finished building CSS.
