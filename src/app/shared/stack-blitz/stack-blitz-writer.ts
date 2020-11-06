@@ -53,7 +53,6 @@ const TEST_TEMPLATE_FILES = [
   'src/styles.scss',
   'src/polyfills.ts',
   'src/main.ts',
-  'src/app/material-module.ts',
   'src/test/jasmine-setup.ts',
 ];
 
