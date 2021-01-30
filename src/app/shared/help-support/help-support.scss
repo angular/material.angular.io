@@ -1,0 +1,66 @@
+.docs-help-support {
+  width: 75%;
+  margin: auto;
+  padding-bottom: 40px;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 18px 0;
+
+    li {
+      text-align: center;
+      flex: 0 1 200px;
+      -moz-box-flex: 0;
+
+      a {
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        img {
+          display: block;
+          margin: 10px auto;
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+
+  &-description {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 884px) {
+  .docs-help-support {
+    padding-bottom: 20px;
+
+    ul {
+      display: block;
+
+      li {
+        a {
+          display: flex;
+          align-items: center;
+
+          img {
+            margin: 10px;
+          }
+        }
+      }
+
+    }
+
+    &-description {
+      display: none;
+    }
+  }
+}

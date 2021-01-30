@@ -42,6 +42,14 @@
     color: mat-color($primary, default-contrast);
   }
 
+  .docs-help-support {
+    color: mat-color($foreground, secondary-text);
+
+    a {
+      color: mat-color($foreground, text);
+    }
+  }
+
   .is-next-version {
     background: mat-color($next-theme, 900) !important;
   }
