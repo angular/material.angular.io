@@ -11,7 +11,7 @@ import {MatCardModule} from '@angular/material/card';
 import {GuideItems} from '../../shared/guide-items/guide-items';
 import {CommonModule} from '@angular/common';
 import {CarouselModule} from '../../shared/carousel/carousel-module';
-import {HelpSupportModule} from '../../shared/help-support/help-support';
+import {SupportModule} from '../../shared/support/support';
 
 const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle', 'slider', 'button'];
 
@@ -44,7 +44,7 @@ const routes: Routes = [{path: '', component: Homepage}];
     RouterModule.forChild(routes),
     NavigationFocusModule, MatIconModule, MatDividerModule, MatCardModule, CommonModule,
     CarouselModule,
-    HelpSupportModule],
+    SupportModule],
   exports: [Homepage],
   declarations: [Homepage],
   providers: [GuideItems]
