@@ -1,4 +1,4 @@
-import {Component, NgModule} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-support',
@@ -6,11 +6,4 @@ import {Component, NgModule} from '@angular/core';
   styleUrls: ['./support.scss']
 })
 export class Support {
-}
-
-@NgModule({
-  exports: [Support],
-  declarations: [Support],
-})
-export class SupportModule {
 }
