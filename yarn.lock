@@ -2427,10 +2427,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.19.12.tgz#04793c2afa4ce833a9972e4c476432e30f9df47b"
   integrity sha512-UwfL2uIU9arX/+/PRcIkT08/iBadGN2z6ExOROA2Dh5mAuWTBj6iJbQX4nekiV5H8cTrEG569LeX+HRco9Cbxw==
 
-"@types/node@^12.20.5":
-  version "12.20.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.5.tgz#4ca82a766f05c359fd6c77505007e5a272f4bb9b"
-  integrity sha512-5Oy7tYZnu3a4pnJ//d4yVvOImExl4Vtwf0D40iKUlU+XlUsyV9iyFWyCFlwy489b72FMAik/EFwRkNLjjOdSPg==
+"@types/node@^12.20.6":
+  version "12.20.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.6.tgz#7b73cce37352936e628c5ba40326193443cfba25"
+  integrity sha512-sRVq8d+ApGslmkE9e3i+D3gFGk7aZHAT+G4cIpIEdLJYPsWiSPwcAnJEjddLQQDqV3Ra2jOclX/Sv6YrvGYiWA==
 
 "@types/node@^13.7.0":
   version "13.13.30"
@@ -14436,14 +14436,14 @@ zip-stream@^4.1.0:
     compress-commons "^4.1.0"
     readable-stream "^3.6.0"
 
-zone.js@^0.11.4:
+zone.js@~0.10.3:
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.10.3.tgz#3e5e4da03c607c9dcd92e37dd35687a14a140c16"
+  integrity sha512-LXVLVEq0NNOqK/fLJo3d0kfzd4sxwn2/h67/02pjCjfKDxgx1i9QqpvtHD8CrBnSSwMw5+dy11O7FRX5mkO7Cg==
+
+zone.js@~0.11.4:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.11.4.tgz#0f70dcf6aba80f698af5735cbb257969396e8025"
   integrity sha512-DDh2Ab+A/B+9mJyajPjHFPWfYU1H+pdun4wnnk0OcQTNjem1XQSZ2CDW+rfZEUDjv5M19SBqAkjZi0x5wuB5Qw==
   dependencies:
     tslib "^2.0.0"
-
-zone.js@~0.10.3:
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.10.3.tgz#3e5e4da03c607c9dcd92e37dd35687a14a140c16"
-  integrity sha512-LXVLVEq0NNOqK/fLJo3d0kfzd4sxwn2/h67/02pjCjfKDxgx1i9QqpvtHD8CrBnSSwMw5+dy11O7FRX5mkO7Cg==

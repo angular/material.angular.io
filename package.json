@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:jit": "ng serve --aot=false",
-    "start:prod": "ng serve --prod",
+    "start:prod": "ng serve --configuration production",
     "start:scenes": "ng serve scenes",
     "start:emulators": "firebase emulators:start",
     "lint": "ng lint",
@@ -16,8 +16,8 @@
     "build": "ng build",
     "build:scenes": "ng build scenes",
     "build:content": "yarn upgrade @angular/components-examples",
-    "build:sm": "ng build --prod --source-map",
-    "prod-build": "ng build --prod",
+    "build:sm": "ng build --configuration production --source-map",
+    "prod-build": "ng build --configuration production",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "publish-prod": "bash ./tools/deploy.sh stable prod",
     "publish-dev": "bash ./tools/deploy.sh",
@@ -54,7 +54,7 @@
     "moment": "^2.29.1",
     "rxjs": "^6.6.6",
     "tslib": "^2.1.0",
-    "zone.js": "^0.11.4"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1200.0-next.4",
@@ -63,7 +63,7 @@
     "@angular/localize": "^12.0.0-next.4",
     "@types/imagemin": "^7.0.0",
     "@types/jasmine": "^3.6.6",
-    "@types/node": "^12.20.5",
+    "@types/node": "^12.20.6",
     "@types/shelljs": "~0.8.8",
     "codelyzer": "^6.0.1",
     "firebase-tools": "^9.6.0",
