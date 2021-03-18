@@ -57,8 +57,8 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1200.0-next.4",
-    "@angular/cli": "^12.0.0-next.4",
+    "@angular-devkit/build-angular": "^0.1200.0-next.5",
+    "@angular/cli": "^12.0.0-next.5",
     "@angular/compiler-cli": "^12.0.0-next.5",
     "@angular/localize": "^12.0.0-next.5",
     "@types/imagemin": "^7.0.0",
