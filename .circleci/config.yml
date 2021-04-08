@@ -52,20 +52,12 @@ commands:
           root: *workspace_location
           paths:
             - dist
-  # Command for checking out the source code from GitHub. This also ensures that the source code
-  # can be merged to the master branch without conflicts.
-  checkout_and_rebase:
-    description: Checkout and verify clean merge with master
-    steps:
-      - checkout
-      - build-tools/merge-with-parent:
-          parent: master
 
 jobs:
   lint:
     <<: *job_defaults
     steps:
-    - checkout_and_rebase
+    - checkout
     - restore_cache:
         key: *cache_key
     - *yarn_install
@@ -79,7 +71,7 @@ jobs:
     # https://circleci.com/docs/2.0/configuration-reference/#resource_class
     resource_class: large
     steps:
-    - checkout_and_rebase
+    - checkout
     - restore_cache:
         key: *cache_key
     - *yarn_install
@@ -90,7 +82,7 @@ jobs:
   test:
     <<: *job_defaults
     steps:
-    - checkout_and_rebase
+    - checkout
     - restore_cache:
         key: *cache_key
     - *yarn_install
@@ -101,7 +93,7 @@ jobs:
     steps:
       - attach_workspace:
           at: *workspace_location
-      - checkout_and_rebase
+      - checkout
       - restore_cache:
           key: *cache_key
       - *yarn_install
@@ -112,7 +104,7 @@ jobs:
     steps:
       - attach_workspace:
           at: *workspace_location
-      - checkout_and_rebase
+      - checkout
       - restore_cache:
           key: *cache_key
       - *yarn_install
