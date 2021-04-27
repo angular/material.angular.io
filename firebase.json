@@ -10,15 +10,6 @@
     ],
     "headers": [
       {
-        "source": "/assets/versions.json",
-        "headers": [
-          {
-            "key": "Access-Control-Allow-Origin",
-            "value": "*"
-          }
-        ]
-      },
-      {
         "source": "/**(*.@(css|js|json|html|svg))",
         "headers": [
           {
