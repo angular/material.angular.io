@@ -7,7 +7,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {materialVersion, VersionInfo} from '../version/version';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
-const versionUrl = 'assets/versions.json';
+const versionUrl = 'https://material.angular.io/assets/versions.json';
 
 @Component({
   selector: 'version-picker',
