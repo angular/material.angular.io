@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {materialVersion, VersionInfo} from '../version/version';
 
-const versionUrl = 'assets/versions.json';
+const versionUrl = 'https://material.angular.io/assets/versions.json';
 
 @Component({
   selector: 'version-picker',
