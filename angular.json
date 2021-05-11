@@ -92,6 +92,7 @@
                   "maximumWarning": "6kb"
                 }
               ],
+              "aot": true,
               "commonChunk": false,
               "optimization": true,
               "outputHashing": "all",
@@ -249,6 +250,7 @@
                   "with": "scenes/src/environments/environment.prod.ts"
                 }
               ],
+              "aot": true,
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
