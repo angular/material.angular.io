@@ -81,8 +81,7 @@
             "extractLicenses": false,
             "buildOptimizer": false,
             "optimization": false,
-            "namedChunks": true,
-            "aot": false
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -92,7 +91,6 @@
                   "maximumWarning": "6kb"
                 }
               ],
-              "aot": true,
               "commonChunk": false,
               "optimization": true,
               "outputHashing": "all",
@@ -239,8 +237,7 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true,
-            "aot": false
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -250,7 +247,6 @@
                   "with": "scenes/src/environments/environment.prod.ts"
                 }
               ],
-              "aot": true,
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
