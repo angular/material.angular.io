@@ -43,10 +43,10 @@
   }
 
   .docs-help-support {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
 
     a {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
   }
 
