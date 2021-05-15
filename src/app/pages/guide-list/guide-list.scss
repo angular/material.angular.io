@@ -1,6 +1,11 @@
-:host,
+:host {
+  height: 100%;
+}
+
 .docs-guide {
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .docs-guide-list {
@@ -9,11 +14,11 @@
   align-content: center;
   justify-content: center;
   padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .docs-guide-item {
   text-decoration: none;
-
   display: flex;
   margin: 15px;
 }
@@ -31,7 +36,6 @@
   justify-content: center;
   font-size: 22px;
 }
-
 
 .docs-guide-card-divider {
   width: 40%;
