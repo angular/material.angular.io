@@ -15,7 +15,6 @@ describe('screenshot scenes for each component', () => {
     'card',
     'checkbox',
     'chips',
-    'core',
     'datepicker',
     'dialog',
     'divider',
