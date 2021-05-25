@@ -47,6 +47,11 @@
     word-break: break-word;
   }
 
+  //API docs link color will change with theme change
+  .docs-api > p > a {
+    color: mat.get-color-from-palette($primary, if($is-dark-theme, 200, default));
+  }
+
   .docs-api-class-name,
   .docs-api-module-import,
   .docs-api-class-selector-name,
