@@ -130,6 +130,15 @@ const DOCS: { [key: string]: DocItem[] } = {
       additionalApiDocs: [{name: 'Testing', path: 'material-chips-testing.html'}],
     },
     {
+      id: 'core',
+      name: 'Core',
+      summary: 'Reusable parts used by other components in the library.',
+      exampleSpecs: {
+        prefix: 'core-',
+      },
+      additionalApiDocs: [{name: 'Testing', path: 'material-core-testing.html'}],
+    },
+    {
       id: 'datepicker',
       name: 'Datepicker',
       summary: 'Captures dates, agnostic about their internal representation.',
@@ -396,6 +405,22 @@ const DOCS: { [key: string]: DocItem[] } = {
       summary: 'Helpers for working with the system clipboard.',
       exampleSpecs: {
         prefix: 'cdk-clipboard-',
+      },
+    },
+    {
+      id: 'coercion',
+      name: 'Coercion',
+      summary: 'Utility functions for coercing @Input into specific types.',
+      exampleSpecs: {
+        prefix: 'cdk-coercion-',
+      },
+    },
+    {
+      id: 'collections',
+      name: 'Collections',
+      summary: 'Utilities for managing collections.',
+      exampleSpecs: {
+        prefix: 'cdk-collections-',
       },
     },
     {
