@@ -16,6 +16,10 @@
         map.get(mat.$dark-theme-foreground-palette, secondary-text)
       );
       background: if($is-dark-theme, map.get(mat.$grey-palette, 50), #252525);
+
+      .buttons {
+        color: if($is-dark-theme, map.get($primary, 600), map.get($accent, default));
+      }
     }
   }
 }
