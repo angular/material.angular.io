@@ -10,6 +10,7 @@ Versions of this site are also available for
 - [v9](https://v9.material.angular.io/)
 - [v10](https://v10.material.angular.io/)
 - [v11](https://v11.material.angular.io/)
+- [v12](https://material.angular.io/)
 
 ## Contributing
 
