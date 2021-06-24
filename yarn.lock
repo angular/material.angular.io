@@ -242,12 +242,6 @@
   dependencies:
     tslib "^2.1.0"
 
-"@angular/components-examples@angular/material2-docs-content#12.0.x":
-  version "12.0.4-sha-046963515"
-  resolved "https://codeload.github.com/angular/material2-docs-content/tar.gz/6fa556428d286b415d71f9b8cfd740921b740503"
-  dependencies:
-    tslib "^2.1.0"
-
 "@angular/components-examples@angular/material2-docs-content#12.1.x":
   version "12.1.0-sha-a62139987"
   resolved "https://codeload.github.com/angular/material2-docs-content/tar.gz/1a9a9d37fd15b09812c8f2faaa59538a4c34f5d4"
@@ -14508,9 +14502,9 @@ xtend@^4.0.0, xtend@~4.0.0:
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 y18n@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
-  integrity sha512-r9S/ZyXu/Xu9q1tYlpsLIsa3EeLXXk0VwlxqTcFRfg9EhMW+17kbt9G0NrgCmhGb5vT2hyhJZLfDGx+7+5Uj/w==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.3.tgz#b5f259c82cd6e336921efd7bfd8bf560de9eeedf"
+  integrity sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==
 
 y18n@^5.0.5:
   version "5.0.5"
