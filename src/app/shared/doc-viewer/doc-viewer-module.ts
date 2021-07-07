@@ -11,6 +11,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {HeaderLink} from './header-link';
 import {CodeSnippet} from '../example-viewer/code-snippet';
+import { DocsApiModuleImport } from './docs-api-module-import/docs-api-module-import';
 
 
 // ExampleViewer is included in the DocViewerModule because they have a circular dependency.
@@ -25,8 +26,9 @@ import {CodeSnippet} from '../example-viewer/code-snippet';
     PortalModule,
     StackBlitzButtonModule
   ],
-  declarations: [DocViewer, ExampleViewer, HeaderLink, CodeSnippet],
-  entryComponents: [ExampleViewer, HeaderLink],
-  exports: [DocViewer, ExampleViewer, HeaderLink],
+  providers: [CopierService],
+  declarations: [DocViewer, ExampleViewer, HeaderLink, CodeSnippet, DocsApiModuleImport],
+  entryComponents: [ExampleViewer, HeaderLink, DocsApiModuleImport],
+  exports: [DocViewer, ExampleViewer, HeaderLink, DocsApiModuleImport],
 })
 export class DocViewerModule { }

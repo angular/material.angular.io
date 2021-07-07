@@ -1,0 +1,7 @@
+@mixin docs-api-module-import-theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  .docs-api-module-import-copy.mat-icon-button {
+    color: mat-color($foreground, secondary-text);
+  }
+}
