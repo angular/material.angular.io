@@ -65,7 +65,7 @@ commands:
             git config user.name "angular-ci"
             git config user.email "angular-ci"
       - build-tools/merge-with-parent:
-          parent: master
+          parent: 12.x
 
 jobs:
   lint:
