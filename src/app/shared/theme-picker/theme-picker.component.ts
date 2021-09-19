@@ -1,36 +1,32 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  NgModule,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import {StyleManager} from '../style-manager';
-import {DocsSiteTheme, ThemeStorage} from './theme-storage/theme-storage';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {CommonModule} from '@angular/common';
+import {ThemeStorage} from './theme-storage/theme-storage';
+import {MatIconRegistry} from '@angular/material/icon';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DomSanitizer} from '@angular/platform-browser';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
+import {DocsSiteTheme} from './doc-site-theme.interface';
 
 @Component({
   selector: 'theme-picker',
-  templateUrl: 'theme-picker.html',
-  styleUrls: ['theme-picker.scss'],
+  templateUrl: 'theme-picker.component.html',
+  styleUrls: ['theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class ThemePicker implements OnInit, OnDestroy {
+export class ThemePickerComponent implements OnInit, OnDestroy {
   private _queryParamSubscription = Subscription.EMPTY;
   currentTheme: DocsSiteTheme | undefined;
 
-  // The below colors need to align with the themes defined in theme-picker.scss
+  // The below colors need to align with the themes defined in theme-picker.component.scss
   themes: DocsSiteTheme[] = [
     {
       primary: '#673AB7',
@@ -119,17 +115,3 @@ export class ThemePicker implements OnInit, OnDestroy {
     }
   }
 }
-
-@NgModule({
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatTooltipModule,
-  ],
-  exports: [ThemePicker],
-  declarations: [ThemePicker],
-  providers: [StyleManager, ThemeStorage],
-})
-export class ThemePickerModule { }
