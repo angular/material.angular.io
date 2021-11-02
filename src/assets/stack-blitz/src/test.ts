@@ -15,7 +15,6 @@ declare const require: {
 };
 
 // First, initialize the Angular testing environment.
-// TODO: Re-enable this once example test specs no longer init the test environment manually.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting()
