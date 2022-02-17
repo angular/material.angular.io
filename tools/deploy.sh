@@ -44,13 +44,8 @@ if [[ "${cdk_prerelease}" ]]; then
   fi
 fi
 
-echo ""
-echo "NOTE: Make sure to refresh the docs-content to match the new version of docs."
-echo "      You can pull the docs-content for the new version by updating the"
-echo "      \"@angular/components-examples\" in the 'package.json' file."
-echo ""
-
-read -rp "Press <ENTER> to continue.."
+# Ensure the docs-content is set up properly.
+yarn check-docs-content-package-json:deploy $version
 
 yarn prod-build
 yarn firebase use $projectId

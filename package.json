@@ -17,6 +17,8 @@
     "build:scenes": "ng build scenes",
     "build:content": "yarn upgrade @angular/components-examples",
     "build:sm": "ng build --configuration production --source-map",
+    "check-docs-content-package-json:deploy": "node ./tools/docs-content/check-package-json-deploy.js",
+    "check-docs-content-package-json:ci": "node ./tools/docs-content/check-package-json-ci.js",
     "prod-build": "ng build --configuration production",
     "preinstall": "node ./tools/npm/check-npm.js",
     "publish-prod": "bash ./tools/deploy.sh stable prod",
@@ -59,6 +61,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular/dev-infra-private": "https://github.com/angular/dev-infra-private-builds.git#150427fef0344fabaf391443654170790af4289d",
     "@angular-devkit/build-angular": "^13.1.0",
     "@angular-eslint/builder": "^13.0.1",
     "@angular-eslint/eslint-plugin": "^13.0.1",

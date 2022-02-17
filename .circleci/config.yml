@@ -76,6 +76,7 @@ jobs:
         key: *cache_key
     - *yarn_install
     - run: yarn lint
+    - run: yarn check-docs-content-package-json:ci
     - *save_cache
 
   build:
