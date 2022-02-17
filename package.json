@@ -39,7 +39,7 @@
     "@angular/cdk-experimental": "^13.2.3",
     "@angular/common": "^13.1.0",
     "@angular/compiler": "^13.1.0",
-    "@angular/components-examples": "angular/material2-docs-content#master",
+    "@angular/components-examples": "angular/material2-docs-content#13.2.x",
     "@angular/core": "^13.1.0",
     "@angular/forms": "^13.1.0",
     "@angular/google-maps": "^13.2.3",
