@@ -20,6 +20,7 @@ import {Observable, Subscription} from 'rxjs';
 import {shareReplay, take, tap} from 'rxjs/operators';
 import {ExampleViewer} from '../example-viewer/example-viewer';
 import {HeaderLink} from './header-link';
+import { DocsApiModuleImport } from './docs-api-module-import/docs-api-module-import';
 
 @Injectable({providedIn: 'root'})
 class DocFetcher {
@@ -118,6 +119,7 @@ export class DocViewer implements OnDestroy {
     this.textContent = this._elementRef.nativeElement.textContent;
     this._loadComponents('material-docs-example', ExampleViewer);
     this._loadComponents('header-link', HeaderLink);
+    this._loadDocsApiModuleImportComponent('docs-api-module-import');
 
     // Resolving and creating components dynamically in Angular happens synchronously, but since
     // we want to emit the output if the components are actually rendered completely, we wait
@@ -151,6 +153,31 @@ export class DocViewer implements OnDestroy {
       if (example !== null) {
         DocViewer.initExampleViewer(exampleViewerComponent, example, file, region);
       }
+      this._portalHosts.push(portalHost);
+    });
+  }
+
+  /** Instantiate a DocsApiModuleImport for each module import. */
+  private _loadDocsApiModuleImportComponent(componentName: string) {
+    const exportNameAttribute = 'exportName';
+    const moduleImportPathAttribute = 'moduleImportPath';
+
+    const moduleImportElements =
+        this._elementRef.nativeElement.querySelectorAll(`[${componentName}]`);
+
+    Array.prototype.slice.call(moduleImportElements).forEach((element: Element) => {
+      const exportName = element.getAttribute(exportNameAttribute);
+      const moduleImportPath = element.getAttribute(moduleImportPathAttribute);
+      const portalHost = new DomPortalOutlet(
+          element, this._componentFactoryResolver, this._appRef, this._injector);
+      const componentPortal = new ComponentPortal(DocsApiModuleImport, this._viewContainerRef);
+      const docuApiModuleImport = portalHost.attach(componentPortal);
+      if (exportName !== null && moduleImportPath !== null) {
+        const component = (docuApiModuleImport.instance as DocsApiModuleImport);
+        component.exportName = exportName;
+        component.moduleImportPath = moduleImportPath;
+      }
+
       this._portalHosts.push(portalHost);
     });
   }
