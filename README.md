@@ -3,6 +3,7 @@
 This is the repository for the [Angular Components documentation site](https://material.angular.io/).
 
 Versions of this site are also available for
+
 - [v5](https://v5.material.angular.io/)
 - [v6](https://v6.material.angular.io/)
 - [v7](https://v7.material.angular.io/)
@@ -10,7 +11,8 @@ Versions of this site are also available for
 - [v9](https://v9.material.angular.io/)
 - [v10](https://v10.material.angular.io/)
 - [v11](https://v11.material.angular.io/)
-- [v12](https://material.angular.io/)
+- [v12](https://v12.material.angular.io/)
+- [v13](https://v13.material.angular.io/)
 
 ## Contributing
 
@@ -28,6 +30,7 @@ issues with rendering or layout of the documentation pages, etc.
 The guides, examples, and docs content repo
 [angular/material2-docs-content](https://github.com/angular/material2-docs-content) contains the
 documentation content and examples. They are generated from:
+
 - [Angular Material and CDK Guides](https://github.com/angular/components/tree/main/guides)
 - [Material components, services, and directives](https://github.com/angular/components/tree/main/src/material)
 - [CDK components, services, and directives](https://github.com/angular/components/tree/main/src/cdk)
