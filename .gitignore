@@ -52,3 +52,7 @@ ui-debug.log
 #System Files
 .DS_Store
 Thumbs.db
+
+#Bazel
+.bazelrc.user
+bazel-*

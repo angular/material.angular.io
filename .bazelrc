@@ -1,0 +1,48 @@
+# Enable debugging tests with --config=debug
+test:debug --test_arg=--node_options=--inspect-brk --test_output=streamed --test_strategy=exclusive --test_timeout=9999 --nocache_test_results
+
+###############################
+# Filesystem interactions     #
+###############################
+
+# Turn off legacy external runfiles
+build --nolegacy_external_runfiles
+run --nolegacy_external_runfiles
+test --nolegacy_external_runfiles
+
+# Turn on --incompatible_strict_action_env which was on by default
+# in Bazel 0.21.0 but turned off again in 0.22.0. Follow
+# https://github.com/bazelbuild/bazel/issues/7026 for more details.
+# This flag is needed to so that the bazel cache is not invalidated
+# when running bazel via `yarn bazel`.
+# See https://github.com/angular/angular/issues/27514.
+build --incompatible_strict_action_env
+run --incompatible_strict_action_env
+test --incompatible_strict_action_env
+
+# Do not build runfile trees by default. If an execution strategy relies on runfile
+# symlink teee, the tree is created on-demand. See: https://github.com/bazelbuild/bazel/issues/6627
+# and https://github.com/bazelbuild/bazel/commit/03246077f948f2790a83520e7dccc2625650e6df
+build --nobuild_runfile_links
+
+build --enable_runfiles
+
+###############################
+# Output                      #
+###############################
+
+# A more useful default output mode for bazel query
+# Prints eg. "ng_module rule //foo:bar" rather than just "//foo:bar"
+query --output=label_kind
+
+# By default, failing tests don't print any output, it goes to the log file
+test --test_output=errors
+
+####################################################
+# User bazel configuration
+# NOTE: This needs to be the *last* entry in the config.
+####################################################
+
+# Load any settings which are specific to the current user. Needs to be *last* statement
+# in this config, as the user configuration should be able to overwrite flags from this file.
+try-import .bazelrc.user
