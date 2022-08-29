@@ -31,7 +31,8 @@
   },
   "exclude": [
     "src/assets",
-    "dist"
+    "dist",
+    "bazel-*"
   ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
