@@ -18,5 +18,9 @@ describe('NavBar', () => {
     fixture.detectChanges();
   });
 
+  it('should create components', () => {
+    expect(fixture.nativeElement).toBeTruthy();
+  });
+
   // Note: Add tests as logic is added to navbar class.
 });
