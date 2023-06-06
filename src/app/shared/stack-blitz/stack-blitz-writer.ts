@@ -129,8 +129,7 @@ export class StackBlitzWriter {
     const result: FileDictionary = {};
     const tasks: Promise<unknown>[] = [];
     const liveExample = EXAMPLE_COMPONENTS[exampleId];
-    const exampleBaseContentPath =
-      `${DOCS_CONTENT_PATH}/${liveExample.module.importSpecifier}/${exampleId}/`;
+    const exampleBaseContentPath = `${DOCS_CONTENT_PATH}/${liveExample.module.importSpecifier}/${exampleId}/`;
 
     for (const relativeFilePath of TEMPLATE_FILES) {
       tasks.push(
@@ -208,7 +207,7 @@ export class StackBlitzWriter {
         .replace(/material-docs-example/g, data.selectorName)
         .replace(/\${title}/g, data.description);
     } else if (fileName === '.stackblitzrc') {
-      fileContent = fileContent.replace(/\${startCommand}/, isTest ? 'turbo test' : 'turbo start');
+      fileContent = fileContent.replace(/\${startCommand}/, isTest ? 'yarn test' : 'yarn start');
     } else if (fileName === 'src/app/app.module.ts') {
       const joinedComponentNames = data.componentNames.join(', ');
       // Replace the component name in `main.ts`.
