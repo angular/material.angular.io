@@ -71,7 +71,7 @@ const MIN_SCORES_PER_PAGE = [
  */
 function formatScores(scores) {
   let formattedScores = '';
-  Object.keys(scores).map((key, index) => {
+  Object.keys(scores).forEach((key, index) => {
     if (index > 0) {
       formattedScores += ',';
     }
