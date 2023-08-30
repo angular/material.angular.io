@@ -81,6 +81,7 @@ jobs:
       - store_build_output
 
   test:
+    # this is a comment
     <<: *job_defaults
     steps:
       - checkout
