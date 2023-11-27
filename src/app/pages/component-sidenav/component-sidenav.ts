@@ -182,7 +182,6 @@ const routes: Routes = [{
   imports: [
     MatSidenavModule,
     MatListModule,
-    RouterModule,
     CommonModule,
     ComponentCategoryListModule,
     ComponentViewerModule,
