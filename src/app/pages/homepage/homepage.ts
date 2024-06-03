@@ -2,6 +2,7 @@ import {Component, HostBinding, Inject, OnInit, Optional} from '@angular/core';
 import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
 
 import {MatButtonModule} from '@angular/material/button';
+import {MatRipple} from '@angular/material/core';
 import {Footer} from '../../shared/footer/footer';
 import {RouterLink} from '@angular/router';
 import {ComponentPageTitle} from '../page-title/page-title';
@@ -10,10 +11,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import {GuideItems} from '../../shared/guide-items/guide-items';
-import {NgFor} from '@angular/common';
 
 import {Support} from '../../shared/support/support';
 import {Carousel, CarouselItem} from '../../shared/carousel/carousel';
+import {AppLogo} from '../../shared/logo/logo';
 
 const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle', 'slider', 'button'];
 
@@ -29,18 +30,17 @@ const TOP_COMPONENTS = ['datepicker', 'input', 'slide-toggle', 'slider', 'button
     MatDividerModule,
     MatIconModule,
     Carousel,
-    NgFor,
     CarouselItem,
     MatCardModule,
     Support,
     Footer,
+    AppLogo,
+    MatRipple,
   ],
 })
 export class Homepage implements OnInit {
   @HostBinding('class.main-content') readonly mainContentClass = true;
   @HostBinding('class.animations-disabled') readonly animationsDisabled: boolean;
-
-  isNextVersion = location.hostname === 'next.material.angular.io';
 
   constructor(
     public _componentPageTitle: ComponentPageTitle,

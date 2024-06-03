@@ -51,6 +51,7 @@ APPLICATION_CONFIG = COMMON_CONFIG + [
     ":ng-app-config",
 ]
 APPLICATION_DEPS = [
+    "//:node_modules/@material/tokens",
 ]
 
 # Common dependencies of Angular CLI test suites
@@ -68,6 +69,7 @@ TEST_CONFIG = COMMON_CONFIG + [
     "//:node_modules/karma-coverage-istanbul-reporter",
 ]
 TEST_DEPS = [
+    "//:node_modules/@material/tokens",
     "//:node_modules/@types/jasmine",
     "//:node_modules/@types/node",
     "//:node_modules/@angular/compiler",
@@ -111,10 +113,6 @@ LINT_DEPS = APPLICATION_DEPS + [
   "//:node_modules/@angular-devkit/architect",
 ]
 
-
-ARCHITEXT_ENV = {
-  "NG_BUILD_LEGACY_SASS": "1",
-}
 
 def ng_app(name, project_name = None, deps = [], test_deps = [], e2e_deps = [], **kwargs):
     """
@@ -263,7 +261,6 @@ def _architect_build(project_name, configuration = None, args = [], srcs = [], *
         args = args,
         out_dirs = [output_dir],
         srcs = srcs,
-        env = ARCHITEXT_ENV,
         **kwargs,
     )
 
@@ -276,7 +273,6 @@ def _architect_test(project_name, command, configuration = None, args = [], srcs
         "CHROME_BIN": to_root + "$(CHROMIUM)",
         "CHROMEDRIVER_BIN": to_root + "$(CHROMEDRIVER)",
     }
-    env.update(ARCHITEXT_ENV)
 
     architect_cli.architect_test(
         name = "%s%s" % (command, ".%s" % configuration if configuration else ""),
@@ -301,7 +297,6 @@ def _architect_binary(project_name, command, configuration = None, args = [], sr
           "%s:%s%s" % (project_name, command, ":%s" % configuration if configuration else "")
         ] + args,
         data = srcs,
-        env = ARCHITEXT_ENV,
         **kwargs,
     )
 
