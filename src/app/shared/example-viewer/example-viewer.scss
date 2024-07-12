@@ -5,6 +5,7 @@
 
 .docs-example-viewer-wrapper {
   border-radius: 12px;
+  border: 1px solid var(--sys-outline-variant);
 
   h3 {
     margin-top: 10px;
@@ -17,6 +18,11 @@
   display: flex;
   justify-content: center;
   padding: 16px 16px 0 24px;
+  color: var(--sys-on-surface-variant);
+}
+
+.docs-example-viewer-source code-snippet {
+  border-bottom: 1px solid var(--sys-outline-variant);
 }
 
 .docs-example-viewer-title-spacer {

@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@use './app-theme';
 @use './styles/api';
 @use './styles/markdown';
 @use './styles/tables';
@@ -16,8 +15,8 @@ $theme: mat.define-theme((
 // Include material core styles.
 @include mat.core();
 @include mat.color-variants-backwards-compatibility($theme);
-@include app-theme.theme($theme);
 
 :root {
+  @include mat.system-level-colors($theme);
   @include mat.all-component-themes($theme);
 }

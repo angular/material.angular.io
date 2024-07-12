@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@use '../../app-theme';
 @use '../../highlightjs/material-dark';
 
 $theme: mat.define-theme((
@@ -11,8 +10,8 @@ $theme: mat.define-theme((
 ));
 
 @include mat.color-variants-backwards-compatibility($theme);
-@include app-theme.theme($theme);
 
 :root {
+  @include mat.system-level-colors($theme);
   @include mat.all-component-themes($theme);
 }
