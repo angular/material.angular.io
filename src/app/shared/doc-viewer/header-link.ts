@@ -19,7 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
   selector: 'header-link',
   template: `
     <a aria-label="Link to this heading" class="docs-markdown-a"
-      [attr.aria-describedby]="example()" [href]="_getFragmentUrl()">
+      [attr.aria-describedby]="example" [href]="_getFragmentUrl()">
       <mat-icon>link</mat-icon>
     </a>
   `,
@@ -32,7 +32,7 @@ export class HeaderLink {
    * Id of the anchor element. Note that is uses "example" because we instantiate the
    * header link components through the ComponentPortal.
    */
-  readonly example = input<string>();
+  example: string = '';
 
   /** Base URL that is used to build an absolute fragment URL. */
   private _baseUrl: string;
@@ -42,7 +42,7 @@ export class HeaderLink {
   }
 
   _getFragmentUrl(): string {
-    return `${this._baseUrl}#${this.example()}`;
+    return `${this._baseUrl}#${this.example}`;
   }
 
 }
