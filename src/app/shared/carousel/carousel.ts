@@ -42,7 +42,7 @@ export class CarouselItem implements FocusableOption {
   imports: [MatButtonModule, MatIconModule],
 })
 export class Carousel implements AfterContentInit {
-  readonly ariaLabel = input<string|undefined>(undefined, { alias: "aria-label" });
+  readonly ariaLabel = input<string|undefined>(undefined, { alias: 'aria-label' });
   @ContentChildren(CarouselItem) items!: QueryList<CarouselItem>;
   @ViewChild('list') list!: ElementRef<HTMLElement>;
   @HostBinding('class.animations-disabled') readonly animationsDisabled: boolean;
