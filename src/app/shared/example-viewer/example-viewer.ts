@@ -139,7 +139,7 @@ export class ExampleViewer implements OnInit {
     this.view = this.view === 'full' ? 'demo' : 'full';
   }
 
-  copySource(snippets: CodeSnippet[], selectedIndex: number = 0) {
+  copySource(snippets: readonly CodeSnippet[], selectedIndex: number = 0) {
     const text = snippets[selectedIndex].viewer().textContent || '';
     if (this.clipboard.copy(text)) {
       this.snackbar.open('Code copied', '', {duration: 2500});
