@@ -4,7 +4,6 @@ import {
   HostBinding,
   Input,
   OnInit,
-  QueryList,
   Type,
   viewChildren
 } from '@angular/core';
