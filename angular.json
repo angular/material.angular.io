@@ -14,7 +14,7 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "sourceMap": true,
             "allowedCommonJsDependencies": ["moment", "path-normalize"],
@@ -211,7 +211,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/scenes",
             "index": "scenes/src/index.html",
