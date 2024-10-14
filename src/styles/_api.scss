@@ -101,12 +101,13 @@
   display: inline-block;
   font-weight: bold;
 
-  &[title] {
+  & .deprecated-content {
     border-bottom: 1px dotted grey;
     cursor: help;
   }
 }
 
-.docs-api-deprecated-marker + .docs-api-property-name {
+.docs-api-deprecated-marker + .docs-api-property-name, 
+.docs-api-class-deprecated-marker {
   text-decoration: line-through;
 }
