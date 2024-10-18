@@ -36,7 +36,6 @@ export const TEMPLATE_FILES = [
   'angular.json',
   'karma.conf.js',
   'package.json',
-  'package-lock.json',
   'tsconfig.app.json',
   'tsconfig.json',
   'tsconfig.spec.json',
