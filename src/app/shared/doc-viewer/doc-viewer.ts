@@ -21,6 +21,7 @@ import {Observable, Subscription} from 'rxjs';
 import {shareReplay, take, tap} from 'rxjs/operators';
 import {ExampleViewer} from '../example-viewer/example-viewer';
 import {HeaderLink} from './header-link';
+import {DeprecatedFieldComponent} from './deprecated-tooltip';
 
 @Injectable({providedIn: 'root'})
 class DocFetcher {
@@ -121,6 +122,9 @@ export class DocViewer implements OnDestroy {
     this._loadComponents('material-docs-example', ExampleViewer);
     this._loadComponents('header-link', HeaderLink);
 
+    // Create tooltips for the deprecated fields
+    this._createTooltipsForDeprecated();
+
     // Resolving and creating components dynamically in Angular happens synchronously, but since
     // we want to emit the output if the components are actually rendered completely, we wait
     // until the Angular zone becomes stable.
@@ -165,5 +169,31 @@ export class DocViewer implements OnDestroy {
   ngOnDestroy() {
     this._clearLiveExamples();
     this._documentFetchSubscription?.unsubscribe();
+  }
+
+  _createTooltipsForDeprecated() {
+    // all of the deprecated markers end with `deprecated-marker` 
+    // in their class name
+    const deprecatedElements =
+      this._elementRef.nativeElement.querySelectorAll(`[class$=deprecated-marker]`);
+
+    [...deprecatedElements].forEach((element: Element) => {
+      // the deprecation message, it will include alternative to deprecated item
+      // and breaking change if there is one included.
+      const deprecationTitle = element.getAttribute('deprecated-message');
+
+      const elementPortalOutlet = new DomPortalOutlet(
+        element, this._componentFactoryResolver, this._appRef, this._injector);
+
+      const tooltipPortal = new ComponentPortal(DeprecatedFieldComponent, this._viewContainerRef);
+      const tooltipOutlet = elementPortalOutlet.attach(tooltipPortal);
+
+
+      if (deprecationTitle) {
+        tooltipOutlet.instance.message = deprecationTitle;
+      }
+
+      this._portalHosts.push(elementPortalOutlet);
+    });
   }
 }
