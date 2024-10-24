@@ -528,7 +528,7 @@ const DOCS: { [key: string]: DocItem[] } = {
       },
     },
     {
-      id: 'test-harnesses',
+      id: 'testing',
       name: 'Component Harnesses',
       summary: 'Foundation for component test harnesses.',
       exampleSpecs: {
