@@ -108,7 +108,8 @@
     visibility: hidden;
   }
 
-  &:hover .material-icons {
+  &:hover .material-icons,
+  &:focus .material-icons {
     visibility: visible;
   }
 }
